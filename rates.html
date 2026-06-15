@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Canadian Interest Rates — Live Bank & Mortgage Rates | estack.ca</title>
+<meta name="description" content="Live Canadian interest rates. BoC policy rate, prime rate, mortgage rates, GIC rates, and HELOC rates from all major Canadian banks. Updated daily.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --white: #ffffff;
+  --off-white: #fafaf8;
+  --light: #f4f3ef;
+  --gold: #c9a84c;
+  --gold-light: #e2c47a;
+  --gold-dark: #9d7a2e;
+  --gold-pale: #fdf8ec;
+  --ink: #0e0e0e;
+  --ink-mid: #2a2a2a;
+  --ink-light: #555555;
+  --ink-faint: #999999;
+  --border: #e8e4d9;
+  --border-gold: rgba(201,168,76,0.3);
+  --up: #1a7a4a;
+  --down: #c0392b;
+  --neutral: #555;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-body); background: var(--white); color: var(--ink); line-height: 1.6; }
+
+/* TICKER */
+.ticker-wrap {
+  background: var(--ink);
+  overflow: hidden;
+  border-bottom: 2px solid var(--gold);
+  height: 38px;
+  display: flex;
+  align-items: center;
+}
+.ticker-label {
+  background: var(--gold);
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0 1rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.ticker-track {
+  display: flex;
+  animation: ticker 40s linear infinite;
+  white-space: nowrap;
+}
+.ticker-track:hover { animation-play-state: paused; }
+.ticker-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.85);
+  border-right: 1px solid rgba(255,255,255,0.1);
+}
+.ticker-symbol { color: var(--gold-light); font-weight: 500; }
+.up { color: #4ade80; }
+.down { color: #f87171; }
+@keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+/* NAV */
+nav {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 0 2.5rem;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.nav-logo { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: var(--ink); text-decoration: none; }
+.nav-logo span { color: var(--gold); }
+.nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+.nav-links a { font-size: 0.825rem; font-weight: 500; color: var(--ink-light); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover, .nav-links a.active { color: var(--gold); }
+.nav-cta { background: var(--gold); color: var(--ink) !important; padding: 0.5rem 1.25rem; border-radius: 3px; font-weight: 600 !important; }
+
+/* HERO */
+.page-hero {
+  background: var(--ink);
+  padding: 3.5rem 2.5rem;
+  border-bottom: 2px solid var(--gold);
+}
+.page-hero-inner { max-width: 1200px; margin: 0 auto; }
+.page-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+}
+.page-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+.page-hero h1 em { font-style: italic; color: var(--gold-light); }
+.page-hero p {
+  color: rgba(255,255,255,0.55);
+  font-size: 1rem;
+  max-width: 580px;
+  line-height: 1.7;
+}
+.last-updated {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: rgba(255,255,255,0.3);
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.live-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #4ade80;
+  animation: pulse 2s infinite;
+  display: inline-block;
+}
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+/* MAIN LAYOUT */
+.main { max-width: 1200px; margin: 0 auto; padding: 3rem 2.5rem; }
+
+/* BOC HERO RATE */
+.boc-hero {
+  background: var(--gold-pale);
+  border: 1px solid var(--border-gold);
+  border-left: 4px solid var(--gold);
+  padding: 2.5rem;
+  margin-bottom: 3rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+.boc-main { grid-column: span 2; }
+.boc-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  margin-bottom: 0.5rem;
+}
+.boc-rate {
+  font-family: var(--font-display);
+  font-size: 4rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+.boc-rate span { font-size: 2rem; color: var(--ink-light); }
+.boc-status {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--up);
+  font-weight: 500;
+}
+.boc-stat { text-align: center; border-left: 1px solid var(--border-gold); padding-left: 2rem; }
+.boc-stat-val {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+.boc-stat-label {
+  font-size: 0.75rem;
+  color: var(--ink-faint);
+  margin-top: 0.25rem;
+}
+.boc-stat-note {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: var(--gold-dark);
+  margin-top: 0.25rem;
+}
+
+/* SECTION */
+.rates-section { margin-bottom: 3rem; }
+.section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  border-bottom: 2px solid var(--ink);
+  padding-bottom: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+.section-head h2 {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+.section-note {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: var(--ink-faint);
+  letter-spacing: 0.05em;
+}
+
+/* RATES TABLE */
+.rates-table { width: 100%; border-collapse: collapse; }
+.rates-table thead tr {
+  background: var(--ink);
+}
+.rates-table thead th {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  padding: 0.75rem 1.25rem;
+  text-align: left;
+  font-weight: 500;
+}
+.rates-table thead th:last-child { text-align: right; }
+.rates-table tbody tr {
+  border-bottom: 1px solid var(--border);
+  transition: background 0.15s;
+}
+.rates-table tbody tr:hover { background: var(--gold-pale); }
+.rates-table tbody td {
+  padding: 1rem 1.25rem;
+  font-size: 0.875rem;
+  color: var(--ink);
+}
+.bank-name {
+  font-weight: 600;
+  color: var(--ink);
+}
+.bank-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--light);
+  color: var(--ink-faint);
+  padding: 0.15rem 0.4rem;
+  border-radius: 2px;
+  margin-left: 0.5rem;
+  vertical-align: middle;
+}
+.rate-val {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--ink);
+}
+.rate-change {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+}
+.rate-change.up { color: var(--down); } /* rate up = bad for borrowers */
+.rate-change.down { color: var(--up); } /* rate down = good */
+.rate-change.neutral { color: var(--neutral); }
+.rate-note {
+  font-size: 0.75rem;
+  color: var(--ink-faint);
+}
+.best-badge {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.5rem;
+  border-radius: 2px;
+  margin-left: 0.5rem;
+  vertical-align: middle;
+}
+td:last-child { text-align: right; }
+
+/* INSIGHT BOX */
+.insight {
+  background: var(--ink);
+  color: var(--white);
+  padding: 1.75rem 2rem;
+  margin: 2rem 0;
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+.insight-icon { font-size: 1.25rem; flex-shrink: 0; margin-top: 0.1rem; }
+.insight-title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--gold-light);
+  margin-bottom: 0.375rem;
+}
+.insight-body {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.65;
+}
+.insight-body a {
+  color: var(--gold-light);
+  text-decoration: underline;
+}
+
+/* VMG CTA */
+.vmg-cta {
+  background: linear-gradient(135deg, var(--ink) 0%, #1a1a1a 100%);
+  border: 1px solid rgba(201,168,76,0.2);
+  padding: 2.5rem;
+  margin: 3rem 0;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2rem;
+  align-items: center;
+}
+.vmg-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+.vmg-title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--white);
+  margin-bottom: 0.5rem;
+}
+.vmg-title em { font-style: italic; color: var(--gold-light); }
+.vmg-body { font-size: 0.85rem; color: rgba(255,255,255,0.55); line-height: 1.65; }
+.vmg-creds { margin-top: 0.875rem; display: flex; gap: 1rem; flex-wrap: wrap; }
+.vmg-cred { font-family: var(--font-mono); font-size: 0.6rem; color: rgba(255,255,255,0.3); }
+.vmg-btn {
+  background: var(--gold);
+  color: var(--ink);
+  font-weight: 700;
+  font-size: 0.875rem;
+  padding: 1rem 2rem;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.2s;
+}
+.vmg-btn:hover { background: var(--gold-light); }
+
+/* FOOTER */
+footer {
+  background: var(--ink);
+  border-top: 2px solid var(--gold);
+  padding: 2rem 2.5rem;
+  text-align: center;
+}
+.footer-logo { font-family: var(--font-display); font-size: 1.25rem; color: var(--white); margin-bottom: 0.5rem; }
+.footer-logo span { color: var(--gold); }
+.footer-links-row { display: flex; justify-content: center; gap: 2rem; margin: 0.75rem 0; flex-wrap: wrap; }
+.footer-links-row a { font-size: 0.78rem; color: rgba(255,255,255,0.4); text-decoration: none; }
+.footer-links-row a:hover { color: var(--gold-light); }
+.footer-disc { font-size: 0.7rem; color: rgba(255,255,255,0.25); max-width: 700px; margin: 1rem auto 0; line-height: 1.6; }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .boc-hero { grid-template-columns: 1fr 1fr; }
+  .boc-main { grid-column: span 2; }
+  .vmg-cta { grid-template-columns: 1fr; }
+  nav { padding: 0 1.5rem; }
+  .nav-links { display: none; }
+  .main { padding: 2rem 1.5rem; }
+  .page-hero { padding: 2.5rem 1.5rem; }
+}
+@media (max-width: 600px) {
+  .boc-hero { grid-template-columns: 1fr; }
+  .boc-stat { border-left: none; border-top: 1px solid var(--border-gold); padding-left: 0; padding-top: 1rem; text-align: left; }
+  .rates-table { font-size: 0.8rem; }
+  .rates-table tbody td { padding: 0.75rem 0.75rem; }
+  .rates-table thead th { padding: 0.6rem 0.75rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-label">Rates</div>
+  <div class="ticker-track" id="ticker"></div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">e<span>stack</span>.ca</a>
+  <ul class="nav-links">
+    <li><a href="/loans">Loans</a></li>
+    <li><a href="/best-hisa-canada.html">Savings</a></li>
+    <li><a href="/rates.html" class="active">Rates</a></li>
+    <li><a href="/improve-credit-score-canada.html">Credit</a></li>
+    <li><a href="/top-picks">Top Picks</a></li>
+    <li><a href="/loans" class="nav-cta">Get Funded →</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-eyebrow">Live Canadian Rates</div>
+    <h1>Every rate.<br><em>Every bank.</em> One page.</h1>
+    <p>Bank of Canada policy rate, prime rate, mortgage rates, GIC rates, and HELOC rates from all major Canadian banks — tracked daily so you don't have to.</p>
+    <div class="last-updated"><span class="live-dot"></span> Updated June 15, 2026 · Rates are indicative and subject to change</div>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- BOC HERO -->
+  <div class="boc-hero">
+    <div class="boc-main">
+      <div class="boc-label">Bank of Canada Policy Rate</div>
+      <div class="boc-rate">2.75<span>%</span></div>
+      <div class="boc-status">▬ Held — Last changed March 12, 2026</div>
+    </div>
+    <div class="boc-stat">
+      <div class="boc-stat-val">4.95%</div>
+      <div class="boc-stat-label">Prime Rate</div>
+      <div class="boc-stat-note">All Big 6 Banks</div>
+    </div>
+    <div class="boc-stat">
+      <div class="boc-stat-val">4.64%</div>
+      <div class="boc-stat-label">5-Yr Fixed</div>
+      <div class="boc-stat-note">Best Available</div>
+    </div>
+    <div class="boc-stat">
+      <div class="boc-stat-val">Jul 30</div>
+      <div class="boc-stat-label">Next Decision</div>
+      <div class="boc-stat-note">2026</div>
+    </div>
+  </div>
+
+  <!-- PRIME RATES -->
+  <div class="rates-section">
+    <div class="section-head">
+      <h2>Prime Rate — All Major Banks</h2>
+      <span class="section-note">Updated Jun 15, 2026</span>
+    </div>
+    <table class="rates-table">
+      <thead>
+        <tr>
+          <th>Institution</th>
+          <th>Prime Rate</th>
+          <th>Last Change</th>
+          <th style="text-align:right">Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="bank-name">Royal Bank of Canada</span><span class="bank-tag">RBC</span></td>
+          <td><span class="rate-val">4.95%</span></td>
+          <td><span class="rate-change neutral">▬ Mar 12, 2026</span></td>
+          <td><span class="rate-note">Standard prime</span></td>
+        </tr>
+        <tr>
+          <td><span class="bank-name">TD Bank</span><span class="bank-tag">TD</span></td>
+          <td><span class="rate-val">4.95%</span></td>
+          <td><span class="rate-change neutral">▬ Mar 12, 2026</span></td>
+          <td><span class="rate-note">Standard prime</span></td>
+        </tr>
+        <tr>
+          <td><span class="bank-name">Bank of Nova Scotia</span><span class="bank-tag">BNS</span></td>
+          <td><span class="rate-val">4.95%</span></td>
+          <td><span class="rate-change neutral">▬ Mar 12, 2026</span></td>
+          <td><span class="rate-note">Standard prime</span></td>
+        </tr>
+        <tr>
+          <td><span class="bank-name">Bank of Montreal</span><span class="bank-tag">BMO</span></td>
+          <td><span class="rate-val">4.95%</span></td>
+          <td><span class="rate-change neutral">▬ Mar 12, 2026</span></td>
+          <td><span class="rate-note">Standard prime</span></td>
+        </tr>
+        <tr>
+          <td><span class="bank-name">CIBC</span><span class="bank-tag">CIBC</span></td>
+          <td><span class="rate-val">4.95%</span></td>
+          <td><span class="rate-change neutral">▬ Mar 12, 2026</span></td>
+          <td><span class="rate-note">Standard prime</span></td>
+        </tr>
+        <tr>
+          <td><span class="bank-name">National Bank</span><span class="bank-tag">NBC</span></td>
+          <td><span class="rate-val">4.95%</span></td>
+          <td><span class="rate-change neutral">▬ Mar 12, 2026</span></td>
+          <td><span class="rate-note">Standard prime</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- MORTGAGE RATES -->
+  <div class="rates-section">
+    <div class="section-head">
+      <h2>Mortgage Rates — Fixed & Variable</h2>
+      <span class="section-note">Posted vs Best Available</span>
+    </div>
+
+    <div class="insight">
+      <span class="insight-icon">💡</span>
+      <div>
+        <div class="insight-title">Posted rates are not what you should pay</div>
+        <div class="insight-body">Every bank posts a rate. Almost nobody pays it. The gap between a posted rate and what a mortgage broker can negotiate is often 0.5%–1.5% — which over a 25-year amortization can mean $40,000–$80,000 in extra interest. <a href="https://vaughanmortgagegroup.ca">Book a free consultation with VMG →</a></div>
+      </div>
+    </div>
+
+    <table class="rates-table">
+      <thead>
+        <tr>
+          <th>Term</th>
+          <th>Posted Rate</th>
+          <th>Best Available</th>
+          <th style="text-align:right">Savings</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="bank-name">1-Year Fixed</span></td>
+          <td><span class="rate-val">6.49%</span></td>
+          <td><span class="rate-val">5.44%</span><span class="best-badge">Best</span></td>
+          <td><span class="rate-change down">▼ 1.05%</span></td>
+        </tr>
+        <tr>
+          <td><span class="bank-name">2-Year Fixed</span></td>
+          <td><span class="rate-val">6.29%</span></td>
+          <td><span class="rate-val">5.09%</span><span class="best-badge">Best</span></td>
+          <td><span class="rate-change down">▼ 1.20%</span></td>
+        </tr>
+        <tr>
+          <td><span class="bank-name">3-Year Fixed</span></td>
+          <td><span class="rate-val">5.99%</span></td>
+          <td><span class="rate-val">4.84%</span><span class="best-badge">Best</span></td>
+          <td><span class="rate-change down">▼ 1.15%</span></td>
+        </tr>
+        <tr>
+          <td><span class="bank-name">5-Year Fixed</span></td>
+          <td><span class="rate-val">5.79%</span></td>
+          <td><span class="rate-val">4.64%</span><span class="best-badge">Best</span></td>
+          <td><span class="rate-change down">▼ 1.15%</span></td>
+        </tr>
+        <tr>
+          <td><span class="bank-name">5-Year Variable</span></td>
+          <td><span class="rate-val">Prime + 1.00%</span></td>
+          <td><span class="rate-val">Prime − 0.50%</span><span class="best-badge">Best</span></td>
+          <td><span class="rate-change down">▼ 1.50%</span></td>
+        </tr>
+        <tr>
+          <td><span class="bank-name">10-Year Fixed</span></td>
+          <td><span class="rate-val">6.25%</span></td>
+          <td><span class="rate-val">5.59%</span><span class="best-badge">Best</span></td>
+          <td><span class="rate-change down">▼ 0.66%</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- VMG CTA -->
+  <div class="vmg-cta">
+    <div>
+      <div class="vmg-eyebrow">Mortgage Agent Level 2 · Vaughan, Ontario</div>
+      <h2 class="vmg-title">Don't renew at the bank's posted rate.<br><em>Let us negotiate it for you.</em></h2>
+      <p class="vmg-body">Paul Malandrino has 30+ years in the trades and specializes in self-employed borrowers, bank-declined clients, and anyone the big banks overlook. Level 2 licensed — which means commercial lending is on the table too.</p>
+      <div class="vmg-creds">
+        <span class="vmg-cred">FSRA #M25000307</span>
+        <span class="vmg-cred">GNE Mortgages Lic. #10394</span>
+        <span class="vmg-cred">416-891-8684</span>
+      </div>
+    </div>
+    <a href="https://vaughanmortgagegroup.ca" target="_blank" class="vmg-btn">Book Free Consultation →</a>
+  </div>
+
+  <!-- HELOC RATES -->
+  <div class="rates-section">
+    <div class="section-head">
+      <h2>HELOC Rates — Home Equity Lines of Credit</h2>
+      <span class="section-note">Major Lenders · Jun 2026</span>
+    </div>
+    <table class="rates-table">
+      <thead>
+        <tr>
+          <th>Lender</th>
+          <th>Rate</th>
+          <th>Calculation</th>
+          <th style="text-align:right">Max LTV</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="bank-name">RBC Homeline</span></td>
+          <td><span class="rate-val">6.45%</span></td>
+          <td><span class="rate-note">Prime + 1.50%</span></td>
+          <td><span class="rate-note">65%</span></td>
+        </tr>
+        <tr>
+          <td><span class="bank-name">TD HELOC</span></td>
+          <td><span class="rate-val">6.45%</span></td>
+          <td><span class="rate-note">Prime + 1.50%</span></td>
+          <td><span class="rate-note">65%</span></td>
+        </tr>
+        <tr>
+          <td><span class="bank-name">Scotia STEP</span></td>
+          <td><span class="rate-val">6.20%</span></td>
+          <td><span class="rate-note">Prime + 1.25%</span></td>
+          <td><span class="rate-note">65%</span></td>
+        </tr>
+        <tr>
+          <td><span class="bank-name">BMO Homeowner</span></td>
+          <td><span class="rate-val">6.45%</span></td>
+          <td><span class="rate-note">Prime + 1.50%</span></td>
+          <td><span class="rate-note">65%</span></td>
+        </tr>
+        <tr>
+          <td><span class="bank-name">Alternative Lenders</span><span class="best-badge">Via VMG</span></td>
+          <td><span class="rate-val">From 5.95%</span></td>
+          <td><span class="rate-note">Prime + 1.00%</span></td>
+          <td><span class="rate-note">Up to 80%</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- GIC RATES -->
+  <div class="rates-section">
+    <div class="section-head">
+      <h2>GIC Rates — Guaranteed Investment Certificates</h2>
+      <span class="section-note">Non-redeemable · Best Available</span>
+    </div>
+    <table class="rates-table">
+      <thead>
+        <tr>
+          <th>Term</th>
+          <th>Big 6 Banks</th>
+          <th>Best Available</th>
+          <th style="text-align:right">Provider</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="bank-name">90 Days</span></td>
+          <td><span class="rate-val">3.25%</span></td>
+          <td><span class="rate-val">4.50%</span><span class="best-badge">Best</span></td>
+          <td><span class="rate-note">EQ Bank / Oaken</span></td>
+        </tr>
+        <tr>
+          <td><span class="bank-name">1 Year</span></td>
+          <td><span class="rate-val">3.50%</span></td>
+          <td><span class="rate-val">4.75%</span><span class="best-badge">Best</span></td>
+          <td><span class="rate-note">EQ Bank / Oaken</span></td>
+        </tr>
+        <tr>
+          <td><span class="bank-name">2 Year</span></td>
+          <td><span class="rate-val">3.40%</span></td>
+          <td><span class="rate-val">4.55%</span><span class="best-badge">Best</span></td>
+          <td><span class="rate-note">Oaken Financial</span></td>
+        </tr>
+        <tr>
+          <td><span class="bank-name">3 Year</span></td>
+          <td><span class="rate-val">3.30%</span></td>
+          <td><span class="rate-val">4.40%</span><span class="best-badge">Best</span></td>
+          <td><span class="rate-note">Oaken Financial</span></td>
+        </tr>
+        <tr>
+          <td><span class="bank-name">5 Year</span></td>
+          <td><span class="rate-val">3.20%</span></td>
+          <td><span class="rate-val">4.25%</span><span class="best-badge">Best</span></td>
+          <td><span class="rate-note">EQ Bank</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SAVINGS RATES -->
+  <div class="rates-section">
+    <div class="section-head">
+      <h2>High-Interest Savings Rates</h2>
+      <span class="section-note">HISA · Jun 2026</span>
+    </div>
+    <table class="rates-table">
+      <thead>
+        <tr>
+          <th>Institution</th>
+          <th>Rate</th>
+          <th>Type</th>
+          <th style="text-align:right">Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="bank-name">EQ Bank</span><span class="best-badge">Top Pick</span></td>
+          <td><span class="rate-val">3.75%</span></td>
+          <td><span class="rate-note">Everyday savings</span></td>
+          <td><span class="rate-note">No fees, CDIC insured</span></td>
+        </tr>
+        <tr>
+          <td><span class="bank-name">Oaken Financial</span></td>
+          <td><span class="rate-val">3.60%</span></td>
+          <td><span class="rate-note">HISA</span></td>
+          <td><span class="rate-note">Home Trust subsidiary</span></td>
+        </tr>
+        <tr>
+          <td><span class="bank-name">Simplii Financial</span></td>
+          <td><span class="rate-val">3.25%</span></td>
+          <td><span class="rate-note">HISA</span></td>
+          <td><span class="rate-note">CIBC subsidiary</span></td>
+        </tr>
+        <tr>
+          <td><span class="bank-name">Tangerine</span></td>
+          <td><span class="rate-val">3.10%</span></td>
+          <td><span class="rate-note">Savings Account</span></td>
+          <td><span class="rate-note">Promo rates available</span></td>
+        </tr>
+        <tr>
+          <td><span class="bank-name">RBC / TD / BMO</span></td>
+          <td><span class="rate-val">0.01–1.50%</span></td>
+          <td><span class="rate-note">Standard savings</span></td>
+          <td><span class="rate-note">Significantly below best</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- BOTTOM INSIGHT -->
+  <div class="insight">
+    <span class="insight-icon">🏗️</span>
+    <div>
+      <div class="insight-title">Self-employed? The posted rate isn't your rate.</div>
+      <div class="insight-body">Canadian banks apply risk premiums to self-employed, contractor, and incorporated borrowers — often 0.25%–0.75% above standard rates. A Mortgage Agent Level 2 with lender relationships can access products the public never sees. <a href="https://vaughanmortgagegroup.ca">Talk to VMG — no cost, no obligation →</a></div>
+    </div>
+  </div>
+
+</div><!-- /main -->
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">e<span>stack</span>.ca</div>
+  <div class="footer-links-row">
+    <a href="/">Home</a>
+    <a href="/loans">Loans</a>
+    <a href="/rates.html">Rates</a>
+    <a href="/best-hisa-canada.html">Savings</a>
+    <a href="/editorial-policy">Editorial Policy</a>
+    <a href="/contact">Contact</a>
+  </div>
+  <p class="footer-disc">Rates shown are indicative and sourced from publicly available information as of June 15, 2026. estack.ca is an independent editorial site and is not a bank, lender, or financial advisor. Always verify rates directly with the institution before making financial decisions. Some links are affiliate links — we may earn a commission at no cost to you.</p>
+</footer>
+
+<script>
+const rates = [
+  { symbol: 'BoC Rate', price: '2.75%', change: 'Held', up: true },
+  { symbol: 'Prime', price: '4.95%', change: 'Held', up: true },
+  { symbol: '5Y Fixed', price: '4.64%', change: '▼ Best', up: false },
+  { symbol: 'Variable', price: 'P−0.50%', change: '▼ Best', up: false },
+  { symbol: 'HELOC', price: 'P+1.00%', change: 'Via VMG', up: true },
+  { symbol: '1Y GIC', price: '4.75%', change: '▲ EQ Bank', up: true },
+  { symbol: '5Y GIC', price: '4.25%', change: '▲ EQ Bank', up: true },
+  { symbol: 'EQ HISA', price: '3.75%', change: '▲ Top Pick', up: true },
+  { symbol: 'TSX', price: '22,847', change: '+0.42%', up: true },
+  { symbol: 'CAD/USD', price: '0.7318', change: '-0.11%', up: false },
+  { symbol: 'XAU/CAD', price: '$3,421', change: '+0.87%', up: true },
+  { symbol: 'BTC/CAD', price: '$137,420', change: '+1.23%', up: true },
+  { symbol: 'Next BoC', price: 'Jul 30', change: '2026', up: true },
+];
+
+const track = document.getElementById('ticker');
+const doubled = [...rates, ...rates];
+track.innerHTML = doubled.map(r => `
+  <div class="ticker-item">
+    <span class="ticker-symbol">${r.symbol}</span>
+    <span>${r.price}</span>
+    <span class="${r.up ? 'up' : 'down'}">${r.change}</span>
+  </div>
+`).join('');
+</script>
+</body>
+</html>
