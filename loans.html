@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personal Loans for Self-Employed Canadians | estack.ca</title>
+<meta name="description" content="Compare personal loans, business loans, and alternative lending options for self-employed Canadians, contractors, and bank-declined borrowers.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0f1f3d;
+    --navy-mid: #1a2f52;
+    --teal: #0e8a7a;
+    --teal-light: #12a892;
+    --gold: #c8922a;
+    --cream: #f8f6f1;
+    --white: #ffffff;
+    --gray-100: #f3f4f6;
+    --gray-300: #d1d5db;
+    --gray-500: #6b7280;
+    --gray-700: #374151;
+    --gray-900: #111827;
+    --font-display: 'DM Serif Display', Georgia, serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--cream);
+    color: var(--gray-900);
+    line-height: 1.6;
+  }
+
+  /* NAV */
+  nav {
+    background: var(--navy);
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-logo {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--white);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+  }
+  .nav-logo span { color: var(--teal-light); }
+  .nav-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+  }
+  .nav-links a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--white); }
+
+  /* HERO */
+  .hero {
+    background: var(--navy);
+    padding: 4rem 2rem 5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(14,138,122,0.15) 0%, transparent 70%);
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: -40px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200,146,42,0.1) 0%, transparent 70%);
+  }
+  .hero-eyebrow {
+    display: inline-block;
+    background: rgba(14,138,122,0.2);
+    color: var(--teal-light);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.375rem 0.875rem;
+    border-radius: 100px;
+    margin-bottom: 1.25rem;
+    border: 1px solid rgba(14,138,122,0.3);
+  }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    color: var(--white);
+    line-height: 1.15;
+    max-width: 680px;
+    margin: 0 auto 1.25rem;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--teal-light);
+  }
+  .hero-sub {
+    color: rgba(255,255,255,0.65);
+    font-size: 1.05rem;
+    max-width: 520px;
+    margin: 0 auto 2rem;
+  }
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+    margin-top: 2.5rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    position: relative;
+    z-index: 1;
+  }
+  .stat-item { text-align: center; }
+  .stat-number {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    color: var(--white);
+    display: block;
+  }
+  .stat-label {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* TRUST BAR */
+  .trust-bar {
+    background: var(--teal);
+    padding: 0.875rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(255,255,255,0.9);
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+  .trust-item svg { opacity: 0.9; }
+
+  /* FORM SECTION */
+  .form-section {
+    max-width: 860px;
+    margin: -2rem auto 0;
+    padding: 0 1.5rem 4rem;
+    position: relative;
+    z-index: 10;
+  }
+  .form-card {
+    background: var(--white);
+    border-radius: 16px;
+    box-shadow: 0 20px 60px -10px rgba(15,31,61,0.15), 0 4px 20px -2px rgba(0,0,0,0.08);
+    overflow: hidden;
+  }
+  .form-card-header {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .form-card-title {
+    font-family: var(--font-display);
+    color: var(--white);
+    font-size: 1.25rem;
+  }
+  .form-card-badge {
+    background: rgba(14,138,122,0.25);
+    border: 1px solid rgba(14,138,122,0.4);
+    color: var(--teal-light);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.25rem 0.75rem;
+    border-radius: 100px;
+    letter-spacing: 0.05em;
+  }
+  .form-card-body {
+    padding: 2rem;
+  }
+
+  /* INFO SECTION */
+  .info-section {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 1rem 1.5rem 4rem;
+  }
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    color: var(--navy);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+  .section-body {
+    color: var(--gray-700);
+    font-size: 1rem;
+    line-height: 1.75;
+    margin-bottom: 2rem;
+  }
+
+  /* WHO THIS IS FOR */
+  .who-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  .who-card {
+    background: var(--white);
+    border: 1px solid var(--gray-300);
+    border-radius: 12px;
+    padding: 1.25rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.875rem;
+  }
+  .who-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: rgba(14,138,122,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 1.1rem;
+  }
+  .who-text strong {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--gray-900);
+    margin-bottom: 0.2rem;
+  }
+  .who-text span {
+    font-size: 0.8rem;
+    color: var(--gray-500);
+  }
+
+  /* HOW IT WORKS */
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+  .step {
+    text-align: center;
+    padding: 1.5rem 1rem;
+    background: var(--white);
+    border-radius: 12px;
+    border: 1px solid var(--gray-300);
+  }
+  .step-num {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--navy);
+    color: var(--white);
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+  }
+  .step h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--gray-900);
+    margin-bottom: 0.5rem;
+  }
+  .step p {
+    font-size: 0.82rem;
+    color: var(--gray-500);
+    line-height: 1.5;
+  }
+
+  /* VMG CTA */
+  .vmg-cta {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+    border-radius: 16px;
+    padding: 2.5rem;
+    margin: 2rem 0;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .vmg-cta-text { flex: 1; min-width: 220px; }
+  .vmg-cta-eyebrow {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--teal-light);
+    margin-bottom: 0.5rem;
+  }
+  .vmg-cta h3 {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+  }
+  .vmg-cta p {
+    font-size: 0.875rem;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.6;
+  }
+  .vmg-cta-btn {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--white);
+    font-size: 0.875rem;
+    font-weight: 600;
+    padding: 0.875rem 1.75rem;
+    border-radius: 8px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: opacity 0.2s;
+  }
+  .vmg-cta-btn:hover { opacity: 0.9; }
+
+  /* DISCLAIMER */
+  .disclaimer {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 1.5rem 3rem;
+    font-size: 0.75rem;
+    color: var(--gray-500);
+    line-height: 1.6;
+    border-top: 1px solid var(--gray-300);
+    padding-top: 1.5rem;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy);
+    padding: 2rem;
+    text-align: center;
+  }
+  footer p {
+    color: rgba(255,255,255,0.45);
+    font-size: 0.8rem;
+  }
+  footer a {
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+  }
+  footer a:hover { color: var(--white); }
+
+  @media (max-width: 600px) {
+    .hero { padding: 3rem 1.25rem 4rem; }
+    .hero-stats { gap: 1.5rem; }
+    .form-card-body { padding: 1.25rem; }
+    .vmg-cta { padding: 1.75rem; text-align: center; justify-content: center; }
+    nav { padding: 1rem; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="https://estack.ca" class="nav-logo">e<span>stack</span>.ca</a>
+  <ul class="nav-links">
+    <li><a href="https://estack.ca">Home</a></li>
+    <li><a href="https://estack.ca/top-picks">Top Picks</a></li>
+    <li><a href="https://estack.ca/self-employed-mortgages">Mortgages</a></li>
+    <li><a href="https://estack.ca/loans">Loans</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">Canadian Loan Comparison</div>
+  <h1>The bank said no.<br><em>Here's what comes next.</em></h1>
+  <p class="hero-sub">Compare loans from 65+ licensed Canadian lenders — built for self-employed borrowers, contractors, and anyone the banks overlook.</p>
+  <div class="hero-stats">
+    <div class="stat-item">
+      <span class="stat-number">65+</span>
+      <span class="stat-label">Licensed Lenders</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number">2 min</span>
+      <span class="stat-label">To Apply</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number">$100–$3K</span>
+      <span class="stat-label">Loan Amounts</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number">No</span>
+      <span class="stat-label">Hard Credit Pull</span>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+    Licensed Canadian lenders only
+  </div>
+  <div class="trust-item">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+    Province-level targeting
+  </div>
+  <div class="trust-item">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+    Self-employed friendly
+  </div>
+  <div class="trust-item">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+    Secure &amp; compliant
+  </div>
+</div>
+
+<!-- FORM -->
+<section class="form-section">
+  <div class="form-card">
+    <div class="form-card-header">
+      <span class="form-card-title">Find Your Best Loan Match</span>
+      <span class="form-card-badge">Takes 2 Minutes</span>
+    </div>
+    <div class="form-card-body">
+      <!-- LEADSCOUT EMBED -->
+      <div id="lead-scout-form" style="max-width:800px;margin:0 auto;background:#ffffff;border-radius:8px;overflow:hidden;"></div>
+      <script>
+      var formConfig = {
+          "affiliateCode": "ZX3kIzQG",
+          "defaultValues": { "requestedAmount": 1000 },
+          "formId": "1",
+          "language": "en",
+          "overrides": {
+              "requestedAmount": { "max": 3000, "min": 100, "step": 100 }
+          },
+          "styles": {
+              "fontFamily": "\"Inter\", sans-serif",
+              "fullWidthFirstStepButton": true,
+              "minHeight": 0,
+              "primary": {
+                  "contrastText": "#fff",
+                  "dark": "#0e8a7a",
+                  "main": "#0e8a7a"
+              }
+          },
+          "theme": "light"
+      };
+      window.LeadScout = window.LeadScout || {};
+      window.LeadScout.onLoad = function() {
+          window.LeadScout.init(document.getElementById('lead-scout-form'), formConfig);
+      }
+      </script>
+      <script src="https://app.leadscout.ca/library/library.js" async></script>
+    </div>
+  </div>
+</section>
+
+<!-- INFO -->
+<section class="info-section">
+
+  <!-- WHO THIS IS FOR -->
+  <p class="section-label">Who This Is For</p>
+  <h2 class="section-title">Built for borrowers the banks overlook</h2>
+  <p class="section-body">Canada's big banks are built for T4 employees. If you're self-employed, run a trade business, or have had credit challenges — you're not the problem. The system just wasn't designed for you. These lenders were.</p>
+
+  <div class="who-grid">
+    <div class="who-card">
+      <div class="who-icon">🔨</div>
+      <div class="who-text">
+        <strong>Tradespeople & Contractors</strong>
+        <span>Variable income, multiple clients, no T4</span>
+      </div>
+    </div>
+    <div class="who-card">
+      <div class="who-icon">💼</div>
+      <div class="who-text">
+        <strong>Self-Employed</strong>
+        <span>Incorporated or sole proprietor</span>
+      </div>
+    </div>
+    <div class="who-card">
+      <div class="who-icon">📉</div>
+      <div class="who-text">
+        <strong>Rebuilding Credit</strong>
+        <span>Past issues, discharged bankruptcy</span>
+      </div>
+    </div>
+    <div class="who-card">
+      <div class="who-icon">🏗️</div>
+      <div class="who-text">
+        <strong>Small Business Owners</strong>
+        <span>Bridge financing, cash flow gaps</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <p class="section-label" style="margin-top:3rem;">How It Works</p>
+  <h2 class="section-title">Three steps. No runaround.</h2>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h3>Fill Out the Form</h3>
+      <p>Tell us your loan amount, purpose, and basic info. Takes under 2 minutes.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h3>Get Matched</h3>
+      <p>Our network of 65+ licensed Canadian lenders reviews your profile in real time.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h3>Review Your Offer</h3>
+      <p>Compare terms, rates, and conditions. No obligation until you sign.</p>
+    </div>
+  </div>
+
+  <!-- VMG CTA -->
+  <div class="vmg-cta">
+    <div class="vmg-cta-text">
+      <div class="vmg-cta-eyebrow">Need a mortgage instead?</div>
+      <h3>Self-employed & bank-declined?<br>Talk to a real mortgage specialist.</h3>
+      <p>Paul Malandrino is a Mortgage Agent Level 2 with 30+ years in the trades. He gets it. GNE Mortgages Lic. #10394 | FSRA #M25000307</p>
+    </div>
+    <a href="https://vaughanmortgagegroup.ca" class="vmg-cta-btn" target="_blank">Book a Free Call →</a>
+  </div>
+
+</section>
+
+<!-- DISCLAIMER -->
+<div class="disclaimer">
+  <p><strong>Disclosure:</strong> estack.ca is an independent financial content site. We may receive compensation when you submit a loan application through our referral links. This does not affect our editorial independence. Loan approval, amounts, and rates are determined solely by the lender. estack.ca does not provide financial advice. Always review loan terms carefully before signing.</p>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 estack.ca &nbsp;|&nbsp; <a href="https://estack.ca">Home</a> &nbsp;|&nbsp; <a href="https://estack.ca/editorial-policy">Editorial Policy</a> &nbsp;|&nbsp; <a href="https://estack.ca/contact">Contact</a> &nbsp;|&nbsp; info@estack.ca</p>
+</footer>
+
+</body>
+</html>
