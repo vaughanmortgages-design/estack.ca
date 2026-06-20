@@ -696,6 +696,98 @@ footer {
   line-height: 1.5;
 }
 
+/* ── NEWSLETTER SIGNUP ── */
+.newsletter-section {
+  background: var(--ink);
+  border-top: 3px solid var(--gold);
+  padding: 5rem 2.5rem;
+  text-align: center;
+}
+.newsletter-inner { max-width: 600px; margin: 0 auto; }
+.newsletter-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+.newsletter-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3.5vw, 2.25rem);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+.newsletter-title em { font-style: italic; color: var(--gold-light); }
+.newsletter-sub {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+.newsletter-form {
+  display: flex;
+  gap: 0;
+  max-width: 480px;
+  margin: 0 auto 1rem;
+  border: 1px solid var(--gold);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.newsletter-input {
+  flex: 1;
+  padding: 0.875rem 1.25rem;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  background: rgba(255,255,255,0.07);
+  border: none;
+  color: var(--white);
+  outline: none;
+  min-width: 0;
+}
+.newsletter-input::placeholder { color: rgba(255,255,255,0.3); }
+.newsletter-input:focus { background: rgba(255,255,255,0.12); }
+.newsletter-btn {
+  background: var(--gold);
+  color: var(--ink);
+  border: none;
+  padding: 0.875rem 1.75rem;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s;
+  letter-spacing: 0.02em;
+}
+.newsletter-btn:hover { background: var(--gold-light); }
+.newsletter-note {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.25);
+  margin-top: 0.75rem;
+}
+.newsletter-perks {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+.newsletter-perk {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.45);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.newsletter-perk::before {
+  content: '✓';
+  color: var(--gold);
+  font-weight: 700;
+}
+
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
   .hero { grid-template-columns: 1fr; gap: 2.5rem; padding: 3rem 1.5rem; }
@@ -957,6 +1049,30 @@ footer {
   <a href="/loans" class="loans-btn">Find Your Loan Match →</a>
 </div>
 
+<!-- NEWSLETTER SIGNUP -->
+<!-- MAILCHIMP: Replace the action URL below with your Mailchimp audience URL.
+     Go to: Mailchimp > Audience > Signup forms > Embedded forms > copy the action URL -->
+<section class="newsletter-section">
+  <div class="newsletter-inner">
+    <div class="newsletter-eyebrow">Free Weekly Newsletter</div>
+    <h2 class="newsletter-title">Rate alerts + money moves<br>for self-employed <em>Canadians.</em></h2>
+    <p class="newsletter-sub">Join contractors, tradespeople, and entrepreneurs who get our weekly breakdown of BoC rate decisions, mortgage updates, and financial tools that actually work.</p>
+    <div class="newsletter-perks">
+      <span class="newsletter-perk">BoC rate updates</span>
+      <span class="newsletter-perk">Mortgage & lending tips</span>
+      <span class="newsletter-perk">Tool reviews & deals</span>
+    </div>
+    <form action="https://YOUR-MAILCHIMP-URL.list-manage.com/subscribe/post?u=XXXX&amp;id=XXXX" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="newsletter-form" target="_blank" novalidate>
+      <input type="email" name="EMAIL" class="newsletter-input" id="mce-EMAIL" placeholder="your@email.com" required>
+      <div style="position:absolute;left:-5000px;" aria-hidden="true">
+        <input type="text" name="b_XXXX_XXXX" tabindex="-1" value="">
+      </div>
+      <button type="submit" name="subscribe" id="mc-embedded-subscribe" class="newsletter-btn">Subscribe →</button>
+    </form>
+    <p class="newsletter-note">No spam. Unsubscribe any time. We respect your inbox.</p>
+  </div>
+</section>
+
 <!-- VMG BANNER -->
 <section class="vmg-banner">
   <div class="vmg-inner">
@@ -980,6 +1096,11 @@ footer {
     <div>
       <div class="footer-logo">e<span>stack</span>.ca</div>
       <p class="footer-desc">Independent Canadian finance and technology intelligence for self-employed professionals, entrepreneurs, and investors.</p>
+      <form action="https://YOUR-MAILCHIMP-URL.list-manage.com/subscribe/post?u=XXXX&amp;id=XXXX" method="post" target="_blank" novalidate style="margin-top:1.25rem;display:flex;gap:0;border:1px solid rgba(201,168,76,0.35);border-radius:3px;overflow:hidden;max-width:260px;">
+        <input type="email" name="EMAIL" placeholder="Get the newsletter" required style="flex:1;padding:0.6rem 0.75rem;background:rgba(255,255,255,0.06);border:none;color:#fff;font-size:0.78rem;outline:none;min-width:0;">
+        <div style="position:absolute;left:-5000px;" aria-hidden="true"><input type="text" name="b_XXXX_XXXX" tabindex="-1" value=""></div>
+        <button type="submit" style="background:var(--gold);color:var(--ink);border:none;padding:0.6rem 0.875rem;font-size:0.75rem;font-weight:700;cursor:pointer;">→</button>
+      </form>
     </div>
     <div>
       <div class="footer-heading">Finance</div>

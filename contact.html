@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — estack.ca</title>
+<meta name="description" content="Get in touch with estack.ca. Questions about mortgages, loans, editorial, or partnerships — we read every message.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --white: #ffffff;
+  --off-white: #fafaf8;
+  --light: #f4f3ef;
+  --gold: #c9a84c;
+  --gold-light: #e2c47a;
+  --gold-dark: #9d7a2e;
+  --gold-pale: #fdf8ec;
+  --ink: #0e0e0e;
+  --ink-mid: #2a2a2a;
+  --ink-light: #555555;
+  --ink-faint: #999999;
+  --border: #e8e4d9;
+  --border-gold: rgba(201,168,76,0.3);
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); background: var(--white); color: var(--ink); line-height: 1.6; overflow-x: hidden; }
+
+/* NAV */
+nav { background: var(--white); border-bottom: 1px solid var(--border); padding: 0 2.5rem; height: 64px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+.nav-logo { font-family: var(--font-display); font-size: 1.35rem; font-weight: 700; color: var(--ink); text-decoration: none; }
+.nav-logo span { color: var(--gold); }
+.nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+.nav-links a { font-size: 0.85rem; color: var(--ink-light); text-decoration: none; font-weight: 500; transition: color 0.2s; }
+.nav-links a:hover { color: var(--ink); }
+.nav-cta { background: var(--gold); color: var(--ink) !important; padding: 0.5rem 1.25rem; border-radius: 3px; font-weight: 700 !important; font-size: 0.8rem !important; }
+.nav-cta:hover { background: var(--gold-light); }
+
+/* PAGE HERO */
+.page-hero {
+  background: var(--ink);
+  padding: 5rem 2.5rem 4rem;
+  border-bottom: 3px solid var(--gold);
+}
+.page-hero-inner { max-width: 720px; }
+.page-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+.page-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+.page-title em { font-style: italic; color: var(--gold-light); }
+.page-sub { font-size: 1rem; color: rgba(255,255,255,0.55); line-height: 1.7; max-width: 480px; }
+
+/* CONTACT LAYOUT */
+.contact-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 5rem 2.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+/* SIDEBAR */
+.contact-sidebar {}
+.sidebar-heading {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  margin-bottom: 1.5rem;
+}
+.contact-options { display: flex; flex-direction: column; gap: 2rem; }
+.contact-option {}
+.contact-option-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 0.35rem;
+}
+.contact-option-value {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+.contact-option-value a { color: var(--ink); text-decoration: none; }
+.contact-option-value a:hover { color: var(--gold-dark); }
+.contact-option-desc { font-size: 0.8rem; color: var(--ink-light); margin-top: 0.2rem; line-height: 1.5; }
+
+.sidebar-divider { border: none; border-top: 1px solid var(--border); margin: 2.5rem 0; }
+
+.vmg-sidebar {
+  background: var(--ink);
+  padding: 1.75rem;
+  border-left: 3px solid var(--gold);
+}
+.vmg-sidebar-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+}
+.vmg-sidebar-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.3;
+  margin-bottom: 0.5rem;
+}
+.vmg-sidebar-desc { font-size: 0.8rem; color: rgba(255,255,255,0.5); line-height: 1.6; margin-bottom: 1.25rem; }
+.vmg-sidebar-btn {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--ink);
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.625rem 1.25rem;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: background 0.2s;
+}
+.vmg-sidebar-btn:hover { background: var(--gold-light); }
+
+/* FORM */
+.contact-form-wrap {}
+.form-heading {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+}
+.form-sub { font-size: 0.875rem; color: var(--ink-light); margin-bottom: 2.5rem; }
+
+.contact-form { display: flex; flex-direction: column; gap: 1.5rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+.form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+.form-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  font-weight: 500;
+}
+.form-input, .form-select, .form-textarea {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--ink);
+  background: var(--off-white);
+  border: 1px solid var(--border);
+  padding: 0.875rem 1rem;
+  border-radius: 3px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  width: 100%;
+  appearance: none;
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(201,168,76,0.12);
+}
+.form-select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23999' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
+  cursor: pointer;
+}
+.form-textarea { resize: vertical; min-height: 130px; line-height: 1.6; }
+
+.form-submit-row { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+.form-submit {
+  background: var(--ink);
+  color: var(--white);
+  border: none;
+  padding: 1rem 2.5rem;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 700;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background 0.2s;
+  letter-spacing: 0.02em;
+}
+.form-submit:hover { background: var(--gold); color: var(--ink); }
+.form-privacy { font-size: 0.75rem; color: var(--ink-faint); line-height: 1.5; }
+
+/* SUCCESS STATE */
+.form-success {
+  display: none;
+  background: #f0faf5;
+  border: 1px solid #1a7a4a;
+  border-radius: 3px;
+  padding: 1.5rem;
+  text-align: center;
+}
+.form-success h3 { font-family: var(--font-display); font-size: 1.25rem; color: #1a7a4a; margin-bottom: 0.5rem; }
+.form-success p { font-size: 0.875rem; color: var(--ink-light); }
+
+/* FOOTER */
+footer { background: var(--ink); padding: 3rem 2.5rem 2rem; border-top: 2px solid var(--gold); }
+.footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.footer-logo { font-family: var(--font-display); font-size: 1.5rem; color: var(--white); margin-bottom: 0.75rem; }
+.footer-logo span { color: var(--gold); }
+.footer-desc { font-size: 0.8rem; color: rgba(255,255,255,0.45); line-height: 1.7; max-width: 260px; }
+.footer-heading { font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.25rem; }
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+.footer-links a { font-size: 0.82rem; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: var(--gold-light); }
+.footer-bottom { max-width: 1200px; margin: 1.5rem auto 0; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+.footer-copy { font-size: 0.75rem; color: rgba(255,255,255,0.3); }
+.footer-disclaimer { font-size: 0.7rem; color: rgba(255,255,255,0.25); max-width: 500px; text-align: right; line-height: 1.5; }
+
+@media (max-width: 900px) {
+  .contact-wrap { grid-template-columns: 1fr; gap: 3rem; }
+  .form-row { grid-template-columns: 1fr; }
+  nav { padding: 0 1.5rem; }
+  .nav-links { display: none; }
+  .footer-inner { grid-template-columns: 1fr 1fr; gap: 2rem; }
+}
+@media (max-width: 600px) {
+  .footer-inner { grid-template-columns: 1fr; }
+  .page-hero { padding: 3.5rem 1.5rem 3rem; }
+  .contact-wrap { padding: 3rem 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">e<span>stack</span>.ca</a>
+  <ul class="nav-links">
+    <li><a href="/loans">Loans</a></li>
+    <li><a href="/best-hisa-canada.html">Savings</a></li>
+    <li><a href="/bank-of-canada-rate-hold.html">Markets</a></li>
+    <li><a href="/improve-credit-score-canada.html">Credit</a></li>
+    <li><a href="/best-tools-self-employed-canada.html">Tools</a></li>
+    <li><a href="/loans" class="nav-cta">Get Funded →</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-eyebrow">Get In Touch</div>
+    <h1 class="page-title">We read <em>every</em> message.</h1>
+    <p class="page-sub">Mortgage questions, loan inquiries, editorial feedback, or partnership opportunities — fill out the form and we'll get back to you within one business day.</p>
+  </div>
+</div>
+
+<!-- CONTACT CONTENT -->
+<div class="contact-wrap">
+
+  <!-- SIDEBAR -->
+  <div class="contact-sidebar">
+    <div class="sidebar-heading">Ways to Reach Us</div>
+    <div class="contact-options">
+      <div class="contact-option">
+        <div class="contact-option-label">Email</div>
+        <div class="contact-option-value"><a href="mailto:info@estack.ca">info@estack.ca</a></div>
+        <div class="contact-option-desc">General inquiries, editorial, partnerships</div>
+      </div>
+      <div class="contact-option">
+        <div class="contact-option-label">Response Time</div>
+        <div class="contact-option-value">Within 1 business day</div>
+        <div class="contact-option-desc">Monday – Friday, 9am – 5pm ET</div>
+      </div>
+      <div class="contact-option">
+        <div class="contact-option-label">Location</div>
+        <div class="contact-option-value">Vaughan, Ontario</div>
+        <div class="contact-option-desc">Serving self-employed Canadians coast to coast</div>
+      </div>
+    </div>
+
+    <hr class="sidebar-divider">
+
+    <div class="vmg-sidebar">
+      <div class="vmg-sidebar-eyebrow">Mortgage Consultation</div>
+      <div class="vmg-sidebar-title">Need a mortgage? Talk to Paul directly.</div>
+      <p class="vmg-sidebar-desc">Paul Malandrino — Mortgage Agent Level 2, 30+ years in the trades. He gets self-employed income. FSRA #M25000307.</p>
+      <a href="https://vaughanmortgagegroup.ca" target="_blank" class="vmg-sidebar-btn">Book Free Consultation →</a>
+    </div>
+  </div>
+
+  <!-- FORM -->
+  <div class="contact-form-wrap">
+    <h2 class="form-heading">Send us a message</h2>
+    <p class="form-sub">Tell us what's on your mind. Mortgage questions, loan help, or just a suggestion — we want to hear it.</p>
+
+    <!-- formsubmit.co sends form submissions to your email — no backend needed.
+         On first submission you'll receive a one-time confirmation email to activate. -->
+    <form
+      action="https://formsubmit.co/info@estack.ca"
+      method="POST"
+      class="contact-form"
+      id="contactForm"
+    >
+      <!-- formsubmit.co config fields -->
+      <input type="hidden" name="_subject" value="New estack.ca inquiry">
+      <input type="hidden" name="_next" value="https://estack.ca/contact?sent=1">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="text" name="_honey" style="display:none">
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" for="name">Full Name</label>
+          <input type="text" id="name" name="name" class="form-input" placeholder="Jane Smith" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="phone">Phone (optional)</label>
+          <input type="tel" id="phone" name="phone" class="form-input" placeholder="(905) 555-0100">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="email">Email Address</label>
+        <input type="email" id="email" name="email" class="form-input" placeholder="you@email.com" required>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="topic">What can we help with?</label>
+        <select id="topic" name="topic" class="form-select" required>
+          <option value="" disabled selected>Select a topic…</option>
+          <option value="Mortgage Inquiry">Mortgage — I need help getting approved</option>
+          <option value="Loan Inquiry">Personal or Business Loan</option>
+          <option value="Credit Question">Credit Score / Credit Repair</option>
+          <option value="Self-Employed Finance">Self-Employed Finance Question</option>
+          <option value="Editorial / Content">Editorial / Content Feedback</option>
+          <option value="Partnership / Advertising">Partnership or Advertising</option>
+          <option value="General">General Inquiry</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="message">Your Message</label>
+        <textarea id="message" name="message" class="form-textarea" placeholder="Tell us a bit about your situation or question…" required></textarea>
+      </div>
+
+      <div class="form-submit-row">
+        <button type="submit" class="form-submit">Send Message →</button>
+        <p class="form-privacy">Your information is never sold or shared. We only use it to respond to your inquiry.</p>
+      </div>
+    </form>
+
+    <div class="form-success" id="formSuccess">
+      <h3>Message sent!</h3>
+      <p>Thanks for reaching out. We'll get back to you within one business day.</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">e<span>stack</span>.ca</div>
+      <p class="footer-desc">Independent Canadian finance and technology intelligence for self-employed professionals, entrepreneurs, and investors.</p>
+    </div>
+    <div>
+      <div class="footer-heading">Finance</div>
+      <ul class="footer-links">
+        <li><a href="/loans">Personal Loans</a></li>
+        <li><a href="/best-hisa-canada.html">Savings Accounts</a></li>
+        <li><a href="/improve-credit-score-canada.html">Credit</a></li>
+        <li><a href="/bank-of-canada-rate-hold.html">BoC Rates</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-heading">Business</div>
+      <ul class="footer-links">
+        <li><a href="/best-tools-self-employed-canada.html">Tools for SMBs</a></li>
+        <li><a href="/start-shopify-store-canada.html">Start a Shopify Store</a></li>
+        <li><a href="/get-more-leads-self-employed-tradesperson.html">Get More Leads</a></li>
+        <li><a href="/bank-said-no-what-to-do-next.html">Bank Said No?</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-heading">Company</div>
+      <ul class="footer-links">
+        <li><a href="/editorial-policy">Editorial Policy</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="mailto:info@estack.ca">info@estack.ca</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 estack.ca — All rights reserved.</span>
+    <span class="footer-disclaimer">estack.ca is an independent editorial site. We may earn commissions from affiliate links. This does not influence our reviews.</span>
+  </div>
+</footer>
+
+<script>
+  // Show success message if redirected back with ?sent=1
+  if (new URLSearchParams(window.location.search).get('sent') === '1') {
+    document.getElementById('contactForm').style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
+  }
+</script>
+
+</body>
+</html>
