@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Editorial Policy — estack.ca</title>
+<meta name="description" content="How estack.ca selects, reviews, and discloses affiliate relationships. Our commitment to independent, accurate Canadian financial content.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --white: #ffffff;
+  --off-white: #fafaf8;
+  --light: #f4f3ef;
+  --gold: #c9a84c;
+  --gold-light: #e2c47a;
+  --gold-dark: #9d7a2e;
+  --gold-pale: #fdf8ec;
+  --ink: #0e0e0e;
+  --ink-mid: #2a2a2a;
+  --ink-light: #555555;
+  --ink-faint: #999999;
+  --border: #e8e4d9;
+  --border-gold: rgba(201,168,76,0.3);
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-body); background: var(--white); color: var(--ink); line-height: 1.6; }
+
+nav {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 0 2.5rem;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.nav-logo { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: var(--ink); text-decoration: none; letter-spacing: -0.02em; }
+.nav-logo span { color: var(--gold); }
+.nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+.nav-links a { font-size: 0.825rem; font-weight: 500; color: var(--ink-light); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover { color: var(--gold); }
+.nav-cta { background: var(--gold); color: var(--ink) !important; padding: 0.5rem 1.25rem; border-radius: 3px; font-weight: 600 !important; }
+
+.page-header {
+  background: var(--light);
+  border-bottom: 1px solid var(--border);
+  padding: 4rem 2.5rem;
+}
+.page-header-inner { max-width: 800px; margin: 0 auto; }
+.page-eyebrow { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-dark); margin-bottom: 1rem; }
+.page-title { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 700; color: var(--ink); line-height: 1.1; margin-bottom: 0.75rem; }
+.page-meta { font-family: var(--font-mono); font-size: 0.7rem; color: var(--ink-faint); letter-spacing: 0.05em; margin-top: 1.5rem; }
+
+.policy-body { max-width: 800px; margin: 0 auto; padding: 4rem 2.5rem; }
+
+.policy-lead {
+  font-size: 1.1rem;
+  color: var(--ink-light);
+  line-height: 1.8;
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.policy-section { margin-bottom: 3rem; }
+.policy-section h2 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--gold);
+  display: inline-block;
+}
+.policy-section p {
+  font-size: 0.95rem;
+  color: var(--ink-light);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+.policy-section ul {
+  margin: 1rem 0 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.policy-section ul li {
+  font-size: 0.95rem;
+  color: var(--ink-light);
+  line-height: 1.7;
+}
+
+.disclosure-box {
+  background: var(--gold-pale);
+  border: 1px solid var(--border-gold);
+  border-left: 4px solid var(--gold);
+  padding: 1.5rem 2rem;
+  margin: 2rem 0;
+}
+.disclosure-box p { font-size: 0.875rem; color: var(--ink); line-height: 1.7; margin: 0; }
+.disclosure-box strong { color: var(--ink); }
+
+footer {
+  background: var(--ink);
+  padding: 2rem 2.5rem;
+  border-top: 2px solid var(--gold);
+  text-align: center;
+}
+footer p { font-size: 0.75rem; color: rgba(255,255,255,0.3); }
+footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
+footer a:hover { color: var(--gold-light); }
+
+@media (max-width: 900px) {
+  .policy-body, .page-header { padding: 3rem 1.5rem; }
+  nav { padding: 0 1.5rem; }
+  .nav-links { display: none; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">e<span>stack</span>.ca</a>
+  <ul class="nav-links">
+    <li><a href="/loans">Loans</a></li>
+    <li><a href="/best-hisa-canada.html">Savings</a></li>
+    <li><a href="/bank-of-canada-rate-hold.html">Markets</a></li>
+    <li><a href="/improve-credit-score-canada.html">Credit</a></li>
+    <li><a href="/best-tools-self-employed-canada.html">Tools</a></li>
+    <li><a href="/loans" class="nav-cta">Get Funded →</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="page-eyebrow">Transparency & Standards</div>
+    <h1 class="page-title">Editorial Policy</h1>
+    <div class="page-meta">Last updated: June 2026 &nbsp;·&nbsp; info@estack.ca</div>
+  </div>
+</div>
+
+<div class="policy-body">
+
+  <p class="policy-lead">estack.ca publishes independent financial content for self-employed Canadians, contractors, and small business owners. This page explains how we select topics, review products, disclose commercial relationships, and maintain editorial independence.</p>
+
+  <div class="disclosure-box">
+    <p><strong>Short version:</strong> We earn commissions when you use affiliate links on this site. This never influences what we review, how we score it, or what we recommend. If a product isn't good for our audience, we say so — regardless of whether it pays us.</p>
+  </div>
+
+  <div class="policy-section">
+    <h2>How We Choose What to Cover</h2>
+    <p>Our editorial calendar is driven by reader needs, not partner relationships. Topics are selected based on:</p>
+    <ul>
+      <li>Questions self-employed Canadians are actually searching for</li>
+      <li>Rate and policy changes that affect our audience's finances</li>
+      <li>Products and services we have personally evaluated or researched in depth</li>
+      <li>Gaps in Canadian financial content that leave our audience underserved</li>
+    </ul>
+    <p>We do not accept paid placement in our editorial rankings or "best of" lists. Products earn their position on performance, not payments.</p>
+  </div>
+
+  <div class="policy-section">
+    <h2>How We Review Products</h2>
+    <p>For financial products — loans, savings accounts, brokerages, and tools — we evaluate:</p>
+    <ul>
+      <li><strong>Eligibility for self-employed applicants</strong> — our primary audience</li>
+      <li><strong>True cost</strong> — rate, fees, hidden charges, and promotional vs. ongoing pricing</li>
+      <li><strong>Customer experience</strong> — based on publicly available reviews and direct testing where possible</li>
+      <li><strong>Regulatory standing</strong> — we verify licensing with FSRA, OSFI, and provincial regulators</li>
+      <li><strong>Accessibility</strong> — can someone with variable income or a non-traditional credit profile actually get approved?</li>
+    </ul>
+  </div>
+
+  <div class="policy-section">
+    <h2>Affiliate Relationships & Disclosure</h2>
+    <p>estack.ca earns commissions from some of the products and services we cover. These relationships help fund the site and allow us to publish free content. Current affiliate relationships include:</p>
+    <ul>
+      <li><strong>LeadScout</strong> — personal loan matching network (we earn a referral fee when users submit applications)</li>
+      <li><strong>Vaughan Mortgage Group</strong> — we may earn a referral fee for mortgage clients we connect with Paul Malandrino</li>
+      <li><strong>Questrade</strong> — brokerage referral program</li>
+      <li><strong>Shopify</strong> — eCommerce platform affiliate</li>
+      <li><strong>Windsor.ai</strong> — marketing analytics affiliate</li>
+    </ul>
+    <p>Affiliate links are not hidden. Where a link leads to a partner product, it is because we believe that product is the best available for our audience — not because it pays the most.</p>
+  </div>
+
+  <div class="policy-section">
+    <h2>Sponsored Content</h2>
+    <p>estack.ca occasionally publishes sponsored articles written in partnership with financial brands. Sponsored content is always:</p>
+    <ul>
+      <li>Clearly labelled at the top of the article with a "Sponsored" or "Partner Content" tag</li>
+      <li>Reviewed by our editorial team for accuracy before publication</li>
+      <li>Subject to our standard factual standards — we will not publish sponsored content that we believe to be misleading</li>
+    </ul>
+    <p>Sponsors do not influence adjacent editorial content, ratings, or recommendations in non-sponsored articles.</p>
+  </div>
+
+  <div class="policy-section">
+    <h2>Accuracy & Corrections</h2>
+    <p>We make every effort to ensure rates, figures, and regulatory information are accurate at time of publication. Canadian financial markets move quickly — rates and product terms change.</p>
+    <p>If you spot an error, email us at <a href="mailto:info@estack.ca?subject=Editorial Correction" style="color:var(--gold-dark)">info@estack.ca</a> with the subject line "Editorial Correction." We review all requests and publish corrections when warranted, typically within 24 hours.</p>
+  </div>
+
+  <div class="policy-section">
+    <h2>Not Financial Advice</h2>
+    <p>estack.ca is an independent editorial publication. Our content is for informational purposes only and does not constitute financial, investment, tax, or legal advice. We are not registered financial advisors or mortgage brokers.</p>
+    <p>Decisions about loans, mortgages, investments, and business finances should be made in consultation with licensed professionals. For mortgage advice, we refer readers to Paul Malandrino at Vaughan Mortgage Group (FSRA #M25000307), a licensed mortgage agent.</p>
+  </div>
+
+  <div class="policy-section">
+    <h2>Contact</h2>
+    <p>Questions about our editorial standards, partnership opportunities, or corrections can be directed to <a href="mailto:info@estack.ca" style="color:var(--gold-dark)">info@estack.ca</a> or through our <a href="/contact" style="color:var(--gold-dark)">contact page</a>.</p>
+  </div>
+
+</div>
+
+<footer>
+  <p>© 2026 estack.ca &nbsp;|&nbsp; <a href="/">Home</a> &nbsp;|&nbsp; <a href="/editorial-policy">Editorial Policy</a> &nbsp;|&nbsp; <a href="/contact">Contact</a> &nbsp;|&nbsp; info@estack.ca</p>
+</footer>
+
+</body>
+</html>
