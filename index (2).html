@@ -1,0 +1,1574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>estack.ca — Canadian Finance & Technology Intelligence</title>
+<meta name="description" content="Canada's premier finance and technology resource for self-employed professionals, entrepreneurs, and investors. Tools, reviews, and strategies that work.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --white: #ffffff;
+  --off-white: #fafaf8;
+  --light: #f4f3ef;
+  --gold: #c9a84c;
+  --gold-light: #e2c47a;
+  --gold-dark: #9d7a2e;
+  --gold-pale: #fdf8ec;
+  --ink: #0e0e0e;
+  --ink-mid: #2a2a2a;
+  --ink-light: #555555;
+  --ink-faint: #999999;
+  --border: #e8e4d9;
+  --border-gold: rgba(201,168,76,0.3);
+  --up: #1a7a4a;
+  --down: #c0392b;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--white);
+  color: var(--ink);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ── TICKER ── */
+.ticker-wrap {
+  background: var(--ink);
+  padding: 0;
+  overflow: hidden;
+  border-bottom: 2px solid var(--gold);
+  height: 38px;
+  display: flex;
+  align-items: center;
+}
+.ticker-label {
+  background: var(--gold);
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0 1rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  flex-shrink: 0;
+  z-index: 2;
+}
+.ticker-track {
+  display: flex;
+  animation: ticker 40s linear infinite;
+  white-space: nowrap;
+}
+.ticker-track:hover { animation-play-state: paused; }
+.ticker-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.85);
+  border-right: 1px solid rgba(255,255,255,0.1);
+}
+.ticker-symbol { color: var(--gold-light); font-weight: 500; }
+.ticker-price { color: white; }
+.ticker-change.up { color: #4ade80; }
+.ticker-change.down { color: #f87171; }
+.ticker-arrow { font-size: 0.6rem; }
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ── NAV ── */
+nav {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 0 2.5rem;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 1px 0 var(--border);
+}
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--ink);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+}
+.nav-logo span {
+  color: var(--gold);
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 0.825rem;
+  font-weight: 500;
+  color: var(--ink-light);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-cta {
+  background: var(--gold);
+  color: var(--ink) !important;
+  padding: 0.5rem 1.25rem;
+  border-radius: 3px;
+  font-weight: 600 !important;
+}
+.nav-cta:hover { background: var(--gold-dark); color: white !important; }
+
+/* ── HERO ── */
+.hero {
+  background: var(--white);
+  padding: 5rem 2.5rem 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  margin-bottom: 1.5rem;
+}
+.hero-eyebrow::before {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: var(--gold);
+}
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 4vw, 3.75rem);
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--gold);
+}
+.hero-sub {
+  font-size: 1.05rem;
+  color: var(--ink-light);
+  line-height: 1.75;
+  margin-bottom: 2.5rem;
+  max-width: 460px;
+}
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.btn-primary {
+  background: var(--ink);
+  color: var(--white);
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0.875rem 2rem;
+  border-radius: 3px;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: background 0.2s;
+}
+.btn-primary:hover { background: var(--gold); color: var(--ink); }
+.btn-secondary {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--ink-light);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  transition: color 0.2s;
+}
+.btn-secondary:hover { color: var(--gold); }
+
+/* HERO CARD */
+.hero-card {
+  background: var(--off-white);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.hero-card-header {
+  background: var(--ink);
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.hero-card-title {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+}
+.hero-card-live {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: #4ade80;
+}
+.live-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #4ade80;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+.hero-card-body { padding: 1.5rem; }
+.market-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.market-row:last-child { border-bottom: none; }
+.market-name {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--ink);
+}
+.market-sub {
+  font-size: 0.7rem;
+  color: var(--ink-faint);
+  margin-top: 0.1rem;
+}
+.market-val {
+  text-align: right;
+}
+.market-price {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--ink);
+}
+.market-chg {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  margin-top: 0.1rem;
+}
+.market-chg.up { color: var(--up); }
+.market-chg.down { color: var(--down); }
+
+/* ── DIVIDER ── */
+.section-divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.gold-rule {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  border: none;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ── CATEGORIES ── */
+.categories {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2.5rem;
+}
+.section-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 2.5rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 1rem;
+}
+.section-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  margin-bottom: 0.35rem;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+.see-all {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--gold-dark);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  white-space: nowrap;
+}
+.see-all:hover { color: var(--gold); }
+.cat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+.cat-card {
+  background: var(--white);
+  padding: 2rem 1.75rem;
+  text-decoration: none;
+  transition: background 0.2s;
+  position: relative;
+}
+.cat-card:hover { background: var(--gold-pale); }
+.cat-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transition: transform 0.2s;
+}
+.cat-card:hover::after { transform: scaleX(1); }
+.cat-icon {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+.cat-name {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 0.375rem;
+}
+.cat-desc {
+  font-size: 0.78rem;
+  color: var(--ink-faint);
+  line-height: 1.5;
+}
+.cat-count {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--gold-dark);
+  margin-top: 1rem;
+  letter-spacing: 0.05em;
+}
+
+/* ── FEATURED ARTICLES ── */
+.featured {
+  background: var(--light);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 4rem 2.5rem;
+}
+.featured-inner { max-width: 1200px; margin: 0 auto; }
+.article-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr;
+  gap: 2rem;
+}
+.article-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  padding: 2rem;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.article-card:hover {
+  border-color: var(--gold);
+  box-shadow: 0 4px 20px rgba(201,168,76,0.1);
+}
+.article-tag {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  margin-bottom: 0.875rem;
+}
+.article-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  margin-bottom: 0.75rem;
+}
+.article-card:first-child .article-title {
+  font-size: 1.6rem;
+}
+.article-excerpt {
+  font-size: 0.825rem;
+  color: var(--ink-light);
+  line-height: 1.65;
+  flex: 1;
+  margin-bottom: 1.25rem;
+}
+.article-meta {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--ink-faint);
+  letter-spacing: 0.04em;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.article-meta::before {
+  content: '';
+  display: block;
+  width: 16px;
+  height: 1px;
+  background: var(--gold);
+}
+
+/* ── AFFILIATE STRIP ── */
+.affiliate-strip {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2.5rem;
+}
+.affiliate-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+.affiliate-grid.cols-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+@media (max-width: 1024px) {
+  .affiliate-grid.cols-4 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .affiliate-grid.cols-4 { grid-template-columns: 1fr; }
+}
+.affiliate-card {
+  border: 1px solid var(--border);
+  padding: 2rem;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: border-color 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+.affiliate-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px; height: 100%;
+  background: var(--gold);
+}
+.affiliate-card:hover { border-color: var(--gold); }
+.affiliate-badge {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  background: var(--gold-pale);
+  border: 1px solid var(--border-gold);
+  padding: 0.2rem 0.5rem;
+  border-radius: 2px;
+  align-self: flex-start;
+}
+.affiliate-name {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+.affiliate-desc {
+  font-size: 0.82rem;
+  color: var(--ink-light);
+  line-height: 1.6;
+}
+.affiliate-cta {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--gold-dark);
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: auto;
+}
+
+/* ── VMG BANNER ── */
+.vmg-banner {
+  background: var(--ink);
+  padding: 4rem 2.5rem;
+}
+.vmg-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 3rem;
+  align-items: center;
+}
+.vmg-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+}
+.vmg-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+}
+.vmg-title em { font-style: italic; color: var(--gold-light); }
+.vmg-sub {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.7;
+  max-width: 520px;
+}
+.vmg-credentials {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+.vmg-cred {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 0.05em;
+}
+.vmg-btn {
+  background: var(--gold);
+  color: var(--ink);
+  font-size: 0.875rem;
+  font-weight: 700;
+  padding: 1rem 2.5rem;
+  text-decoration: none;
+  border-radius: 3px;
+  white-space: nowrap;
+  transition: background 0.2s;
+  letter-spacing: 0.02em;
+}
+.vmg-btn:hover { background: var(--gold-light); }
+
+/* ── LOANS CTA ── */
+.loans-cta {
+  background: var(--gold-pale);
+  border-top: 1px solid var(--border-gold);
+  border-bottom: 1px solid var(--border-gold);
+  padding: 3rem 2.5rem;
+  text-align: center;
+}
+.loans-cta h2 {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  color: var(--ink);
+  margin-bottom: 0.75rem;
+}
+.loans-cta p {
+  color: var(--ink-light);
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+}
+.loans-btn {
+  background: var(--ink);
+  color: var(--white);
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.875rem 2.5rem;
+  text-decoration: none;
+  border-radius: 3px;
+  display: inline-block;
+  transition: background 0.2s;
+}
+.loans-btn:hover { background: var(--gold); color: var(--ink); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--ink);
+  padding: 3rem 2.5rem 2rem;
+  border-top: 2px solid var(--gold);
+}
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.footer-logo {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--white);
+  margin-bottom: 0.75rem;
+}
+.footer-logo span { color: var(--gold); }
+.footer-desc {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.7;
+  max-width: 260px;
+}
+.footer-heading {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.25rem;
+}
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+.footer-links a {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.5);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--gold-light); }
+.footer-bottom {
+  max-width: 1200px;
+  margin: 1.5rem auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.footer-copy {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.3);
+}
+.footer-disclaimer {
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.25);
+  max-width: 500px;
+  text-align: right;
+  line-height: 1.5;
+}
+
+/* ── NEWSLETTER ── */
+.newsletter {
+  background: var(--ink);
+  border-top: 2px solid var(--gold);
+  border-bottom: 2px solid var(--gold);
+  padding: 4rem 2.5rem;
+}
+.newsletter-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+.newsletter-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+}
+.newsletter-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+}
+.newsletter-title em { font-style: italic; color: var(--gold-light); }
+.newsletter-sub {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.7;
+}
+.newsletter-bullets {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+}
+.newsletter-bullet {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.5);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.newsletter-bullet::before { content: '→'; color: var(--gold); font-weight: 700; }
+.newsletter-form { display: flex; flex-direction: column; gap: 0.875rem; }
+.newsletter-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.newsletter-field label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.55);
+  letter-spacing: 0.04em;
+}
+.newsletter-field input {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 3px;
+  padding: 0.8rem 1rem;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--white);
+  width: 100%;
+  transition: border-color 0.2s;
+}
+.newsletter-field input::placeholder { color: rgba(255,255,255,0.3); }
+.newsletter-field input:focus { outline: none; border-color: var(--gold); }
+.newsletter-submit {
+  background: var(--gold);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding: 0.9rem 2rem;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background 0.2s;
+  letter-spacing: 0.02em;
+}
+.newsletter-submit:hover { background: var(--gold-light); }
+.newsletter-disclaimer {
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.25);
+  line-height: 1.5;
+}
+.newsletter-success {
+  display: none;
+  background: rgba(201,168,76,0.1);
+  border: 1px solid rgba(201,168,76,0.25);
+  padding: 1.5rem;
+  border-radius: 3px;
+}
+.newsletter-success p { font-size: 0.9rem; color: rgba(255,255,255,0.7); }
+.newsletter-success strong { color: var(--gold-light); }
+
+/* ── FREE RESOURCES ── */
+.resources {
+  background: var(--light);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 4rem 2.5rem;
+}
+.resources-inner { max-width: 1200px; margin: 0 auto; }
+.resources-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+.resource-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  padding: 1.75rem;
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  text-decoration: none;
+}
+.resource-card:hover {
+  border-color: var(--gold);
+  box-shadow: 0 4px 20px rgba(201,168,76,0.1);
+}
+.resource-icon { font-size: 1.75rem; }
+.resource-type {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+}
+.resource-title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+}
+.resource-desc {
+  font-size: 0.8rem;
+  color: var(--ink-light);
+  line-height: 1.55;
+  flex: 1;
+}
+.resource-cta {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--gold-dark);
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: 0.25rem;
+}
+.resource-badge {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--gold-pale);
+  border: 1px solid var(--border-gold);
+  color: var(--gold-dark);
+  padding: 0.15rem 0.45rem;
+  border-radius: 2px;
+  align-self: flex-start;
+}
+
+/* ── GATE MODAL ── */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(14,14,14,0.75);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+.modal-overlay.open { display: flex; }
+.modal {
+  background: var(--white);
+  border: 1px solid var(--border);
+  max-width: 480px;
+  width: 100%;
+  padding: 2.5rem;
+  position: relative;
+}
+.modal-close {
+  position: absolute;
+  top: 1rem; right: 1.25rem;
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+  color: var(--ink-faint);
+  line-height: 1;
+}
+.modal-close:hover { color: var(--ink); }
+.modal-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  margin-bottom: 0.75rem;
+}
+.modal-title {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+.modal-sub { font-size: 0.85rem; color: var(--ink-light); margin-bottom: 1.75rem; line-height: 1.6; }
+.modal-form { display: flex; flex-direction: column; gap: 1rem; }
+.modal-field { display: flex; flex-direction: column; gap: 0.35rem; }
+.modal-field label { font-size: 0.78rem; font-weight: 600; color: var(--ink); }
+.modal-field input {
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 0.75rem 1rem;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--ink);
+  transition: border-color 0.2s;
+}
+.modal-field input:focus { outline: none; border-color: var(--gold); }
+.modal-submit {
+  background: var(--ink);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.875rem;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 0.25rem;
+}
+.modal-submit:hover { background: var(--gold); color: var(--ink); }
+.modal-fine { font-size: 0.7rem; color: var(--ink-faint); text-align: center; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; gap: 2.5rem; padding: 3rem 1.5rem; }
+  .article-grid { grid-template-columns: 1fr; }
+  .cat-grid { grid-template-columns: repeat(2, 1fr); }
+  .affiliate-grid { grid-template-columns: 1fr; }
+  .vmg-inner { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr 1fr; gap: 2rem; }
+  nav { padding: 0 1.5rem; }
+  .nav-links { display: none; }
+  .categories, .affiliate-strip { padding: 3rem 1.5rem; }
+  .featured { padding: 3rem 1.5rem; }
+  .newsletter-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+  .resources-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .cat-grid { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 2.25rem; }
+  .resources-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-label">Markets</div>
+  <div class="ticker-track" id="ticker"></div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">e<span>stack</span>.ca</a>
+  <ul class="nav-links">
+    <li><a href="/loans">Loans</a></li>
+    <li><a href="/best-hisa-canada.html">Savings</a></li>
+    <li><a href="/bank-of-canada-rate-hold.html">Markets</a></li>
+    <li><a href="/improve-credit-score-canada.html">Credit</a></li>
+    <li><a href="/best-tools-self-employed-canada.html">Tools</a></li>
+    <li><a href="/mortgage-calculator.html">Calculator</a></li>
+    <li><a href="/loans" class="nav-cta">Get Funded →</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-eyebrow">Canadian Finance & Technology</div>
+    <h1>Money intelligence<br>for those who<br><em>build things.</em></h1>
+    <p class="hero-sub">Independent reviews, real comparisons, and financial tools built for self-employed Canadians, entrepreneurs, and tradespeople who don't fit the bank's mold.</p>
+    <div class="hero-actions">
+      <a href="/loans" class="btn-primary">Find a Loan →</a>
+      <a href="/top-picks" class="btn-secondary">Top Picks <span>↗</span></a>
+    </div>
+  </div>
+  <div class="hero-card">
+    <div class="hero-card-header">
+      <span class="hero-card-title">Live Markets</span>
+      <span class="hero-card-live"><span class="live-dot"></span> Live</span>
+    </div>
+    <div class="hero-card-body" id="market-card">
+      <div class="market-row">
+        <div><div class="market-name">TSX</div><div class="market-sub">S&P/TSX Composite</div></div>
+        <div class="market-val"><div class="market-price" id="tsx-price">22,847</div><div class="market-chg up" id="tsx-chg">▲ +0.42%</div></div>
+      </div>
+      <div class="market-row">
+        <div><div class="market-name">CAD/USD</div><div class="market-sub">Canadian Dollar</div></div>
+        <div class="market-val"><div class="market-price" id="cad-price">0.7318</div><div class="market-chg down" id="cad-chg">▼ -0.11%</div></div>
+      </div>
+      <div class="market-row">
+        <div><div class="market-name">Gold</div><div class="market-sub">XAU/CAD oz</div></div>
+        <div class="market-val"><div class="market-price" id="gold-price">3,421</div><div class="market-chg up" id="gold-chg">▲ +0.87%</div></div>
+      </div>
+      <div class="market-row">
+        <div><div class="market-name">BoC Rate</div><div class="market-sub">Policy Rate</div></div>
+        <div class="market-val"><div class="market-price">2.75%</div><div class="market-chg up">▲ Held</div></div>
+      </div>
+      <div class="market-row">
+        <div><div class="market-name">BTC</div><div class="market-sub">Bitcoin CAD</div></div>
+        <div class="market-val"><div class="market-price" id="btc-price">137,420</div><div class="market-chg up" id="btc-chg">▲ +1.23%</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="gold-rule">
+
+<!-- CATEGORIES -->
+<section class="categories">
+  <div class="section-header">
+    <div>
+      <div class="section-eyebrow">Browse by Topic</div>
+      <h2 class="section-title">What are you building?</h2>
+    </div>
+    <a href="/top-picks" class="see-all">All topics →</a>
+  </div>
+  <div class="cat-grid">
+    <a href="/loans" class="cat-card">
+      <span class="cat-icon">💰</span>
+      <div class="cat-name">Loans & Credit</div>
+      <div class="cat-desc">Personal loans, business financing, and credit solutions for self-employed Canadians.</div>
+      <div class="cat-count">65+ lenders compared</div>
+    </a>
+    <a href="/best-hisa-canada.html" class="cat-card">
+      <span class="cat-icon">🏦</span>
+      <div class="cat-name">Savings & Banking</div>
+      <div class="cat-desc">High-yield savings accounts, business banking, and cash management tools.</div>
+      <div class="cat-count">Top CA rates tracked</div>
+    </a>
+    <a href="/improve-credit-score-canada.html" class="cat-card">
+      <span class="cat-icon">📈</span>
+      <div class="cat-name">Investing</div>
+      <div class="cat-desc">Brokerages, ETFs, precious metals, and wealth-building for the self-employed investor.</div>
+      <div class="cat-count">Questrade · Kitco · more</div>
+    </a>
+    <a href="/bank-of-canada-rate-hold.html" class="cat-card">
+      <span class="cat-icon">⚙️</span>
+      <div class="cat-name">Business Tools</div>
+      <div class="cat-desc">Accounting software, invoicing, payroll, and tech that runs your operation.</div>
+      <div class="cat-count">QuickBooks · FreshBooks</div>
+    </a>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- FEATURED ARTICLES -->
+<section class="featured">
+  <div class="featured-inner">
+    <div class="section-header">
+      <div>
+        <div class="section-eyebrow">Editorial</div>
+        <h2 class="section-title">Latest Intelligence</h2>
+      </div>
+      <a href="/" class="see-all">All articles →</a>
+    </div>
+    <div class="article-grid">
+      <a href="/bank-of-canada-rate-hold.html" class="article-card">
+        <div class="article-tag">Rates & Policy</div>
+        <div class="article-title">Bank of Canada Holds at 2.75% — What It Means for Self-Employed Borrowers</div>
+        <div class="article-excerpt">The BoC's decision to hold sends a clear signal to variable-rate mortgage holders and lines of credit. Here's what changes, what doesn't, and how to position your finances heading into Q3.</div>
+        <div class="article-meta">June 2026 · 6 min read</div>
+      </a>
+      <a href="/best-hisa-canada.html" class="article-card">
+        <div class="article-tag">Savings</div>
+        <div class="article-title">Best High-Interest Savings Accounts in Canada — 2026 Edition</div>
+        <div class="article-excerpt">We tracked 18 Canadian institutions to find the real rates after promotional periods end. The results may surprise you.</div>
+        <div class="article-meta">June 2026 · 5 min read</div>
+      </a>
+      <a href="/improve-credit-score-canada.html" class="article-card">
+        <div class="article-tag">Credit</div>
+        <div class="article-title">How to Improve Your Credit Score Fast — Canadian Guide</div>
+        <div class="article-excerpt">The five levers that actually move your score in Canada, and the myths that waste your time.</div>
+        <div class="article-meta">June 2026 · 4 min read</div>
+      </a>
+
+    <div class="article-grid" style="margin-top:2rem;">
+      <a href="/best-tools-self-employed-canada.html" class="article-card">
+        <div class="article-tag">Business Tools</div>
+        <div class="article-title">Best Tools for Self-Employed Canadians in 2026</div>
+        <div class="article-excerpt">Lead gen, analytics, newsletters, and ecommerce — the essential stack for Canadian SMB owners.</div>
+        <div class="article-meta">June 2026 · 6 min read</div>
+      </a>
+      <a href="/start-shopify-store-canada.html" class="article-card">
+        <div class="article-tag">eCommerce</div>
+        <div class="article-title">How to Start a Shopify Store in Canada (2026)</div>
+        <div class="article-excerpt">Canadian taxes, Shopify Payments, shipping setup and what not to skip before you launch.</div>
+        <div class="article-meta">June 2026 · 7 min read</div>
+      </a>
+      <a href="/get-more-leads-self-employed-tradesperson.html" class="article-card">
+        <div class="article-tag">Lead Generation</div>
+        <div class="article-title">How to Get More Leads as a Self-Employed Tradesperson</div>
+        <div class="article-excerpt">Stop relying on word of mouth alone. The system that generates leads while you are on the job.</div>
+        <div class="article-meta">June 2026 · 7 min read</div>
+      </a>
+    </div>
+    <div class="article-grid" style="margin-top:2rem;">
+      <a href="/bank-said-no-what-to-do-next.html" class="article-card">
+        <div class="article-tag">Mortgages &amp; Lending</div>
+        <div class="article-title">Bank Said No? Here Is What to Do Next</div>
+        <div class="article-excerpt">Alternative lenders, credit fixes, and how to come back stronger — the full Canadian guide.</div>
+        <div class="article-meta">June 2026 · 7 min read</div>
+      </a>
+      <a href="/track-marketing-roi-canada.html" class="article-card">
+        <div class="article-tag">Marketing</div>
+        <div class="article-title">How to Track Your Marketing ROI as a Canadian Small Business</div>
+        <div class="article-excerpt">Connect Google, Meta, email and Shopify into one real ROI view — no more guessing.</div>
+        <div class="article-meta">June 2026 · 6 min read</div>
+      </a>
+      <a href="/travel-hacks-canadian-contractors.html" class="article-card">
+        <div class="article-tag">Travel</div>
+        <div class="article-title">Travel Hacks for Canadian Contractors and Tradespeople</div>
+        <div class="article-excerpt">Kill roaming fees, track business travel expenses, and what to know before a US contract.</div>
+        <div class="article-meta">June 2026 · 5 min read</div>
+      </a>
+    </div>
+    <div class="article-grid" style="margin-top:2rem;">
+      <a href="/best-newsletter-platforms-canadian-business.html" class="article-card">
+        <div class="article-tag">Marketing Tools</div>
+        <div class="article-title">Best Newsletter Platforms for Canadian Small Business</div>
+        <div class="article-excerpt">Beehiiv vs Mailchimp vs Substack — which one makes sense for a Canadian SMB owner in 2026.</div>
+        <div class="article-meta">June 2026 · 6 min read</div>
+      </a>
+      <a href="/prepaid-gift-cards-canadian-small-business.html" class="article-card">
+        <div class="article-tag">Business Finance</div>
+        <div class="article-title">Best Prepaid and Gift Cards for Canadian Small Business</div>
+        <div class="article-excerpt">Client gifts, expense control, and staff rewards — how smart Canadian businesses use gift cards.</div>
+        <div class="article-meta">June 2026 · 5 min read</div>
+      </a>
+      <a href="/self-employed-mortgage-canada.html" class="article-card">
+        <div class="article-tag">Mortgages</div>
+        <div class="article-title">Self-Employed Mortgage in Canada — Complete Guide</div>
+        <div class="article-excerpt">How lenders assess self-employed income, what documentation you need, and how to maximize approval odds.</div>
+        <div class="article-meta">June 2026 · 8 min read</div>
+      </a>
+    </div>
+    </div>
+  </div>
+</section>
+
+<!-- AFFILIATE PICKS -->
+<section class="affiliate-strip">
+  <div class="section-header">
+    <div>
+      <div class="section-eyebrow">Partner Products</div>
+      <h2 class="section-title">Independently Reviewed</h2>
+    </div>
+  </div>
+  <div class="affiliate-grid" style="grid-template-columns: repeat(3, 1fr);">
+    <a href="/loans" class="affiliate-card">
+      <span class="affiliate-badge">Loans</span>
+      <div class="affiliate-name">Personal Loans</div>
+      <div class="affiliate-desc">Compare 65+ licensed Canadian lenders. No hard credit pull. Results in minutes. Built for self-employed and bank-declined borrowers.</div>
+      <div class="affiliate-cta">Compare rates →</div>
+    </a>
+    <a href="/improve-credit-score-canada.html" class="affiliate-card">
+      <span class="affiliate-badge">Credit</span>
+      <div class="affiliate-name">Borrowell</div>
+      <div class="affiliate-desc">Free credit score monitoring for Canadians. Get your Equifax score weekly, understand what's dragging it down, and get matched to products you'll qualify for.</div>
+      <div class="affiliate-cta">Check your score free →</div>
+    </a>
+    <a href="/best-hisa-canada.html" class="affiliate-card">
+      <span class="affiliate-badge">Banking</span>
+      <div class="affiliate-name">Koho</div>
+      <div class="affiliate-desc">No-fee spending account with automatic roundup savings and credit-building. Built for Canadians who want a smarter way to manage cash flow between contracts.</div>
+      <div class="affiliate-cta">Open free account →</div>
+    </a>
+    <a href="/best-hisa-canada.html" class="affiliate-card">
+      <span class="affiliate-badge">Investing</span>
+      <div class="affiliate-name">Questrade</div>
+      <div class="affiliate-desc">Canada's leading discount brokerage. Commission-free ETF buys, low forex fees, and a platform built for serious investors and RRSP/TFSA holders.</div>
+      <div class="affiliate-cta">Open an account →</div>
+    </a>
+    <a href="/best-tools-self-employed-canada.html" class="affiliate-card">
+      <span class="affiliate-badge">Accounting</span>
+      <div class="affiliate-name">FreshBooks</div>
+      <div class="affiliate-desc">Invoicing, expense tracking, and tax-ready reports built for self-employed Canadians and small businesses. Track HST/GST automatically.</div>
+      <div class="affiliate-cta">Try free 30 days →</div>
+    </a>
+    <a href="/self-employed-mortgage-canada.html" class="affiliate-card">
+      <span class="affiliate-badge">Mortgage</span>
+      <div class="affiliate-name">Vaughan Mortgage Group</div>
+      <div class="affiliate-desc">Self-employed? Bank declined? Paul Malandrino — Mortgage Agent Level 2 with 30+ years in the trades — gets it done. FSRA #M25000307.</div>
+      <div class="affiliate-cta">Book a free call →</div>
+    </a>
+  </div>
+</section>
+
+<!-- MORTGAGE CALCULATOR CTA -->
+<div style="background:var(--light);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:3rem 2.5rem;">
+  <div style="max-width:1200px;margin:0 auto;display:flex;gap:2rem;align-items:center;flex-wrap:wrap;justify-content:space-between;">
+    <div>
+      <div style="font-family:var(--font-mono);font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold-dark);margin-bottom:0.5rem">Free Tool</div>
+      <div style="font-family:var(--font-display);font-size:1.5rem;font-weight:700;color:var(--ink);margin-bottom:0.4rem">Canadian Mortgage Calculator</div>
+      <div style="font-size:0.875rem;color:var(--ink-light)">Monthly payment, stress test, CMHC, and total interest. Takes 30 seconds.</div>
+    </div>
+    <a href="/mortgage-calculator.html" style="background:var(--ink);color:var(--white);font-size:0.875rem;font-weight:600;padding:0.875rem 2rem;text-decoration:none;border-radius:3px;white-space:nowrap;transition:background 0.2s;flex-shrink:0">Calculate Your Payment →</a>
+  </div>
+</div>
+
+<!-- FREE RESOURCES -->
+<section class="resources">
+  <div class="resources-inner">
+    <div class="section-header">
+      <div>
+        <div class="section-eyebrow">Free Downloads</div>
+        <h2 class="section-title">Guides Built for Self-Employed Canadians</h2>
+      </div>
+    </div>
+    <div class="resources-grid">
+      <div class="resource-card" onclick="openGate('self-employed-income-guide.pdf','Self-Employed Income Guide')">
+        <div class="resource-icon">📊</div>
+        <span class="resource-badge">PDF Guide</span>
+        <div class="resource-title">Self-Employed Income Guide</div>
+        <div class="resource-desc">How lenders assess your income, what documentation you need, and how to maximize your NOA for mortgage and loan approvals.</div>
+        <div class="resource-cta">Download free →</div>
+      </div>
+      <div class="resource-card" onclick="openGate('mortgage-renewal-checklist.pdf','Mortgage Renewal Checklist')">
+        <div class="resource-icon">🏠</div>
+        <span class="resource-badge">PDF Checklist</span>
+        <div class="resource-title">Mortgage Renewal Checklist</div>
+        <div class="resource-desc">The 12-point checklist to run before your mortgage renews — rate negotiation, lender shopping, and what to watch out for.</div>
+        <div class="resource-cta">Download free →</div>
+      </div>
+      <div class="resource-card" onclick="openGate('ai-tool-stack-guide.pdf','AI Tool Stack Guide')">
+        <div class="resource-icon">🤖</div>
+        <span class="resource-badge">PDF Guide</span>
+        <div class="resource-title">AI Tool Stack Guide</div>
+        <div class="resource-desc">The AI tools Canadian self-employed professionals are using to cut admin time, generate leads, and run leaner operations in 2026.</div>
+        <div class="resource-cta">Download free →</div>
+      </div>
+      <div class="resource-card" onclick="openGate('business-startup-checklist.pdf','Business Startup Checklist')">
+        <div class="resource-icon">🚀</div>
+        <span class="resource-badge">PDF Checklist</span>
+        <div class="resource-title">Business Startup Checklist</div>
+        <div class="resource-desc">Everything you need to set up a legitimate Canadian business — CRA registration, HST/GST, banking, and insurance in the right order.</div>
+        <div class="resource-cta">Download free →</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter">
+  <div class="newsletter-inner">
+    <div>
+      <div class="newsletter-eyebrow">Weekly Intelligence</div>
+      <h2 class="newsletter-title">Canadian finance news for people who <em>build things.</em></h2>
+      <p class="newsletter-sub">Every week: rate changes, tool reviews, and money strategies for self-employed Canadians. No ads. No fluff. Unsubscribe anytime.</p>
+      <div class="newsletter-bullets">
+        <div class="newsletter-bullet">BoC rate decisions and what they mean for your mortgage</div>
+        <div class="newsletter-bullet">New tools reviewed for self-employed professionals</div>
+        <div class="newsletter-bullet">Tax and lending news before it hits the mainstream</div>
+        <div class="newsletter-bullet">Sent every Tuesday — under 5 minutes to read</div>
+      </div>
+    </div>
+    <div>
+      <form class="newsletter-form" id="newsletterForm" onsubmit="handleNewsletter(event)">
+        <div class="newsletter-field">
+          <label for="nl-name">First Name</label>
+          <input type="text" id="nl-name" name="firstName" placeholder="Jane" required>
+        </div>
+        <div class="newsletter-field">
+          <label for="nl-email">Email Address</label>
+          <!-- Replace action URL with your Mailchimp embed form action URL -->
+          <input type="email" id="nl-email" name="email" placeholder="jane@yourcompany.ca" required>
+        </div>
+        <button type="submit" class="newsletter-submit">Subscribe Free →</button>
+        <p class="newsletter-disclaimer">No spam. Unsubscribe in one click. We never sell your email.</p>
+      </form>
+      <div class="newsletter-success" id="newsletterSuccess">
+        <p><strong>You're in.</strong> Check your inbox to confirm — first issue arrives Tuesday.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PDF GATE MODAL -->
+<div class="modal-overlay" id="gateModal" onclick="closeGateOnOverlay(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="closeGate()">✕</button>
+    <div class="modal-eyebrow">Free Download</div>
+    <h3 class="modal-title" id="modal-title">Self-Employed Income Guide</h3>
+    <p class="modal-sub">Enter your email to get instant access. We'll also send you our weekly Canadian finance newsletter — unsubscribe anytime.</p>
+    <form class="modal-form" id="gateForm" onsubmit="handleGate(event)">
+      <div class="modal-field">
+        <label for="gate-name">First Name</label>
+        <input type="text" id="gate-name" placeholder="Jane" required>
+      </div>
+      <div class="modal-field">
+        <label for="gate-email">Email Address</label>
+        <input type="email" id="gate-email" placeholder="jane@yourcompany.ca" required>
+      </div>
+      <button type="submit" class="modal-submit">Get Instant Access →</button>
+      <p class="modal-fine">No spam. Unsubscribe anytime.</p>
+    </form>
+  </div>
+</div>
+
+<!-- LOANS CTA -->
+<div class="loans-cta">
+  <h2>Bank said no. We know who will say yes.</h2>
+  <p>Compare personal loans, business financing, and alternative lending from 65+ licensed Canadian lenders.</p>
+  <a href="/loans" class="loans-btn">Find Your Loan Match →</a>
+</div>
+
+<!-- COMMERCIAL & INVESTMENT LENDING -->
+<section class="affiliate-strip">
+  <div class="section-header">
+    <div>
+      <div class="section-eyebrow">For Investors &amp; Builders</div>
+      <h2 class="section-title">Commercial &amp; Investment Lending</h2>
+    </div>
+  </div>
+  <div class="affiliate-grid cols-4">
+    <a href="/private-mortgage-lenders-ontario" class="affiliate-card">
+      <span class="affiliate-badge">Alternative</span>
+      <div class="affiliate-name">Private Mortgage Lenders</div>
+      <div class="affiliate-desc">When banks say no — how private lending works in Ontario, what it costs, and how to use it as a bridge.</div>
+      <div class="affiliate-cta">Read the guide →</div>
+    </a>
+    <a href="/commercial-mortgage-financing-gta" class="affiliate-card">
+      <span class="affiliate-badge">Commercial</span>
+      <div class="affiliate-name">Commercial Mortgage Financing</div>
+      <div class="affiliate-desc">How commercial underwriting works in the GTA — DSCR, property types, and lender criteria.</div>
+      <div class="affiliate-cta">Read the guide →</div>
+    </a>
+    <a href="/construction-financing-gta-developers" class="affiliate-card">
+      <span class="affiliate-badge">Construction</span>
+      <div class="affiliate-name">Construction Financing</div>
+      <div class="affiliate-desc">How draw mortgages work for GTA builders and developers — stages, requirements, and common mistakes.</div>
+      <div class="affiliate-cta">Read the guide →</div>
+    </a>
+    <a href="/second-mortgages-investment-properties-ontario" class="affiliate-card">
+      <span class="affiliate-badge">Investment</span>
+      <div class="affiliate-name">Second Mortgages</div>
+      <div class="affiliate-desc">Access equity in an investment property without disturbing your first mortgage rate.</div>
+      <div class="affiliate-cta">Read the guide →</div>
+    </a>
+  </div>
+</section>
+
+<!-- VMG BANNER -->
+<section class="vmg-banner">
+  <div class="vmg-inner">
+    <div>
+      <div class="vmg-eyebrow">Featured Partner</div>
+      <h2 class="vmg-title">Self-employed mortgages,<br>approved by someone who <em>gets it.</em></h2>
+      <p class="vmg-sub">Paul Malandrino spent 30 years in the trades before becoming a Mortgage Agent Level 2. He understands how contractors, tradespeople, and self-employed Canadians actually earn — and how to get them approved.</p>
+      <div class="vmg-credentials">
+        <span class="vmg-cred">FSRA #M25000307</span>
+        <span class="vmg-cred">GNE Mortgages Lic. #10394</span>
+        <span class="vmg-cred">Vaughan, Ontario</span>
+      </div>
+    </div>
+    <a href="https://vaughanmortgagegroup.ca" target="_blank" class="vmg-btn">Book Free Consultation →</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">e<span>stack</span>.ca</div>
+      <p class="footer-desc">Independent Canadian finance and technology intelligence for self-employed professionals, entrepreneurs, and investors.</p>
+    </div>
+    <div>
+      <div class="footer-heading">Finance</div>
+      <ul class="footer-links">
+        <li><a href="/loans">Personal Loans</a></li>
+        <li><a href="/best-hisa-canada.html">Savings Accounts</a></li>
+        <li><a href="/improve-credit-score-canada.html">Credit</a></li>
+        <li><a href="/bank-of-canada-rate-hold.html">BoC Rates</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-heading">Business</div>
+      <ul class="footer-links">
+        <li><a href="/best-tools-self-employed-canada.html">Tools for SMBs</a></li>
+        <li><a href="/start-shopify-store-canada.html">Start a Shopify Store</a></li>
+        <li><a href="/best-newsletter-platforms-canadian-business.html">Newsletter Platforms</a></li>
+        <li><a href="/get-more-leads-self-employed-tradesperson.html">Get More Leads</a></li>
+        <li><a href="/bank-said-no-what-to-do-next.html">Bank Said No?</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-heading">Company</div>
+      <ul class="footer-links">
+        <li><a href="/mortgage-calculator.html">Mortgage Calculator</a></li>
+        <li><a href="/editorial-policy">Editorial Policy</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="mailto:info@estack.ca">info@estack.ca</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 estack.ca — All rights reserved.</span>
+    <span class="footer-disclaimer">estack.ca is an independent editorial site. We may earn commissions from affiliate links. This does not influence our reviews.</span>
+  </div>
+</footer>
+
+<script>
+// ── LIVE TICKER DATA ──
+const tickerData = [
+  { symbol: 'TSX', price: '22,847', change: '+0.42%', up: true },
+  { symbol: 'XIU', price: '$32.84', change: '+0.38%', up: true },
+  { symbol: 'SHOP', price: '$142.60', change: '-1.12%', up: false },
+  { symbol: 'RY', price: '$178.22', change: '+0.55%', up: true },
+  { symbol: 'TD', price: '$82.14', change: '-0.21%', up: false },
+  { symbol: 'CNR', price: '$156.80', change: '+0.67%', up: true },
+  { symbol: 'BTC/CAD', price: '$137,420', change: '+1.23%', up: true },
+  { symbol: 'ETH/CAD', price: '$4,892', change: '+0.88%', up: true },
+  { symbol: 'XAU/CAD', price: '$3,421', change: '+0.87%', up: true },
+  { symbol: 'XAG/CAD', price: '$42.18', change: '+0.34%', up: true },
+  { symbol: 'CAD/USD', price: '0.7318', change: '-0.11%', up: false },
+  { symbol: 'BoC Rate', price: '2.75%', change: 'Held', up: true },
+  { symbol: 'Prime', price: '4.95%', change: 'Held', up: true },
+  { symbol: '5Y Fixed', price: '4.64%', change: '-0.05%', up: false },
+  { symbol: 'Variable', price: '5.45%', change: 'Held', up: true },
+];
+
+function buildTicker() {
+  const track = document.getElementById('ticker');
+  const doubled = [...tickerData, ...tickerData];
+  track.innerHTML = doubled.map(item => `
+    <div class="ticker-item">
+      <span class="ticker-symbol">${item.symbol}</span>
+      <span class="ticker-price">${item.price}</span>
+      <span class="ticker-change ${item.up ? 'up' : 'down'}">
+        <span class="ticker-arrow">${item.up ? '▲' : '▼'}</span> ${item.change}
+      </span>
+    </div>
+  `).join('');
+}
+
+// ── SIMULATED LIVE MARKET UPDATES ──
+function randomFlicker(base, range) {
+  const delta = (Math.random() - 0.48) * range;
+  return (parseFloat(base.replace(/,/g, '')) + delta).toFixed(2);
+}
+
+function updateMarkets() {
+  const tsx = document.getElementById('tsx-price');
+  const tsxChg = document.getElementById('tsx-chg');
+  const cad = document.getElementById('cad-price');
+  const cadChg = document.getElementById('cad-chg');
+  const gold = document.getElementById('gold-price');
+  const goldChg = document.getElementById('gold-chg');
+  const btc = document.getElementById('btc-price');
+  const btcChg = document.getElementById('btc-chg');
+
+  if (tsx) {
+    const v = randomFlicker('22847', 15);
+    const chg = ((v - 22847) / 22847 * 100).toFixed(2);
+    tsx.textContent = Number(v).toLocaleString('en-CA', {maximumFractionDigits: 0});
+    tsxChg.textContent = (chg >= 0 ? '▲ +' : '▼ ') + chg + '%';
+    tsxChg.className = 'market-chg ' + (chg >= 0 ? 'up' : 'down');
+  }
+  if (cad) {
+    const v = randomFlicker('0.7318', 0.001);
+    cad.textContent = parseFloat(v).toFixed(4);
+  }
+  if (gold) {
+    const v = randomFlicker('3421', 4);
+    gold.textContent = Number(v).toLocaleString('en-CA', {maximumFractionDigits: 0});
+  }
+  if (btc) {
+    const v = randomFlicker('137420', 200);
+    btc.textContent = Number(v).toLocaleString('en-CA', {maximumFractionDigits: 0});
+  }
+}
+
+buildTicker();
+setInterval(updateMarkets, 4000);
+
+// ── PDF GATE ──
+let pendingPdf = '';
+function openGate(pdfFile, title) {
+  pendingPdf = pdfFile;
+  document.getElementById('modal-title').textContent = title;
+  document.getElementById('gateForm').style.display = 'flex';
+  document.getElementById('gateModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeGate() {
+  document.getElementById('gateModal').classList.remove('open');
+  document.body.style.overflow = '';
+  pendingPdf = '';
+}
+function closeGateOnOverlay(e) {
+  if (e.target === document.getElementById('gateModal')) closeGate();
+}
+// ── LEAD CAPTURE ──
+// Routes to your real estack Beehiiv publication (The eStack Brief).
+// No API key required/exposed — Beehiiv doesn't support unauthenticated
+// client-side API calls, so this opens their real subscribe page with the
+// email prefilled. Visitor confirms with one click there.
+const BEEHIIV_SLUG = 'the-estack-brief';
+
+function captureLead(email, name, source) {
+  if (!email || !email.includes('@')) return false;
+  const url = `https://${BEEHIIV_SLUG}.beehiiv.com/subscribe?email=${encodeURIComponent(email)}`;
+  window.open(url, '_blank', 'noopener');
+  return true;
+}
+
+function handleGate(e) {
+  e.preventDefault();
+  const email = document.getElementById('gate-email').value;
+  const name = document.getElementById('gate-name').value;
+  captureLead(email, name, 'pdf-gate:' + pendingPdf);
+  if (pendingPdf) {
+    const a = document.createElement('a');
+    a.href = '/' + pendingPdf;
+    a.download = pendingPdf;
+    a.click();
+  }
+  closeGate();
+}
+
+// ── NEWSLETTER ──
+function handleNewsletter(e) {
+  e.preventDefault();
+  const email = document.getElementById('nl-email').value;
+  const name = document.getElementById('nl-name').value;
+  captureLead(email, name, 'newsletter-signup');
+  document.getElementById('newsletterForm').style.display = 'none';
+  document.getElementById('newsletterSuccess').style.display = 'block';
+}
+</script>
+</body>
+</html>
