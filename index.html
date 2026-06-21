@@ -696,6 +696,260 @@ footer {
   line-height: 1.5;
 }
 
+/* ── NEWSLETTER ── */
+.newsletter {
+  background: var(--ink);
+  border-top: 2px solid var(--gold);
+  border-bottom: 2px solid var(--gold);
+  padding: 4rem 2.5rem;
+}
+.newsletter-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+.newsletter-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+}
+.newsletter-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+}
+.newsletter-title em { font-style: italic; color: var(--gold-light); }
+.newsletter-sub {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.7;
+}
+.newsletter-bullets {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+}
+.newsletter-bullet {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.5);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.newsletter-bullet::before { content: '→'; color: var(--gold); font-weight: 700; }
+.newsletter-form { display: flex; flex-direction: column; gap: 0.875rem; }
+.newsletter-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.newsletter-field label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.55);
+  letter-spacing: 0.04em;
+}
+.newsletter-field input {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 3px;
+  padding: 0.8rem 1rem;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--white);
+  width: 100%;
+  transition: border-color 0.2s;
+}
+.newsletter-field input::placeholder { color: rgba(255,255,255,0.3); }
+.newsletter-field input:focus { outline: none; border-color: var(--gold); }
+.newsletter-submit {
+  background: var(--gold);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding: 0.9rem 2rem;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background 0.2s;
+  letter-spacing: 0.02em;
+}
+.newsletter-submit:hover { background: var(--gold-light); }
+.newsletter-disclaimer {
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.25);
+  line-height: 1.5;
+}
+.newsletter-success {
+  display: none;
+  background: rgba(201,168,76,0.1);
+  border: 1px solid rgba(201,168,76,0.25);
+  padding: 1.5rem;
+  border-radius: 3px;
+}
+.newsletter-success p { font-size: 0.9rem; color: rgba(255,255,255,0.7); }
+.newsletter-success strong { color: var(--gold-light); }
+
+/* ── FREE RESOURCES ── */
+.resources {
+  background: var(--light);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 4rem 2.5rem;
+}
+.resources-inner { max-width: 1200px; margin: 0 auto; }
+.resources-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+.resource-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  padding: 1.75rem;
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  text-decoration: none;
+}
+.resource-card:hover {
+  border-color: var(--gold);
+  box-shadow: 0 4px 20px rgba(201,168,76,0.1);
+}
+.resource-icon { font-size: 1.75rem; }
+.resource-type {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+}
+.resource-title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+}
+.resource-desc {
+  font-size: 0.8rem;
+  color: var(--ink-light);
+  line-height: 1.55;
+  flex: 1;
+}
+.resource-cta {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--gold-dark);
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: 0.25rem;
+}
+.resource-badge {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--gold-pale);
+  border: 1px solid var(--border-gold);
+  color: var(--gold-dark);
+  padding: 0.15rem 0.45rem;
+  border-radius: 2px;
+  align-self: flex-start;
+}
+
+/* ── GATE MODAL ── */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(14,14,14,0.75);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+.modal-overlay.open { display: flex; }
+.modal {
+  background: var(--white);
+  border: 1px solid var(--border);
+  max-width: 480px;
+  width: 100%;
+  padding: 2.5rem;
+  position: relative;
+}
+.modal-close {
+  position: absolute;
+  top: 1rem; right: 1.25rem;
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+  color: var(--ink-faint);
+  line-height: 1;
+}
+.modal-close:hover { color: var(--ink); }
+.modal-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  margin-bottom: 0.75rem;
+}
+.modal-title {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+.modal-sub { font-size: 0.85rem; color: var(--ink-light); margin-bottom: 1.75rem; line-height: 1.6; }
+.modal-form { display: flex; flex-direction: column; gap: 1rem; }
+.modal-field { display: flex; flex-direction: column; gap: 0.35rem; }
+.modal-field label { font-size: 0.78rem; font-weight: 600; color: var(--ink); }
+.modal-field input {
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 0.75rem 1rem;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--ink);
+  transition: border-color 0.2s;
+}
+.modal-field input:focus { outline: none; border-color: var(--gold); }
+.modal-submit {
+  background: var(--ink);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.875rem;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 0.25rem;
+}
+.modal-submit:hover { background: var(--gold); color: var(--ink); }
+.modal-fine { font-size: 0.7rem; color: var(--ink-faint); text-align: center; }
+
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
   .hero { grid-template-columns: 1fr; gap: 2.5rem; padding: 3rem 1.5rem; }
@@ -708,11 +962,14 @@ footer {
   .nav-links { display: none; }
   .categories, .affiliate-strip { padding: 3rem 1.5rem; }
   .featured { padding: 3rem 1.5rem; }
+  .newsletter-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+  .resources-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 600px) {
   .cat-grid { grid-template-columns: 1fr; }
   .footer-inner { grid-template-columns: 1fr; }
   .hero h1 { font-size: 2.25rem; }
+  .resources-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -733,7 +990,7 @@ footer {
     <li><a href="/bank-of-canada-rate-hold.html">Markets</a></li>
     <li><a href="/improve-credit-score-canada.html">Credit</a></li>
     <li><a href="/best-tools-self-employed-canada.html">Tools</a></li>
-    <li><a href="/top-picks">Top Picks</a></li>
+    <li><a href="/mortgage-calculator.html">Calculator</a></li>
     <li><a href="/loans" class="nav-cta">Get Funded →</a></li>
   </ul>
 </nav>
@@ -922,33 +1179,156 @@ footer {
       <h2 class="section-title">Independently Reviewed</h2>
     </div>
   </div>
-  <div class="affiliate-grid">
+  <div class="affiliate-grid" style="grid-template-columns: repeat(3, 1fr);">
     <a href="/loans" class="affiliate-card">
       <span class="affiliate-badge">Loans</span>
       <div class="affiliate-name">Personal Loans</div>
       <div class="affiliate-desc">Compare 65+ licensed Canadian lenders. No hard credit pull. Results in minutes. Built for self-employed and bank-declined borrowers.</div>
       <div class="affiliate-cta">Compare rates →</div>
     </a>
+    <a href="/improve-credit-score-canada.html" class="affiliate-card">
+      <span class="affiliate-badge">Credit</span>
+      <div class="affiliate-name">Borrowell</div>
+      <div class="affiliate-desc">Free credit score monitoring for Canadians. Get your Equifax score weekly, understand what's dragging it down, and get matched to products you'll qualify for.</div>
+      <div class="affiliate-cta">Check your score free →</div>
+    </a>
+    <a href="/best-hisa-canada.html" class="affiliate-card">
+      <span class="affiliate-badge">Banking</span>
+      <div class="affiliate-name">Koho</div>
+      <div class="affiliate-desc">No-fee spending account with automatic roundup savings and credit-building. Built for Canadians who want a smarter way to manage cash flow between contracts.</div>
+      <div class="affiliate-cta">Open free account →</div>
+    </a>
     <a href="/best-hisa-canada.html" class="affiliate-card">
       <span class="affiliate-badge">Investing</span>
       <div class="affiliate-name">Questrade</div>
-      <div class="affiliate-desc">Canada's leading discount brokerage. Commission-free ETF buys, low forex fees, and a platform built for serious investors.</div>
+      <div class="affiliate-desc">Canada's leading discount brokerage. Commission-free ETF buys, low forex fees, and a platform built for serious investors and RRSP/TFSA holders.</div>
       <div class="affiliate-cta">Open an account →</div>
     </a>
     <a href="/best-tools-self-employed-canada.html" class="affiliate-card">
-      <span class="affiliate-badge">Tools</span>
-      <div class="affiliate-name">Windsor.ai</div>
-      <div class="affiliate-desc">Unified marketing analytics for Canadian small business. Connect Google, Meta, email and Shopify into one ROI dashboard.</div>
-      <div class="affiliate-cta">Try free →</div>
+      <span class="affiliate-badge">Accounting</span>
+      <div class="affiliate-name">FreshBooks</div>
+      <div class="affiliate-desc">Invoicing, expense tracking, and tax-ready reports built for self-employed Canadians and small businesses. Track HST/GST automatically.</div>
+      <div class="affiliate-cta">Try free 30 days →</div>
     </a>
-    <a href="/self-employed-mortgages" class="affiliate-card">
+    <a href="/self-employed-mortgage-canada.html" class="affiliate-card">
       <span class="affiliate-badge">Mortgage</span>
       <div class="affiliate-name">Vaughan Mortgage Group</div>
-      <div class="affiliate-desc">Self-employed? Bank declined? Paul Malandrino — Mortgage Agent Level 2 with 30+ years in the trades — gets it done.</div>
+      <div class="affiliate-desc">Self-employed? Bank declined? Paul Malandrino — Mortgage Agent Level 2 with 30+ years in the trades — gets it done. FSRA #M25000307.</div>
       <div class="affiliate-cta">Book a free call →</div>
     </a>
   </div>
 </section>
+
+<!-- MORTGAGE CALCULATOR CTA -->
+<div style="background:var(--light);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:3rem 2.5rem;">
+  <div style="max-width:1200px;margin:0 auto;display:flex;gap:2rem;align-items:center;flex-wrap:wrap;justify-content:space-between;">
+    <div>
+      <div style="font-family:var(--font-mono);font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold-dark);margin-bottom:0.5rem">Free Tool</div>
+      <div style="font-family:var(--font-display);font-size:1.5rem;font-weight:700;color:var(--ink);margin-bottom:0.4rem">Canadian Mortgage Calculator</div>
+      <div style="font-size:0.875rem;color:var(--ink-light)">Monthly payment, stress test, CMHC, and total interest. Takes 30 seconds.</div>
+    </div>
+    <a href="/mortgage-calculator.html" style="background:var(--ink);color:var(--white);font-size:0.875rem;font-weight:600;padding:0.875rem 2rem;text-decoration:none;border-radius:3px;white-space:nowrap;transition:background 0.2s;flex-shrink:0">Calculate Your Payment →</a>
+  </div>
+</div>
+
+<!-- FREE RESOURCES -->
+<section class="resources">
+  <div class="resources-inner">
+    <div class="section-header">
+      <div>
+        <div class="section-eyebrow">Free Downloads</div>
+        <h2 class="section-title">Guides Built for Self-Employed Canadians</h2>
+      </div>
+    </div>
+    <div class="resources-grid">
+      <div class="resource-card" onclick="openGate('self-employed-income-guide.pdf','Self-Employed Income Guide')">
+        <div class="resource-icon">📊</div>
+        <span class="resource-badge">PDF Guide</span>
+        <div class="resource-title">Self-Employed Income Guide</div>
+        <div class="resource-desc">How lenders assess your income, what documentation you need, and how to maximize your NOA for mortgage and loan approvals.</div>
+        <div class="resource-cta">Download free →</div>
+      </div>
+      <div class="resource-card" onclick="openGate('mortgage-renewal-checklist.pdf','Mortgage Renewal Checklist')">
+        <div class="resource-icon">🏠</div>
+        <span class="resource-badge">PDF Checklist</span>
+        <div class="resource-title">Mortgage Renewal Checklist</div>
+        <div class="resource-desc">The 12-point checklist to run before your mortgage renews — rate negotiation, lender shopping, and what to watch out for.</div>
+        <div class="resource-cta">Download free →</div>
+      </div>
+      <div class="resource-card" onclick="openGate('ai-tool-stack-guide.pdf','AI Tool Stack Guide')">
+        <div class="resource-icon">🤖</div>
+        <span class="resource-badge">PDF Guide</span>
+        <div class="resource-title">AI Tool Stack Guide</div>
+        <div class="resource-desc">The AI tools Canadian self-employed professionals are using to cut admin time, generate leads, and run leaner operations in 2026.</div>
+        <div class="resource-cta">Download free →</div>
+      </div>
+      <div class="resource-card" onclick="openGate('business-startup-checklist.pdf','Business Startup Checklist')">
+        <div class="resource-icon">🚀</div>
+        <span class="resource-badge">PDF Checklist</span>
+        <div class="resource-title">Business Startup Checklist</div>
+        <div class="resource-desc">Everything you need to set up a legitimate Canadian business — CRA registration, HST/GST, banking, and insurance in the right order.</div>
+        <div class="resource-cta">Download free →</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter">
+  <div class="newsletter-inner">
+    <div>
+      <div class="newsletter-eyebrow">Weekly Intelligence</div>
+      <h2 class="newsletter-title">Canadian finance news for people who <em>build things.</em></h2>
+      <p class="newsletter-sub">Every week: rate changes, tool reviews, and money strategies for self-employed Canadians. No ads. No fluff. Unsubscribe anytime.</p>
+      <div class="newsletter-bullets">
+        <div class="newsletter-bullet">BoC rate decisions and what they mean for your mortgage</div>
+        <div class="newsletter-bullet">New tools reviewed for self-employed professionals</div>
+        <div class="newsletter-bullet">Tax and lending news before it hits the mainstream</div>
+        <div class="newsletter-bullet">Sent every Tuesday — under 5 minutes to read</div>
+      </div>
+    </div>
+    <div>
+      <form class="newsletter-form" id="newsletterForm" onsubmit="handleNewsletter(event)">
+        <div class="newsletter-field">
+          <label for="nl-name">First Name</label>
+          <input type="text" id="nl-name" name="firstName" placeholder="Jane" required>
+        </div>
+        <div class="newsletter-field">
+          <label for="nl-email">Email Address</label>
+          <!-- Replace action URL with your Mailchimp embed form action URL -->
+          <input type="email" id="nl-email" name="email" placeholder="jane@yourcompany.ca" required>
+        </div>
+        <button type="submit" class="newsletter-submit">Subscribe Free →</button>
+        <p class="newsletter-disclaimer">No spam. Unsubscribe in one click. We never sell your email.</p>
+      </form>
+      <div class="newsletter-success" id="newsletterSuccess">
+        <p><strong>You're in.</strong> Check your inbox to confirm — first issue arrives Tuesday.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PDF GATE MODAL -->
+<div class="modal-overlay" id="gateModal" onclick="closeGateOnOverlay(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="closeGate()">✕</button>
+    <div class="modal-eyebrow">Free Download</div>
+    <h3 class="modal-title" id="modal-title">Self-Employed Income Guide</h3>
+    <p class="modal-sub">Enter your email to get instant access. We'll also send you our weekly Canadian finance newsletter — unsubscribe anytime.</p>
+    <form class="modal-form" id="gateForm" onsubmit="handleGate(event)">
+      <div class="modal-field">
+        <label for="gate-name">First Name</label>
+        <input type="text" id="gate-name" placeholder="Jane" required>
+      </div>
+      <div class="modal-field">
+        <label for="gate-email">Email Address</label>
+        <input type="email" id="gate-email" placeholder="jane@yourcompany.ca" required>
+      </div>
+      <button type="submit" class="modal-submit">Get Instant Access →</button>
+      <p class="modal-fine">No spam. Unsubscribe anytime.</p>
+    </form>
+  </div>
+</div>
 
 <!-- LOANS CTA -->
 <div class="loans-cta">
@@ -1003,6 +1383,7 @@ footer {
     <div>
       <div class="footer-heading">Company</div>
       <ul class="footer-links">
+        <li><a href="/mortgage-calculator.html">Mortgage Calculator</a></li>
         <li><a href="/editorial-policy">Editorial Policy</a></li>
         <li><a href="/contact">Contact</a></li>
         <li><a href="mailto:info@estack.ca">info@estack.ca</a></li>
@@ -1088,6 +1469,46 @@ function updateMarkets() {
 
 buildTicker();
 setInterval(updateMarkets, 4000);
+
+// ── PDF GATE ──
+let pendingPdf = '';
+function openGate(pdfFile, title) {
+  pendingPdf = pdfFile;
+  document.getElementById('modal-title').textContent = title;
+  document.getElementById('gateForm').style.display = 'flex';
+  document.getElementById('gateModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeGate() {
+  document.getElementById('gateModal').classList.remove('open');
+  document.body.style.overflow = '';
+  pendingPdf = '';
+}
+function closeGateOnOverlay(e) {
+  if (e.target === document.getElementById('gateModal')) closeGate();
+}
+function handleGate(e) {
+  e.preventDefault();
+  const email = document.getElementById('gate-email').value;
+  const name = document.getElementById('gate-name').value;
+  // TODO: POST to your Mailchimp or ConvertKit API endpoint here
+  // fetch('/api/subscribe', { method:'POST', body: JSON.stringify({ email, name }) });
+  if (pendingPdf) {
+    const a = document.createElement('a');
+    a.href = '/' + pendingPdf;
+    a.download = pendingPdf;
+    a.click();
+  }
+  closeGate();
+}
+
+// ── NEWSLETTER ──
+function handleNewsletter(e) {
+  e.preventDefault();
+  // TODO: POST to your Mailchimp or ConvertKit API endpoint here
+  document.getElementById('newsletterForm').style.display = 'none';
+  document.getElementById('newsletterSuccess').style.display = 'block';
+}
 </script>
 </body>
 </html>

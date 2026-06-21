@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Canadian Mortgage Calculator 2026 — Self-Employed & Standard | estack.ca</title>
+<meta name="description" content="Calculate your Canadian mortgage payment, total interest, and affordability. Built for self-employed borrowers with variable income.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --white: #ffffff;
+  --off-white: #fafaf8;
+  --light: #f4f3ef;
+  --gold: #c9a84c;
+  --gold-light: #e2c47a;
+  --gold-dark: #9d7a2e;
+  --gold-pale: #fdf8ec;
+  --ink: #0e0e0e;
+  --ink-mid: #2a2a2a;
+  --ink-light: #555555;
+  --ink-faint: #999999;
+  --border: #e8e4d9;
+  --border-gold: rgba(201,168,76,0.3);
+  --up: #1a7a4a;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-body); background: var(--white); color: var(--ink); line-height: 1.6; }
+
+nav {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 0 2.5rem;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.nav-logo { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: var(--ink); text-decoration: none; letter-spacing: -0.02em; }
+.nav-logo span { color: var(--gold); }
+.nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+.nav-links a { font-size: 0.825rem; font-weight: 500; color: var(--ink-light); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover { color: var(--gold); }
+.nav-cta { background: var(--gold); color: var(--ink) !important; padding: 0.5rem 1.25rem; border-radius: 3px; font-weight: 600 !important; }
+
+.page-header { background: var(--ink); padding: 4rem 2.5rem; border-bottom: 2px solid var(--gold); }
+.page-header-inner { max-width: 1200px; margin: 0 auto; }
+.page-eyebrow { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+.page-title { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; color: var(--white); line-height: 1.1; margin-bottom: 0.75rem; }
+.page-sub { font-size: 1rem; color: rgba(255,255,255,0.55); max-width: 520px; line-height: 1.7; }
+
+.calc-body { max-width: 1200px; margin: 0 auto; padding: 4rem 2.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+
+/* INPUTS */
+.calc-inputs { }
+.inputs-card { border: 1px solid var(--border); padding: 2.5rem; }
+.card-label { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-dark); margin-bottom: 2rem; }
+
+.input-group { margin-bottom: 1.75rem; }
+.input-group label { display: flex; justify-content: space-between; align-items: center; font-size: 0.82rem; font-weight: 600; color: var(--ink); margin-bottom: 0.5rem; }
+.input-group label span { font-family: var(--font-mono); font-size: 0.85rem; color: var(--gold-dark); font-weight: 700; }
+
+.range-wrap { position: relative; }
+input[type="range"] {
+  width: 100%;
+  height: 4px;
+  -webkit-appearance: none;
+  background: var(--border);
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: var(--gold);
+  cursor: pointer;
+  border: 2px solid var(--white);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+}
+input[type="range"]::-webkit-slider-runnable-track {
+  background: linear-gradient(to right, var(--gold) var(--pct, 0%), var(--border) var(--pct, 0%));
+  border-radius: 2px;
+}
+.range-bounds { display: flex; justify-content: space-between; margin-top: 0.4rem; font-family: var(--font-mono); font-size: 0.65rem; color: var(--ink-faint); }
+
+.seg-btns { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.seg-btn {
+  flex: 1;
+  min-width: 70px;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  background: var(--white);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--ink-light);
+  cursor: pointer;
+  transition: all 0.15s;
+  text-align: center;
+}
+.seg-btn.active { background: var(--ink); border-color: var(--ink); color: var(--white); }
+.seg-btn:hover:not(.active) { border-color: var(--gold); color: var(--gold-dark); }
+
+/* RESULTS */
+.calc-results { }
+.results-card { background: var(--ink); padding: 2.5rem; position: sticky; top: 80px; }
+.results-label { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 2rem; }
+.monthly-payment { margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.monthly-label { font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-bottom: 0.5rem; }
+.monthly-amount { font-family: var(--font-display); font-size: 3rem; font-weight: 700; color: var(--white); letter-spacing: -0.02em; line-height: 1; }
+.monthly-period { font-size: 0.8rem; color: rgba(255,255,255,0.4); margin-top: 0.4rem; }
+
+.breakdown { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem; }
+.breakdown-row { display: flex; justify-content: space-between; align-items: center; }
+.breakdown-key { font-size: 0.82rem; color: rgba(255,255,255,0.5); }
+.breakdown-val { font-family: var(--font-mono); font-size: 0.88rem; color: var(--white); font-weight: 500; }
+.breakdown-val.highlight { color: var(--gold-light); }
+
+.amort-bar { height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; margin: 1.5rem 0; overflow: hidden; }
+.amort-principal { height: 100%; background: var(--gold); border-radius: 4px; transition: width 0.5s ease; }
+
+.amort-legend { display: flex; gap: 1.5rem; margin-bottom: 2rem; }
+.legend-item { display: flex; align-items: center; gap: 0.4rem; font-size: 0.75rem; color: rgba(255,255,255,0.5); }
+.legend-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.legend-dot.principal { background: var(--gold); }
+.legend-dot.interest { background: rgba(255,255,255,0.2); }
+
+.stress-test { background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.2); padding: 1.25rem; margin-top: 0.5rem; }
+.stress-label { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; }
+.stress-row { display: flex; justify-content: space-between; font-size: 0.8rem; color: rgba(255,255,255,0.6); margin-bottom: 0.4rem; }
+.stress-row span:last-child { font-family: var(--font-mono); color: rgba(255,255,255,0.85); }
+
+.cta-section { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); }
+.cta-text { font-size: 0.85rem; color: rgba(255,255,255,0.5); margin-bottom: 1rem; line-height: 1.6; }
+.vmg-btn {
+  display: block;
+  background: var(--gold);
+  color: var(--ink);
+  font-size: 0.875rem;
+  font-weight: 700;
+  padding: 0.875rem 1.5rem;
+  text-decoration: none;
+  border-radius: 3px;
+  text-align: center;
+  transition: background 0.2s;
+  letter-spacing: 0.02em;
+}
+.vmg-btn:hover { background: var(--gold-light); }
+
+/* TIPS */
+.tips-section { max-width: 1200px; margin: 0 auto; padding: 0 2.5rem 5rem; }
+.gold-rule { height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); border: none; max-width: 1200px; margin: 0 auto; }
+.tips-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+.tip-card { border: 1px solid var(--border); padding: 2rem; position: relative; overflow: hidden; }
+.tip-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--gold); }
+.tip-num { font-family: var(--font-mono); font-size: 0.65rem; color: var(--gold-dark); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem; }
+.tip-title { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; color: var(--ink); margin-bottom: 0.5rem; }
+.tip-body { font-size: 0.82rem; color: var(--ink-light); line-height: 1.65; }
+
+footer { background: var(--ink); padding: 2rem 2.5rem; border-top: 2px solid var(--gold); text-align: center; }
+footer p { font-size: 0.75rem; color: rgba(255,255,255,0.3); }
+footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
+footer a:hover { color: var(--gold-light); }
+
+@media (max-width: 900px) {
+  .calc-body { grid-template-columns: 1fr; gap: 2rem; padding: 2.5rem 1.5rem; }
+  .results-card { position: static; }
+  .tips-grid { grid-template-columns: 1fr; }
+  .tips-section { padding: 0 1.5rem 3rem; }
+  nav { padding: 0 1.5rem; }
+  .nav-links { display: none; }
+  .page-header { padding: 3rem 1.5rem; }
+  .monthly-amount { font-size: 2.25rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">e<span>stack</span>.ca</a>
+  <ul class="nav-links">
+    <li><a href="/loans">Loans</a></li>
+    <li><a href="/best-hisa-canada.html">Savings</a></li>
+    <li><a href="/rates.html">Rates</a></li>
+    <li><a href="/self-employed-mortgage-canada.html">Mortgages</a></li>
+    <li><a href="/best-tools-self-employed-canada.html">Tools</a></li>
+    <li><a href="/loans" class="nav-cta">Get Funded →</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="page-eyebrow">Free Tool</div>
+    <h1 class="page-title">Canadian Mortgage Calculator</h1>
+    <p class="page-sub">Monthly payment, total interest, stress test, and amortization breakdown. Built for Canadian rates and self-employed borrowers.</p>
+  </div>
+</div>
+
+<div class="calc-body">
+
+  <div class="calc-inputs">
+    <div class="inputs-card">
+      <div class="card-label">Your Mortgage Details</div>
+
+      <div class="input-group">
+        <label>Home Price <span id="price-display">$600,000</span></label>
+        <div class="range-wrap">
+          <input type="range" id="price" min="100000" max="2000000" step="10000" value="600000" oninput="calculate()">
+          <div class="range-bounds"><span>$100K</span><span>$2M</span></div>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label>Down Payment <span id="down-display">$120,000 (20%)</span></label>
+        <div class="range-wrap">
+          <input type="range" id="downpct" min="5" max="50" step="1" value="20" oninput="calculate()">
+          <div class="range-bounds"><span>5%</span><span>50%</span></div>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label>Interest Rate <span id="rate-display">4.64%</span></label>
+        <div class="range-wrap">
+          <input type="range" id="rate" min="1" max="12" step="0.05" value="4.64" oninput="calculate()">
+          <div class="range-bounds"><span>1%</span><span>12%</span></div>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label>Amortization <span id="amort-display">25 years</span></label>
+        <div class="seg-btns">
+          <button class="seg-btn" onclick="setAmort(15)">15 yr</button>
+          <button class="seg-btn" onclick="setAmort(20)">20 yr</button>
+          <button class="seg-btn active" onclick="setAmort(25)">25 yr</button>
+          <button class="seg-btn" onclick="setAmort(30)">30 yr</button>
+        </div>
+      </div>
+
+      <div class="input-group" style="margin-bottom:0">
+        <label>Payment Frequency</label>
+        <div class="seg-btns">
+          <button class="seg-btn" onclick="setFreq('weekly',52)">Weekly</button>
+          <button class="seg-btn" onclick="setFreq('biweekly',26)">Bi-weekly</button>
+          <button class="seg-btn active" onclick="setFreq('monthly',12)">Monthly</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="calc-results">
+    <div class="results-card">
+      <div class="results-label">Your Estimate</div>
+
+      <div class="monthly-payment">
+        <div class="monthly-label">Monthly Payment</div>
+        <div class="monthly-amount" id="payment-display">$2,714</div>
+        <div class="monthly-period" id="freq-label">per month</div>
+      </div>
+
+      <div class="breakdown">
+        <div class="breakdown-row">
+          <span class="breakdown-key">Mortgage Amount</span>
+          <span class="breakdown-val" id="mortgage-display">$480,000</span>
+        </div>
+        <div class="breakdown-row">
+          <span class="breakdown-key">Total Interest Paid</span>
+          <span class="breakdown-val highlight" id="interest-display">$334,200</span>
+        </div>
+        <div class="breakdown-row">
+          <span class="breakdown-key">Total Cost</span>
+          <span class="breakdown-val" id="total-display">$814,200</span>
+        </div>
+        <div class="breakdown-row">
+          <span class="breakdown-key">CMHC Insurance</span>
+          <span class="breakdown-val" id="cmhc-display">$0</span>
+        </div>
+      </div>
+
+      <div class="amort-bar">
+        <div class="amort-principal" id="principal-bar" style="width:59%"></div>
+      </div>
+      <div class="amort-legend">
+        <div class="legend-item"><div class="legend-dot principal"></div> Principal (59%)</div>
+        <div class="legend-item"><div class="legend-dot interest"></div> <span id="interest-pct-label">Interest (41%)</span></div>
+      </div>
+
+      <div class="stress-test">
+        <div class="stress-label">Stress Test @ +2%</div>
+        <div class="stress-row"><span>Qualifying Rate</span><span id="stress-rate">6.64%</span></div>
+        <div class="stress-row"><span>Payment at Stress Rate</span><span id="stress-payment">$3,258</span></div>
+        <div class="stress-row"><span>Required Annual Income</span><span id="stress-income">$130,320</span></div>
+      </div>
+
+      <div class="cta-section">
+        <p class="cta-text">Self-employed? Your qualifying income works differently. Talk to a specialist who understands contractor and business income.</p>
+        <a href="https://vaughanmortgagegroup.ca" target="_blank" class="vmg-btn">Get Pre-Approved Free →</a>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<hr class="gold-rule">
+
+<div class="tips-section">
+  <div style="max-width:1200px;margin:0 auto">
+    <div style="font-family:var(--font-mono);font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold-dark);margin-bottom:0.5rem;margin-top:3rem">Self-Employed Tips</div>
+    <h2 style="font-family:var(--font-display);font-size:1.75rem;color:var(--ink);margin-bottom:0.25rem">What this calculator doesn't show you</h2>
+    <p style="font-size:0.9rem;color:var(--ink-light);margin-bottom:0;max-width:560px">Standard calculators assume T4 income. Here's what changes when you're self-employed.</p>
+    <div class="tips-grid">
+      <div class="tip-card">
+        <div class="tip-num">01 — Income</div>
+        <div class="tip-title">Your qualifying income is not your gross revenue</div>
+        <div class="tip-body">Lenders typically use a 2-year average of your net business income from line 15000 of your NOA — not your invoices. Write-offs that reduce your taxes also reduce your qualifying income.</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-num">02 — Down Payment</div>
+        <div class="tip-title">20% down removes CMHC — and unlocks more lenders</div>
+        <div class="tip-body">Self-employed borrowers with less than 20% down face stricter CMHC documentation rules. Getting to 20% opens the door to B-lenders and better rates even with non-traditional income.</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-num">03 — Stress Test</div>
+        <div class="tip-title">You must qualify at 2% above your actual rate</div>
+        <div class="tip-body">The federal stress test (B-20) requires you to prove you can afford payments at your rate plus 2% (or 5.25%, whichever is higher). Plan for it before you start house hunting.</div>
+      </div>
+    </div>
+    <div style="margin-top:2rem;padding:2rem;background:var(--light);border:1px solid var(--border);display:flex;gap:2rem;align-items:center;flex-wrap:wrap">
+      <div style="flex:1;min-width:220px">
+        <div style="font-family:var(--font-mono);font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold-dark);margin-bottom:0.5rem">Need the Full Picture?</div>
+        <div style="font-family:var(--font-display);font-size:1.25rem;color:var(--ink);margin-bottom:0.4rem">Read our complete self-employed mortgage guide</div>
+        <div style="font-size:0.85rem;color:var(--ink-light)">Documentation required, lender tiers, income averaging, and how to maximize your approval odds.</div>
+      </div>
+      <a href="/self-employed-mortgage-canada.html" style="background:var(--ink);color:var(--white);font-size:0.875rem;font-weight:600;padding:0.875rem 2rem;text-decoration:none;border-radius:3px;white-space:nowrap;flex-shrink:0">Read the Guide →</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 estack.ca &nbsp;|&nbsp; <a href="/">Home</a> &nbsp;|&nbsp; <a href="/mortgage-calculator.html">Calculator</a> &nbsp;|&nbsp; <a href="/editorial-policy">Editorial Policy</a> &nbsp;|&nbsp; <a href="/contact">Contact</a></p>
+  <p style="margin-top:0.5rem">Calculator results are estimates only. Consult a licensed mortgage professional. Not financial advice.</p>
+</footer>
+
+<script>
+let amortYears = 25;
+let freqPerYear = 12;
+let freqLabel = 'per month';
+
+function setAmort(y) {
+  amortYears = y;
+  document.querySelectorAll('.seg-btn').forEach(b => {
+    if (b.textContent.includes(y + ' yr')) b.classList.add('active');
+    else if (['15 yr','20 yr','25 yr','30 yr'].some(t => b.textContent.includes(t))) b.classList.remove('active');
+  });
+  document.getElementById('amort-display').textContent = y + ' years';
+  calculate();
+}
+
+function setFreq(label, n) {
+  freqPerYear = n;
+  freqLabel = 'per ' + label.replace('biweekly', 'two weeks');
+  document.querySelectorAll('.seg-btn').forEach(b => {
+    if (['Weekly','Bi-weekly','Monthly'].includes(b.textContent)) b.classList.remove('active');
+  });
+  event.target.classList.add('active');
+  calculate();
+}
+
+function fmt(n) {
+  return '$' + Math.round(n).toLocaleString('en-CA');
+}
+
+function calculate() {
+  const price = parseFloat(document.getElementById('price').value);
+  const downPct = parseFloat(document.getElementById('downpct').value) / 100;
+  const annualRate = parseFloat(document.getElementById('rate').value) / 100;
+
+  document.getElementById('price-display').textContent = fmt(price);
+  document.getElementById('down-display').textContent = fmt(price * downPct) + ' (' + Math.round(downPct * 100) + '%)';
+  document.getElementById('rate-display').textContent = (annualRate * 100).toFixed(2) + '%';
+
+  const down = price * downPct;
+  let principal = price - down;
+
+  // CMHC insurance
+  let cmhc = 0;
+  if (downPct < 0.2) {
+    const cmhcRate = downPct >= 0.15 ? 0.028 : downPct >= 0.10 ? 0.031 : 0.04;
+    cmhc = principal * cmhcRate;
+    principal += cmhc;
+  }
+
+  // Canadian mortgage: semi-annual compounding
+  const semiAnnualRate = Math.pow(1 + annualRate / 2, 2) - 1;
+  const periodicRate = Math.pow(1 + semiAnnualRate, 1 / freqPerYear) - 1;
+  const n = amortYears * freqPerYear;
+
+  let payment = 0;
+  if (periodicRate === 0) {
+    payment = principal / n;
+  } else {
+    payment = principal * periodicRate * Math.pow(1 + periodicRate, n) / (Math.pow(1 + periodicRate, n) - 1);
+  }
+
+  const totalPaid = payment * n;
+  const totalInterest = totalPaid - principal + cmhc;
+  const principalPct = Math.round((principal - cmhc) / (totalPaid) * 100);
+  const interestPct = 100 - principalPct;
+
+  // Stress test
+  const stressRate = annualRate + 0.02;
+  const stressSemi = Math.pow(1 + stressRate / 2, 2) - 1;
+  const stressPeriodic = Math.pow(1 + stressSemi, 1 / 12) - 1;
+  const stressN = amortYears * 12;
+  const stressPayment = principal * stressPeriodic * Math.pow(1 + stressPeriodic, stressN) / (Math.pow(1 + stressPeriodic, stressN) - 1);
+  const requiredIncome = stressPayment * 12 / 0.3;
+
+  document.getElementById('payment-display').textContent = fmt(payment);
+  document.getElementById('freq-label').textContent = freqLabel;
+  document.getElementById('mortgage-display').textContent = fmt(principal - cmhc);
+  document.getElementById('interest-display').textContent = fmt(totalInterest);
+  document.getElementById('total-display').textContent = fmt(totalPaid);
+  document.getElementById('cmhc-display').textContent = cmhc > 0 ? fmt(cmhc) : '$0 (20%+ down)';
+  document.getElementById('principal-bar').style.width = principalPct + '%';
+  document.getElementById('interest-pct-label').textContent = 'Interest (' + interestPct + '%)';
+  document.getElementById('stress-rate').textContent = (stressRate * 100).toFixed(2) + '%';
+  document.getElementById('stress-payment').textContent = fmt(stressPayment);
+  document.getElementById('stress-income').textContent = fmt(requiredIncome);
+
+  // Update range track fill
+  ['price','downpct','rate'].forEach(id => {
+    const el = document.getElementById(id);
+    const pct = ((el.value - el.min) / (el.max - el.min)) * 100;
+    el.style.setProperty('--pct', pct + '%');
+  });
+}
+
+calculate();
+</script>
+</body>
+</html>
