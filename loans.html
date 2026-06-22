@@ -504,7 +504,41 @@
       <p>Tell us what you need — we match you with lenders that actually work for your situation.</p>
     </div>
 
-    <div id="lead-scout-form"></div>
+    <div id="lead-scout-form" style="max-width:800px;margin:2rem auto;background: #ffffff;border-radius: 12px;border: 1px solid rgba(58, 58, 58, 0.15);box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);overflow: hidden;"></div>
+<script>
+var formConfig = {
+    "affiliateCode": "ZX3kIzQG",
+    "defaultValues": {
+        "requestedAmount": 1000
+    },
+    "formId": "1",
+    "language": "en",
+    "overrides": {
+        "requestedAmount": {
+            "max": 3000,
+            "min": 100,
+            "step": 100
+        }
+    },
+    "styles": {
+        "fontFamily": "\"Montserrat\", sans-serif",
+        "fullWidthFirstStepButton": true,
+        "minHeight": 0,
+        "primary": {
+            "contrastText": "#fff",
+            "dark": "#8BA868",
+            "main": "#8BA868"
+        }
+    },
+    "theme": "light"
+};
+
+window.LeadScout = window.LeadScout || {};
+window.LeadScout.onLoad = function() {
+	window.LeadScout.init(document.getElementById('lead-scout-form'), formConfig);
+}
+</script>
+<script src="https://app.leadscout.ca/library/library.js" async></script>
 
     <p class="form-disclaimer">No hard credit pull to check your options. Submitting connects you with licensed Canadian lenders. estack.ca may receive compensation when you apply.</p>
   </div>
@@ -556,7 +590,7 @@
   <a href="mailto:info@estack.ca">info@estack.ca</a>
 </footer>
 
-<!-- LEADSCOUT EMBED -->
+
 <script>
 var formConfig = {
     "affiliateCode": "ZX3kIzQG",
@@ -585,12 +619,21 @@ var formConfig = {
     "theme": "light"
 };
 
-window.LeadScout = window.LeadScout || {};
-window.LeadScout.onLoad = function() {
-    window.LeadScout.init(document.getElementById('lead-scout-form'), formConfig);
+function initLeadScout() {
+    var el = document.getElementById('lead-scout-form');
+    if (window.LeadScout && window.LeadScout.init && el) {
+        window.LeadScout.init(el, formConfig);
+    } else {
+        setTimeout(initLeadScout, 200);
+    }
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() { setTimeout(initLeadScout, 300); });
+} else {
+    setTimeout(initLeadScout, 300);
 }
 </script>
-<script src="https://app.leadscout.ca/library/library.js" async></script>
 
 </body>
 </html>
