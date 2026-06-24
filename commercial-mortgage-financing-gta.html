@@ -131,8 +131,28 @@
   <div class="cta-box">
     <h3>Compare Lending Options</h3>
     <p>See rates from 65+ licensed Canadian lenders — free, no obligation.</p>
-    <div id="leadscout-widget-ZX3kIzQG"></div>
-    <script src="https://app.leadscout.ca/widget/embed.js?id=ZX3kIzQG" async></script>
+    <div id="lead-scout-form" style="max-width:800px;margin:2rem auto;background:#ffffff;border-radius:12px;border:1px solid rgba(58,58,58,0.15);box-shadow:0 10px 25px -5px rgba(0,0,0,0.1),0 8px 10px -6px rgba(0,0,0,0.1);overflow:hidden;"></div>
+    <script>
+    var formConfig = {
+        "affiliateCode": "ZX3kIzQG",
+        "defaultValues": {"requestedAmount": 1000},
+        "formId": "1",
+        "language": "en",
+        "overrides": {"requestedAmount": {"max": 3000,"min": 100,"step": 100}},
+        "styles": {
+            "fontFamily": "\"Montserrat\", sans-serif",
+            "fullWidthFirstStepButton": true,
+            "minHeight": 0,
+            "primary": {"contrastText": "#fff","dark": "#8BA868","main": "#8BA868"}
+        },
+        "theme": "light"
+    };
+    window.LeadScout = window.LeadScout || {};
+    window.LeadScout.onLoad = function() {
+        window.LeadScout.init(document.getElementById('lead-scout-form'), formConfig);
+    }
+    </script>
+    <script src="https://app.leadscout.ca/library/library.js" async></script>
   </div>
 </div>
 
