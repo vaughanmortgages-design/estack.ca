@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Top Picks — estack.ca | Best Financial Products for Canadians</title>
+  <meta name="description" content="Top picks for self-employed Canadians — gold bullion, silver coins, HISAs, and tools that build real wealth.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --white: #ffffff;
+      --off-white: #fafaf8;
+      --light: #f4f3ef;
+      --gold: #c9a84c;
+      --gold-light: #e2c47a;
+      --gold-dark: #9d7a2e;
+      --gold-pale: #fdf8ec;
+      --ink: #0b0b0b;
+      --ink-mid: #2a2a2a;
+      --ink-light: #555555;
+      --ink-faint: #999999;
+      --border: #e8e4d9;
+      --border-gold: rgba(201,168,76,0.3);
+      --up: #1a7a4a;
+      --down: #c0392b;
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--off-white);
+      color: var(--ink);
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    nav {
+      background: var(--ink);
+      border-bottom: 1px solid #222;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+    }
+
+    .nav-brand {
+      font-family: var(--font-mono);
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--gold);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: #aaa;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      padding: 6px 12px;
+      border-radius: 4px;
+      transition: color 0.2s, background 0.2s;
+      letter-spacing: 0.03em;
+    }
+
+    .nav-links a:hover { color: var(--white); background: #1a1a1a; }
+    .nav-links a.active { color: var(--gold); }
+
+    .nav-cta {
+      background: var(--gold) !important;
+      color: var(--ink) !important;
+      font-weight: 600 !important;
+      padding: 6px 16px !important;
+    }
+
+    .nav-cta:hover { background: var(--gold-light) !important; }
+
+    /* HERO */
+    .page-hero {
+      background: var(--ink);
+      padding: 64px 24px 48px;
+      text-align: center;
+      border-bottom: 1px solid #222;
+    }
+
+    .page-hero .eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--gold);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .page-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: var(--white);
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .page-hero p {
+      color: #aaa;
+      font-size: 1rem;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    /* MAIN */
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    /* SECTION HEADER */
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      margin-bottom: 32px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-header h2 {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .section-tag {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--gold-dark);
+      background: var(--gold-pale);
+      border: 1px solid var(--border-gold);
+      padding: 3px 10px;
+      border-radius: 100px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* BULLION FEATURE CARD */
+    .bullion-feature {
+      background: var(--ink);
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 48px;
+      border: 1px solid #2a2a2a;
+    }
+
+    .bullion-feature-inner {
+      padding: 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .bullion-feature-content .tag {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--gold);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .bullion-feature-content h3 {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      color: var(--white);
+      font-weight: 700;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .bullion-feature-content p {
+      color: #aaa;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .btn-gold {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--gold);
+      color: var(--ink);
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 12px 24px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.1s;
+      letter-spacing: 0.02em;
+    }
+
+    .btn-gold:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+    .bullion-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .bullion-stat {
+      background: #111;
+      border: 1px solid #2a2a2a;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .bullion-stat .stat-value {
+      font-family: var(--font-mono);
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .bullion-stat .stat-label {
+      font-size: 0.75rem;
+      color: #666;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* PICK CARDS */
+    .picks-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+
+    .pick-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 28px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .pick-card:hover {
+      border-color: var(--gold);
+      box-shadow: 0 4px 20px rgba(201,168,76,0.1);
+    }
+
+    .pick-card-icon {
+      font-size: 1.8rem;
+      margin-bottom: 16px;
+    }
+
+    .pick-card-category {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--ink-faint);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .pick-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+
+    .pick-card p {
+      font-size: 0.875rem;
+      color: var(--ink-light);
+      line-height: 1.6;
+      margin-bottom: 20px;
+      flex: 1;
+    }
+
+    .pick-card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--gold-dark);
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      border-top: 1px solid var(--border);
+      padding-top: 16px;
+    }
+
+    .pick-card-link:hover { color: var(--gold); }
+
+    /* DISCLAIMER */
+    .disclaimer {
+      background: var(--light);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin-top: 48px;
+    }
+
+    .disclaimer p {
+      font-size: 0.78rem;
+      color: var(--ink-faint);
+      line-height: 1.6;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--ink);
+      border-top: 1px solid #222;
+      padding: 32px 24px;
+      text-align: center;
+    }
+
+    footer p {
+      color: #555;
+      font-size: 0.8rem;
+    }
+
+    footer a { color: var(--gold); text-decoration: none; }
+
+    @media (max-width: 768px) {
+      .bullion-feature-inner { grid-template-columns: 1fr; gap: 24px; }
+      .bullion-stats { grid-template-columns: 1fr 1fr; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/index.html" class="nav-brand">estack.ca</a>
+    <ul class="nav-links">
+      <li><a href="/loans.html">Loans</a></li>
+      <li><a href="/best-hisa-canada.html">Savings</a></li>
+      <li><a href="/bank-of-canada-rate-hold.html">Markets</a></li>
+      <li><a href="/improve-credit-score-canada.html">Credit</a></li>
+      <li><a href="/best-tools-self-employed-canada.html">Tools</a></li>
+      <li><a href="/top-picks.html" class="active">Top Picks</a></li>
+      <li><a href="/accounting.html">Accounting</a></li>
+      <li><a href="/loans.html" class="nav-cta">Get Funded →</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="eyebrow">Curated by estack.ca</div>
+  <h1>Top Picks for Self-Employed Canadians</h1>
+  <p>Real tools, real assets. No fluff. Built for entrepreneurs, tradespeople, and investors who don't trust the bank's advice.</p>
+</div>
+
+<main>
+
+  <!-- BULLION SECTION -->
+  <div class="section-header">
+    <h2>Precious Metals</h2>
+    <span class="section-tag">Hard Assets</span>
+  </div>
+
+  <div class="bullion-feature">
+    <div class="bullion-feature-inner">
+      <div class="bullion-feature-content">
+        <div class="tag">🏅 Editor's Pick — Gold & Silver</div>
+        <h3>Buy Gold Bullion in Canada — eBay Has the Best Selection</h3>
+        <p>For self-employed Canadians looking to hedge inflation and build hard assets outside the banking system, physical gold and silver remain the most accessible store of value. eBay Canada lists 800+ bullion products — Royal Canadian Mint coins, gold bars, silver Maple Leafs — from verified sellers with buyer protection.</p>
+        <p>No account minimums. No advisor fees. Buy what you want, when you want.</p>
+        <a href="https://www.ebay.ca/sch/i.html?_nkw=gold+bullion+canada&_sacat=0&_from=R40&_trksid=p4624852.m570.l1313&mkcid=1&mkrid=706-53473-19255-0&siteid=2&campid=5339155090&customid=bullion&toolid=10001&mkevt=1" class="btn-gold" target="_blank" rel="noopener">
+          Browse Gold Bullion on eBay →
+        </a>
+      </div>
+      <div class="bullion-stats">
+        <div class="bullion-stat">
+          <span class="stat-value">800+</span>
+          <span class="stat-label">Listings in Canada</span>
+        </div>
+        <div class="bullion-stat">
+          <span class="stat-value">RCM</span>
+          <span class="stat-label">Royal Canadian Mint</span>
+        </div>
+        <div class="bullion-stat">
+          <span class="stat-value">100%</span>
+          <span class="stat-label">Buyer Protection</span>
+        </div>
+        <div class="bullion-stat">
+          <span class="stat-value">Au + Ag</span>
+          <span class="stat-label">Gold & Silver</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PICK CARDS -->
+  <div class="picks-grid">
+
+    <div class="pick-card">
+      <div class="pick-card-icon">🥇</div>
+      <div class="pick-card-category">Gold Bullion</div>
+      <h3>Gold Maple Leaf Coins</h3>
+      <p>The Royal Canadian Mint's Gold Maple Leaf is one of the world's purest gold coins at .9999 fineness. Highly liquid, globally recognized, and available in 1 oz, 1/2 oz, 1/4 oz, and 1/10 oz denominations.</p>
+      <a href="https://www.ebay.ca/sch/i.html?_nkw=gold+maple+leaf+coin+canada&_sacat=0&mkcid=1&mkrid=706-53473-19255-0&siteid=2&campid=5339155090&customid=bullion-maple&toolid=10001&mkevt=1" class="pick-card-link" target="_blank" rel="noopener">
+        Shop Gold Maple Leafs →
+      </a>
+    </div>
+
+    <div class="pick-card">
+      <div class="pick-card-icon">🥈</div>
+      <div class="pick-card-category">Silver Bullion</div>
+      <h3>Silver Maple Leaf Coins</h3>
+      <p>Silver Maple Leafs are the most affordable entry point into physical precious metals. At 1 oz .9999 pure silver, they're easy to stack, store, and eventually liquidate. Strong demand from Canadian collectors and investors.</p>
+      <a href="https://www.ebay.ca/sch/i.html?_nkw=silver+maple+leaf+coin+canada&_sacat=0&mkcid=1&mkrid=706-53473-19255-0&siteid=2&campid=5339155090&customid=bullion-silver&toolid=10001&mkevt=1" class="pick-card-link" target="_blank" rel="noopener">
+        Shop Silver Maple Leafs →
+      </a>
+    </div>
+
+    <div class="pick-card">
+      <div class="pick-card-icon">🟨</div>
+      <div class="pick-card-category">Gold Bars</div>
+      <h3>Gold Bars — 1g to 1 oz</h3>
+      <p>Gold bars offer the lowest premium over spot price and come in sizes from 1 gram to 1 troy ounce. Ideal for self-employed investors who want to accumulate steadily without large upfront commitment.</p>
+      <a href="https://www.ebay.ca/sch/i.html?_nkw=gold+bar+canada+bullion&_sacat=0&mkcid=1&mkrid=706-53473-19255-0&siteid=2&campid=5339155090&customid=bullion-bars&toolid=10001&mkevt=1" class="pick-card-link" target="_blank" rel="noopener">
+        Shop Gold Bars →
+      </a>
+    </div>
+
+  </div>
+
+  <!-- DISCLAIMER -->
+  <div class="disclaimer">
+    <p><strong>Affiliate disclosure:</strong> estack.ca earns a commission on qualifying purchases made through links on this page at no additional cost to you. Precious metals carry market risk. This page is for informational purposes only and does not constitute financial advice. Always conduct your own due diligence before purchasing any asset.</p>
+  </div>
+
+</main>
+
+<footer>
+  <p>© 2026 estack.ca — Canadian Finance & Technology Intelligence. <a href="/editorial-policy.html">Editorial Policy</a> · <a href="/contact.html">Contact</a></p>
+</footer>
+
+</body>
+</html>

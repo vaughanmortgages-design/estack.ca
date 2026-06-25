@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accounting Tools for Self-Employed Canadians — estack.ca</title>
+  <meta name="description" content="Best accounting software, bookkeeping tools, and tax resources for self-employed Canadians, incorporated contractors, and small business owners.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --white: #ffffff;
+      --off-white: #fafaf8;
+      --light: #f4f3ef;
+      --gold: #c9a84c;
+      --gold-light: #e2c47a;
+      --gold-dark: #9d7a2e;
+      --gold-pale: #fdf8ec;
+      --ink: #0b0b0b;
+      --ink-mid: #2a2a2a;
+      --ink-light: #555555;
+      --ink-faint: #999999;
+      --border: #e8e4d9;
+      --border-gold: rgba(201,168,76,0.3);
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); background: var(--off-white); color: var(--ink); line-height: 1.6; }
+
+    nav { background: var(--ink); border-bottom: 1px solid #222; position: sticky; top: 0; z-index: 100; }
+    .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 60px; }
+    .nav-brand { font-family: var(--font-mono); font-size: 1.1rem; font-weight: 500; color: var(--gold); text-decoration: none; letter-spacing: 0.05em; }
+    .nav-links { display: flex; list-style: none; gap: 8px; align-items: center; }
+    .nav-links a { color: #aaa; text-decoration: none; font-size: 0.85rem; font-weight: 500; padding: 6px 12px; border-radius: 4px; transition: color 0.2s, background 0.2s; letter-spacing: 0.03em; }
+    .nav-links a:hover { color: var(--white); background: #1a1a1a; }
+    .nav-links a.active { color: var(--gold); }
+    .nav-cta { background: var(--gold) !important; color: var(--ink) !important; font-weight: 600 !important; padding: 6px 16px !important; }
+    .nav-cta:hover { background: var(--gold-light) !important; }
+
+    .page-hero { background: var(--ink); padding: 64px 24px 48px; text-align: center; border-bottom: 1px solid #222; }
+    .page-hero .eyebrow { font-family: var(--font-mono); font-size: 0.75rem; color: var(--gold); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 16px; }
+    .page-hero h1 { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3rem); color: var(--white); font-weight: 700; margin-bottom: 16px; }
+    .page-hero p { color: #aaa; font-size: 1rem; max-width: 560px; margin: 0 auto; }
+
+    main { max-width: 1200px; margin: 0 auto; padding: 48px 24px 80px; }
+
+    .section-header { display: flex; align-items: baseline; gap: 16px; margin-bottom: 32px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
+    .section-header h2 { font-family: var(--font-display); font-size: 1.6rem; font-weight: 700; color: var(--ink); }
+    .section-tag { font-family: var(--font-mono); font-size: 0.7rem; color: var(--gold-dark); background: var(--gold-pale); border: 1px solid var(--border-gold); padding: 3px 10px; border-radius: 100px; letter-spacing: 0.08em; text-transform: uppercase; }
+
+    .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px; margin-bottom: 48px; }
+
+    .tool-card { background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 28px; transition: border-color 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; }
+    .tool-card:hover { border-color: var(--gold); box-shadow: 0 4px 20px rgba(201,168,76,0.1); }
+    .tool-card-icon { font-size: 1.8rem; margin-bottom: 16px; }
+    .tool-card-category { font-family: var(--font-mono); font-size: 0.65rem; color: var(--ink-faint); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 8px; }
+    .tool-card h3 { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: var(--ink); margin-bottom: 10px; }
+    .tool-card p { font-size: 0.875rem; color: var(--ink-light); line-height: 1.6; margin-bottom: 20px; flex: 1; }
+    .tool-badge { display: inline-block; font-size: 0.7rem; font-weight: 600; padding: 3px 10px; border-radius: 100px; margin-bottom: 12px; }
+    .badge-free { background: #e8f5e9; color: #2e7d32; }
+    .badge-paid { background: #fff3e0; color: #e65100; }
+    .badge-trial { background: #e3f2fd; color: #1565c0; }
+    .tool-card-link { display: inline-flex; align-items: center; gap: 6px; color: var(--gold-dark); font-size: 0.85rem; font-weight: 600; text-decoration: none; border-top: 1px solid var(--border); padding-top: 16px; }
+    .tool-card-link:hover { color: var(--gold); }
+
+    .coming-soon { background: var(--light); border: 1px dashed var(--border); border-radius: 10px; padding: 40px; text-align: center; color: var(--ink-faint); font-size: 0.9rem; }
+    .coming-soon strong { display: block; font-size: 1.1rem; color: var(--ink-light); margin-bottom: 8px; }
+
+    .disclaimer { background: var(--light); border: 1px solid var(--border); border-radius: 8px; padding: 20px 24px; margin-top: 48px; }
+    .disclaimer p { font-size: 0.78rem; color: var(--ink-faint); line-height: 1.6; }
+
+    footer { background: var(--ink); border-top: 1px solid #222; padding: 32px 24px; text-align: center; }
+    footer p { color: #555; font-size: 0.8rem; }
+    footer a { color: var(--gold); text-decoration: none; }
+
+    @media (max-width: 768px) { .nav-links { display: none; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/index.html" class="nav-brand">estack.ca</a>
+    <ul class="nav-links">
+      <li><a href="/loans.html">Loans</a></li>
+      <li><a href="/best-hisa-canada.html">Savings</a></li>
+      <li><a href="/bank-of-canada-rate-hold.html">Markets</a></li>
+      <li><a href="/improve-credit-score-canada.html">Credit</a></li>
+      <li><a href="/best-tools-self-employed-canada.html">Tools</a></li>
+      <li><a href="/top-picks.html">Top Picks</a></li>
+      <li><a href="/accounting.html" class="active">Accounting</a></li>
+      <li><a href="/loans.html" class="nav-cta">Get Funded →</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="eyebrow">For Incorporated & Self-Employed Canadians</div>
+  <h1>Accounting Tools That Actually Work</h1>
+  <p>Bookkeeping, tax prep, invoicing, and payroll software reviewed for self-employed Canadians, contractors, and incorporated business owners.</p>
+</div>
+
+<main>
+
+  <div class="section-header">
+    <h2>Bookkeeping & Tax Software</h2>
+    <span class="section-tag">Canada-Focused</span>
+  </div>
+
+  <div class="tools-grid">
+
+    <div class="tool-card">
+      <div class="tool-card-icon">📊</div>
+      <span class="tool-badge badge-trial">Free Trial</span>
+      <div class="tool-card-category">Full-Service Accounting</div>
+      <h3>QuickBooks Online Canada</h3>
+      <p>The industry standard for incorporated Canadian businesses. HST tracking, payroll, bank reconciliation, and CRA-ready reports. Works with most Canadian accountants and bookkeepers out of the box.</p>
+      <a href="https://quickbooks.intuit.com/ca/" class="tool-card-link" target="_blank" rel="noopener">Visit QuickBooks Canada →</a>
+    </div>
+
+    <div class="tool-card">
+      <div class="tool-card-icon">🧾</div>
+      <span class="tool-badge badge-trial">Free Plan Available</span>
+      <div class="tool-card-category">Invoicing & Bookkeeping</div>
+      <h3>FreshBooks Canada</h3>
+      <p>Built for freelancers and self-employed professionals. Clean invoicing, expense tracking, and time tracking. Strong mobile app for tradespeople and contractors billing on-site. HST-compliant invoicing built in.</p>
+      <a href="https://www.freshbooks.com/ca/" class="tool-card-link" target="_blank" rel="noopener">Visit FreshBooks →</a>
+    </div>
+
+    <div class="tool-card">
+      <div class="tool-card-icon">🍁</div>
+      <span class="tool-badge badge-paid">Canadian-Built</span>
+      <div class="tool-card-category">Tax Filing</div>
+      <h3>TurboTax Self-Employed Canada</h3>
+      <p>Designed specifically for self-employed Canadians filing T1 returns with business income (T2125). Guides you through CRA deductions most contractors miss — home office, vehicle, tools, and more.</p>
+      <a href="https://turbotax.intuit.ca/tax-resources/self-employed-tax.jsp" class="tool-card-link" target="_blank" rel="noopener">Visit TurboTax Canada →</a>
+    </div>
+
+    <div class="tool-card">
+      <div class="tool-card-icon">📱</div>
+      <span class="tool-badge badge-free">Free to Start</span>
+      <div class="tool-card-category">Receipt Tracking</div>
+      <h3>Dext (formerly Receipt Bank)</h3>
+      <p>Snap photos of receipts and invoices on your phone — Dext extracts the data and syncs to QuickBooks or Xero automatically. Built for trades and contractors who accumulate paper receipts on job sites.</p>
+      <a href="https://dext.com/ca" class="tool-card-link" target="_blank" rel="noopener">Visit Dext →</a>
+    </div>
+
+    <div class="tool-card">
+      <div class="tool-card-icon">💼</div>
+      <span class="tool-badge badge-trial">Free Trial</span>
+      <div class="tool-card-category">Payroll</div>
+      <h3>Wagepoint — Canadian Payroll</h3>
+      <p>Purpose-built Canadian payroll software. Handles CPP, EI, income tax deductions, T4s, and ROEs automatically. Ideal for incorporated contractors with one or two employees or paying themselves a salary.</p>
+      <a href="https://wagepoint.com/" class="tool-card-link" target="_blank" rel="noopener">Visit Wagepoint →</a>
+    </div>
+
+    <div class="tool-card">
+      <div class="tool-card-icon">🏦</div>
+      <span class="tool-badge badge-free">Free</span>
+      <div class="tool-card-category">CRA Tools</div>
+      <h3>CRA My Business Account</h3>
+      <p>Your direct line to the Canada Revenue Agency. File HST returns, manage payroll deductions, view your corporation's tax account, and set up direct deposit for refunds. Essential for any incorporated Canadian.</p>
+      <a href="https://www.canada.ca/en/revenue-agency/services/e-services/digital-services-businesses/business-account.html" class="tool-card-link" target="_blank" rel="noopener">Access CRA My Business Account →</a>
+    </div>
+
+  </div>
+
+  <div class="disclaimer">
+    <p><strong>Editorial note:</strong> estack.ca may earn affiliate commissions from some links on this page. Our reviews are independent. We do not accept payment for placement or positive coverage. Always verify software pricing and features directly with the provider before purchasing.</p>
+  </div>
+
+</main>
+
+<footer>
+  <p>© 2026 estack.ca — Canadian Finance & Technology Intelligence. <a href="/editorial-policy.html">Editorial Policy</a> · <a href="/contact.html">Contact</a></p>
+</footer>
+
+</body>
+</html>
