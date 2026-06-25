@@ -31,9 +31,7 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
 html { scroll-behavior: smooth; }
-
 body {
   font-family: var(--font-body);
   background: var(--white);
@@ -42,7 +40,7 @@ body {
   overflow-x: hidden;
 }
 
-/* ── TICKER ── */
+/* TICKER */
 .ticker-wrap {
   background: var(--ink);
   padding: 0;
@@ -94,7 +92,7 @@ body {
   100% { transform: translateX(-50%); }
 }
 
-/* ── NAV ── */
+/* NAV */
 nav {
   background: var(--white);
   border-bottom: 1px solid var(--border);
@@ -116,9 +114,7 @@ nav {
   text-decoration: none;
   letter-spacing: -0.02em;
 }
-.nav-logo span {
-  color: var(--gold);
-}
+.nav-logo span { color: var(--gold); }
 .nav-links {
   display: flex;
   align-items: center;
@@ -143,7 +139,7 @@ nav {
 }
 .nav-cta:hover { background: var(--gold-dark); color: white !important; }
 
-/* ── HERO ── */
+/* HERO */
 .hero {
   background: var(--white);
   padding: 5rem 2.5rem 4rem;
@@ -182,10 +178,7 @@ nav {
   letter-spacing: -0.02em;
   margin-bottom: 1.5rem;
 }
-.hero h1 em {
-  font-style: italic;
-  color: var(--gold);
-}
+.hero h1 em { font-style: italic; color: var(--gold); }
 .hero-sub {
   font-size: 1.05rem;
   color: var(--ink-light);
@@ -277,14 +270,8 @@ nav {
   font-weight: 500;
   color: var(--ink);
 }
-.market-sub {
-  font-size: 0.7rem;
-  color: var(--ink-faint);
-  margin-top: 0.1rem;
-}
-.market-val {
-  text-align: right;
-}
+.market-sub { font-size: 0.7rem; color: var(--ink-faint); margin-top: 0.1rem; }
+.market-val { text-align: right; }
 .market-price {
   font-family: var(--font-mono);
   font-size: 0.9rem;
@@ -299,7 +286,7 @@ nav {
 .market-chg.up { color: var(--up); }
 .market-chg.down { color: var(--down); }
 
-/* ── DIVIDER ── */
+/* DIVIDER */
 .section-divider {
   border: none;
   border-top: 1px solid var(--border);
@@ -314,7 +301,7 @@ nav {
   margin: 0 auto;
 }
 
-/* ── CATEGORIES ── */
+/* CATEGORIES */
 .categories {
   max-width: 1200px;
   margin: 0 auto;
@@ -379,11 +366,7 @@ nav {
   transition: transform 0.2s;
 }
 .cat-card:hover::after { transform: scaleX(1); }
-.cat-icon {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  display: block;
-}
+.cat-icon { font-size: 1.5rem; margin-bottom: 1rem; display: block; }
 .cat-name {
   font-family: var(--font-display);
   font-size: 1rem;
@@ -391,11 +374,7 @@ nav {
   color: var(--ink);
   margin-bottom: 0.375rem;
 }
-.cat-desc {
-  font-size: 0.78rem;
-  color: var(--ink-faint);
-  line-height: 1.5;
-}
+.cat-desc { font-size: 0.78rem; color: var(--ink-faint); line-height: 1.5; }
 .cat-count {
   font-family: var(--font-mono);
   font-size: 0.65rem;
@@ -404,7 +383,7 @@ nav {
   letter-spacing: 0.05em;
 }
 
-/* ── FEATURED ARTICLES ── */
+/* FEATURED ARTICLES */
 .featured {
   background: var(--light);
   border-top: 1px solid var(--border);
@@ -446,9 +425,7 @@ nav {
   line-height: 1.3;
   margin-bottom: 0.75rem;
 }
-.article-card:first-child .article-title {
-  font-size: 1.6rem;
-}
+.article-card:first-child .article-title { font-size: 1.6rem; }
 .article-excerpt {
   font-size: 0.825rem;
   color: var(--ink-light);
@@ -473,7 +450,7 @@ nav {
   background: var(--gold);
 }
 
-/* ── AFFILIATE STRIP ── */
+/* AFFILIATE STRIP */
 .affiliate-strip {
   max-width: 1200px;
   margin: 0 auto;
@@ -485,9 +462,7 @@ nav {
   gap: 1.5rem;
   margin-top: 2.5rem;
 }
-.affiliate-grid.cols-4 {
-  grid-template-columns: repeat(4, 1fr);
-}
+.affiliate-grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
 @media (max-width: 1024px) {
   .affiliate-grid.cols-4 { grid-template-columns: repeat(2, 1fr); }
 }
@@ -531,11 +506,7 @@ nav {
   font-weight: 700;
   color: var(--ink);
 }
-.affiliate-desc {
-  font-size: 0.82rem;
-  color: var(--ink-light);
-  line-height: 1.6;
-}
+.affiliate-desc { font-size: 0.82rem; color: var(--ink-light); line-height: 1.6; }
 .affiliate-cta {
   font-size: 0.8rem;
   font-weight: 600;
@@ -546,11 +517,8 @@ nav {
   margin-top: auto;
 }
 
-/* ── VMG BANNER ── */
-.vmg-banner {
-  background: var(--ink);
-  padding: 4rem 2.5rem;
-}
+/* VMG BANNER */
+.vmg-banner { background: var(--ink); padding: 4rem 2.5rem; }
 .vmg-inner {
   max-width: 1200px;
   margin: 0 auto;
@@ -608,7 +576,7 @@ nav {
 }
 .vmg-btn:hover { background: var(--gold-light); }
 
-/* ── LOANS CTA ── */
+/* LOANS CTA */
 .loans-cta {
   background: var(--gold-pale);
   border-top: 1px solid var(--border-gold);
@@ -616,17 +584,8 @@ nav {
   padding: 3rem 2.5rem;
   text-align: center;
 }
-.loans-cta h2 {
-  font-family: var(--font-display);
-  font-size: 1.75rem;
-  color: var(--ink);
-  margin-bottom: 0.75rem;
-}
-.loans-cta p {
-  color: var(--ink-light);
-  font-size: 0.95rem;
-  margin-bottom: 1.5rem;
-}
+.loans-cta h2 { font-family: var(--font-display); font-size: 1.75rem; color: var(--ink); margin-bottom: 0.75rem; }
+.loans-cta p { color: var(--ink-light); font-size: 0.95rem; margin-bottom: 1.5rem; }
 .loans-btn {
   background: var(--ink);
   color: var(--white);
@@ -640,7 +599,7 @@ nav {
 }
 .loans-btn:hover { background: var(--gold); color: var(--ink); }
 
-/* ── FOOTER ── */
+/* FOOTER */
 footer {
   background: var(--ink);
   padding: 3rem 2.5rem 2rem;
@@ -655,19 +614,9 @@ footer {
   padding-bottom: 2rem;
   border-bottom: 1px solid rgba(255,255,255,0.1);
 }
-.footer-logo {
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  color: var(--white);
-  margin-bottom: 0.75rem;
-}
+.footer-logo { font-family: var(--font-display); font-size: 1.5rem; color: var(--white); margin-bottom: 0.75rem; }
 .footer-logo span { color: var(--gold); }
-.footer-desc {
-  font-size: 0.8rem;
-  color: rgba(255,255,255,0.45);
-  line-height: 1.7;
-  max-width: 260px;
-}
+.footer-desc { font-size: 0.8rem; color: rgba(255,255,255,0.45); line-height: 1.7; max-width: 260px; }
 .footer-heading {
   font-family: var(--font-mono);
   font-size: 0.65rem;
@@ -677,12 +626,7 @@ footer {
   margin-bottom: 1.25rem;
 }
 .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
-.footer-links a {
-  font-size: 0.82rem;
-  color: rgba(255,255,255,0.5);
-  text-decoration: none;
-  transition: color 0.2s;
-}
+.footer-links a { font-size: 0.82rem; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
 .footer-links a:hover { color: var(--gold-light); }
 .footer-bottom {
   max-width: 1200px;
@@ -693,19 +637,10 @@ footer {
   flex-wrap: wrap;
   gap: 1rem;
 }
-.footer-copy {
-  font-size: 0.75rem;
-  color: rgba(255,255,255,0.3);
-}
-.footer-disclaimer {
-  font-size: 0.7rem;
-  color: rgba(255,255,255,0.25);
-  max-width: 500px;
-  text-align: right;
-  line-height: 1.5;
-}
+.footer-copy { font-size: 0.75rem; color: rgba(255,255,255,0.3); }
+.footer-disclaimer { font-size: 0.7rem; color: rgba(255,255,255,0.25); max-width: 500px; text-align: right; line-height: 1.5; }
 
-/* ── NEWSLETTER ── */
+/* NEWSLETTER */
 .newsletter {
   background: var(--ink);
   border-top: 2px solid var(--gold);
@@ -737,37 +672,13 @@ footer {
   margin-bottom: 0.75rem;
 }
 .newsletter-title em { font-style: italic; color: var(--gold-light); }
-.newsletter-sub {
-  font-size: 0.9rem;
-  color: rgba(255,255,255,0.5);
-  line-height: 1.7;
-}
-.newsletter-bullets {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  margin-top: 1.25rem;
-}
-.newsletter-bullet {
-  font-size: 0.82rem;
-  color: rgba(255,255,255,0.5);
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-}
+.newsletter-sub { font-size: 0.9rem; color: rgba(255,255,255,0.5); line-height: 1.7; }
+.newsletter-bullets { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 1.25rem; }
+.newsletter-bullet { font-size: 0.82rem; color: rgba(255,255,255,0.5); display: flex; align-items: center; gap: 0.6rem; }
 .newsletter-bullet::before { content: '→'; color: var(--gold); font-weight: 700; }
 .newsletter-form { display: flex; flex-direction: column; gap: 0.875rem; }
-.newsletter-field {
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-}
-.newsletter-field label {
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: rgba(255,255,255,0.55);
-  letter-spacing: 0.04em;
-}
+.newsletter-field { display: flex; flex-direction: column; gap: 0.35rem; }
+.newsletter-field label { font-size: 0.75rem; font-weight: 600; color: rgba(255,255,255,0.55); letter-spacing: 0.04em; }
 .newsletter-field input {
   background: rgba(255,255,255,0.07);
   border: 1px solid rgba(255,255,255,0.15);
@@ -795,11 +706,7 @@ footer {
   letter-spacing: 0.02em;
 }
 .newsletter-submit:hover { background: var(--gold-light); }
-.newsletter-disclaimer {
-  font-size: 0.7rem;
-  color: rgba(255,255,255,0.25);
-  line-height: 1.5;
-}
+.newsletter-disclaimer { font-size: 0.7rem; color: rgba(255,255,255,0.25); line-height: 1.5; }
 .newsletter-success {
   display: none;
   background: rgba(201,168,76,0.1);
@@ -810,7 +717,7 @@ footer {
 .newsletter-success p { font-size: 0.9rem; color: rgba(255,255,255,0.7); }
 .newsletter-success strong { color: var(--gold-light); }
 
-/* ── FREE RESOURCES ── */
+/* FREE RESOURCES */
 .resources {
   background: var(--light);
   border-top: 1px solid var(--border);
@@ -840,35 +747,10 @@ footer {
   box-shadow: 0 4px 20px rgba(201,168,76,0.1);
 }
 .resource-icon { font-size: 1.75rem; }
-.resource-type {
-  font-family: var(--font-mono);
-  font-size: 0.6rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--gold-dark);
-}
-.resource-title {
-  font-family: var(--font-display);
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--ink);
-  line-height: 1.3;
-}
-.resource-desc {
-  font-size: 0.8rem;
-  color: var(--ink-light);
-  line-height: 1.55;
-  flex: 1;
-}
-.resource-cta {
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: var(--gold-dark);
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
-  margin-top: 0.25rem;
-}
+.resource-type { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-dark); }
+.resource-title { font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: var(--ink); line-height: 1.3; }
+.resource-desc { font-size: 0.8rem; color: var(--ink-light); line-height: 1.55; flex: 1; }
+.resource-cta { font-size: 0.78rem; font-weight: 600; color: var(--gold-dark); display: flex; align-items: center; gap: 0.3rem; margin-top: 0.25rem; }
 .resource-badge {
   font-family: var(--font-mono);
   font-size: 0.58rem;
@@ -882,7 +764,7 @@ footer {
   align-self: flex-start;
 }
 
-/* ── GATE MODAL ── */
+/* GATE MODAL */
 .modal-overlay {
   display: none;
   position: fixed;
@@ -902,33 +784,10 @@ footer {
   padding: 2.5rem;
   position: relative;
 }
-.modal-close {
-  position: absolute;
-  top: 1rem; right: 1.25rem;
-  background: none;
-  border: none;
-  font-size: 1.25rem;
-  cursor: pointer;
-  color: var(--ink-faint);
-  line-height: 1;
-}
+.modal-close { position: absolute; top: 1rem; right: 1.25rem; background: none; border: none; font-size: 1.25rem; cursor: pointer; color: var(--ink-faint); line-height: 1; }
 .modal-close:hover { color: var(--ink); }
-.modal-eyebrow {
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--gold-dark);
-  margin-bottom: 0.75rem;
-}
-.modal-title {
-  font-family: var(--font-display);
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: var(--ink);
-  margin-bottom: 0.5rem;
-  line-height: 1.2;
-}
+.modal-eyebrow { font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-dark); margin-bottom: 0.75rem; }
+.modal-title { font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; color: var(--ink); margin-bottom: 0.5rem; line-height: 1.2; }
 .modal-sub { font-size: 0.85rem; color: var(--ink-light); margin-bottom: 1.75rem; line-height: 1.6; }
 .modal-form { display: flex; flex-direction: column; gap: 1rem; }
 .modal-field { display: flex; flex-direction: column; gap: 0.35rem; }
@@ -959,7 +818,7 @@ footer {
 .modal-submit:hover { background: var(--gold); color: var(--ink); }
 .modal-fine { font-size: 0.7rem; color: var(--ink-faint); text-align: center; }
 
-/* ── RESPONSIVE ── */
+/* RESPONSIVE */
 @media (max-width: 900px) {
   .hero { grid-template-columns: 1fr; gap: 2.5rem; padding: 3rem 1.5rem; }
   .article-grid { grid-template-columns: 1fr; }
@@ -1069,7 +928,7 @@ footer {
       <div class="cat-desc">High-yield savings accounts, business banking, and cash management tools.</div>
       <div class="cat-count">Top CA rates tracked</div>
     </a>
-    <a href="/improve-credit-score-canada.html" class="cat-card">
+    <a href="/buy-gold-bullion-canada.html" class="cat-card">
       <span class="cat-icon">📈</span>
       <div class="cat-name">Investing</div>
       <div class="cat-desc">Brokerages, ETFs, precious metals, and wealth-building for the self-employed investor.</div>
@@ -1096,6 +955,7 @@ footer {
       </div>
       <a href="/" class="see-all">All articles →</a>
     </div>
+
     <div class="article-grid">
       <a href="/bank-of-canada-rate-hold.html" class="article-card">
         <div class="article-tag">Rates & Policy</div>
@@ -1115,6 +975,7 @@ footer {
         <div class="article-excerpt">The five levers that actually move your score in Canada, and the myths that waste your time.</div>
         <div class="article-meta">June 2026 · 4 min read</div>
       </a>
+    </div>
 
     <div class="article-grid" style="margin-top:2rem;">
       <a href="/best-tools-self-employed-canada.html" class="article-card">
@@ -1136,6 +997,7 @@ footer {
         <div class="article-meta">June 2026 · 7 min read</div>
       </a>
     </div>
+
     <div class="article-grid" style="margin-top:2rem;">
       <a href="/bank-said-no-what-to-do-next.html" class="article-card">
         <div class="article-tag">Mortgages &amp; Lending</div>
@@ -1156,6 +1018,7 @@ footer {
         <div class="article-meta">June 2026 · 5 min read</div>
       </a>
     </div>
+
     <div class="article-grid" style="margin-top:2rem;">
       <a href="/best-newsletter-platforms-canadian-business.html" class="article-card">
         <div class="article-tag">Marketing Tools</div>
@@ -1176,7 +1039,28 @@ footer {
         <div class="article-meta">June 2026 · 8 min read</div>
       </a>
     </div>
+
+    <div class="article-grid" style="margin-top:2rem;">
+      <a href="/buy-gold-bullion-canada.html" class="article-card">
+        <div class="article-tag">Investing &amp; Precious Metals</div>
+        <div class="article-title">How to Buy Gold Bullion in Canada (2026 Guide)</div>
+        <div class="article-excerpt">Coins vs bars, where to buy, storage, and tax — everything Canadians need to know before adding physical gold to their portfolio.</div>
+        <div class="article-meta">June 2026 · 7 min read</div>
+      </a>
+      <a href="/accounting.html" class="article-card">
+        <div class="article-tag">Accounting</div>
+        <div class="article-title">Accounting for Self-Employed Canadians — What You Need to Know</div>
+        <div class="article-excerpt">GST/HST, expense tracking, and year-end prep — how to stay CRA-compliant without losing your mind.</div>
+        <div class="article-meta">June 2026 · 6 min read</div>
+      </a>
+      <a href="/ontario-first-time-home-buyer-guide.html" class="article-card">
+        <div class="article-tag">Real Estate</div>
+        <div class="article-title">Ontario First-Time Home Buyer Guide 2026</div>
+        <div class="article-excerpt">FHSA, land transfer rebates, stress test, and what self-employed buyers need to do differently.</div>
+        <div class="article-meta">June 2026 · 7 min read</div>
+      </a>
     </div>
+
   </div>
 </section>
 
@@ -1236,7 +1120,7 @@ footer {
       <div style="font-family:var(--font-display);font-size:1.5rem;font-weight:700;color:var(--ink);margin-bottom:0.4rem">Canadian Mortgage Calculator</div>
       <div style="font-size:0.875rem;color:var(--ink-light)">Monthly payment, stress test, CMHC, and total interest. Takes 30 seconds.</div>
     </div>
-    <a href="/mortgage-calculator.html" style="background:var(--ink);color:var(--white);font-size:0.875rem;font-weight:600;padding:0.875rem 2rem;text-decoration:none;border-radius:3px;white-space:nowrap;transition:background 0.2s;flex-shrink:0">Calculate Your Payment →</a>
+    <a href="/mortgage-calculator.html" style="background:var(--ink);color:var(--white);font-size:0.875rem;font-weight:600;padding:0.875rem 2rem;text-decoration:none;border-radius:3px;white-space:nowrap;flex-shrink:0">Calculate Your Payment →</a>
   </div>
 </div>
 
@@ -1304,7 +1188,6 @@ footer {
         </div>
         <div class="newsletter-field">
           <label for="nl-email">Email Address</label>
-          <!-- Replace action URL with your Mailchimp embed form action URL -->
           <input type="email" id="nl-email" name="email" placeholder="jane@yourcompany.ca" required>
         </div>
         <button type="submit" class="newsletter-submit">Subscribe Free →</button>
@@ -1413,6 +1296,7 @@ footer {
         <li><a href="/best-hisa-canada.html">Savings Accounts</a></li>
         <li><a href="/improve-credit-score-canada.html">Credit</a></li>
         <li><a href="/bank-of-canada-rate-hold.html">BoC Rates</a></li>
+        <li><a href="/buy-gold-bullion-canada.html">Buy Gold Bullion</a></li>
       </ul>
     </div>
     <div>
@@ -1442,7 +1326,6 @@ footer {
 </footer>
 
 <script>
-// ── LIVE TICKER DATA ──
 const tickerData = [
   { symbol: 'TSX', price: '22,847', change: '+0.42%', up: true },
   { symbol: 'XIU', price: '$32.84', change: '+0.38%', up: true },
@@ -1475,7 +1358,6 @@ function buildTicker() {
   `).join('');
 }
 
-// ── SIMULATED LIVE MARKET UPDATES ──
 function randomFlicker(base, range) {
   const delta = (Math.random() - 0.48) * range;
   return (parseFloat(base.replace(/,/g, '')) + delta).toFixed(2);
@@ -1485,12 +1367,8 @@ function updateMarkets() {
   const tsx = document.getElementById('tsx-price');
   const tsxChg = document.getElementById('tsx-chg');
   const cad = document.getElementById('cad-price');
-  const cadChg = document.getElementById('cad-chg');
   const gold = document.getElementById('gold-price');
-  const goldChg = document.getElementById('gold-chg');
   const btc = document.getElementById('btc-price');
-  const btcChg = document.getElementById('btc-chg');
-
   if (tsx) {
     const v = randomFlicker('22847', 15);
     const chg = ((v - 22847) / 22847 * 100).toFixed(2);
@@ -1498,24 +1376,14 @@ function updateMarkets() {
     tsxChg.textContent = (chg >= 0 ? '▲ +' : '▼ ') + chg + '%';
     tsxChg.className = 'market-chg ' + (chg >= 0 ? 'up' : 'down');
   }
-  if (cad) {
-    const v = randomFlicker('0.7318', 0.001);
-    cad.textContent = parseFloat(v).toFixed(4);
-  }
-  if (gold) {
-    const v = randomFlicker('3421', 4);
-    gold.textContent = Number(v).toLocaleString('en-CA', {maximumFractionDigits: 0});
-  }
-  if (btc) {
-    const v = randomFlicker('137420', 200);
-    btc.textContent = Number(v).toLocaleString('en-CA', {maximumFractionDigits: 0});
-  }
+  if (cad) { cad.textContent = parseFloat(randomFlicker('0.7318', 0.001)).toFixed(4); }
+  if (gold) { gold.textContent = Number(randomFlicker('3421', 4)).toLocaleString('en-CA', {maximumFractionDigits: 0}); }
+  if (btc) { btc.textContent = Number(randomFlicker('137420', 200)).toLocaleString('en-CA', {maximumFractionDigits: 0}); }
 }
 
 buildTicker();
 setInterval(updateMarkets, 4000);
 
-// ── PDF GATE ──
 let pendingPdf = '';
 function openGate(pdfFile, title) {
   pendingPdf = pdfFile;
@@ -1532,11 +1400,8 @@ function closeGate() {
 function closeGateOnOverlay(e) {
   if (e.target === document.getElementById('gateModal')) closeGate();
 }
-// ── LEAD CAPTURE ──
-// Swap ESTACK_FORM_ENDPOINT for your real Formspree form ID (formspree.io/f/XXXXX)
-// or your Beehiiv publication subscribe URL once you have it.
-const ESTACK_FORM_ENDPOINT = 'https://formspree.io/f/YOUR_FORMSPREE_ID_HERE';
 
+const ESTACK_FORM_ENDPOINT = 'https://formspree.io/f/YOUR_FORMSPREE_ID_HERE';
 function captureLead(email, name, source) {
   return fetch(ESTACK_FORM_ENDPOINT, {
     method: 'POST',
@@ -1544,7 +1409,6 @@ function captureLead(email, name, source) {
     body: JSON.stringify({ email, name, source, site: 'estack.ca' })
   }).catch(err => console.warn('Lead capture endpoint not configured yet:', err));
 }
-
 function handleGate(e) {
   e.preventDefault();
   const email = document.getElementById('gate-email').value;
@@ -1558,8 +1422,6 @@ function handleGate(e) {
   }
   closeGate();
 }
-
-// ── NEWSLETTER ──
 function handleNewsletter(e) {
   e.preventDefault();
   const email = document.getElementById('nl-email').value;
