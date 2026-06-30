@@ -1,37 +1,49 @@
 name: Compliance Scrub - Remove VMG/GNE References
-
 on:
   workflow_dispatch:
-
-  jobs:
-    scrub:
-        runs-on: ubuntu-latest
-            steps:
-                  - uses: actions/checkout@v4
-                          with:
-                                    ref: compliance/scrub-vmg-gne
-                                              token: ${{ secrets.GITHUB_TOKEN }}
-
-                                                    - name: Replace compliance strings in HTML/XML files
-                                                            run: |
-                                                                      find . -name "*.html" -o -name "*.xml" | while read f; do
-                                                                                  sed -i 's/VMG/estack.ca/g' "$f"
-                                                                                              sed -i 's/Vaughan Mortgage Group/estack.ca/g' "$f"
-                                                                                                          sed -i 's/vaughanmortgagegroup\.ca/estack.ca/g' "$f"
-                                                                                                                      sed -i 's/Paul Malandrino/[author]/g' "$f"
-                                                                                                                                  sed -i 's/GNE Mortgages\?/[lender]/g' "$f"
-                                                                                                                                              sed -i 's/Lic\. #10394//g' "$f"
-                                                                                                                                                          sed -i 's/FSRA #M25000307//g' "$f"
-                                                                                                                                                                      sed -i 's/416-891-8684//g' "$f"
-                                                                                                                                                                                  sed -i 's/416 891 8684//g' "$f"
-                                                                                                                                                                                              sed -i 's/vaughanmortgages@gmail\.com//g' "$f"
-                                                                                                                                                                                                          sed -i 's|https://calendly\.com/[^"'\'']*|#|g' "$f"
-                                                                                                                                                                                                                    done
-                                                                                                                                                                                                                    
-                                                                                                                                                                                                                          - name: Commit changes
-                                                                                                                                                                                                                                  run: |
-                                                                                                                                                                                                                                            git config user.name "github-actions[bot]"
-                                                                                                                                                                                                                                                      git config user.email "github-actions[bot]@users.noreply.github.com"
-                                                                                                                                                                                                                                                                git add -A
-                                                                                                                                                                                                                                                                          git diff --staged --quiet || git commit -m "Compliance scrub: remove VMG/GNE personal references"
-                                                                                                                                                                                                                                                                                    git push
+jobs:
+  scrub:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: compliance/scrub-vmg-gne
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Replace compliance strings
+        run: |
+          python3 << 'PYEOF'
+          import re, glob
+          patterns = [
+              ('VMG', 'estack.ca'),
+              ('Vaughan Mortgage Group', 'estack.ca'),
+              ('vaughanmortgagegroup.ca', 'estack.ca'),
+              ('Paul Malandrino', '[author]'),
+              ('GNE Mortgages', '[lender]'),
+              ('GNE Mortgage', '[lender]'),
+              ('Lic. #10394', ''),
+              ('FSRA #M25000307', ''),
+              ('416-891-8684', ''),
+              ('416 891 8684', ''),
+              ('vaughanmortgages@gmail.com', ''),
+          ]
+          cal_pat = re.compile(r'https?://calendly\.com/\S+')
+          files = glob.glob('**/*.html', recursive=True) + glob.glob('*.xml')
+          for fpath in files:
+              with open(fpath, 'r', encoding='utf-8', errors='ignore') as fh:
+                  content = fh.read()
+              original = content
+              for find, replace in patterns:
+                  content = content.replace(find, replace)
+              content = cal_pat.sub('#', content)
+              if content != original:
+                  with open(fpath, 'w', encoding='utf-8') as fh:
+                      fh.write(content)
+                  print('Scrubbed:', fpath)
+          PYEOF
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --staged --quiet || git commit -m "Compliance scrub: remove VMG/GNE personal references"
+          git push
