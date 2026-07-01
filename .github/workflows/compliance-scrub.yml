@@ -1,0 +1,54 @@
+name: Compliance Scrub - Remove VMG/GNE References
+on:
+  push:
+    branches:
+      - compliance/scrub-vmg-gne
+jobs:
+  scrub:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: compliance/scrub-vmg-gne
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Replace compliance strings
+        run: |
+          python3 << 'PYEOF'
+          import re, glob
+          patterns = [
+              ('VMG', 'estack.ca'),
+              ('Vaughan Mortgage Group', 'estack.ca'),
+              ('vaughanmortgagegroup.ca', 'estack.ca'),
+              ('Paul Malandrino', '[author]'),
+              ('GNE Mortgages', '[lender]'),
+              ('GNE Mortgage', '[lender]'),
+              ('Lic. #10394', ''),
+              ('FSRA #M25000307', ''),
+              ('416-891-8684', ''),
+              ('416 891 8684', ''),
+              ('vaughanmortgages@gmail.com', ''),
+          ]
+          cal_pat = re.compile(r'https?://calendly\.com/\S+')
+          files = glob.glob('**/*.html', recursive=True) + glob.glob('*.xml')
+          changed = []
+          for fpath in files:
+              with open(fpath, 'r', encoding='utf-8', errors='ignore') as fh:
+                  content = fh.read()
+              original = content
+              for find, replace in patterns:
+                  content = content.replace(find, replace)
+              content = cal_pat.sub('#', content)
+              if content != original:
+                  with open(fpath, 'w', encoding='utf-8') as fh:
+                      fh.write(content)
+                  changed.append(fpath)
+                  print('Scrubbed:', fpath)
+          print('Total files changed:', len(changed))
+          PYEOF
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --staged --quiet || git commit -m "Compliance scrub: remove VMG/GNE personal references" --no-verify
+          git push
