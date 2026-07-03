@@ -1,194 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Canadian Markets Centre | Live Data & Analysis | eStack.ca</title>
-<meta name="description" content="Live Canadian market data: TSX, gold, silver, Bitcoin, USD/CAD, oil prices. Plus market analysis, economic updates and investment guides for Canadian investors.">
-<meta name="robots" content="index, follow">
-<meta property="og:title" content="Canadian Markets Centre | eStack.ca">
-<meta property="og:description" content="Real-time Canadian market data, gold prices, TSX index, currency rates and economic indicators.">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Canadian Markets Hub | eStack.ca</title>
+<meta name="description" content="A Canadian markets hub with live prices, rate coverage, commodity guides and market resources built in eStack's premium editorial style.">
+<meta property="og:title" content="Canadian Markets Hub | eStack.ca">
+<meta property="og:description" content="Follow Canadian markets, precious metals, crypto, FX and rate-sensitive stories in one premium editorial hub.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://estack.ca/markets-hub">
-<link rel="canonical" href="https://estack.ca/markets-hub">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<meta property="og:url" content="https://estack.ca/markets-hub.html">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://estack.ca/markets-hub.html">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#101828;--navy:#071a33;--blue:#1455d9;--cyan:#09a6d4;--gold:#c9a84c;--paper:#f7fbff;--card:#fff;--line:#d9e5f5;--muted:#667085;--green:#16875a;--positive:#16875a;--negative:#d92d20}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.5;font-size:16px}.navbar{background:var(--card);border-bottom:1px solid var(--line);padding:16px 24px;position:sticky;top:0;z-index:100;box-shadow:0 1px 3px rgba(0,0,0,0.05)}.navbar-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:40px}.logo{font-family:Playfair Display,serif;font-size:18px;font-weight:700;color:var(--ink);text-decoration:none;letter-spacing:-0.5px}.logo span{color:var(--blue)}.nav-links{display:flex;gap:24px;list-style:none;margin:0;padding:0}.nav-links a{color:var(--ink);text-decoration:none;font-size:14px;font-weight:500;transition:color 0.2s}.nav-links a:hover{color:var(--blue)}.hero{background:linear-gradient(135deg,rgba(7,26,51,0.95),rgba(20,85,217,0.1));padding:60px 24px;text-align:center}.hero-inner{max-width:900px;margin:0 auto}.hero-kicker{display:block;font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--blue);margin-bottom:12px}.hero h1{font-family:Playfair Display,serif;font-size:clamp(32px,5vw,48px);font-weight:700;line-height:1.15;letter-spacing:-0.8px;margin:0 0 16px;color:var(--navy)}.hero p{font-size:16px;color:var(--muted);margin:0;line-height:1.6}.section{padding:60px 24px}.section-inner{max-width:1200px;margin:0 auto}.section-header{text-align:center;margin-bottom:48px}.section h2{font-family:Playfair Display,serif;font-size:clamp(28px,4vw,40px);font-weight:700;margin:0 0 16px;color:var(--ink);letter-spacing:-0.5px}.section p{font-size:16px;color:var(--muted);margin:0;max-width:600px;margin-left:auto;margin-right:auto}.live-ticker{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;margin-top:32px}.ticker-card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:24px;text-align:center;transition:all 0.3s}.ticker-card:hover{border-color:var(--blue);box-shadow:0 4px 12px rgba(20,85,217,0.1)}.ticker-label{font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;display:block}.ticker-value{font-family:monospace;font-size:24px;font-weight:700;color:var(--ink);margin-bottom:8px}.ticker-change{font-size:13px;font-weight:600}.change-positive{color:var(--positive)}.change-negative{color:var(--negative)}.content-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:32px;margin-top:32px}.card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:32px;text-decoration:none;color:var(--ink);transition:all 0.3s;display:block}.card:hover{border-color:var(--blue);box-shadow:0 8px 24px rgba(20,85,217,0.1);transform:translateY(-2px)}.card-tag{display:inline-block;font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--blue);margin-bottom:12px}.card h3{font-family:Playfair Display,serif;font-size:20px;font-weight:700;color:var(--ink);margin:0 0 12px;line-height:1.3}.card p{font-size:15px;color:var(--muted);margin:0;line-height:1.5}.accent-section{background:var(--paper);border-top:2px solid var(--line);border-bottom:2px solid var(--line)}.economic-calendar{margin-top:32px}.calendar-item{display:grid;grid-template-columns:120px 1fr 120px;gap:24px;padding:20px;background:var(--card);border-left:3px solid var(--blue);border-radius:4px;margin-bottom:16px;align-items:center}.calendar-date{font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase}.calendar-event{font-size:15px;font-weight:500;color:var(--ink)}.calendar-impact{font-size:12px;font-weight:600;color:var(--blue)}.cta-section{background:linear-gradient(135deg,rgba(20,85,217,0.1),rgba(9,166,212,0.05));border-radius:8px;padding:48px 32px;text-align:center;margin-top:48px}.cta-section h3{font-family:Playfair Display,serif;font-size:24px;font-weight:700;margin:0 0 12px;color:var(--ink)}.cta-section p{font-size:15px;color:var(--muted);margin:0 0 24px}.cta-btn{display:inline-block;background:var(--blue);color:#fff;padding:12px 32px;border-radius:6px;text-decoration:none;font-weight:600;font-size:14px;transition:opacity 0.2s}.cta-btn:hover{opacity:0.9}.footer{background:var(--card);border-top:1px solid var(--line);padding:48px 24px}.footer-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:40px;margin-bottom:40px}.footer-grid h3{font-size:14px;font-weight:700;color:var(--ink);margin:0 0 16px}.footer-grid p{font-size:13px;color:var(--muted);margin:0 0 12px;line-height:1.6}.footer-grid a{color:var(--muted);text-decoration:none;font-size:13px}.footer-grid a:hover{color:var(--ink)}.footer-bottom{max-width:1200px;margin:0 auto;padding-top:24px;border-top:1px solid var(--line);text-align:center;font-size:12px;color:var(--muted)}.footer-bottom a{color:var(--muted);text-decoration:none}.footer-bottom a:hover{color:var(--ink)}@media(max-width:768px){.navbar-inner{flex-direction:column;gap:20px;text-align:center}.nav-links{gap:16px;justify-content:center}.hero{padding:40px 16px}.calendar-item{grid-template-columns:1fr;gap:12px;text-align:left}.ticker-card{padding:20px}.card{padding:24px}.cta-section{padding:32px 20px}}
+:root{--ink:#101828;--navy:#071a33;--blue:#1455d9;--cyan:#09a6d4;--gold:#c9a84c;--paper:#f7fbff;--card:#fff;--line:#d9e5f5;--muted:#667085;--green:#16875a}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,Arial,sans-serif}a{color:inherit}.ticker{height:46px;background:#070b12;border-bottom:2px solid var(--cyan);overflow:hidden}.ribbon{background:var(--navy);color:white;overflow:hidden;border-bottom:1px solid #183659}.ribbon div{white-space:nowrap;animation:move 28s linear infinite;padding:12px 0;font-weight:900;letter-spacing:.02em}.ribbon span{color:#8bdcff;margin:0 16px}@keyframes move{from{transform:translateX(100%)}to{transform:translateX(-100%)}}.nav{position:sticky;top:0;z-index:5;background:rgba(247,251,255,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}.navin{max-width:1240px;margin:auto;padding:18px 24px;display:flex;justify-content:space-between;align-items:center;gap:20px}.logo{font-family:'Playfair Display',serif;font-size:32px;font-weight:900;text-decoration:none;letter-spacing:-.06em}.logo span{color:var(--blue)}.links{display:flex;gap:18px;font-weight:900;font-size:14px;flex-wrap:wrap;justify-content:flex-end}.links a{text-decoration:none}.hero{background:linear-gradient(90deg,rgba(7,26,51,.86),rgba(20,85,217,.34)),url('https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=2200&q=80') center/cover;color:white}.heroin{max-width:1240px;margin:auto;padding:96px 24px 86px;display:grid;grid-template-columns:1.15fr .85fr;gap:34px;align-items:end}.kicker{display:inline-block;background:#e7f6ff;color:#07325e;padding:9px 14px;border-radius:999px;font-weight:900;margin-bottom:18px}.hero h1{font-family:'Playfair Display',serif;font-size:clamp(52px,8vw,112px);line-height:.88;letter-spacing:-.07em;margin:0 0 20px;max-width:870px}.hero p{font-size:clamp(18px,2vw,24px);max-width:720px;color:rgba(255,255,255,.92);line-height:1.45}.hero-card{display:block;background:rgba(255,255,255,.95);color:var(--ink);border-radius:30px;padding:28px;box-shadow:0 28px 80px rgba(0,0,0,.28);text-decoration:none}.hero-card small{color:var(--blue);font-weight:900;text-transform:uppercase;letter-spacing:.08em}.hero-card h2{font-family:'Playfair Display',serif;font-size:38px;line-height:.95;margin:10px 0}.buttons{display:flex;gap:14px;flex-wrap:wrap;margin-top:24px}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:13px 20px;border-radius:999px;background:white;color:#111;text-decoration:none;font-weight:900}.btn.blue{background:linear-gradient(135deg,var(--blue),var(--cyan));color:white}.btn.dark{background:#111;color:white}section{padding:72px 24px}.wrap{max-width:1240px;margin:auto}.headline{display:flex;justify-content:space-between;align-items:end;gap:25px;margin-bottom:28px}.headline h2{font-family:'Playfair Display',serif;font-size:clamp(38px,5vw,70px);line-height:.95;letter-spacing:-.055em;margin:0}.headline p{max-width:540px;color:var(--muted);font-size:17px;line-height:1.55}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.story-card,.partner,.calendar-card{display:block;text-decoration:none}.story-card{background:var(--card);border:1px solid var(--line);border-radius:28px;overflow:hidden;box-shadow:0 18px 50px rgba(16,24,40,.08)}.story-card img{width:100%;height:220px;object-fit:cover;display:block}.story-card div{padding:22px}.tag{display:inline-block;border-radius:999px;padding:7px 10px;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.08em;background:#e8f3ff;color:#124db2}.tag.gold{background:#fff4cd;color:#805c00}.tag.green{background:#e8f7f0;color:#0f6844}.tag.red{background:#ffecec;color:#9b1c1c}.story-card h3{font-family:'Playfair Display',serif;font-size:31px;line-height:.98;margin:12px 0}.story-card p,.calendar-card p{color:var(--muted);line-height:1.5}.feature{background:white;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.feature-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:30px}.big-photo{display:block;min-height:520px;border-radius:34px;background:url('https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=80') center/cover}.feature-copy{background:var(--navy);color:white;border-radius:34px;padding:42px;display:flex;flex-direction:column;justify-content:center}.feature-copy h2{font-family:'Playfair Display',serif;font-size:clamp(42px,5vw,76px);line-height:.9;margin:12px 0}.feature-copy p{color:#d9e6f7;font-size:18px;line-height:1.6}.markets{background:#071a33;color:white}.marketbox{background:white;border-radius:34px;padding:18px;overflow:hidden}.market-links{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:18px}.partner{background:#fff;border:1px solid var(--line);border-radius:26px;padding:22px;min-height:210px;display:flex;flex-direction:column;box-shadow:0 14px 42px rgba(16,24,40,.06)}.partner b{font-size:21px}.partner p{color:var(--muted);line-height:1.5;flex:1}.partner .cta,.calendar-card .cta{display:inline-block;margin-top:16px;font-weight:900}.calendar{background:linear-gradient(180deg,#eaf5ff,#fff)}.calendar-card{background:#fff;border:1px solid var(--line);border-radius:26px;padding:22px;min-height:200px;box-shadow:0 14px 42px rgba(16,24,40,.06)}.calendar-card strong{display:block;font-size:12px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin-bottom:14px}.newsletter{background:#fff}.newsletter-box{background:linear-gradient(135deg,#071a33,#1455d9);color:white;border-radius:36px;padding:44px;display:flex;justify-content:space-between;gap:25px;align-items:center}.newsletter h2{font-family:'Playfair Display',serif;font-size:54px;line-height:.95;margin:0 0 12px}.footer{background:#05070c;color:#ddd;padding:54px 24px 32px}.footer-grid{max-width:1240px;margin:auto;display:grid;grid-template-columns:1.2fr 1fr 1.1fr;gap:34px;align-items:start}.footer h3,.footer h4{color:white;margin:0 0 12px}.footer p{margin:0;color:#aaa;line-height:1.6}.footlinks a{color:white;text-decoration:none;margin-right:14px;display:inline-block;margin-bottom:10px;font-weight:800}.socials{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}.socials a{color:white;text-decoration:none;border:1px solid #2b2b2b;background:#111;border-radius:999px;padding:10px 14px;font-weight:900;font-size:14px}.socials a:hover,.story-card:hover,.partner:hover,.hero-card:hover,.big-photo:hover,.calendar-card:hover{transform:translateY(-3px);transition:transform .18s ease,box-shadow .18s ease}.socials a:hover{border-color:#58c7ff;color:#58c7ff}.story-card:hover,.partner:hover,.hero-card:hover,.calendar-card:hover,.big-photo:hover{box-shadow:0 22px 60px rgba(16,24,40,.16)}.fineprint{max-width:1240px;margin:28px auto 0;padding-top:18px;border-top:1px solid #242424;color:#888;font-size:13px;line-height:1.5}@media(max-width:900px){.links{display:none}.heroin,.grid3,.grid4,.feature-grid,.footer-grid,.newsletter-box,.market-links{grid-template-columns:1fr;display:grid}.hero-card{margin-top:10px}.big-photo{min-height:330px}.story-card img{height:200px}.newsletter h2{font-size:40px}}
 </style>
 </head>
 <body>
-
-<nav class="navbar">
-<div class="navbar-inner">
-<a href="/" class="logo">e<span>Stack</span>.ca</a>
-<ul class="nav-links">
-<li><a href="/">Home</a></li>
-<li><a href="/top-picks.html">Top Picks</a></li>
-<li><a href="/loans.html">Loans</a></li>
-<li><a href="/rates.html">Rates</a></li>
-</ul>
-</div>
-</nav>
-
-<section class="hero">
-<div class="hero-inner">
-<span class="hero-kicker">Live Market Data</span>
-<h1>Canadian Markets Centre</h1>
-<p>Real-time data for TSX, precious metals, commodities, currencies and economic indicators. Track what matters for Canadian investors.</p>
-</div>
-</section>
-
-<section class="section">
-<div class="section-inner">
-<div class="section-header">
-<h2>Live Market Snapshot</h2>
-<p>Key Canadian market indices and commodity prices updated throughout the trading day.</p>
-</div>
-<div class="live-ticker">
-<div class="ticker-card">
-<span class="ticker-label">TSX Composite</span>
-<div class="ticker-value">—</div>
-<div class="ticker-change change-positive">+0.00%</div>
-</div>
-<div class="ticker-card">
-<span class="ticker-label">S&P/TSX 60</span>
-<div class="ticker-value">—</div>
-<div class="ticker-change change-positive">+0.00%</div>
-</div>
-<div class="ticker-card">
-<span class="ticker-label">Gold (USD/oz)</span>
-<div class="ticker-value">—</div>
-<div class="ticker-change change-positive">+0.00%</div>
-</div>
-<div class="ticker-card">
-<span class="ticker-label">Silver (USD/oz)</span>
-<div class="ticker-value">—</div>
-<div class="ticker-change change-negative">-0.00%</div>
-</div>
-<div class="ticker-card">
-<span class="ticker-label">USD/CAD</span>
-<div class="ticker-value">—</div>
-<div class="ticker-change">±0.00%</div>
-</div>
-<div class="ticker-card">
-<span class="ticker-label">WTI Oil</span>
-<div class="ticker-value">—</div>
-<div class="ticker-change change-positive">+0.00%</div>
-</div>
-</div>
-</section>
-
-<section class="section accent-section">
-<div class="section-inner">
-<div class="section-header">
-<h2>Market Guides & Resources</h2>
-<p>Understand Canadian markets, investing strategies and how to build wealth as a Canadian investor.</p>
-</div>
-<div class="content-grid">
-<a href="/buy-gold-bullion-canada.html" class="card">
-<span class="card-tag">Precious Metals</span>
-<h3>How to Buy Gold Bullion in Canada</h3>
-<p>A plain-language guide to buying physical gold — coins vs bars, where to buy, storage, and tax treatment for Canadian investors.</p>
-</a>
-<a href="/best-hisa-canada.html" class="card">
-<span class="card-tag">Savings</span>
-<h3>Best HISA Rates in Canada</h3>
-<p>Compare high-interest savings accounts across Canadian banks. Find the best rates and terms for your emergency fund.</p>
-</a>
-<a href="/bank-of-canada-rate-hold.html" class="card">
-<span class="card-tag">Interest Rates</span>
-<h3>Bank of Canada Interest Rate Decisions</h3>
-<p>Track BoC policy rate changes and what they mean for your mortgage, savings accounts, and investment strategy.</p>
-</a>
-<a href="/variable-vs-fixed-mortgage.html" class="card">
-<span class="card-tag">Mortgages</span>
-<h3>Variable vs Fixed Mortgage Rates</h3>
-<p>Compare variable and fixed mortgage strategies in Canada. Understand rate risk and choose the right option for your situation.</p>
-</a>
-<a href="/improve-credit-score-canada.html" class="card">
-<span class="card-tag">Credit</span>
-<h3>Improve Your Credit Score in Canada</h3>
-<p>Step-by-step strategies for building credit, disputing errors, and negotiating with Canadian creditors.</p>
-</a>
-<a href="/mortgage-calculator.html" class="card">
-<span class="card-tag">Tools</span>
-<h3>Canadian Mortgage Calculator</h3>
-<p>Calculate monthly payments, total interest, and amortization schedules for Canadian mortgages with multiple scenarios.</p>
-</a>
-</div>
-</section>
-
-<section class="section">
-<div class="section-inner">
-<div class="section-header">
-<h2>Economic Calendar</h2>
-<p>Upcoming Canadian and North American economic events that could impact markets.</p>
-</div>
-<div class="economic-calendar">
-<div class="calendar-item">
-<div class="calendar-date">Next Week</div>
-<div class="calendar-event">Canadian Employment Report (Jobs, Unemployment Rate)</div>
-<div class="calendar-impact">High Impact</div>
-</div>
-<div class="calendar-item">
-<div class="calendar-date">Next Week</div>
-<div class="calendar-event">Bank of Canada Policy Decision</div>
-<div class="calendar-impact">High Impact</div>
-</div>
-<div class="calendar-item">
-<div class="calendar-date">This Month</div>
-<div class="calendar-event">Canadian CPI (Inflation) Release</div>
-<div class="calendar-impact">High Impact</div>
-</div>
-<div class="calendar-item">
-<div class="calendar-date">Ongoing</div>
-<div class="calendar-event">TSX Holiday Schedule & Market Closures</div>
-<div class="calendar-impact">Reference</div>
-</div>
-</div>
-</section>
-
-<section class="section">
-<div class="section-inner">
-<div class="cta-section">
-<h3>Building Wealth in Canada?</h3>
-<p>Track markets, understand economic trends, and make informed investment decisions. Get Canadian market updates delivered weekly.</p>
-<a href="/" class="cta-btn">Subscribe to Updates</a>
-</div>
-</section>
-
-<footer class="footer">
-<div class="footer-grid">
-<div>
-<h3>Markets Centre</h3>
-<p><a href="/markets-hub.html">Live Market Data</a></p>
-<p><a href="/buy-gold-bullion-canada.html">Precious Metals</a></p>
-<p><a href="/best-hisa-canada.html">Savings & GICs</a></p>
-<p><a href="/mortgage-calculator.html">Mortgage Tools</a></p>
-</div>
-<div>
-<h3>Resources</h3>
-<p><a href="/top-picks.html">Top Picks</a></p>
-<p><a href="/loans.html">Loans & Credit</a></p>
-<p><a href="/rates.html">Mortgage Rates</a></p>
-<p><a href="/accounting.html">Accounting & Tax</a></p>
-</div>
-<div>
-<h3>About</h3>
-<p><a href="/editorial-policy.html">Editorial Policy</a></p>
-<p><a href="/contact.html">Contact Us</a></p>
-<p><a href="/affiliate-disclosure.html">Affiliate Disclosure</a></p>
-<p><a href="/privacy-policy.html">Privacy Policy</a></p>
-</div>
-</div>
-<div class="footer-bottom">
-<p>&copy; 2026 estack.ca &middot; <a href="/editorial-policy.html">Editorial Policy</a> &middot; <a href="/affiliate-disclosure.html">Affiliate Disclosure</a></p>
-<p style="margin-top:8px;">estack.ca is an independent editorial site. We may earn a commission from partner links. This is not financial advice.</p>
-</div>
-</footer>
-
+<div class="ticker"><div class="tradingview-widget-container"><div class="tradingview-widget-container__widget"></div><script src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>{"symbols":[{"proName":"TVC:GOLD","title":"Gold"},{"proName":"TVC:SILVER","title":"Silver"},{"proName":"BITSTAMP:BTCUSD","title":"Bitcoin"},{"proName":"TSX:TSX","title":"TSX"},{"proName":"FX_IDC:USDCAD","title":"USD/CAD"}],"showSymbolLogo":true,"colorTheme":"dark","isTransparent":true,"displayMode":"adaptive","locale":"en"}</script></div></div>
+<div class="ribbon"><div><span>LIVE</span> Canadian markets, credit tools, rate moves, commodities and weekly investor context <span>NEW</span> Built like a premium editorial desk</div></div>
+<nav class="nav"><div class="navin"><a class="logo" href="/">e<span>Stack</span>.ca</a><div class="links"><a href="/top-picks.html">Top Picks</a><a href="/loans.html">Loans</a><a href="/rates.html">Rates</a><a href="/accounting.html">Accounting</a><a href="/markets-hub.html">Markets</a><a href="/gift-cards.html">Gift Cards</a><a href="/contact.html">Contact</a></div></div></nav>
+<header class="hero"><div class="heroin"><div><span class="kicker">Canadian markets hub</span><h1>Markets, metals and money in one sharp read.</h1><p>Track live prices, rate-sensitive stories, gold and silver coverage, and the guides Canadians actually use when markets move.</p><div class="buttons"><a class="btn blue" href="#live-markets">View live markets</a><a class="btn" href="#market-guides">Read the guides</a></div></div><a class="hero-card" href="/bank-of-canada-rate-hold.html"><small>Featured today</small><h2>What rate decisions mean in the real world.</h2><p>Follow the Bank of Canada, mortgage-sensitive moves, USD/CAD shifts and commodity stories without losing the bigger picture.</p><span class="btn dark">Read the latest →</span></a></div></header>
+<section id="market-guides"><div class="wrap headline"><h2>Front page.</h2><p>Editorial market coverage with real destinations, live prices and useful Canadian context.</p></div><div class="wrap grid3"><a class="story-card" href="/buy-gold-bullion-canada.html"><img src="https://images.unsplash.com/photo-1610375461246-83df859d849d?auto=format&fit=crop&w=1000&q=80" alt="Gold bullion stacked on a table"><div><span class="tag gold">Precious Metals</span><h3>How to buy gold in Canada.</h3><p>A plain-language guide to bullion, dealers, storage and pricing for Canadian buyers.</p></div></a><a class="story-card" href="/bank-of-canada-rate-hold.html"><img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1000&q=80" alt="Calculator and financial paperwork"><div><span class="tag">Rates</span><h3>Bank of Canada decisions that matter.</h3><p>Understand how rate holds and cuts ripple through mortgages, savings and borrowing costs.</p></div></a><a class="story-card" href="/variable-vs-fixed-mortgage.html"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1000&q=80" alt="Stock chart on a laptop"><div><span class="tag red">Strategy</span><h3>Variable vs. fixed in a live-rate market.</h3><p>Compare mortgage strategies with the broader market backdrop in mind.</p></div></a></div></section>
+<section class="feature"><div class="wrap feature-grid"><a class="big-photo" href="/kitco-hub.html" aria-label="Open the Kitco hub"></a><div class="feature-copy"><span class="tag">Market desk</span><h2>Useful context beats empty volatility.</h2><p>This hub keeps the homepage's editorial feel while giving Canadian readers a deeper place to track metals, currencies, rates and market-moving events.</p><div class="buttons"><a class="btn blue" href="/kitco-hub.html">Open metals hub</a><a class="btn" href="/best-hisa-canada.html">See savings options</a></div></div></div></section>
+<section id="live-markets" class="markets"><div class="wrap headline"><h2>Markets, alive.</h2><p style="color:#bfd6f2">A live overview for gold, silver, Bitcoin, TSX and USD/CAD, plus direct paths into related coverage.</p></div><div class="wrap marketbox"><div class="tradingview-widget-container"><div class="tradingview-widget-container__widget"></div><script src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>{"colorTheme":"light","dateRange":"12M","showChart":true,"locale":"en","width":"100%","height":"430","isTransparent":false,"showSymbolLogo":true,"tabs":[{"title":"Canada Watch","symbols":[{"s":"TVC:GOLD","d":"Gold"},{"s":"TVC:SILVER","d":"Silver"},{"s":"BITSTAMP:BTCUSD","d":"Bitcoin"},{"s":"TSX:TSX","d":"TSX"},{"s":"FX_IDC:USDCAD","d":"USD/CAD"},{"s":"TVC:USOIL","d":"WTI Oil"}]}]}</script></div><div class="market-links"><a class="partner" id="precious-metals" href="/buy-gold-bullion-canada.html"><b>Precious metals</b><p>Move from the live board into gold and silver buying, storage and pricing guides.</p><span class="cta">Read guide →</span></a><a class="partner" id="canadian-rates" href="/bank-of-canada-rate-hold.html"><b>Canadian rates</b><p>Follow rate decisions, borrowing costs and their effect on fixed and variable borrowers.</p><span class="cta">Read analysis →</span></a><a class="partner" id="crypto-fx" href="/best-hisa-canada.html"><b>FX, savings and macro</b><p>Use USD/CAD and market moves to frame cash management, savings rates and next steps.</p><span class="cta">Explore options →</span></a></div></div></section>
+<section class="calendar"><div class="wrap headline"><h2>What to watch.</h2><p>Key economic releases and market-moving topics, laid out as clickable editorial cards instead of a generic data table.</p></div><div class="wrap grid4"><a class="calendar-card" href="/bank-of-canada-rate-hold.html"><strong>Next rate move</strong><span class="tag">Bank of Canada</span><p>Review the latest policy decision and what it means for mortgages, savings and sentiment.</p><span class="cta">Open story →</span></a><a class="calendar-card" href="/best-hisa-canada.html"><strong>This month</strong><span class="tag green">Savings</span><p>Compare current HISA options when policy expectations shift and cash suddenly matters more.</p><span class="cta">Compare rates →</span></a><a class="calendar-card" href="/mortgage-calculator.html"><strong>Scenario testing</strong><span class="tag red">Tools</span><p>Run mortgage payment changes against a moving-rate backdrop with a Canadian calculator.</p><span class="cta">Use calculator →</span></a><a class="calendar-card" href="/top-picks.html"><strong>Weekly watchlist</strong><span class="tag gold">Top Picks</span><p>See the most relevant market-adjacent tools, resources and stories featured across eStack.</p><span class="cta">View watchlist →</span></a></div></section>
+<section class="newsletter"><div class="wrap newsletter-box"><div><h2>Follow the stack.</h2><p>Weekly Canadian market context, rates, tools and featured reads delivered in the same editorial tone as the homepage.</p></div><a class="btn" href="/top-picks.html">Browse this week's picks</a></div></section>
+<footer class="footer"><div class="footer-grid"><div><h3>Canadian Markets Hub</h3><p>Live markets, rate-sensitive analysis, precious metals guides and practical resources for Canadian readers.</p></div><div><h4>Explore</h4><div class="footlinks"><a href="/top-picks.html">Top Picks</a><a href="/gift-cards.html">Gift Cards</a><a href="/markets-hub.html">Markets</a><a href="/affiliate-disclosure.html">Disclosure</a><a href="/privacy-policy.html">Privacy</a><a href="/terms-of-use.html">Terms</a><a href="/contact.html">Contact</a></div></div><div><h4>Stay Connected</h4><p>Follow eStack for market updates, Canadian money tools, finance guides and new partner offers.</p><div class="socials"><a href="https://facebook.com/profile.php?id=61591552108308" target="_blank" rel="noopener noreferrer">Facebook</a><a href="https://instagram.com/estack_ca/" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://www.tiktok.com/@estack.ca" target="_blank" rel="noopener noreferrer">TikTok</a><a href="https://www.pinterest.com/estackca/" target="_blank" rel="noopener noreferrer">Pinterest</a></div></div></div><div class="fineprint">© 2026 eStack.ca. Some links may be sponsored or affiliate links. eStack may receive compensation when visitors click or apply through partner links, at no extra cost to the visitor.</div></footer>
 <script src="https://www.dwin2.com/pub.2936205.min.js"></script>
-</body>
-</html>
+</body></html>
