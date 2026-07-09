@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Canadian Credit Resources — Loans, Credit Building & Debt Tools | estack.ca</title>
+<meta name="description" content="Compare Canadian personal loans, credit building tools, cash advances, and debt management options — reviewed for self-employed Canadians, tradespeople, and entrepreneurs.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold: #b8922a;
+  --gold-light: #d4a853;
+  --black: #111111;
+  --off-black: #1a1a1a;
+  --mid: #555555;
+  --muted: #888888;
+  --rule: #e0ddd8;
+  --bg: #fafaf8;
+  --white: #ffffff;
+  --tag-bg: #f3f0eb;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--black);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* ── TICKER ── */
+.ticker-bar {
+  background: var(--black);
+  color: var(--gold-light);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: 8px 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.ticker-inner {
+  display: inline-flex;
+  gap: 48px;
+  animation: ticker 22s linear infinite;
+}
+.ticker-item { display: flex; align-items: center; gap: 8px; }
+.ticker-item .label { color: #777; }
+.ticker-item .val { color: var(--gold-light); }
+.ticker-item .up { color: #5cb85c; }
+.ticker-item .dn { color: #e05c5c; }
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ── NAV ── */
+nav {
+  border-bottom: 1px solid var(--rule);
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--white);
+}
+.logo {
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -.3px;
+  color: var(--black);
+  text-decoration: none;
+}
+.logo span { color: var(--gold); }
+.nav-links {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 13px;
+  color: var(--mid);
+  text-decoration: none;
+  font-weight: 500;
+  letter-spacing: .02em;
+}
+.nav-links a:hover { color: var(--black); }
+.nav-links a.active { color: var(--black); border-bottom: 2px solid var(--gold); padding-bottom: 2px; }
+
+/* ── HERO ── */
+.hero {
+  padding: 52px 20px 40px;
+  max-width: 680px;
+  margin: 0 auto;
+  border-bottom: 1px solid var(--rule);
+}
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+.eyebrow-line {
+  width: 32px;
+  height: 1px;
+  background: var(--gold);
+}
+.eyebrow-text {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(32px, 7vw, 48px);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -.5px;
+  margin-bottom: 16px;
+  color: var(--black);
+}
+h1 em {
+  font-style: italic;
+  color: var(--gold);
+}
+.hero-sub {
+  font-size: 16px;
+  color: var(--mid);
+  max-width: 520px;
+  line-height: 1.65;
+  margin-bottom: 28px;
+}
+.disclosure-bar {
+  font-size: 11px;
+  color: var(--muted);
+  background: var(--tag-bg);
+  border-radius: 4px;
+  padding: 8px 12px;
+  line-height: 1.5;
+}
+
+/* ── FILTER NAV ── */
+.filter-nav {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 20px 20px 0;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.filter-btn {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .04em;
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid var(--rule);
+  background: var(--white);
+  color: var(--mid);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all .15s;
+}
+.filter-btn:hover, .filter-btn.active {
+  background: var(--black);
+  color: var(--white);
+  border-color: var(--black);
+}
+
+/* ── SECTION ── */
+.section {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 40px 20px 0;
+}
+.section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--rule);
+}
+.section-head h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--black);
+}
+.section-head .count {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* ── OFFER CARD ── */
+.offer-card {
+  background: var(--white);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 18px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: box-shadow .15s;
+}
+.offer-card:hover { box-shadow: 0 2px 12px rgba(0,0,0,.07); }
+
+.card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+.card-name {
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--black);
+  line-height: 1.3;
+}
+.card-badge {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 10px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.badge-loan { background: #e8f0fe; color: #1a56c4; }
+.badge-credit { background: #fef3e2; color: #b45309; }
+.badge-cash { background: #e8fdf0; color: #166534; }
+.badge-banking { background: #f3e8ff; color: #7c3aed; }
+.badge-tax { background: #fde8e8; color: #b91c1c; }
+.badge-business { background: #e8fdf5; color: #065f46; }
+.badge-tools { background: #f0f9ff; color: #0369a1; }
+
+.card-desc {
+  font-size: 13px;
+  color: var(--mid);
+  line-height: 1.5;
+}
+.card-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.meta-tag {
+  font-size: 11px;
+  color: var(--muted);
+  background: var(--tag-bg);
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+.card-cta {
+  display: inline-block;
+  margin-top: 4px;
+  background: var(--black);
+  color: var(--white);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 9px 18px;
+  border-radius: 5px;
+  text-decoration: none;
+  align-self: flex-start;
+  transition: background .15s;
+}
+.card-cta:hover { background: #333; }
+.card-cta.gold {
+  background: var(--gold);
+  color: var(--white);
+}
+.card-cta.gold:hover { background: var(--gold-light); }
+
+/* ── FOOTER ── */
+footer {
+  max-width: 680px;
+  margin: 60px auto 0;
+  padding: 24px 20px 40px;
+  border-top: 1px solid var(--rule);
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+footer a { color: var(--gold); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker-bar">
+  <div class="ticker-inner">
+    <div class="ticker-item"><span class="label">TSX</span><span class="val">22,852</span><span class="up">▲ 0.4%</span></div>
+    <div class="ticker-item"><span class="label">USD/CAD</span><span class="val">1.3642</span></div>
+    <div class="ticker-item"><span class="label">Prime Rate</span><span class="val">5.20%</span></div>
+    <div class="ticker-item"><span class="label">Gold</span><span class="val">$3,274</span><span class="up">▲ 0.6%</span></div>
+    <div class="ticker-item"><span class="label">SHOP</span><span class="val">$142.60</span><span class="dn">▼ 1.12%</span></div>
+    <div class="ticker-item"><span class="label">RY</span><span class="val">$178.40</span><span class="up">▲ 0.3%</span></div>
+    <!-- duplicate for seamless loop -->
+    <div class="ticker-item"><span class="label">TSX</span><span class="val">22,852</span><span class="up">▲ 0.4%</span></div>
+    <div class="ticker-item"><span class="label">USD/CAD</span><span class="val">1.3642</span></div>
+    <div class="ticker-item"><span class="label">Prime Rate</span><span class="val">5.20%</span></div>
+    <div class="ticker-item"><span class="label">Gold</span><span class="val">$3,274</span><span class="up">▲ 0.6%</span></div>
+    <div class="ticker-item"><span class="label">SHOP</span><span class="val">$142.60</span><span class="dn">▼ 1.12%</span></div>
+    <div class="ticker-item"><span class="label">RY</span><span class="val">$178.40</span><span class="up">▲ 0.3%</span></div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="logo">e<span>stack</span>.ca</a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/deals.html">Top Picks</a></li>
+    <li><a href="/credit-resources.html" class="active">Credit Resources</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">Canadian Credit Resources</span></div>
+  <h1>Fix your credit. <em>Build from here.</em></h1>
+  <p class="hero-sub">Personal loans, credit building tools, cash advances, and debt management options — compared and reviewed for Canadians who've been turned down by the big banks or are rebuilding after a rough patch.</p>
+  <div class="disclosure-bar">⚠️ <strong>Affiliate & Legal Disclosure:</strong> Some links on this page are affiliate links — estack.ca earns a commission if you apply through our links, at no extra cost to you. estack.ca is an independent content publisher and is not a financial advisor, mortgage brokerage, lender, or financial institution. We do not provide financial advice. Approval for any product is subject to each provider's own qualification criteria — results vary. Always read the terms and conditions of any financial product before applying.</div>
+</div>
+
+<!-- FILTER NAV -->
+<div class="filter-nav">
+  <a href="#loans" class="filter-btn">Personal Loans</a>
+  <a href="#auto" class="filter-btn">Auto Loans</a>
+  <a href="#credit-building" class="filter-btn">Credit Building</a>
+  <a href="#cash-advance" class="filter-btn">Cash Advance</a>
+  <a href="#banking" class="filter-btn">Banking & Savings</a>
+  <a href="#tax" class="filter-btn">Tax</a>
+</div>
+
+<!-- PERSONAL LOANS -->
+<div class="section" id="loans">
+  <div class="section-head">
+    <h2>Personal Loans</h2>
+    <span class="count">4 offers</span>
+  </div>
+
+  <div class="offer-card">
+    <div class="card-top">
+      <div class="card-name">Loan Genie</div>
+      <span class="card-badge badge-loan">Personal Loan</span>
+    </div>
+    <div class="card-desc">Compare personal loan offers from multiple Canadian lenders in one place. The network includes alternative lenders alongside traditional options. Approval subject to each lender's own criteria.</div>
+    <div class="card-meta">
+      <span class="meta-tag">🇨🇦 Canada</span>
+      <span class="meta-tag">Multiple lenders</span>
+    </div>
+    <a href="https://cmi.rocks/go/6a3eeaf652419" rel="sponsored noopener" target="_blank" class="card-cta">See options →</a>
+  </div>
+
+  <div class="offer-card">
+    <div class="card-top">
+      <div class="card-name">Rate Genie</div>
+      <span class="card-badge badge-loan">Personal Loan</span>
+    </div>
+    <div class="card-desc">Rate Genie matches you with lenders based on your credit profile. Fast form, multiple offers returned. No hard credit pull to compare.</div>
+    <div class="card-meta">
+      <span class="meta-tag">🇨🇦 Canada</span>
+      <span class="meta-tag">No hard pull</span>
+    </div>
+    <a href="https://cmi.rocks/go/6a3eeb14424a6" rel="sponsored noopener" target="_blank" class="card-cta">Compare rates →</a>
+  </div>
+
+  <div class="offer-card">
+    <div class="card-top">
+      <div class="card-name">Spark Credit</div>
+      <span class="card-badge badge-loan">Personal Loan</span>
+    </div>
+    <div class="card-desc">Personal loans for Canadians who've been turned down elsewhere. Spark Credit works with a network of lenders that look beyond your credit score.</div>
+    <div class="card-meta">
+      <span class="meta-tag">🇨🇦 Canada</span>
+      <span class="meta-tag">Alt lenders</span>
+    </div>
+    <a href="https://cmi.rocks/go/6a3eeb70dd3f2" rel="sponsored noopener" target="_blank" class="card-cta">Apply now →</a>
+  </div>
+
+  <div class="offer-card">
+    <div class="card-top">
+      <div class="card-name">Spring Credit</div>
+      <span class="card-badge badge-loan">Personal Loan</span>
+    </div>
+    <div class="card-desc">Spring offers personal loans designed for Canadians rebuilding credit. Flexible terms, no collateral required.</div>
+    <div class="card-meta">
+      <span class="meta-tag">🇨🇦 Canada</span>
+      <span class="meta-tag">Credit rebuilding</span>
+    </div>
+    <a href="https://cmi.rocks/go/6a3eeb8cee0f5" rel="sponsored noopener" target="_blank" class="card-cta">Get started →</a>
+  </div>
+</div>
+
+<!-- AUTO LOANS -->
+<div class="section" id="auto">
+  <div class="section-head">
+    <h2>Auto Loans</h2>
+    <span class="count">2 offers</span>
+  </div>
+
+  <div class="offer-card">
+    <div class="card-top">
+      <div class="card-name">MyAutoApproval</div>
+      <span class="card-badge badge-loan">Car Loan</span>
+    </div>
+    <div class="card-desc">Submit one form and see car loan options from dealerships across Canada. Approval is subject to each lender's own qualification criteria.</div>
+    <div class="card-meta">
+      <span class="meta-tag">🇨🇦 Canada</span>
+      <span class="meta-tag">Multiple lenders</span>
+    </div>
+    <a href="https://cmi.rocks/go/6a3eeb348cc43" rel="sponsored noopener" target="_blank" class="card-cta">See options →</a>
+  </div>
+
+  <div class="offer-card">
+    <div class="card-top">
+      <div class="card-name">Auto Loan Refinancing</div>
+      <span class="card-badge badge-loan">Refinance</span>
+    </div>
+    <div class="card-desc">Already have a car loan with a high rate? Refinancing could lower your monthly payment. Compare new rates without affecting your credit score.</div>
+    <div class="card-meta">
+      <span class="meta-tag">🇨🇦 Canada</span>
+      <span class="meta-tag">Lower your payment</span>
+    </div>
+    <a href="https://cmi.rocks/go/6a3eeba3b98c6" rel="sponsored noopener" target="_blank" class="card-cta">Compare rates →</a>
+  </div>
+</div>
+
+<!-- CREDIT BUILDING -->
+<div class="section" id="credit-building">
+  <div class="section-head">
+    <h2>Credit Building</h2>
+    <span class="count">4 offers</span>
+  </div>
+
+  <div class="offer-card">
+    <div class="card-top">
+      <div class="card-name">CompareHub — Free Credit Score</div>
+      <span class="card-badge badge-credit">Credit Score</span>
+    </div>
+    <div class="card-desc">Check your Canadian credit score for free — no credit card required. CompareHub also shows personalized loan and card offers based on your profile.</div>
+    <div class="card-meta">
+      <span class="meta-tag">🇨🇦 Canada</span>
+      <span class="meta-tag">Free</span>
+      <span class="meta-tag">No impact</span>
+    </div>
+    <a href="https://cmi.rocks/go/6a3eec522d17d" rel="sponsored noopener" target="_blank" class="card-cta">Check for free →</a>
+  </div>
+
+  <div class="offer-card">
+    <div class="card-top">
+      <div class="card-name">Kikoff</div>
+      <span class="card-badge badge-credit">Credit Building</span>
+    </div>
+    <div class="card-desc">Kikoff is a credit-building tool that helps you establish or rebuild your score. No hard pull, no deposit required. Reports to major Canadian bureaus.</div>
+    <div class="card-meta">
+      <span class="meta-tag">🇨🇦 Canada</span>
+      <span class="meta-tag">No deposit</span>
+    </div>
+    <a href="https://cmi.rocks/go/6a42edef9bbb4" rel="sponsored noopener" target="_blank" class="card-cta">Build your score →</a>
+  </div>
+
+  <div class="offer-card">
+    <div class="card-top">
+      <div class="card-name">KOHO Credit Building</div>
+      <span class="card-badge badge-credit">Credit Building</span>
+    </div>
+    <div class="card-desc">KOHO's credit building feature is a low-cost way to establish a credit history. Works alongside your existing KOHO card.</div>
+    <div class="card-meta">
+      <span class="meta-tag">🇨🇦 Canada</span>
+      <span class="meta-tag">No hard pull</span>
+    </div>
+    <a href="https://cmi.rocks/go/6a42ee849e331" rel="sponsored noopener" target="_blank" class="card-cta">Get started →</a>
+  </div>
+
+  <div class="offer-card">
+    <div class="card-top">
+      <div class="card-name">Neo Secured Credit Card</div>
+      <span class="card-badge badge-credit">Secured Card</span>
+    </div>
+    <div class="card-desc">Neo's secured card is built for credit rebuilding. Put down a small deposit, use it like a regular card, and your on-time payments help boost your score.</div>
+    <div class="card-meta">
+      <span class="meta-tag">🇨🇦 Canada</span>
+      <span class="meta-tag">Small deposit</span>
+    </div>
+    <a href="https://cmi.rocks/go/6a42eef344f3e" rel="sponsored noopener" target="_blank" class="card-cta">Apply now →</a>
+  </div>
+</div>
+
+<!-- CASH ADVANCE -->
+<div class="section" id="cash-advance">
+  <div class="section-head">
+    <h2>Cash Advance</h2>
+    <span class="count">3 offers</span>
+  </div>
+
+  <div class="offer-card">
+    <div class="card-top">
+      <div class="card-name">Bree</div>
+      <span class="card-badge badge-cash">Cash Advance</span>
+    </div>
+    <div class="card-desc">Bree gives you up to $500 before your next payday — no interest, no late fees. Covers overdraft before it happens. Connects to your existing bank account.</div>
+    <div class="card-meta">
+      <span class="meta-tag">🇨🇦 Canada</span>
+      <span class="meta-tag">Up to $500</span>
+      <span class="meta-tag">No interest</span>
+    </div>
+    <a href="https://cmi.rocks/go/6a3eedd49801f" rel="sponsored noopener" target="_blank" class="card-cta">Get $500 →</a>
+  </div>
+
+  <div class="offer-card">
+    <div class="card-top">
+      <div class="card-name">WagePay</div>
+      <span class="card-badge badge-cash">Wage Advance</span>
+    </div>
+    <div class="card-desc">Access up to $1,500 from your earned wages before payday — in minutes. No impact to your credit score. Built for hourly workers and tradespeople.</div>
+    <div class="card-meta">
+      <span class="meta-tag">🇨🇦 Canada</span>
+      <span class="meta-tag">Up to $1,500</span>
+      <span class="meta-tag">No credit check</span>
+    </div>
+    <a href="https://cmi.rocks/go/6a42ef72808d0" rel="sponsored noopener" target="_blank" class="card-cta">Get paid early →</a>
+  </div>
+
+  <div class="offer-card">
+    <div class="card-top">
+      <div class="card-name">KOHO Cover</div>
+      <span class="card-badge badge-cash">Overdraft Cover</span>
+    </div>
+    <div class="card-desc">KOHO Cover gives you $250 of overdraft protection at a fixed low monthly fee — no surprise interest charges. Good safety net for variable-income earners.</div>
+    <div class="card-meta">
+      <span class="meta-tag">🇨🇦 Canada</span>
+      <span class="meta-tag">$250 cover</span>
+      <span class="meta-tag">No interest</span>
+    </div>
+    <a href="https://cmi.rocks/go/6a42ee2365fdd" rel="sponsored noopener" target="_blank" class="card-cta">Get coverage →</a>
+  </div>
+</div>
+
+<!-- BANKING & SAVINGS -->
+<div class="section" id="banking">
+  <div class="section-head">
+    <h2>Banking &amp; Savings</h2>
+    <span class="count">3 offers</span>
+  </div>
+
+  <div class="offer-card">
+    <div class="card-top">
+      <div class="card-name">Neo HISA</div>
+      <span class="card-badge badge-banking">Savings</span>
+    </div>
+    <div class="card-desc">Neo's High Interest Savings Account earns a competitive rate on every dollar — no minimum balance, no monthly fees. Good alternative to leaving cash in a big-bank chequing account.</div>
+    <div class="card-meta">
+      <span class="meta-tag">🇨🇦 Canada</span>
+      <span class="meta-tag">High interest</span>
+      <span class="meta-tag">No fees</span>
+    </div>
+    <a href="https://cmi.rocks/go/6a42f0d6cf40e" rel="sponsored noopener" target="_blank" class="card-cta">Open account →</a>
+  </div>
+
+  <div class="offer-card">
+    <div class="card-top">
+      <div class="card-name">Neo Money Account</div>
+      <span class="card-badge badge-banking">Chequing</span>
+    </div>
+    <div class="card-desc">A full-featured everyday banking account from Neo Financial — with cash back on purchases, no monthly fees, and instant e-transfers.</div>
+    <div class="card-meta">
+      <span class="meta-tag">🇨🇦 Canada</span>
+      <span class="meta-tag">Cash back</span>
+      <span class="meta-tag">No fees</span>
+    </div>
+    <a href="https://cmi.rocks/go/6a42f07e95e34" rel="sponsored noopener" target="_blank" class="card-cta">Open account →</a>
+  </div>
+
+  <div class="offer-card">
+    <div class="card-top">
+      <div class="card-name">Neo Credit Card</div>
+      <span class="card-badge badge-banking">Credit Card</span>
+    </div>
+    <div class="card-desc">Earn cash back at hundreds of Canadian retailers with the Neo Credit Card. No annual fee and an instant approval decision. Cash back rates vary by partner retailer.</div>
+    <div class="card-meta">
+      <span class="meta-tag">🇨🇦 Canada</span>
+      <span class="meta-tag">Cash back</span>
+      <span class="meta-tag">No annual fee</span>
+    </div>
+    <a href="https://cmi.rocks/go/6a42eeccaf45a" rel="sponsored noopener" target="_blank" class="card-cta">Apply now →</a>
+  </div>
+</div>
+
+<!-- TAX -->
+<div class="section" id="tax">
+  <div class="section-head">
+    <h2>Tax</h2>
+    <span class="count">1 offer</span>
+  </div>
+
+  <div class="offer-card">
+    <div class="card-top">
+      <div class="card-name">H&amp;R Block Canada</div>
+      <span class="card-badge badge-tax">Tax Filing</span>
+    </div>
+    <div class="card-desc">File your Canadian taxes with H&amp;R Block — online or in-person. Self-employed filers get access to expense tracking, T2125 support, and CRA review protection.</div>
+    <div class="card-meta">
+      <span class="meta-tag">🇨🇦 Canada</span>
+      <span class="meta-tag">Self-employed</span>
+      <span class="meta-tag">CRA audit support</span>
+    </div>
+    <a href="https://cmi.rocks/go/6a42edae3e422" rel="sponsored noopener" target="_blank" class="card-cta">File your taxes →</a>
+  </div>
+</div>
+
+<!-- LEADSCOUT EMAIL CAPTURE -->
+<div class="section" style="padding-bottom: 40px;">
+  <div id="leadscout-ZX3kIzQG"></div>
+  <script async src="https://app.leadscout.io/widget.js" data-id="ZX3kIzQG"></script>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p style="margin-bottom:8px"><strong>estack.ca</strong> — Independent Canadian finance reviews for people who build things.</p>
+  <p>Some links on this page are affiliate links. We earn a commission if you apply through our links, at no extra cost to you. This does not influence our editorial judgment — we only feature products we'd recommend to our own community.</p>
+  <p style="margin-top:8px"><a href="/privacy-policy.html">Privacy Policy</a> · <a href="/affiliate-disclosure.html">Affiliate Disclosure</a> · <a href="/about.html">About</a></p>
+</footer>
+
+<!-- AWIN MASTER TAG -->
+<script src="https://www.dwin2.com/pub.2936205.min.js"></script>
+
+</body>
+</html>
