@@ -14,6 +14,15 @@ Use Google Sheets as the control center, Google Drive as the asset library, Open
 4. Output file: `data/affiliate-links.json`
 5. Website: eStack.ca reads the JSON file for live affiliate cards and partner placements.
 
+## Included templates and docs
+
+- `google-sheets-template.md`
+- `google-drive-template.md`
+- `openai-template.md`
+- `make-scenario-template.md`
+- `daily-content-studio-workflow.md`
+- `affiliate-vault-export-workflow.md`
+
 ## Required Make.com modules
 
 - Google Sheets: Watch Rows
