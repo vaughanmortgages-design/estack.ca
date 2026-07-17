@@ -1,23 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://estack.ca/</loc><priority>1.0</priority></url>
-  <url><loc>https://estack.ca/loans.html</loc><priority>0.9</priority></url>
-  <url><loc>https://estack.ca/rates.html</loc><priority>0.9</priority></url>
-  <url><loc>https://estack.ca/bank-said-no-what-to-do-next.html</loc><priority>0.8</priority></url>
-  <url><loc>https://estack.ca/best-newsletter-platforms-canadian-business.html</loc><priority>0.8</priority></url>
-  <url><loc>https://estack.ca/best-tools-self-employed-canada.html</loc><priority>0.8</priority></url>
-  <url><loc>https://estack.ca/get-more-leads-self-employed-tradesperson.html</loc><priority>0.8</priority></url>
-  <url><loc>https://estack.ca/self-employed-mortgage-canada.html</loc><priority>0.8</priority></url>
-  <url><loc>https://estack.ca/start-shopify-store-canada.html</loc><priority>0.8</priority></url>
-  <url><loc>https://estack.ca/track-marketing-roi-canada.html</loc><priority>0.8</priority></url>
-  <url><loc>https://estack.ca/travel-hacks-canadian-contractors.html</loc><priority>0.8</priority></url>
-  <url><loc>https://estack.ca/commercial-mortgage-financing-gta.html</loc><priority>0.8</priority></url>
-  <url><loc>https://estack.ca/construction-financing-gta-developers.html</loc><priority>0.8</priority></url>
-  <url><loc>https://estack.ca/best-hisa-canada.html</loc><priority>0.7</priority></url>
-  <url><loc>https://estack.ca/bank-of-canada-rate-hold.html</loc><priority>0.7</priority></url>
-  <url><loc>https://estack.ca/improve-credit-score-canada.html</loc><priority>0.7</priority></url>
-  <url><loc>https://estack.ca/ontario-first-time-home-buyer-guide.html</loc><priority>0.7</priority></url>
-  <url><loc>https://estack.ca/variable-vs-fixed-mortgage.html</loc><priority>0.7</priority></url>
-  <url><loc>https://estack.ca/private-mortgage-lenders-ontario.html</loc><priority>0.7</priority></url>
-  <url><loc>https://estack.ca/prepaid-gift-cards-canadian-small-business.html</loc><priority>0.7</priority></url>
+<url><loc>https://estack.ca/</loc><priority>1.0</priority></url>
+<url><loc>https://estack.ca/deals</loc><priority>0.9</priority></url>
+<url><loc>https://estack.ca/loans</loc><priority>0.7</priority></url>
+<url><loc>https://estack.ca/rates</loc><priority>0.8</priority></url>
+<url><loc>https://estack.ca/bank-said-no-what-to-do-next</loc><priority>0.7</priority></url>
+<url><loc>https://estack.ca/best-newsletter-platforms-canadian-business</loc><priority>0.7</priority></url>
+<url><loc>https://estack.ca/best-tools-self-employed-canada</loc><priority>0.7</priority></url>
+<url><loc>https://estack.ca/get-more-leads-self-employed-tradesperson</loc><priority>0.7</priority></url>
+<url><loc>https://estack.ca/self-employed-mortgage-canada</loc><priority>0.8</priority></url>
+<url><loc>https://estack.ca/start-shopify-store-canada</loc><priority>0.7</priority></url>
+<url><loc>https://estack.ca/track-marketing-roi-canada</loc><priority>0.7</priority></url>
+<url><loc>https://estack.ca/travel-hacks-canadian-contractors</loc><priority>0.7</priority></url>
+<url><loc>https://estack.ca/commercial-mortgage-financing-gta</loc><priority>0.8</priority></url>
+<url><loc>https://estack.ca/construction-financing-gta-developers</loc><priority>0.8</priority></url>
+<url><loc>https://estack.ca/best-hisa-canada</loc><priority>0.7</priority></url>
 </urlset>
