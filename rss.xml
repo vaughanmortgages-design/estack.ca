@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>eStack Canada</title>
+    <link>https://estack.ca/</link>
+    <description>Canadian finance, credit, software, business tools, and money-saving resources from eStack.</description>
+    <language>en-ca</language>
+    <atom:link href="https://estack.ca/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 17 Jul 2026 21:25:00 -0400</lastBuildDate>
+    <item>
+      <title>Welcome to eStack Canada</title>
+      <link>https://estack.ca/</link>
+      <guid isPermaLink="true">https://estack.ca/</guid>
+      <pubDate>Fri, 17 Jul 2026 21:25:00 -0400</pubDate>
+      <description>Explore practical Canadian finance, credit, software, business tools, and money-saving resources.</description>
+    </item>
+  </channel>
+</rss>
