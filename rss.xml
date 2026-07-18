@@ -6,7 +6,14 @@
     <description>Canadian finance, credit, software, business tools, and money-saving resources from eStack.</description>
     <language>en-ca</language>
     <atom:link href="https://estack.ca/rss.xml" rel="self" type="application/rss+xml" />
-    <lastBuildDate>Fri, 17 Jul 2026 21:25:00 -0400</lastBuildDate>
+    <lastBuildDate>Fri, 17 Jul 2026 21:29:00 -0400</lastBuildDate>
+    <item>
+      <title>eStack Canada RSS test item</title>
+      <link>https://estack.ca/deals.html</link>
+      <guid isPermaLink="true">https://estack.ca/deals.html?rss-test=20260717-2129</guid>
+      <pubDate>Fri, 17 Jul 2026 21:29:00 -0400</pubDate>
+      <description>Fresh eStack Canada item for testing Zapier automation.</description>
+    </item>
     <item>
       <title>Welcome to eStack Canada</title>
       <link>https://estack.ca/</link>
