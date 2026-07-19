@@ -1,4 +1,7 @@
-/loans /deals 301
+# Loans section — clean/marketing URLs used by site navigation
+/personal-loans /loans 301
+/best-personal-loans-canada-2026 /loans 301
+
 /rates /markets 301
 /best-hisa-canada /deals 301
 /bank-of-canada-rate-hold /markets 301
