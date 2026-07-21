@@ -1,46 +1,111 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>eStack Canada</title>
-    <link>https://estack.ca/</link>
-    <description>Canadian finance, credit, software, business tools, and money-saving resources from eStack.</description>
-    <language>en-ca</language>
-    <atom:link href="https://estack.ca/rss.xml" rel="self" type="application/rss+xml" />
-    <lastBuildDate>Mon, 20 Jul 2026 19:00:00 -0400</lastBuildDate>
-    <item>
-      <title>Gold vs. Silver Bullion in Canada: What to Compare Before You Buy</title>
-      <link>https://estack.ca/gold-vs-silver-bullion-canada-2026.html</link>
-      <guid isPermaLink="false">estack-ca-gold-silver-20260720-pm</guid>
-      <pubDate>Mon, 20 Jul 2026 19:00:00 -0400</pubDate>
-      <description>Before choosing gold or silver bullion in Canada, compare premiums, storage needs, liquidity, product format and dealer policies. Read the practical side-by-side guide. This article may contain affiliate links.</description>
-    </item>
-    <item>
-      <title>Gold vs. Silver Bullion in Canada: What to Compare Before You Buy</title>
-      <link>https://estack.ca/gold-vs-silver-bullion-canada-2026.html</link>
-      <guid isPermaLink="false">estack-ca-gold-silver-20260718-0846</guid>
-      <pubDate>Sat, 18 Jul 2026 08:46:00 -0400</pubDate>
-      <description>Gold or silver? Compare premiums, storage, liquidity, coins, bars and dealer considerations before buying bullion in Canada. This article may contain affiliate links.</description>
-    </item>
-    <item>
-      <title>Gold vs. Silver Bullion in Canada: What to Compare Before You Buy</title>
-      <link>https://estack.ca/gold-vs-silver-bullion-canada-2026.html</link>
-      <guid isPermaLink="false">estack-ca-gold-silver-20260718-am</guid>
-      <pubDate>Sat, 18 Jul 2026 01:30:00 -0400</pubDate>
-      <description>Compare premiums, storage, liquidity, coins, bars and dealer considerations before buying gold or silver bullion in Canada.</description>
-    </item>
-    <item>
-      <title>eStack Canada RSS test item</title>
-      <link>https://estack.ca/deals.html</link>
-      <guid isPermaLink="true">https://estack.ca/deals.html?rss-test=20260717-2129</guid>
-      <pubDate>Fri, 17 Jul 2026 21:29:00 -0400</pubDate>
-      <description>Fresh eStack Canada item for testing Zapier automation.</description>
-    </item>
-    <item>
-      <title>Welcome to eStack Canada</title>
-      <link>https://estack.ca/</link>
-      <guid isPermaLink="true">https://estack.ca/</guid>
-      <pubDate>Fri, 17 Jul 2026 21:25:00 -0400</pubDate>
-      <description>Explore practical Canadian finance, credit, software, business tools, and money-saving resources.</description>
-    </item>
-  </channel>
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/">
+<channel>
+  <title>estack — Canadian Mortgage &amp; Finance</title>
+  <link>https://estack.ca</link>
+  <description>Practical guides for Canadian homebuyers, mortgage seekers, and real estate investors</description>
+  <language>en-ca</language>
+  <lastBuildDate>Sun, 20 Jul 2026 08:00:00 +0000</lastBuildDate>
+  <atom:link href="https://estack.ca/rss.xml" rel="self" type="application/rss+xml"/>
+
+  <item>
+    <title>CMI Financial Group Review: Canada's Largest Private Mortgage Lender</title>
+    <link>https://estack.ca/cmi-mortgage-canada.html</link>
+    <description><![CDATA[CMI Financial Group is one of Canada's leading private mortgage lenders. Here's who they lend to, what rates look like, and how to apply.]]></description>
+    <pubDate>Sun, 20 Jul 2026 08:00:00 +0000</pubDate>
+    <guid>https://estack.ca/cmi-mortgage-canada.html</guid>
+    <media:content url="https://estack.ca/images/cmi-mortgage-canada.jpg" medium="image"/>
+  </item>
+
+  <item>
+    <title>LeadScout Mortgage Calculator: Get a Rate in 60 Seconds</title>
+    <link>https://estack.ca/leadscout-mortgage-calculator.html</link>
+    <description><![CDATA[LeadScout's mortgage calculator gives Canadian borrowers an instant rate estimate — no paperwork, no broker calls. Here's how it works.]]></description>
+    <pubDate>Fri, 18 Jul 2026 08:00:00 +0000</pubDate>
+    <guid>https://estack.ca/leadscout-mortgage-calculator.html</guid>
+    <media:content url="https://estack.ca/images/leadscout-calculator.jpg" medium="image"/>
+  </item>
+
+  <item>
+    <title>FindMyRate.ca Review: Compare Canadian Mortgage Rates Instantly</title>
+    <link>https://estack.ca/findmyrate-mortgage-canada.html</link>
+    <description><![CDATA[FindMyRate.ca lets Canadian homebuyers compare mortgage rates from multiple lenders in seconds. Here's how it works and who it's best for.]]></description>
+    <pubDate>Wed, 16 Jul 2026 08:00:00 +0000</pubDate>
+    <guid>https://estack.ca/findmyrate-mortgage-canada.html</guid>
+    <media:content url="https://estack.ca/images/findmyrate-canada.jpg" medium="image"/>
+  </item>
+
+  <item>
+    <title>Self-Employed Mortgage in Canada: What You Need to Know</title>
+    <link>https://estack.ca/self-employed-mortgage-canada.html</link>
+    <description><![CDATA[Getting a mortgage when you're self-employed in Canada is harder — but not impossible. Here's what lenders look for and how to qualify.]]></description>
+    <pubDate>Mon, 14 Jul 2026 08:00:00 +0000</pubDate>
+    <guid>https://estack.ca/self-employed-mortgage-canada.html</guid>
+  </item>
+
+  <item>
+    <title>Gold vs. Silver Bullion in Canada: What to Compare Before You Buy</title>
+    <link>https://estack.ca/gold-vs-silver-bullion-canada-2026.html</link>
+    <description><![CDATA[Before choosing gold or silver bullion in Canada, compare premiums, storage needs, liquidity, product format and dealer policies. A practical side-by-side guide.]]></description>
+    <pubDate>Mon, 20 Jul 2026 19:00:00 -0400</pubDate>
+    <guid>https://estack.ca/gold-vs-silver-bullion-canada-2026.html</guid>
+  </item>
+
+  <item>
+    <title>Variable vs. Fixed Mortgage in Canada: Which Should You Choose?</title>
+    <link>https://estack.ca/variable-vs-fixed-mortgage.html</link>
+    <description><![CDATA[Fixed or variable? The decision depends on your risk tolerance, timeline, and where rates are heading. Here's a practical breakdown for Canadian borrowers.]]></description>
+    <pubDate>Mon, 07 Jul 2026 08:00:00 +0000</pubDate>
+    <guid>https://estack.ca/variable-vs-fixed-mortgage.html</guid>
+  </item>
+
+  <item>
+    <title>Ontario First-Time Home Buyer Guide: Programs, Costs &amp; What to Expect</title>
+    <link>https://estack.ca/ontario-first-time-home-buyer-guide.html</link>
+    <description><![CDATA[Everything Ontario first-time buyers need to know: land transfer tax rebates, the First Home Savings Account, CMHC insurance, and how to navigate your first purchase.]]></description>
+    <pubDate>Mon, 30 Jun 2026 08:00:00 +0000</pubDate>
+    <guid>https://estack.ca/ontario-first-time-home-buyer-guide.html</guid>
+  </item>
+
+  <item>
+    <title>Private Mortgage Lenders in Ontario: What They Are and When to Use One</title>
+    <link>https://estack.ca/private-mortgage-lenders-ontario.html</link>
+    <description><![CDATA[Private mortgage lenders in Ontario fill gaps that banks won't. Here's how they work, what rates look like, and when they make sense.]]></description>
+    <pubDate>Mon, 23 Jun 2026 08:00:00 +0000</pubDate>
+    <guid>https://estack.ca/private-mortgage-lenders-ontario.html</guid>
+  </item>
+
+  <item>
+    <title>Second Mortgages on Investment Properties in Ontario</title>
+    <link>https://estack.ca/second-mortgages-investment-properties-ontario.html</link>
+    <description><![CDATA[Second mortgages on Ontario investment properties can unlock equity without refinancing. Here's how lenders assess them and what to expect.]]></description>
+    <pubDate>Mon, 16 Jun 2026 08:00:00 +0000</pubDate>
+    <guid>https://estack.ca/second-mortgages-investment-properties-ontario.html</guid>
+  </item>
+
+  <item>
+    <title>Bank Said No? What to Do Next in Canada</title>
+    <link>https://estack.ca/bank-said-no-what-to-do-next.html</link>
+    <description><![CDATA[Getting declined by a bank isn't the end of the road. Here are the realistic next steps for Canadian borrowers who don't fit traditional lending criteria.]]></description>
+    <pubDate>Mon, 09 Jun 2026 08:00:00 +0000</pubDate>
+    <guid>https://estack.ca/bank-said-no-what-to-do-next.html</guid>
+  </item>
+
+  <item>
+    <title>Bank of Canada Rate Decision: What It Means for Your Mortgage</title>
+    <link>https://estack.ca/bank-of-canada-rate-hold.html</link>
+    <description><![CDATA[How Bank of Canada rate decisions affect variable-rate mortgages, HELOCs, and whether fixed rates are likely to follow.]]></description>
+    <pubDate>Mon, 02 Jun 2026 08:00:00 +0000</pubDate>
+    <guid>https://estack.ca/bank-of-canada-rate-hold.html</guid>
+  </item>
+
+  <item>
+    <title>How to Improve Your Credit Score in Canada Before Applying for a Mortgage</title>
+    <link>https://estack.ca/improve-credit-score-canada.html</link>
+    <description><![CDATA[A higher credit score means better mortgage rates and more lender options. Here are the most effective steps Canadian borrowers can take before applying.]]></description>
+    <pubDate>Mon, 26 May 2026 08:00:00 +0000</pubDate>
+    <guid>https://estack.ca/improve-credit-score-canada.html</guid>
+  </item>
+
+</channel>
 </rss>
