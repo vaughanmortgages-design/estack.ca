@@ -1,83 +1,32 @@
-[
-  {
-    "name": "Beehiiv",
-    "category": "Newsletter Publishing",
-    "country": "CA & USA",
-    "network": "Beehiiv Direct",
-    "affiliateUrl": "https://www.beehiiv.com/?via=paul-malandrino",
-    "logo": "/assets/logos/beehiiv.png",
-    "description": "Audience growth and newsletter publishing platform built for creators and media brands.",
-    "approved": true
-  },
-  {
-    "name": "Shopify",
-    "category": "eCommerce",
-    "country": "CA & USA",
-    "network": "Shopify Partners",
-    "affiliateUrl": "https://shopify.pxf.io/PzRMVN",
-    "logo": "/assets/logos/shopify.png",
-    "description": "Commerce platform for entrepreneurs and online sellers to build, launch and grow a business.",
-    "approved": true
-  },
-  {
-    "name": "Windsor.ai",
-    "category": "Marketing Analytics",
-    "country": "CA & USA",
-    "network": "FirstPromoter",
-    "affiliateUrl": "https://windsor.ai/?fpr=paul17",
-    "logo": "/assets/logos/windsor-ai.png",
-    "description": "Marketing data integration and ROI reporting platform connecting all ad channels in one dashboard.",
-    "approved": true
-  },
-  {
-    "name": "TikTok for Business",
-    "category": "Advertising & Social Media",
-    "country": "USA",
-    "network": "TikTok Partner",
-    "affiliateUrl": "https://getstartedtiktok.partnerlinks.io/19gddff1jq85",
-    "logo": "/assets/logos/tiktok-business.png",
-    "description": "Advertising platform for businesses to reach millions of engaged users on TikTok.",
-    "approved": true
-  },
-  {
-    "name": "LeadScout",
-    "category": "Lead Generation",
-    "country": "CA",
-    "network": "LeadScout Direct",
-    "affiliateUrl": "https://leadscout.ca/?ref=ZX3kIzQG",
-    "logo": "/assets/logos/leadscout.png",
-    "description": "Personal loan matching network connecting Canadians with lenders suited to their credit profile.",
-    "approved": true
-  },
-  {
-    "name": "Blackhawk Network Gift Cards",
-    "category": "Gift Cards",
-    "country": "CA",
-    "network": "AWIN",
-    "affiliateUrl": "https://www.awin1.com/cread.php?s=4518320&v=91359&q=581813&r=2936205",
-    "logo": "/assets/logos/blackhawk.png",
-    "description": "Prepaid and digital gift cards from hundreds of top brands for any occasion.",
-    "approved": true
-  },
-  {
-    "name": "Kitco",
-    "category": "Precious Metals",
-    "country": "CA",
-    "network": "AWIN",
-    "affiliateUrl": "https://www.awin1.com/cread.php?awinmid=84579&awinaffid=2936205",
-    "logo": "/assets/logos/kitco.png",
-    "description": "Gold, silver and precious metals news, charts, prices and bullion resources.",
-    "approved": true
-  },
-  {
-    "name": "AFN",
-    "category": "Business Funding",
-    "country": "CA & USA",
-    "network": "AFN Direct",
-    "affiliateUrl": "https://app.advancefundsnetwork.com/affiliate-landing/U0JxSd5yROWgKfF93ibsLDcSCkn2",
-    "logo": "/assets/logos/afn.png",
-    "description": "Advance Funds Network provides fast business funding and working capital solutions for small businesses.",
-    "approved": true
+{
+  "source": "Affiliate Link Vault Google Sheet",
+  "refreshed": "2026-07-24",
+  "brand": "estack.ca",
+  "links": {
+    "Windsor.ai": "https://windsor.ai/?fpr=paul17",
+    "LeadScout embed": "ZX3kIzQG",
+    "Shopify": "https://shopify.pxf.io/PzRMVN",
+    "Kitco": "https://www.awin1.com/cread.php?s=3795009&v=84579&q=505826&r=2936205",
+    "AFN": "https://app.advancefundsnetwork.com/affiliate-landing/U0JxSd5yROWgKfF93ibsLDcSCkn2",
+    "Blackhawk / Giftcards.ca": "https://www.awin1.com/cread.php?s=4518320&v=91359&q=581813&r=2936205",
+    "Money Metals Exchange": "https://www.awin1.com/cread.php?s=3928272&v=88985&q=519076&r=2936205",
+    "Loan Genie": "https://cmi.rocks/go/6a3eeaf652419",
+    "Rate Genie": "https://cmi.rocks/go/6a3eeb14424a6",
+    "Spark Credit": "https://cmi.rocks/go/6a3eeb70dd3f2",
+    "Spring Credit": "https://cmi.rocks/go/6a3eeb8cee0f5",
+    "Bree": "https://cmi.rocks/go/6a3eedd49801f",
+    "WagePay": "https://cmi.rocks/go/6a42ef72808d0",
+    "MyAutoApproval": "https://cmi.rocks/go/6a3eeb348cc43",
+    "Auto Loan Refi": "https://cmi.rocks/go/6a3eeba3b98c6",
+    "CompareHub": "https://cmi.rocks/go/6a3eec522d17d",
+    "H&R Block": "https://cmi.rocks/go/6a42edae3e422",
+    "Kikoff": "https://cmi.rocks/go/6a42edef9bbb4",
+    "KOHO Cover $250": "https://cmi.rocks/go/6a42ee2365fdd",
+    "KOHO Credit Building": "https://cmi.rocks/go/6a42ee849e331",
+    "Neo Credit Card": "https://cmi.rocks/go/6a42eeccaf45a",
+    "Neo Secured Card": "https://cmi.rocks/go/6a42eef344f3e",
+    "Neo Money Account": "https://cmi.rocks/go/6a42f07e95e34",
+    "Neo HISA": "https://cmi.rocks/go/6a42f0d6cf40e",
+    "Nyble": "https://cmi.rocks/go/6a46b4badda3e"
   }
-]
-
+}
