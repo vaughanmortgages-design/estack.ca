@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-
 Sitemap: https://estack.ca/sitemap.xml
