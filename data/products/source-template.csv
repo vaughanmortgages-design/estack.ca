@@ -1,2 +1,1 @@
-id,title,description,price,currency,image,availability,dealer_id,affiliate_url,category,collection,featured,brand,condition,product_page_url
-
+id,title,description,price,previous_price,currency,image,availability,dealer_id,affiliate_url,category,collection,featured,best_seller,merchant_priority,created_at,brand,condition,product_page_url
