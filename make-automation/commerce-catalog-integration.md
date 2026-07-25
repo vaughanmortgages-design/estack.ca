@@ -54,6 +54,17 @@ Each successful refresh rebuilds:
 - `catalog.csv`
 - `catalog.xml`
 - `sitemap.xml`
+- `data/products/featured-products.json`
+- import state and change logs
+- daily scoring and feed-grounded social copy
+
+The workflow also runs daily at 12:17 UTC. Make.com can trigger the same pipeline immediately after Sheet changes.
+
+Optional AI content:
+
+- Set `AI_CONTENT_WEBHOOK_URL` as a GitHub Actions secret to send featured-product fields to a Make.com AI scenario.
+- The request includes only supplied feed fields and explicitly prohibits invented prices or specifications.
+- Responses containing numeric claims not present in the feed are rejected and replaced with deterministic feed-grounded copy.
 
 Meta Commerce Manager can use either:
 
@@ -61,4 +72,3 @@ Meta Commerce Manager can use either:
 - `https://estack.ca/catalog.xml`
 
 No deployment is triggered by this workflow. Deployment remains a separate reviewed action.
-
