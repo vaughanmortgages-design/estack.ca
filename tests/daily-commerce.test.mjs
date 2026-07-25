@@ -119,6 +119,23 @@ test('features only products with images, availability and approved tracking', (
   assert.equal(isShowroomEligible({...eligible, availability: 'out of stock'}, dealer), false);
 });
 
+test('excludes inactive products from the curated storefront', () => {
+  const product = {
+    id: 'inactive',
+    image: 'https://images.example.com/inactive.webp',
+    availability: 'in stock',
+    affiliateUrl: 'https://www.sprottmoney.ca/?acc=paul-malandrino-5887a',
+    active: false
+  };
+  const dealer = {
+    affiliateValidation: {
+      hosts: ['www.sprottmoney.ca'],
+      requiredQuery: {acc: 'paul-malandrino-5887a'}
+    }
+  };
+  assert.equal(isShowroomEligible(product, dealer), false);
+});
+
 test('adds offer schema only for engine-verified affiliate URLs', () => {
   const withoutVerification = productSeo({...base, affiliateUrl: 'https://example.com', price: 100}, 'Kitco');
   assert.equal(withoutVerification.jsonLd.offers, undefined);
