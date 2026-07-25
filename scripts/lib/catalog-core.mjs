@@ -15,8 +15,7 @@ const fieldAliases = {
   featured: ['featured', 'is_featured'],
   brand: ['brand', 'mint', 'refiner'],
   condition: ['condition'],
-  productPageUrl: ['product_page_url', 'website_url']
-  ,
+  productPageUrl: ['product_page_url', 'website_url'],
   createdAt: ['created_at', 'arrival_date', 'date_added', 'published_at'],
   bestSeller: ['best_seller', 'bestseller', 'is_best_seller'],
   previousPrice: ['previous_price', 'original_price', 'compare_at_price'],
@@ -129,8 +128,7 @@ export function normalizeProduct(row, index = 0) {
     featured: booleanValue(valueFor(row, 'featured')),
     brand: valueFor(row, 'brand'),
     condition: String(valueFor(row, 'condition') || 'new').toLowerCase(),
-    productPageUrl: valueFor(row, 'productPageUrl')
-    ,
+    productPageUrl: valueFor(row, 'productPageUrl'),
     createdAt: valueFor(row, 'createdAt'),
     bestSeller: booleanValue(valueFor(row, 'bestSeller')),
     previousPrice: priceValue(valueFor(row, 'previousPrice')),
@@ -148,7 +146,22 @@ export function normalizeProducts(rows) {
   return products;
 }
 
-export async function importProducts(source) {
+export function normalizeProductsDetailed(rows) {
+  const products = [];
+  const seen = new Set();
+  const duplicatesSkipped = [];
+  rows.map(normalizeProduct).filter(product => product.id && product.title).forEach(product => {
+    if (seen.has(product.id)) {
+      duplicatesSkipped.push(product.id);
+      return;
+    }
+    seen.add(product.id);
+    products.push(product);
+  });
+  return {products, duplicatesSkipped};
+}
+
+async function readProductSource(source) {
   if (!source) throw new Error('A Google Sheets, JSON or CSV source is required');
   const remote = /^https?:\/\//i.test(source);
   let content;
@@ -165,9 +178,17 @@ export async function importProducts(source) {
   }
   if (type === 'json') {
     const parsed = JSON.parse(content);
-    return normalizeProducts(Array.isArray(parsed) ? parsed : parsed.products || []);
+    return Array.isArray(parsed) ? parsed : parsed.products || [];
   }
-  return normalizeProducts(parseCsv(content));
+  return parseCsv(content);
+}
+
+export async function importProducts(source) {
+  return normalizeProducts(await readProductSource(source));
+}
+
+export async function importProductsDetailed(source) {
+  return normalizeProductsDetailed(await readProductSource(source));
 }
 
 export function isPlaceholderUrl(value) {
