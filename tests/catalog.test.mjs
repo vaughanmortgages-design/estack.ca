@@ -89,6 +89,33 @@ test('imports the documented camelCase JSON product shape', () => {
   assert.equal(product.bestSeller, true);
   assert.equal(product.previousPrice, 125);
   assert.equal(product.merchantPriority, 8);
+  assert.equal(product.active, true);
+});
+
+test('keeps inactive master-catalog products out of Meta exports', () => {
+  const [product] = normalizeProducts([{
+    id: 'inactive-product',
+    title: 'Inactive Product',
+    description: 'Not for publication.',
+    dealer_id: 'sprott-money',
+    affiliate_url: 'https://www.sprottmoney.ca/?acc=paul-malandrino-5887a',
+    image: 'https://images.example.com/inactive.webp',
+    category: 'gold-bars',
+    price: 100,
+    currency: 'CAD',
+    availability: 'in stock',
+    active: false
+  }]);
+  const dealers = [{
+    id: 'sprott-money',
+    name: 'Sprott Money',
+    affiliateValidation: {
+      hosts: ['www.sprottmoney.ca'],
+      requiredQuery: {acc: 'paul-malandrino-5887a'}
+    }
+  }];
+  assert.equal(product.active, false);
+  assert.equal(toMetaCsv([product], dealers).trim(), 'id,title,description,availability,condition,price,link,image_link,brand,product_type');
 });
 
 test('rejects duplicate product ids', () => {
