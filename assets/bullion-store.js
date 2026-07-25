@@ -33,33 +33,41 @@ export function createProductCard(product,dealer){
   price.className='price-placeholder';
   price.textContent=product.priceDisplay||'Price pending verification';
   meta.append(price);
-  const cta=document.createElement('a');
+  const cta=document.createElement(product.affiliateUrl?'a':'span');
   cta.className='product-cta';
-  cta.textContent=product.cta||'View at dealer';
-  cta.href=product.url;
-  cta.target='_blank';
-  cta.rel='sponsored nofollow noopener noreferrer';
+  cta.textContent=product.affiliateUrl?(product.cta||'View at dealer'):'Coming Soon';
+  if(product.affiliateUrl){
+    cta.href=product.affiliateUrl;
+    cta.target='_blank';
+    cta.rel='sponsored nofollow noopener noreferrer';
+  }else{
+    cta.setAttribute('aria-disabled','true');
+  }
   body.append(title,meta,cta);
   article.append(image,body);
   return article;
 }
 
 function productSchema(product,dealer){
-  return {
+  const schema={
     '@context':'https://schema.org',
     '@type':'Product',
     name:product.title,
     image:product.image,
-    brand:{'@type':'Brand',name:product.brand||dealer.name},
-    offers:{
+    description:product.description,
+    brand:{'@type':'Brand',name:product.brand||dealer.name}
+  };
+  if(product.affiliateUrl&&product.price!==null){
+    schema.offers={
       '@type':'Offer',
-      url:product.url,
+      url:product.affiliateUrl,
       priceCurrency:product.currency,
       price:product.price,
-      availability:product.availability||'https://schema.org/InStock',
+      availability:product.availability==='in stock'?'https://schema.org/InStock':product.availability==='preorder'?'https://schema.org/PreOrder':'https://schema.org/OutOfStock',
       seller:{'@type':'Organization',name:dealer.name}
-    }
-  };
+    };
+  }
+  return schema;
 }
 
 async function loadDealers(){
@@ -129,12 +137,15 @@ async function renderIgStore(){
   const dealerList=document.querySelector('[data-ig-dealer-list]');
   if(!grid&&!dealerList)return;
   try{
-    const [productsResponse,dealerData]=await Promise.all([
+    const [productsResponse,featuredResponse,dealerData]=await Promise.all([
       fetch('/data/products/catalog.json'),
+      fetch('/data/products/featured-products.json'),
       loadDealers()
     ]);
     if(!productsResponse.ok)throw new Error('Instagram product data unavailable');
     const {products=[]}=await productsResponse.json();
+    const featuredData=featuredResponse.ok?await featuredResponse.json():{products:[]};
+    const featured=featuredData.products||[];
     const dealerMap=new Map(dealerData.dealers.map(dealer=>[dealer.id,dealer]));
     if(dealerList){
       dealerData.dealers.forEach(dealer=>{
@@ -153,7 +164,6 @@ async function renderIgStore(){
       });
     }
     const carousel=document.querySelector('[data-featured-carousel]');
-    const featured=products.filter(product=>product.featured&&product.affiliateUrl);
     if(carousel&&featured.length){
       carousel.innerHTML='';
       featured.forEach(product=>{
@@ -161,6 +171,9 @@ async function renderIgStore(){
         if(dealer)carousel.append(createIgProductCard(product,dealer));
       });
     }
+    const selectedId=new URLSearchParams(window.location.search).get('product');
+    const selected=featured.find(product=>product.id===selectedId);
+    if(selected?.seo)applyProductSeo(selected);
   }catch(error){
     grid?.setAttribute('data-error','true');
   }
@@ -181,7 +194,7 @@ async function renderProducts(){
     const schemas=[];
     products.forEach(product=>{
       const dealer=dealerMap.get(product.dealerId);
-      if(!dealer||!product.url)return;
+      if(!dealer)return;
       grid.append(createProductCard(product,dealer));
       if(product.price&&product.currency&&product.image)schemas.push(productSchema(product,dealer));
     });
@@ -199,6 +212,60 @@ async function renderProducts(){
   }
 }
 
+function setMeta(selector,attribute,value){
+  if(!value)return;
+  let node=document.head.querySelector(selector);
+  if(!node){
+    node=document.createElement('meta');
+    const [name,content]=selector.match(/\[(.+?)="(.+?)"\]/)?.slice(1)||[];
+    if(name)node.setAttribute(name,content);
+    document.head.append(node);
+  }
+  node.setAttribute(attribute,value);
+}
+
+function applyProductSeo(product){
+  const seo=product.seo;
+  document.title=seo.openGraph?.title||document.title;
+  const canonical=document.head.querySelector('link[rel="canonical"]');
+  if(canonical&&seo.canonicalUrl)canonical.href=seo.canonicalUrl;
+  setMeta('meta[property="og:title"]','content',seo.openGraph?.title);
+  setMeta('meta[property="og:description"]','content',seo.openGraph?.description);
+  setMeta('meta[property="og:image"]','content',seo.openGraph?.image);
+  setMeta('meta[name="twitter:title"]','content',seo.twitterCard?.title);
+  setMeta('meta[name="twitter:description"]','content',seo.twitterCard?.description);
+  setMeta('meta[name="twitter:image"]','content',seo.twitterCard?.image);
+  if(seo.jsonLd){
+    const node=document.createElement('script');
+    node.type='application/ld+json';
+    node.textContent=JSON.stringify(seo.jsonLd);
+    document.head.append(node);
+  }
+}
+
+async function renderDailyHomepage(){
+  const grid=document.querySelector('#deals .deal-grid');
+  if(!grid)return;
+  try{
+    const [featuredResponse,dealerData]=await Promise.all([
+      fetch('/data/products/featured-products.json'),
+      loadDealers()
+    ]);
+    if(!featuredResponse.ok)return;
+    const {products=[]}=await featuredResponse.json();
+    if(!products.length)return;
+    const dealerMap=new Map(dealerData.dealers.map(dealer=>[dealer.id,dealer]));
+    grid.innerHTML='';
+    grid.className='product-grid';
+    products.forEach(product=>{
+      const dealer=dealerMap.get(product.dealerId);
+      if(dealer)grid.append(createProductCard(product,dealer));
+    });
+  }catch(error){
+    grid.setAttribute('data-featured-error','true');
+  }
+}
+
 const menu=document.querySelector('.store-menu');
 const navigation=document.querySelector('.store-links');
 menu?.addEventListener('click',()=>{
@@ -210,6 +277,7 @@ menu?.addEventListener('click',()=>{
 renderDealers();
 renderProducts();
 renderIgStore();
+renderDailyHomepage();
 
 const searchForm=document.querySelector('[data-product-search]');
 const searchInput=document.querySelector('#ig-product-search');
