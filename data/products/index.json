@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "categories": [
+    {
+      "slug": "gold-bars",
+      "name": "Gold Bars"
+    },
+    {
+      "slug": "gold-coins",
+      "name": "Gold Coins"
+    },
+    {
+      "slug": "silver-bars",
+      "name": "Silver Bars"
+    },
+    {
+      "slug": "silver-coins",
+      "name": "Silver Coins"
+    },
+    {
+      "slug": "platinum",
+      "name": "Platinum"
+    },
+    {
+      "slug": "palladium",
+      "name": "Palladium"
+    },
+    {
+      "slug": "copper",
+      "name": "Copper"
+    },
+    {
+      "slug": "vault-products",
+      "name": "Vault Products"
+    },
+    {
+      "slug": "collectibles",
+      "name": "Collectibles"
+    },
+    {
+      "slug": "deals",
+      "name": "Deals"
+    }
+  ]
+}
