@@ -1,9 +1,14 @@
-# Loans section — clean/marketing URLs used by site navigation
-/personal-loans /loans 301
-/best-personal-loans-canada-2026 /loans 301
-
-/rates /markets 301
-/best-hisa-canada /deals 301
-/bank-of-canada-rate-hold /markets 301
-/best-tools-self-employed-canada /partner-directory 301
-/editorial-policy /editorial-standards 301
+/top-picks /tech-ai-tools.html 301
+/markets-hub.html /markets.html 301!
+/rates.html /markets.html 301!
+/mortgage-calculator.html /loans.html 301!
+/cmi-mortgage-canada.html /loans.html 301!
+/findmyrate-mortgage-canada.html /loans.html 301!
+/leadscout-mortgage-calculator.html /loans.html 301!
+/private-mortgage-lenders-ontario.html /loans.html 301!
+/self-employed-mortgage-canada.html /loans.html 301!
+/commercial-mortgage-financing-gta.html /loans.html 301!
+/construction-financing-gta-developers.html /loans.html 301!
+/second-mortgages-investment-properties-ontario.html /loans.html 301!
+/variable-vs-fixed-mortgage.html /loans.html 301!
+/ontario-first-time-home-buyer-guide.html /loans.html 301!
