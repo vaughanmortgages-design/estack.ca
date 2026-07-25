@@ -21,7 +21,7 @@ The file is an array of partner objects:
     "category": "Newsletter Publishing",
     "country": "CA & USA",
     "network": "Beehiiv Direct",
-    "affiliateUrl": "https://www.beehiiv.com/?via=paul-malandrino",
+    "affiliateUrl": "https://beehiiv.com/?via=paul-malandrino",
     "logo": "/assets/logos/beehiiv.png",
     "description": "Audience growth and newsletter publishing platform built for creators and media brands.",
     "approved": true
