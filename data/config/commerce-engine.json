@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "brand": {
+    "name": "eStack Bullion",
+    "siteUrl": "https://estack.ca",
+    "currency": "CAD"
+  },
+  "featuredLimit": 10,
+  "ranking": {
+    "featured": 25,
+    "newest": 25,
+    "newestWindowDays": 14,
+    "bestSeller": 20,
+    "priceChangeMax": 20,
+    "availability": {
+      "inStock": 10,
+      "preorder": 5
+    },
+    "merchantPriorityMax": 10
+  }
+}
