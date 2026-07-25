@@ -4,6 +4,12 @@
 
 Use one Google Sheet as the master product source. Publish only the product tab as CSV, then save its URL in the GitHub Actions secret `PRODUCT_SHEET_CSV_URL`.
 
+Daily ranking is controlled by `data/config/commerce-engine.json`. The importer keeps
+the first valid row for each product ID, reports later duplicates, and only regenerates
+content and SEO for new or changed product fingerprints. Each run writes the canonical
+catalog to both `/products.json` and `/data/products/products.json`, plus the daily
+featured feed, Meta CSV/XML feeds, analytics and an append-only import log.
+
 Required columns:
 
 `id`, `title`, `description`, `price`, `currency`, `image`, `availability`, `dealer_id`, `affiliate_url`, `category`, `collection`, `featured`, `brand`, `condition`, `product_page_url`
