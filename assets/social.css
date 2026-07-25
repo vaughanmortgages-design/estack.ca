@@ -1,0 +1,49 @@
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 22px 0;
+}
+
+.social-link {
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 50%;
+  color: #fff;
+  display: inline-flex;
+  height: 44px;
+  justify-content: center;
+  transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease, transform 160ms ease;
+  width: 44px;
+}
+
+.social-link svg {
+  fill: currentColor;
+  height: 21px;
+  width: 21px;
+}
+
+.social-link:hover {
+  background: #c7a44c;
+  border-color: #c7a44c;
+  color: #06111f;
+  transform: translateY(-2px);
+}
+
+.social-link:focus-visible {
+  background: #c7a44c;
+  color: #06111f;
+  outline: 3px solid #fff;
+  outline-offset: 3px;
+}
+
+@media (max-width: 650px) {
+  .social-links {
+    gap: 12px;
+  }
+
+  .social-link {
+    height: 48px;
+    width: 48px;
+  }
+}
