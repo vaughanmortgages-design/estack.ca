@@ -1,0 +1,15 @@
+/data/products/*
+  X-Robots-Tag: noindex, nofollow
+  Cache-Control: public, max-age=300, must-revalidate
+
+/products.json
+  X-Robots-Tag: noindex, nofollow
+  Cache-Control: public, max-age=300, must-revalidate
+
+/catalog.csv
+  X-Robots-Tag: noindex
+  Cache-Control: public, max-age=300, must-revalidate
+
+/catalog.xml
+  X-Robots-Tag: noindex
+  Cache-Control: public, max-age=300, must-revalidate

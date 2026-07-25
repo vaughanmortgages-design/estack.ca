@@ -1,8 +1,25 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {googleSheetCsvUrl, normalizeProducts, normalizeProductsDetailed, parseCsv, toMetaCsv, toMetaXml, isMetaReady} from '../scripts/lib/catalog-core.mjs';
+import {
+  googleSheetCsvUrl,
+  isApprovedAffiliateUrl,
+  isMetaReady,
+  normalizeProducts,
+  normalizeProductsDetailed,
+  parseCsv,
+  STOREFRONT_CATEGORIES,
+  toMetaCsv,
+  toMetaXml
+} from '../scripts/lib/catalog-core.mjs';
 
-const dealers = [{id: 'kitco', name: 'Kitco'}];
+const dealers = [{
+  id: 'kitco',
+  name: 'Kitco',
+  affiliateValidation: {
+    hosts: ['www.awin1.com'],
+    requiredQuery: {v: '84579', r: '2936205'}
+  }
+}];
 const valid = {
   id: 'gold-1',
   title: 'Verified Gold Bar',
@@ -12,7 +29,7 @@ const valid = {
   image: 'https://example.com/gold.webp',
   availability: 'in stock',
   dealerId: 'kitco',
-  affiliateUrl: 'https://example.com/approved',
+  affiliateUrl: 'https://www.awin1.com/cread.php?s=3795009&v=84579&q=505826&r=2936205',
   category: 'gold-bars',
   collection: 'gold',
   condition: 'new',
@@ -65,8 +82,22 @@ test('incremental importer skips and reports duplicate product ids', () => {
 });
 
 test('excludes placeholder affiliate links from Meta catalog', () => {
-  assert.equal(isMetaReady({...valid, affiliateUrl: 'APPROVED_AFFILIATE_URL'}, new Set(['kitco'])), false);
+  assert.equal(isMetaReady({...valid, affiliateUrl: 'APPROVED_AFFILIATE_URL'}, dealers), false);
   assert.equal(toMetaCsv([{...valid, affiliateUrl: ''}], dealers).split('\n').length, 2);
+});
+
+test('accepts only tracked dealer URLs with required parameters', () => {
+  assert.equal(isApprovedAffiliateUrl(valid.affiliateUrl, dealers[0]), true);
+  assert.equal(isApprovedAffiliateUrl('https://www.awin1.com/cread.php?v=84579', dealers[0]), false);
+  assert.equal(isApprovedAffiliateUrl('https://example.com/?v=84579&r=2936205', dealers[0]), false);
+  assert.equal(isMetaReady(valid, dealers), true);
+});
+
+test('defines every generated storefront category centrally', () => {
+  assert.deepEqual(STOREFRONT_CATEGORIES, [
+    'gold-bars', 'gold-coins', 'silver-bars', 'silver-coins', 'platinum',
+    'palladium', 'copper', 'vault-products', 'collectibles', 'deals'
+  ]);
 });
 
 test('exports valid CSV and escaped XML for complete products', () => {

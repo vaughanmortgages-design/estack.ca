@@ -1,5 +1,18 @@
 import fs from 'node:fs/promises';
 
+export const STOREFRONT_CATEGORIES = [
+  'gold-bars',
+  'gold-coins',
+  'silver-bars',
+  'silver-coins',
+  'platinum',
+  'palladium',
+  'copper',
+  'vault-products',
+  'collectibles',
+  'deals'
+];
+
 const fieldAliases = {
   id: ['id', 'product_id', 'sku', 'retailer_id'],
   title: ['title', 'product_title', 'name'],
@@ -197,9 +210,28 @@ export function isPlaceholderUrl(value) {
   return normalized.includes('placeholder') || normalized.includes('approved_affiliate_url') || normalized === '#';
 }
 
-export function isMetaReady(product, dealerIds = new Set()) {
+export function isApprovedAffiliateUrl(value, dealer = {}) {
+  if (isPlaceholderUrl(value)) return false;
+  try {
+    const url = new URL(value);
+    if (url.protocol !== 'https:') return false;
+    const validation = dealer.affiliateValidation;
+    if (!validation) return false;
+    const hosts = validation.hosts || [];
+    if (hosts.length && !hosts.includes(url.hostname.toLowerCase())) return false;
+    return Object.entries(validation.requiredQuery || {}).every(
+      ([name, expected]) => url.searchParams.get(name) === String(expected)
+    );
+  } catch {
+    return false;
+  }
+}
+
+export function isMetaReady(product, dealers = []) {
+  const dealerMap = dealers instanceof Map ? dealers : new Map(dealers.map(dealer => [dealer.id, dealer]));
+  const dealer = dealerMap.get(product.dealerId);
   if (!product.id || !product.title || !product.description || !product.image || !product.category) return false;
-  if (!dealerIds.has(product.dealerId) || isPlaceholderUrl(product.affiliateUrl)) return false;
+  if (!dealer || !isApprovedAffiliateUrl(product.affiliateUrl, dealer)) return false;
   try {
     const link = new URL(product.affiliateUrl);
     const image = new URL(product.image);
@@ -217,8 +249,7 @@ function csvCell(value) {
 
 export function metaCatalogRows(products, dealers) {
   const dealerMap = new Map(dealers.map(dealer => [dealer.id, dealer]));
-  const dealerIds = new Set(dealerMap.keys());
-  return products.filter(product => isMetaReady(product, dealerIds)).map(product => ({
+  return products.filter(product => isMetaReady(product, dealerMap)).map(product => ({
     id: product.id,
     title: product.title,
     description: product.description,

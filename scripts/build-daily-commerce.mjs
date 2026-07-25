@@ -2,8 +2,15 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {execFileSync} from 'node:child_process';
-import {detectProductChanges, generateProductContent, productSeo, scoreProduct, selectDailyFeatured} from './lib/daily-commerce-core.mjs';
-import {toMetaCsv, toMetaXml} from './lib/catalog-core.mjs';
+import {
+  detectProductChanges,
+  generateProductContent,
+  isShowroomEligible,
+  productSeo,
+  scoreProduct,
+  selectDailyFeatured
+} from './lib/daily-commerce-core.mjs';
+import {STOREFRONT_CATEGORIES, toMetaCsv, toMetaXml} from './lib/catalog-core.mjs';
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const args = process.argv.slice(2);
@@ -74,7 +81,8 @@ for (const product of catalog.products) {
   scored.push(enriched);
 }
 
-const selectedIds = new Set(selectDailyFeatured(scored, config.featuredLimit || 10, now, ranking).map(product => product.id));
+const eligible = scored.filter(product => isShowroomEligible(product, dealerMap.get(product.dealerId)));
+const selectedIds = new Set(selectDailyFeatured(eligible, config.featuredLimit || 10, now, ranking).map(product => product.id));
 const products = scored.map(product => ({...product, dailyFeatured: selectedIds.has(product.id)}));
 const featured = products.filter(product => product.dailyFeatured)
   .sort((left, right) => right.score - left.score || left.id.localeCompare(right.id))
@@ -89,7 +97,7 @@ await fs.writeFile(path.join(repoRoot, 'data/products/instagram.json'), `${JSON.
 await fs.writeFile(path.join(repoRoot, 'catalog.csv'), toMetaCsv(products, dealerData.dealers));
 await fs.writeFile(path.join(repoRoot, 'catalog.xml'), toMetaXml(products, dealerData.dealers));
 
-for (const category of [...new Set(products.map(product => product.category).filter(Boolean))]) {
+for (const category of STOREFRONT_CATEGORIES) {
   const categoryProducts = products.filter(product => product.category === category);
   await fs.writeFile(path.join(repoRoot, `data/products/${category}.json`), `${JSON.stringify({schemaVersion: 1, generatedAt, category, products: categoryProducts}, null, 2)}\n`);
 }
@@ -118,6 +126,7 @@ const log = {
   productsImported: changes.added.length,
   productsUpdated: changes.changed.length,
   duplicatesSkipped: catalog.importReport?.duplicatesSkipped?.length || 0,
+  affiliateLinksRejected: products.filter(product => product.affiliateUrl && !product.affiliateVerified).map(product => product.id),
   errors: [],
   added: changes.added,
   changed: changes.changed,

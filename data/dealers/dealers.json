@@ -6,6 +6,16 @@
       "name": "Money Metals Exchange",
       "badge": "MME",
       "description": "Precious metals dealer and educational resource.",
+      "approvedLandingUrl": "https://www.awin1.com/cread.php?s=3928272&v=88985&q=519076&r=2936205",
+      "affiliateValidation": {
+        "hosts": [
+          "www.awin1.com"
+        ],
+        "requiredQuery": {
+          "v": "88985",
+          "r": "2936205"
+        }
+      },
       "categories": [
         "gold-bars",
         "gold-coins",
@@ -20,6 +30,16 @@
       "name": "Kitco",
       "badge": "K",
       "description": "Bullion marketplace and precious metals market information.",
+      "approvedLandingUrl": "https://www.awin1.com/cread.php?s=3795009&v=84579&q=505826&r=2936205",
+      "affiliateValidation": {
+        "hosts": [
+          "www.awin1.com"
+        ],
+        "requiredQuery": {
+          "v": "84579",
+          "r": "2936205"
+        }
+      },
       "categories": [
         "gold-bars",
         "gold-coins",
@@ -34,6 +54,15 @@
       "name": "Sprott Money",
       "badge": "SM",
       "description": "Canadian precious metals dealer and market education source.",
+      "approvedLandingUrl": "https://www.sprottmoney.ca/?acc=paul-malandrino-5887a",
+      "affiliateValidation": {
+        "hosts": [
+          "www.sprottmoney.ca"
+        ],
+        "requiredQuery": {
+          "acc": "paul-malandrino-5887a"
+        }
+      },
       "categories": [
         "gold-bars",
         "gold-coins",

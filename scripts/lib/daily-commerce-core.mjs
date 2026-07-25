@@ -1,4 +1,5 @@
 import {createHash} from 'node:crypto';
+import {isApprovedAffiliateUrl} from './catalog-core.mjs';
 
 const DAY = 86_400_000;
 export const DEFAULT_RANKING_RULES = {
@@ -21,7 +22,27 @@ function categoryLabel(value) {
 }
 
 export function productFingerprint(product) {
-  const fields = ['title', 'description', 'price', 'previousPrice', 'currency', 'image', 'availability', 'dealerId', 'affiliateUrl', 'category', 'collection', 'featured', 'bestSeller', 'merchantPriority', 'createdAt'];
+  const fields = [
+    'title',
+    'description',
+    'price',
+    'previousPrice',
+    'currency',
+    'image',
+    'availability',
+    'dealerId',
+    'affiliateUrl',
+    'affiliateVerified',
+    'category',
+    'collection',
+    'featured',
+    'bestSeller',
+    'merchantPriority',
+    'createdAt',
+    'brand',
+    'condition',
+    'productPageUrl'
+  ];
   const stable = Object.fromEntries(fields.map(field => [field, product[field] ?? null]));
   return createHash('sha256').update(JSON.stringify(stable)).digest('hex');
 }
@@ -64,6 +85,12 @@ export function selectDailyFeatured(products, limit = 10, now = new Date(), rule
     .sort((left, right) => right.score - left.score || left.id.localeCompare(right.id))
     .slice(0, limit)
     .map((product, index) => ({...product, featuredRank: index + 1, dailyFeatured: true}));
+}
+
+export function isShowroomEligible(product, dealer) {
+  return Boolean(product.image)
+    && product.availability !== 'out of stock'
+    && isApprovedAffiliateUrl(product.affiliateUrl, dealer);
 }
 
 export function groundedContent(product, dealerName = '') {
@@ -142,7 +169,7 @@ export function productSeo(product, dealerName = '') {
     image: product.image || undefined,
     category: categoryLabel(product.category),
     brand: product.brand ? {'@type': 'Brand', name: product.brand} : undefined,
-    offers: product.affiliateUrl && product.price !== null ? {
+    offers: product.affiliateVerified === true && product.price !== null ? {
       '@type': 'Offer',
       url: product.affiliateUrl,
       price: product.price,

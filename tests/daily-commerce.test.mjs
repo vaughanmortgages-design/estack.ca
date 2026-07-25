@@ -1,6 +1,15 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {contentIsGrounded, detectProductChanges, groundedContent, productFingerprint, productSeo, scoreProduct, selectDailyFeatured} from '../scripts/lib/daily-commerce-core.mjs';
+import {
+  contentIsGrounded,
+  detectProductChanges,
+  groundedContent,
+  isShowroomEligible,
+  productFingerprint,
+  productSeo,
+  scoreProduct,
+  selectDailyFeatured
+} from '../scripts/lib/daily-commerce-core.mjs';
 
 const base = {
   id: 'product-1',
@@ -30,6 +39,12 @@ test('detects new, changed and unchanged products without duplicates', () => {
   assert.deepEqual(result.added, []);
   assert.deepEqual(result.changed, ['product-1']);
   assert.deepEqual(result.removed, ['removed']);
+});
+
+test('detects metadata and affiliate-verification changes', () => {
+  const previous = {'product-1': {fingerprint: productFingerprint(base)}};
+  assert.deepEqual(detectProductChanges([{...base, brand: 'Verified Mint'}], previous).changed, ['product-1']);
+  assert.deepEqual(detectProductChanges([{...base, affiliateVerified: true}], previous).changed, ['product-1']);
 });
 
 test('scores every requested commerce signal', () => {
@@ -83,4 +98,29 @@ test('creates product schema without inventing an offer', () => {
   const seo = productSeo(base, 'Kitco');
   assert.equal(seo.canonicalUrl, 'https://estack.ca/ig/?product=product-1');
   assert.equal(seo.jsonLd.offers, undefined);
+});
+
+test('features only products with images, availability and approved tracking', () => {
+  const dealer = {
+    affiliateValidation: {
+      hosts: ['www.awin1.com'],
+      requiredQuery: {v: '84579', r: '2936205'}
+    }
+  };
+  const eligible = {
+    ...base,
+    image: 'https://example.com/gold.webp',
+    affiliateUrl: 'https://www.awin1.com/cread.php?s=3795009&v=84579&q=505826&r=2936205'
+  };
+  assert.equal(isShowroomEligible(eligible, dealer), true);
+  assert.equal(isShowroomEligible({...eligible, image: ''}, dealer), false);
+  assert.equal(isShowroomEligible({...eligible, affiliateUrl: '#'}, dealer), false);
+  assert.equal(isShowroomEligible({...eligible, availability: 'out of stock'}, dealer), false);
+});
+
+test('adds offer schema only for engine-verified affiliate URLs', () => {
+  const withoutVerification = productSeo({...base, affiliateUrl: 'https://example.com', price: 100}, 'Kitco');
+  assert.equal(withoutVerification.jsonLd.offers, undefined);
+  const verified = productSeo({...base, affiliateVerified: true, affiliateUrl: 'https://example.com', price: 100}, 'Kitco');
+  assert.equal(verified.jsonLd.offers.url, 'https://example.com');
 });

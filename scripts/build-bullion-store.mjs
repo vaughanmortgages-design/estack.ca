@@ -22,6 +22,11 @@ const dealers = [
     name: 'Money Metals Exchange',
     badge: 'MME',
     description: 'Precious metals dealer and educational resource.',
+    approvedLandingUrl: 'https://www.awin1.com/cread.php?s=3928272&v=88985&q=519076&r=2936205',
+    affiliateValidation: {
+      hosts: ['www.awin1.com'],
+      requiredQuery: {v: '88985', r: '2936205'}
+    },
     categories: ['gold-bars', 'gold-coins', 'silver-bars', 'silver-coins', 'platinum', 'copper']
   },
   {
@@ -29,6 +34,11 @@ const dealers = [
     name: 'Kitco',
     badge: 'K',
     description: 'Bullion marketplace and precious metals market information.',
+    approvedLandingUrl: 'https://www.awin1.com/cread.php?s=3795009&v=84579&q=505826&r=2936205',
+    affiliateValidation: {
+      hosts: ['www.awin1.com'],
+      requiredQuery: {v: '84579', r: '2936205'}
+    },
     categories: ['gold-bars', 'gold-coins', 'silver-bars', 'silver-coins', 'platinum', 'palladium']
   },
   {
@@ -36,6 +46,11 @@ const dealers = [
     name: 'Sprott Money',
     badge: 'SM',
     description: 'Canadian precious metals dealer and market education source.',
+    approvedLandingUrl: 'https://www.sprottmoney.ca/?acc=paul-malandrino-5887a',
+    affiliateValidation: {
+      hosts: ['www.sprottmoney.ca'],
+      requiredQuery: {acc: 'paul-malandrino-5887a'}
+    },
     categories: ['gold-bars', 'gold-coins', 'silver-bars', 'silver-coins', 'platinum']
   }
 ];
@@ -204,6 +219,33 @@ export function createDealerBadge(dealer){
   return badge;
 }
 
+function verifiedAffiliateUrl(product,dealer){
+  if(product.affiliateVerified!==true||!product.affiliateUrl)return '';
+  try{
+    const url=new URL(product.affiliateUrl);
+    const validation=dealer.affiliateValidation;
+    if(url.protocol!=='https:'||!validation)return '';
+    if(validation.hosts?.length&&!validation.hosts.includes(url.hostname.toLowerCase()))return '';
+    return Object.entries(validation.requiredQuery||{}).every(([name,value])=>url.searchParams.get(name)===String(value))
+      ? url.toString()
+      : '';
+  }catch{
+    return '';
+  }
+}
+
+function verifiedPrice(product){
+  if(product.priceDisplay)return product.priceDisplay;
+  if(product.price===null||product.price===undefined||product.price==='')return 'See dealer for price';
+  const price=Number(product.price);
+  if(!Number.isFinite(price))return 'See dealer for price';
+  try{
+    return new Intl.NumberFormat('en-CA',{style:'currency',currency:product.currency||'CAD'}).format(price);
+  }catch{
+    return \`\${price.toFixed(2)} \${product.currency||'CAD'}\`;
+  }
+}
+
 export function createProductCard(product,dealer){
   const article=document.createElement('article');
   article.className='product-card';
@@ -212,7 +254,7 @@ export function createProductCard(product,dealer){
   if(product.image){
     const img=document.createElement('img');
     img.src=product.image;
-    img.alt=product.imageAlt||product.title;
+    img.alt=product.content?.altText||product.imageAlt||product.title;
     img.loading='lazy';
     img.decoding='async';
     image.append(img);
@@ -223,19 +265,20 @@ export function createProductCard(product,dealer){
   title.textContent=product.title;
   const description=document.createElement('p');
   description.className='product-description';
-  description.textContent=product.shortDescription||product.description||'Verified product details will appear with the dealer feed.';
+  description.textContent=product.content?.shortDescription||product.shortDescription||product.description||'Verified product details will appear with the dealer feed.';
   const meta=document.createElement('div');
   meta.className='product-meta';
   meta.append(createDealerBadge(dealer));
   const price=document.createElement('span');
   price.className='price-placeholder';
-  price.textContent=product.priceDisplay||'See dealer for price';
+  price.textContent=verifiedPrice(product);
   meta.append(price);
-  const cta=document.createElement(product.affiliateUrl?'a':'span');
+  const affiliateUrl=verifiedAffiliateUrl(product,dealer);
+  const cta=document.createElement(affiliateUrl?'a':'span');
   cta.className='product-cta';
-  cta.textContent=product.affiliateUrl?'Shop Now':'Coming Soon';
-  if(product.affiliateUrl){
-    cta.href=product.affiliateUrl;
+  cta.textContent=affiliateUrl?'Shop Now':'Coming Soon';
+  if(affiliateUrl){
+    cta.href=affiliateUrl;
     cta.target='_blank';
     cta.rel='sponsored nofollow noopener noreferrer';
   }else{
@@ -255,10 +298,11 @@ function productSchema(product,dealer){
     description:product.description,
     brand:{'@type':'Brand',name:product.brand||dealer.name}
   };
-  if(product.affiliateUrl&&product.price!==null){
+  const affiliateUrl=verifiedAffiliateUrl(product,dealer);
+  if(affiliateUrl&&product.price!==null){
     schema.offers={
       '@type':'Offer',
-      url:product.affiliateUrl,
+      url:affiliateUrl,
       priceCurrency:product.currency,
       price:product.price,
       availability:product.availability==='in stock'?'https://schema.org/InStock':product.availability==='preorder'?'https://schema.org/PreOrder':'https://schema.org/OutOfStock',
@@ -301,7 +345,7 @@ function createIgProductCard(product,dealer){
   if(product.image){
     const img=document.createElement('img');
     img.src=product.image;
-    img.alt=product.imageAlt||product.title;
+    img.alt=product.content?.altText||product.imageAlt||product.title;
     img.loading='lazy';
     img.decoding='async';
     image.append(img);
@@ -314,12 +358,13 @@ function createIgProductCard(product,dealer){
   const title=document.createElement('h3');
   title.textContent=product.title;
   const description=document.createElement('p');
-  description.textContent=product.description||'Verified product details will appear with the dealer feed.';
-  const cta=document.createElement(product.affiliateUrl?'a':'span');
+  description.textContent=product.content?.shortDescription||product.description||'Verified product details will appear with the dealer feed.';
+  const affiliateUrl=verifiedAffiliateUrl(product,dealer);
+  const cta=document.createElement(affiliateUrl?'a':'span');
   cta.className='ig-shop-button';
-  cta.textContent=product.affiliateUrl?'Shop Now':'Coming Soon';
-  if(product.affiliateUrl){
-    cta.href=product.affiliateUrl;
+  cta.textContent=affiliateUrl?'Shop Now':'Coming Soon';
+  if(affiliateUrl){
+    cta.href=affiliateUrl;
     cta.target='_blank';
     cta.rel='sponsored nofollow noopener noreferrer';
   }else{
@@ -465,7 +510,7 @@ async function renderDailyHomepage(){
     newest.forEach(product=>{const dealer=dealerMap.get(product.dealerId);if(dealer)newGrid?.append(createProductCard(product,dealer))});
     if(newest.length)document.querySelector('[data-showroom-empty="new"]')?.remove();
     const valueGrid=document.querySelector('[data-showroom-grid="value"]');
-    const value=products.filter(product=>product.scoreBreakdown?.priceReduction>0||product.merchantPriority>0).slice(0,4);
+    const value=products.filter(product=>product.scoreBreakdown?.priceReduction>0).slice(0,4);
     value.forEach(product=>{const dealer=dealerMap.get(product.dealerId);if(dealer)valueGrid?.append(createProductCard(product,dealer))});
     if(value.length)document.querySelector('[data-showroom-empty="value"]')?.remove();
     const lead=curated[0];
@@ -476,7 +521,8 @@ async function renderDailyHomepage(){
       const cta=document.querySelector('[data-featured-hero-cta]');
       if(title)title.textContent=lead.title;
       if(description)description.textContent=\`\${lead.description} Featured through \${dealer?.name||lead.dealerId}.\`;
-      if(cta&&lead.affiliateUrl){cta.href=lead.affiliateUrl;cta.target='_blank';cta.rel='sponsored nofollow noopener noreferrer';cta.textContent='Shop Now'}
+      const affiliateUrl=dealer?verifiedAffiliateUrl(lead,dealer):'';
+      if(cta&&affiliateUrl){cta.href=affiliateUrl;cta.target='_blank';cta.rel='sponsored nofollow noopener noreferrer';cta.textContent='Shop Now'}
     }
   }catch(error){
     grid.setAttribute('data-featured-error','true');
