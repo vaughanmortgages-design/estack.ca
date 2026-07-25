@@ -4,6 +4,7 @@ import {fileURLToPath} from 'node:url';
 import {execFileSync} from 'node:child_process';
 import {
   detectProductChanges,
+  buildShowroomSections,
   generateProductContent,
   isShowroomEligible,
   productSeo,
@@ -88,11 +89,16 @@ const featured = products.filter(product => product.dailyFeatured)
   .sort((left, right) => right.score - left.score || left.id.localeCompare(right.id))
   .map((product, index) => ({...product, featuredRank: index + 1}));
 const generatedAt = now.toISOString();
+const showroomSections = buildShowroomSections(products, dealerData.dealers);
 
 await fs.writeFile(catalogPath, `${JSON.stringify({...catalog, generatedAt, products}, null, 2)}\n`);
 await fs.writeFile(path.join(repoRoot, 'data/products/products.json'), `${JSON.stringify({...catalog, generatedAt, products}, null, 2)}\n`);
 await fs.writeFile(path.join(repoRoot, 'products.json'), `${JSON.stringify({...catalog, generatedAt, products}, null, 2)}\n`);
 await fs.writeFile(path.join(repoRoot, 'data/products/featured-products.json'), `${JSON.stringify({schemaVersion: 1, generatedAt, products: featured}, null, 2)}\n`);
+await fs.writeFile(
+  path.join(repoRoot, 'data/products/showroom-products.json'),
+  `${JSON.stringify({schemaVersion: 1, generatedAt, sections: showroomSections}, null, 2)}\n`
+);
 await fs.writeFile(path.join(repoRoot, 'data/products/instagram.json'), `${JSON.stringify({schemaVersion: 1, generatedAt, channel: 'social', products}, null, 2)}\n`);
 await fs.writeFile(path.join(repoRoot, 'catalog.csv'), toMetaCsv(products, dealerData.dealers));
 await fs.writeFile(path.join(repoRoot, 'catalog.xml'), toMetaXml(products, dealerData.dealers));

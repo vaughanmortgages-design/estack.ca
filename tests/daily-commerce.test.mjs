@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {
+  buildShowroomSections,
   contentIsGrounded,
   detectProductChanges,
   groundedContent,
@@ -123,4 +124,42 @@ test('adds offer schema only for engine-verified affiliate URLs', () => {
   assert.equal(withoutVerification.jsonLd.offers, undefined);
   const verified = productSeo({...base, affiliateVerified: true, affiliateUrl: 'https://example.com', price: 100}, 'Kitco');
   assert.equal(verified.jsonLd.offers.url, 'https://example.com');
+});
+
+test('builds small curated homepage sections without unapproved products', () => {
+  const dealer = {
+    id: 'kitco',
+    affiliateValidation: {
+      hosts: ['www.awin1.com'],
+      requiredQuery: {v: '84579', r: '2936205'}
+    }
+  };
+  const tracked = 'https://www.awin1.com/cread.php?s=3795009&v=84579&q=505826&r=2936205';
+  const product = (id, category, overrides = {}) => ({
+    ...base,
+    id,
+    category,
+    dealerId: 'kitco',
+    affiliateUrl: tracked,
+    affiliateVerified: true,
+    image: `https://example.com/${id}.webp`,
+    score: 50,
+    dailyFeatured: true,
+    createdAt: '2026-07-25',
+    scoreBreakdown: {priceReduction: 10},
+    ...overrides
+  });
+  const products = [
+    product('gold-1', 'gold-bars'),
+    product('silver-1', 'silver-coins'),
+    product('platinum-1', 'platinum'),
+    product('untracked', 'gold-coins', {affiliateUrl: 'https://example.com/untracked', affiliateVerified: false})
+  ];
+  const sections = buildShowroomSections(products, [dealer]);
+  assert.deepEqual(sections.today.map(item => item.id), ['gold-1', 'platinum-1', 'silver-1']);
+  assert.deepEqual(sections.gold.map(item => item.id), ['gold-1']);
+  assert.deepEqual(sections.silver.map(item => item.id), ['silver-1']);
+  assert.deepEqual(sections.platinum.map(item => item.id), ['platinum-1']);
+  assert.equal(sections.newReleases.length, 3);
+  assert.equal(sections.bestValue.length, 3);
 });

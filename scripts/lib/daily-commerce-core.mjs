@@ -93,6 +93,34 @@ export function isShowroomEligible(product, dealer) {
     && isApprovedAffiliateUrl(product.affiliateUrl, dealer);
 }
 
+export function buildShowroomSections(products, dealers, limits = {}) {
+  const dealerMap = dealers instanceof Map ? dealers : new Map(dealers.map(dealer => [dealer.id, dealer]));
+  const eligible = products.filter(product => isShowroomEligible(product, dealerMap.get(product.dealerId)));
+  const byScore = (left, right) => (right.score || 0) - (left.score || 0) || left.id.localeCompare(right.id);
+  const category = (names, limit = 4) => eligible
+    .filter(product => names.includes(product.category))
+    .sort(byScore)
+    .slice(0, limit);
+  const newest = eligible
+    .filter(product => product.createdAt && !Number.isNaN(new Date(product.createdAt).valueOf()))
+    .sort((left, right) => new Date(right.createdAt) - new Date(left.createdAt) || byScore(left, right))
+    .slice(0, limits.newReleases || 4);
+  const bestValue = eligible
+    .filter(product => (product.scoreBreakdown?.priceReduction || 0) > 0)
+    .sort((left, right) =>
+      (right.scoreBreakdown?.priceReduction || 0) - (left.scoreBreakdown?.priceReduction || 0) || byScore(left, right)
+    )
+    .slice(0, limits.bestValue || 4);
+  return {
+    today: eligible.filter(product => product.dailyFeatured).sort(byScore).slice(0, limits.today || 6),
+    gold: category(['gold-bars', 'gold-coins'], limits.gold || 4),
+    silver: category(['silver-bars', 'silver-coins'], limits.silver || 4),
+    platinum: category(['platinum'], limits.platinum || 4),
+    newReleases: newest,
+    bestValue
+  };
+}
+
 export function groundedContent(product, dealerName = '') {
   const shortTitle = text(product.title, 70);
   const description = text(product.description || product.title, 220);

@@ -81,7 +81,7 @@ const homeSchema = `<script type="application/ld+json">${JSON.stringify({
   '@type': 'WebSite',
   name: 'eStack Bullion',
   url: 'https://estack.ca/',
-  description: 'Canadian precious metals marketplace and bullion publication.',
+  description: 'Curated Canadian precious metals showroom and bullion publication.',
   potentialAction: {
     '@type': 'SearchAction',
     target: 'https://estack.ca/shop/?q={search_term_string}',
@@ -89,22 +89,31 @@ const homeSchema = `<script type="application/ld+json">${JSON.stringify({
   }
 })}</script>`;
 
+function showroomSection({id, eyebrow, title, description, href, cta, tone = ''}) {
+  return `<section class="store-section ${tone}" id="${id}"><div class="store-shell"><div class="section-head"><div><span class="eyebrow">${eyebrow}</span><h2>${title}</h2></div><p>${description}</p></div><div class="product-grid showroom-grid" data-showroom-grid="${id}"></div><div class="showroom-empty" data-showroom-empty="${id}"><a class="text-link" href="${href}">${cta} →</a></div></div></section>`;
+}
+
+const bullionNews = `<section class="store-section" id="bullion-news"><div class="store-shell"><div class="section-head"><div><span class="eyebrow">Editorial intelligence</span><h2>Bullion News</h2></div><a class="text-link" href="/bullion.html">All bullion guides →</a></div><div class="editorial-grid"><a href="/buy-gold-bullion-canada.html"><span>Buying guide</span><h3>How to buy gold bullion in Canada</h3><p>Understand formats, premiums, dealer considerations and secure ownership.</p></a><a href="/gold-vs-silver-bullion-canada-2026.html"><span>Comparison</span><h3>Gold versus silver</h3><p>A practical look at liquidity, premiums, storage and portfolio roles.</p></a><a href="/kitco-hub.html"><span>Market resources</span><h3>Follow the bullion market</h3><p>Use live data and dealer information without relying on static price claims.</p></a></div></div></section>`;
+
 const homepage = document({
   pageClass: 'home-page',
   headContent: head({
-    title: 'eStack Bullion | Premium Precious Metals Marketplace Canada',
-    description: 'Explore gold, silver, platinum, palladium, collectibles, live spot prices and trusted precious metals dealers in Canada.',
+    title: 'eStack Bullion Showroom | Gold, Silver & Platinum Canada',
+    description: 'Browse a curated daily selection of gold, silver and platinum from approved bullion dealers, with live market context and practical Canadian guides.',
     canonical: 'https://estack.ca/'
   }),
   schema: homeSchema,
   main: `<section class="hero" data-featured-bullion-hero><div class="store-shell hero-grid"><div class="hero-copy"><span class="eyebrow">Canada’s bullion showroom</span><h1>Today’s Featured <em>Bullion.</em></h1><p data-featured-hero-description>A considered daily selection from Money Metals Exchange, Kitco and Sprott Money—never an endless product dump.</p><div class="hero-actions"><a class="button gold" href="#featured-picks" data-featured-hero-cta>View Today’s Picks</a><a class="button ghost" href="/markets.html">View spot prices</a></div><div class="trust-row"><span>Verified affiliate destinations</span><span>Live market context</span><span>Curated daily selection</span></div></div><div class="hero-art" aria-hidden="true"><div class="coin coin-back"></div><div class="coin coin-front"><span>eS</span><small>FINE BULLION</small></div><div class="market-card"><small>CURATED TODAY</small><strong data-featured-hero-title>Gold · Silver · Platinum</strong><span>Only selected products appear</span></div></div></div></section>
   <section class="store-section" id="featured-picks"><div class="store-shell"><div class="section-head"><div><span class="eyebrow">Curated daily</span><h2>Today’s Picks</h2></div><p>A focused selection from the daily featured-product feed. Final price and availability are confirmed on the dealer site.</p></div><div class="deal-grid" data-showroom-grid="featured"><a class="deal-card gold-wash" href="/shop/gold-bars/"><span>01</span><h3>Gold essentials</h3><p>Browse the focused gold showroom.</p><strong>Explore gold →</strong></a><a class="deal-card silver-wash" href="/shop/silver-bars/"><span>02</span><h3>Silver opportunities</h3><p>Browse selected silver formats.</p><strong>Explore silver →</strong></a><a class="deal-card dark-wash" href="/shop/platinum/"><span>03</span><h3>Platinum</h3><p>Explore the platinum showroom.</p><strong>View platinum →</strong></a></div></div></section>
-  <section class="store-section pale" id="new-releases"><div class="store-shell"><div class="section-head"><div><span class="eyebrow">Recently added</span><h2>New Releases</h2></div><p>Only the newest verified products from the feed are shown.</p></div><div class="product-grid showroom-grid" data-showroom-grid="new"></div><div class="showroom-empty" data-showroom-empty="new"><a class="text-link" href="/shop/">Explore bullion collections →</a></div></div></section>
-  <section class="store-section" id="best-value"><div class="store-shell"><div class="section-head"><div><span class="eyebrow">Value, considered</span><h2>Best Value</h2></div><p>Products rise here only when the feed supplies verified value signals. No discount is invented.</p></div><div class="product-grid showroom-grid" data-showroom-grid="value"></div><div class="showroom-empty" data-showroom-empty="value"><a class="text-link" href="/shop/deals/">Browse verified offers →</a></div></div></section>
+  ${showroomSection({id: 'gold', eyebrow: 'The gold edit', title: 'Gold', description: 'A small daily selection of approved gold bars and coins, ranked from the verified product feed.', href: '/shop/gold-bars/', cta: 'Browse gold', tone: 'pale'})}
+  ${showroomSection({id: 'silver', eyebrow: 'The silver edit', title: 'Silver', description: 'Selected silver bars and coins with verified dealer destinations and supplied pricing when available.', href: '/shop/silver-bars/', cta: 'Browse silver'})}
+  ${showroomSection({id: 'platinum', eyebrow: 'The platinum edit', title: 'Platinum', description: 'A focused platinum selection without unsupported product claims or invented prices.', href: '/shop/platinum/', cta: 'Browse platinum', tone: 'pale'})}
+  ${showroomSection({id: 'new-releases', eyebrow: 'Recently added', title: 'New Releases', description: 'Only the newest eligible products from the feed are shown.', href: '/shop/', cta: 'Explore bullion collections'})}
+  ${showroomSection({id: 'best-value', eyebrow: 'Value, considered', title: 'Best Value', description: 'Products appear here only when the feed confirms a price reduction. No discount is invented.', href: '/shop/deals/', cta: 'Browse verified offers', tone: 'pale'})}
+  ${bullionNews}
   <section class="store-section pale" id="dealers"><div class="store-shell"><div class="section-head"><div><span class="eyebrow">Dealer network</span><h2>Featured Dealers</h2></div><a class="text-link" href="/partner-directory.html">View dealer directory →</a></div><div class="dealer-grid" data-dealer-grid><noscript>Enable JavaScript to load dealer profiles.</noscript></div></div></section>
   <section class="store-section"><div class="store-shell"><div class="section-head"><div><span class="eyebrow">The metals</span><h2>Build your collection.</h2></div><p>Move from broad metal categories to focused formats without clutter or unsupported product claims.</p></div><div class="metal-grid">${categories.slice(0, 7).map(([slug, title, description, mark]) => `<a href="/shop/${slug}/" class="metal-card"><span>${mark}</span><h3>${title.replace(/ (Bars|Coins)$/, '')}</h3><p>${description}</p></a>`).join('')}</div></div></section>
-  <section class="spot-section"><div class="store-shell spot-grid"><div><span class="eyebrow">Live market context</span><h2>Spot Prices</h2><p>Follow live or near-live precious metals data through the existing TradingView market tools. No prices are hard-coded.</p><a class="button gold" href="/markets.html">Open market dashboard</a></div><div class="spot-panel"><span>GOLD</span><span>SILVER</span><span>PLATINUM</span><span>PALLADIUM</span><small>Live data supplied by TradingView</small></div></div></section>
-  <section class="store-section"><div class="store-shell"><div class="section-head"><div><span class="eyebrow">Editorial intelligence</span><h2>Latest Bullion News & Guides</h2></div><a class="text-link" href="/bullion.html">All bullion guides →</a></div><div class="editorial-grid"><a href="/buy-gold-bullion-canada.html"><span>Buying guide</span><h3>How to buy gold bullion in Canada</h3><p>Understand formats, premiums, dealer considerations and secure ownership.</p></a><a href="/gold-vs-silver-bullion-canada-2026.html"><span>Comparison</span><h3>Gold versus silver</h3><p>A practical look at liquidity, premiums, storage and portfolio roles.</p></a><a href="/kitco-hub.html"><span>Market resources</span><h3>Follow the bullion market</h3><p>Use live data and dealer information without relying on static price claims.</p></a></div></div></section>`
+  <section class="spot-section"><div class="store-shell spot-grid"><div><span class="eyebrow">Live market context</span><h2>Spot Prices</h2><p>Follow live or near-live precious metals data through the existing TradingView market tools. No prices are hard-coded.</p><a class="button gold" href="/markets.html">Open market dashboard</a></div><div class="spot-panel"><span>GOLD</span><span>SILVER</span><span>PLATINUM</span><span>PALLADIUM</span><small>Live data supplied by TradingView</small></div></div></section>`
 });
 
 const shopSchema = `<script type="application/ld+json">${JSON.stringify({
@@ -487,45 +496,50 @@ function applyProductSeo(product){
 }
 
 async function renderDailyHomepage(){
-  const grid=document.querySelector('[data-showroom-grid="featured"]');
-  if(!grid)return;
+  const featuredGrid=document.querySelector('[data-showroom-grid="featured"]');
+  if(!featuredGrid)return;
   try{
-    const [featuredResponse,dealerData]=await Promise.all([
-      fetch('/data/products/featured-products.json'),
+    const [showroomResponse,dealerData]=await Promise.all([
+      fetch('/data/products/showroom-products.json'),
       loadDealers()
     ]);
-    if(!featuredResponse.ok)return;
-    const {products=[]}=await featuredResponse.json();
-    if(!products.length)return;
+    if(!showroomResponse.ok)throw new Error('Showroom data unavailable');
+    const {sections={}}=await showroomResponse.json();
     const dealerMap=new Map(dealerData.dealers.map(dealer=>[dealer.id,dealer]));
-    const curated=products.slice(0,6);
-    grid.innerHTML='';
-    grid.className='product-grid';
-    curated.forEach(product=>{
-      const dealer=dealerMap.get(product.dealerId);
-      if(dealer)grid.append(createProductCard(product,dealer));
+    const sectionMap=[
+      ['featured','today'],
+      ['gold','gold'],
+      ['silver','silver'],
+      ['platinum','platinum'],
+      ['new-releases','newReleases'],
+      ['best-value','bestValue']
+    ];
+    sectionMap.forEach(([gridName,dataName])=>{
+      const products=sections[dataName]||[];
+      if(!products.length)return;
+      const grid=document.querySelector(\`[data-showroom-grid="\${gridName}"]\`);
+      if(!grid)return;
+      grid.innerHTML='';
+      grid.className='product-grid showroom-grid';
+      products.forEach(product=>{
+        const dealer=dealerMap.get(product.dealerId);
+        if(dealer)grid.append(createProductCard(product,dealer));
+      });
+      document.querySelector(\`[data-showroom-empty="\${gridName}"]\`)?.remove();
     });
-    const newGrid=document.querySelector('[data-showroom-grid="new"]');
-    const newest=[...products].sort((left,right)=>String(right.createdAt||'').localeCompare(String(left.createdAt||''))).slice(0,4);
-    newest.forEach(product=>{const dealer=dealerMap.get(product.dealerId);if(dealer)newGrid?.append(createProductCard(product,dealer))});
-    if(newest.length)document.querySelector('[data-showroom-empty="new"]')?.remove();
-    const valueGrid=document.querySelector('[data-showroom-grid="value"]');
-    const value=products.filter(product=>product.scoreBreakdown?.priceReduction>0).slice(0,4);
-    value.forEach(product=>{const dealer=dealerMap.get(product.dealerId);if(dealer)valueGrid?.append(createProductCard(product,dealer))});
-    if(value.length)document.querySelector('[data-showroom-empty="value"]')?.remove();
-    const lead=curated[0];
+    const lead=sections.today?.[0];
     if(lead){
       const dealer=dealerMap.get(lead.dealerId);
       const title=document.querySelector('[data-featured-hero-title]');
       const description=document.querySelector('[data-featured-hero-description]');
       const cta=document.querySelector('[data-featured-hero-cta]');
       if(title)title.textContent=lead.title;
-      if(description)description.textContent=\`\${lead.description} Featured through \${dealer?.name||lead.dealerId}.\`;
+      if(description)description.textContent=\`\${lead.content?.shortDescription||lead.description||lead.title} Featured through \${dealer?.name||lead.dealerId}.\`;
       const affiliateUrl=dealer?verifiedAffiliateUrl(lead,dealer):'';
       if(cta&&affiliateUrl){cta.href=affiliateUrl;cta.target='_blank';cta.rel='sponsored nofollow noopener noreferrer';cta.textContent='Shop Now'}
     }
   }catch(error){
-    grid.setAttribute('data-featured-error','true');
+    featuredGrid.setAttribute('data-featured-error','true');
   }
 }
 
@@ -611,7 +625,12 @@ const productShape = {
 };
 write('data/products/index.json', `${JSON.stringify({schemaVersion: 1, categories: categories.map(([slug, name]) => ({slug, name})), productShape}, null, 2)}\n`);
 write('data/products/instagram.json', `${JSON.stringify({schemaVersion: 1, channel: 'social', productShape, products: []}, null, 2)}\n`);
+write('data/products/showroom-products.json', `${JSON.stringify({
+  schemaVersion: 1,
+  generatedAt: null,
+  sections: {today: [], gold: [], silver: [], platinum: [], newReleases: [], bestValue: []}
+}, null, 2)}\n`);
 write('data/dealers/dealers.json', `${JSON.stringify({schemaVersion: 1, dealers}, null, 2)}\n`);
 write('assets/bullion-store.css', css.trimStart());
-write('assets/bullion-store.js', js.trimStart());
+write('assets/bullion-store.js', `${js.trim()}\n`);
 write('assets/estack-bullion-og.svg', og);

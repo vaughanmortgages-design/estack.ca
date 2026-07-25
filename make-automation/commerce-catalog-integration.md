@@ -8,7 +8,10 @@ Daily ranking is controlled by `data/config/commerce-engine.json`. The importer 
 the first valid row for each product ID, reports later duplicates, and only regenerates
 content and SEO for new or changed product fingerprints. Each run writes the canonical
 catalog to both `/products.json` and `/data/products/products.json`, plus the daily
-featured feed, Meta CSV/XML feeds, analytics and an append-only import log.
+featured feed, the compact homepage showroom feed, Meta CSV/XML feeds, analytics and
+an append-only import log. Public pages never link to the raw catalog. The homepage
+loads only `data/products/showroom-products.json`, which contains the limited daily
+selections for Today’s Picks, Gold, Silver, Platinum, New Releases and Best Value.
 
 Required columns:
 
@@ -61,6 +64,7 @@ Each successful refresh rebuilds:
 - `catalog.xml`
 - `sitemap.xml`
 - `data/products/featured-products.json`
+- `data/products/showroom-products.json`
 - import state and change logs
 - daily scoring and feed-grounded social copy
 

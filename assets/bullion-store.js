@@ -277,45 +277,50 @@ function applyProductSeo(product){
 }
 
 async function renderDailyHomepage(){
-  const grid=document.querySelector('[data-showroom-grid="featured"]');
-  if(!grid)return;
+  const featuredGrid=document.querySelector('[data-showroom-grid="featured"]');
+  if(!featuredGrid)return;
   try{
-    const [featuredResponse,dealerData]=await Promise.all([
-      fetch('/data/products/featured-products.json'),
+    const [showroomResponse,dealerData]=await Promise.all([
+      fetch('/data/products/showroom-products.json'),
       loadDealers()
     ]);
-    if(!featuredResponse.ok)return;
-    const {products=[]}=await featuredResponse.json();
-    if(!products.length)return;
+    if(!showroomResponse.ok)throw new Error('Showroom data unavailable');
+    const {sections={}}=await showroomResponse.json();
     const dealerMap=new Map(dealerData.dealers.map(dealer=>[dealer.id,dealer]));
-    const curated=products.slice(0,6);
-    grid.innerHTML='';
-    grid.className='product-grid';
-    curated.forEach(product=>{
-      const dealer=dealerMap.get(product.dealerId);
-      if(dealer)grid.append(createProductCard(product,dealer));
+    const sectionMap=[
+      ['featured','today'],
+      ['gold','gold'],
+      ['silver','silver'],
+      ['platinum','platinum'],
+      ['new-releases','newReleases'],
+      ['best-value','bestValue']
+    ];
+    sectionMap.forEach(([gridName,dataName])=>{
+      const products=sections[dataName]||[];
+      if(!products.length)return;
+      const grid=document.querySelector(`[data-showroom-grid="${gridName}"]`);
+      if(!grid)return;
+      grid.innerHTML='';
+      grid.className='product-grid showroom-grid';
+      products.forEach(product=>{
+        const dealer=dealerMap.get(product.dealerId);
+        if(dealer)grid.append(createProductCard(product,dealer));
+      });
+      document.querySelector(`[data-showroom-empty="${gridName}"]`)?.remove();
     });
-    const newGrid=document.querySelector('[data-showroom-grid="new"]');
-    const newest=[...products].sort((left,right)=>String(right.createdAt||'').localeCompare(String(left.createdAt||''))).slice(0,4);
-    newest.forEach(product=>{const dealer=dealerMap.get(product.dealerId);if(dealer)newGrid?.append(createProductCard(product,dealer))});
-    if(newest.length)document.querySelector('[data-showroom-empty="new"]')?.remove();
-    const valueGrid=document.querySelector('[data-showroom-grid="value"]');
-    const value=products.filter(product=>product.scoreBreakdown?.priceReduction>0).slice(0,4);
-    value.forEach(product=>{const dealer=dealerMap.get(product.dealerId);if(dealer)valueGrid?.append(createProductCard(product,dealer))});
-    if(value.length)document.querySelector('[data-showroom-empty="value"]')?.remove();
-    const lead=curated[0];
+    const lead=sections.today?.[0];
     if(lead){
       const dealer=dealerMap.get(lead.dealerId);
       const title=document.querySelector('[data-featured-hero-title]');
       const description=document.querySelector('[data-featured-hero-description]');
       const cta=document.querySelector('[data-featured-hero-cta]');
       if(title)title.textContent=lead.title;
-      if(description)description.textContent=`${lead.description} Featured through ${dealer?.name||lead.dealerId}.`;
+      if(description)description.textContent=`${lead.content?.shortDescription||lead.description||lead.title} Featured through ${dealer?.name||lead.dealerId}.`;
       const affiliateUrl=dealer?verifiedAffiliateUrl(lead,dealer):'';
       if(cta&&affiliateUrl){cta.href=affiliateUrl;cta.target='_blank';cta.rel='sponsored nofollow noopener noreferrer';cta.textContent='Shop Now'}
     }
   }catch(error){
-    grid.setAttribute('data-featured-error','true');
+    featuredGrid.setAttribute('data-featured-error','true');
   }
 }
 
