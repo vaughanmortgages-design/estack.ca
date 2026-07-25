@@ -55,11 +55,16 @@ await fs.writeFile(path.join(repoRoot, 'catalog.xml'), toMetaXml(products, deale
 
 const sitemapPath = path.join(repoRoot, 'sitemap.xml');
 let sitemap = await fs.readFile(sitemapPath, 'utf8');
-for (const product of products) {
-  if (!product.productPageUrl || !product.productPageUrl.startsWith('https://estack.ca/')) continue;
-  if (sitemap.includes(`<loc>${product.productPageUrl}</loc>`)) continue;
-  sitemap = sitemap.replace('</urlset>', `  <url><loc>${product.productPageUrl}</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>\n</urlset>`);
-}
+const sitemapStart = '<!-- COMMERCE_PRODUCTS_START -->';
+const sitemapEnd = '<!-- COMMERCE_PRODUCTS_END -->';
+const productUrls = [...new Set(products
+  .map(product => product.productPageUrl)
+  .filter(url => typeof url === 'string' && url.startsWith('https://estack.ca/')))];
+const productSitemap = `${sitemapStart}\n${productUrls.map(url => `  <url><loc>${url.replaceAll('&', '&amp;')}</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>`).join('\n')}\n${sitemapEnd}`;
+const productBlockPattern = /<!-- COMMERCE_PRODUCTS_START -->[\s\S]*?<!-- COMMERCE_PRODUCTS_END -->/;
+sitemap = productBlockPattern.test(sitemap)
+  ? sitemap.replace(productBlockPattern, productSitemap)
+  : sitemap.replace('</urlset>', `${productSitemap}\n</urlset>`);
 await fs.writeFile(sitemapPath, sitemap);
 
 const verifiedAffiliateLinks = products.filter(product => product.affiliateVerified).length;
