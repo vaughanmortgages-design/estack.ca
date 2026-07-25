@@ -36,11 +36,18 @@ function verifiedPrice(product){
   }
 }
 
+function productDetailUrl(product){
+  return `/ig/?product=${encodeURIComponent(product.id)}`;
+}
+
 export function createProductCard(product,dealer){
   const article=document.createElement('article');
   article.className='product-card';
-  const image=document.createElement('div');
+  const image=document.createElement('a');
   image.className='product-image';
+  image.classList.add('product-detail-link');
+  image.href=productDetailUrl(product);
+  image.setAttribute('aria-label',`View ${product.title}`);
   if(product.image){
     const img=document.createElement('img');
     img.src=product.image;
@@ -51,8 +58,12 @@ export function createProductCard(product,dealer){
   }
   const body=document.createElement('div');
   body.className='product-body';
+  const titleLink=document.createElement('a');
+  titleLink.className='product-detail-link';
+  titleLink.href=productDetailUrl(product);
   const title=document.createElement('h3');
   title.textContent=product.title;
+  titleLink.append(title);
   const description=document.createElement('p');
   description.className='product-description';
   description.textContent=product.content?.shortDescription||product.shortDescription||product.description||'Verified product details will appear with the dealer feed.';
@@ -74,7 +85,7 @@ export function createProductCard(product,dealer){
   }else{
     cta.setAttribute('aria-disabled','true');
   }
-  body.append(title,description,meta,cta);
+  body.append(titleLink,description,meta,cta);
   article.append(image,body);
   return article;
 }
@@ -130,8 +141,11 @@ function createIgProductCard(product,dealer){
   article.dataset.collection=product.collection||'all';
   article.dataset.dealer=dealer.id;
   article.dataset.search=`${product.title} ${product.description||''} ${dealer.name}`.toLowerCase();
-  const image=document.createElement('div');
+  const image=document.createElement('a');
   image.className='ig-square-image';
+  image.classList.add('product-detail-link');
+  image.href=productDetailUrl(product);
+  image.setAttribute('aria-label',`View ${product.title}`);
   if(product.image){
     const img=document.createElement('img');
     img.src=product.image;
@@ -145,8 +159,12 @@ function createIgProductCard(product,dealer){
   const body=document.createElement('div');
   body.className='ig-product-body';
   const badge=createDealerBadge(dealer);
+  const titleLink=document.createElement('a');
+  titleLink.className='product-detail-link';
+  titleLink.href=productDetailUrl(product);
   const title=document.createElement('h3');
   title.textContent=product.title;
+  titleLink.append(title);
   const description=document.createElement('p');
   description.textContent=product.content?.shortDescription||product.description||'Verified product details will appear with the dealer feed.';
   const affiliateUrl=verifiedAffiliateUrl(product,dealer);
@@ -160,9 +178,47 @@ function createIgProductCard(product,dealer){
   }else{
     cta.setAttribute('aria-disabled','true');
   }
-  body.append(badge,title,description,cta);
+  body.append(badge,titleLink,description,cta);
   article.append(image,body);
   return article;
+}
+
+function renderProductDetail(product,products,dealerMap){
+  const detail=document.querySelector('[data-product-detail]');
+  const dealer=dealerMap.get(product.dealerId);
+  const affiliateUrl=dealer?verifiedAffiliateUrl(product,dealer):'';
+  if(!detail||!dealer||!affiliateUrl)return;
+  detail.hidden=false;
+  document.querySelector('[data-detail-breadcrumb]').textContent=product.title;
+  const image=document.querySelector('[data-detail-image]');
+  image.innerHTML='';
+  const img=document.createElement('img');
+  img.src=product.image;
+  img.alt=product.content?.altText||product.imageAlt||product.title;
+  img.width=900;
+  img.height=900;
+  img.decoding='async';
+  image.append(img);
+  const dealerSlot=document.querySelector('[data-detail-dealer]');
+  dealerSlot.innerHTML='';
+  dealerSlot.append(createDealerBadge(dealer));
+  document.querySelector('[data-detail-title]').textContent=product.title;
+  document.querySelector('[data-detail-price]').textContent=verifiedPrice(product);
+  document.querySelector('[data-detail-description]').textContent=product.content?.shortDescription||product.description;
+  const cta=document.querySelector('[data-detail-cta]');
+  cta.href=affiliateUrl;
+  const related=document.querySelector('[data-related-products]');
+  related.innerHTML='';
+  products
+    .filter(candidate=>candidate.id!==product.id&&candidate.category===product.category)
+    .filter(candidate=>{
+      const candidateDealer=dealerMap.get(candidate.dealerId);
+      return candidateDealer&&candidate.image&&candidate.availability!=='out of stock'&&verifiedAffiliateUrl(candidate,candidateDealer);
+    })
+    .slice(0,4)
+    .forEach(candidate=>related.append(createIgProductCard(candidate,dealerMap.get(candidate.dealerId))));
+  applyProductSeo(product);
+  detail.scrollIntoView({block:'start'});
 }
 
 async function renderIgStore(){
@@ -205,8 +261,8 @@ async function renderIgStore(){
       });
     }
     const selectedId=new URLSearchParams(window.location.search).get('product');
-    const selected=featured.find(product=>product.id===selectedId);
-    if(selected?.seo)applyProductSeo(selected);
+    const selected=products.find(product=>product.id===selectedId);
+    if(selected?.seo)renderProductDetail(selected,products,dealerMap);
   }catch(error){
     grid?.setAttribute('data-error','true');
   }
@@ -225,13 +281,17 @@ async function renderProducts(){
     const {products=[]}=await productResponse.json();
     const dealerMap=new Map(dealerData.dealers.map(dealer=>[dealer.id,dealer]));
     const schemas=[];
-    products.slice(0,12).forEach(product=>{
+    const curated=products.filter(product=>{
+      const dealer=dealerMap.get(product.dealerId);
+      return dealer&&product.image&&product.availability!=='out of stock'&&verifiedAffiliateUrl(product,dealer);
+    }).slice(0,8);
+    curated.forEach(product=>{
       const dealer=dealerMap.get(product.dealerId);
       if(!dealer)return;
       grid.append(createProductCard(product,dealer));
       if(product.price&&product.currency&&product.image)schemas.push(productSchema(product,dealer));
     });
-    if(products.length){
+    if(curated.length){
       document.querySelector('[data-empty-state]')?.remove();
     }
     schemas.forEach(schema=>{

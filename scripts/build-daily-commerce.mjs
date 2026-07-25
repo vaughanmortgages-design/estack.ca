@@ -23,6 +23,7 @@ const logPath = path.join(repoRoot, 'data/analytics/product-import-log.jsonl');
 const analyticsPath = path.join(repoRoot, 'data/analytics/products.json');
 const catalogPath = path.join(repoRoot, 'data/products/catalog.json');
 const configPath = path.join(repoRoot, 'data/config/commerce-engine.json');
+const sitemapPath = path.join(repoRoot, 'sitemap.xml');
 
 await fs.mkdir(path.dirname(logPath), {recursive: true});
 let previousState = {};
@@ -102,6 +103,20 @@ await fs.writeFile(
 await fs.writeFile(path.join(repoRoot, 'data/products/instagram.json'), `${JSON.stringify({schemaVersion: 1, generatedAt, channel: 'social', products}, null, 2)}\n`);
 await fs.writeFile(path.join(repoRoot, 'catalog.csv'), toMetaCsv(products, dealerData.dealers));
 await fs.writeFile(path.join(repoRoot, 'catalog.xml'), toMetaXml(products, dealerData.dealers));
+
+const sitemapStart = '<!-- COMMERCE_PRODUCTS_START -->';
+const sitemapEnd = '<!-- COMMERCE_PRODUCTS_END -->';
+const productUrls = products
+  .filter(product => isShowroomEligible(product, dealerMap.get(product.dealerId)))
+  .map(product => product.seo?.canonicalUrl)
+  .filter(url => typeof url === 'string' && url.startsWith('https://estack.ca/'));
+const productSitemap = `${sitemapStart}\n${productUrls.map(url => `  <url><loc>${url.replaceAll('&', '&amp;')}</loc><changefreq>daily</changefreq><priority>0.7</priority></url>`).join('\n')}\n${sitemapEnd}`;
+let sitemap = await fs.readFile(sitemapPath, 'utf8');
+const productBlockPattern = /<!-- COMMERCE_PRODUCTS_START -->[\s\S]*?<!-- COMMERCE_PRODUCTS_END -->/;
+sitemap = productBlockPattern.test(sitemap)
+  ? sitemap.replace(productBlockPattern, productSitemap)
+  : sitemap.replace('</urlset>', `${productSitemap}\n</urlset>`);
+await fs.writeFile(sitemapPath, sitemap);
 
 for (const category of STOREFRONT_CATEGORIES) {
   const categoryProducts = products.filter(product => product.category === category);

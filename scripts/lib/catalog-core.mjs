@@ -21,18 +21,18 @@ const fieldAliases = {
   currency: ['currency', 'price_currency'],
   image: ['image', 'image_url', 'image_link'],
   availability: ['availability', 'stock_status', 'status'],
-  dealerId: ['dealer_id', 'dealer', 'dealer_slug'],
-  affiliateUrl: ['affiliate_url', 'affiliate_link', 'url', 'link'],
+  dealerId: ['dealerId', 'dealer_id', 'dealer', 'dealer_slug'],
+  affiliateUrl: ['affiliateUrl', 'affiliate_url', 'affiliate_link', 'url', 'link'],
   category: ['category', 'product_category'],
   collection: ['collection', 'metal'],
   featured: ['featured', 'is_featured'],
   brand: ['brand', 'mint', 'refiner'],
   condition: ['condition'],
-  productPageUrl: ['product_page_url', 'website_url'],
-  createdAt: ['created_at', 'arrival_date', 'date_added', 'published_at'],
-  bestSeller: ['best_seller', 'bestseller', 'is_best_seller'],
-  previousPrice: ['previous_price', 'original_price', 'compare_at_price'],
-  merchantPriority: ['merchant_priority', 'dealer_priority', 'priority']
+  productPageUrl: ['productPageUrl', 'product_page_url', 'website_url'],
+  createdAt: ['createdAt', 'created_at', 'arrival_date', 'date_added', 'published_at'],
+  bestSeller: ['bestSeller', 'best_seller', 'bestseller', 'is_best_seller'],
+  previousPrice: ['previousPrice', 'previous_price', 'original_price', 'compare_at_price'],
+  merchantPriority: ['merchantPriority', 'merchant_priority', 'dealer_priority', 'priority']
 };
 
 const availabilityMap = new Map([

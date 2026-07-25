@@ -69,6 +69,28 @@ test('normalizes reusable product fields', () => {
   assert.equal(product.availability, 'in stock');
 });
 
+test('imports the documented camelCase JSON product shape', () => {
+  const [product] = normalizeProducts([{
+    id: 'json-product',
+    title: 'JSON Product',
+    dealerId: 'sprott-money',
+    affiliateUrl: 'https://www.sprottmoney.ca/?acc=paul-malandrino-5887a',
+    category: 'gold-bars',
+    collection: 'gold',
+    productPageUrl: 'https://estack.ca/ig/?product=json-product',
+    createdAt: '2026-07-25',
+    bestSeller: true,
+    previousPrice: 125,
+    merchantPriority: 8
+  }]);
+  assert.equal(product.dealerId, 'sprott-money');
+  assert.equal(product.affiliateUrl, 'https://www.sprottmoney.ca/?acc=paul-malandrino-5887a');
+  assert.equal(product.productPageUrl, 'https://estack.ca/ig/?product=json-product');
+  assert.equal(product.bestSeller, true);
+  assert.equal(product.previousPrice, 125);
+  assert.equal(product.merchantPriority, 8);
+});
+
 test('rejects duplicate product ids', () => {
   const row = {id: 'duplicate', title: 'Gold Bar'};
   assert.throws(() => normalizeProducts([row, row]), /Duplicate product id/);
