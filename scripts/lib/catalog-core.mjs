@@ -16,6 +16,11 @@ const fieldAliases = {
   brand: ['brand', 'mint', 'refiner'],
   condition: ['condition'],
   productPageUrl: ['product_page_url', 'website_url']
+  ,
+  createdAt: ['created_at', 'arrival_date', 'date_added', 'published_at'],
+  bestSeller: ['best_seller', 'bestseller', 'is_best_seller'],
+  previousPrice: ['previous_price', 'original_price', 'compare_at_price'],
+  merchantPriority: ['merchant_priority', 'dealer_priority', 'priority']
 };
 
 const availabilityMap = new Map([
@@ -125,6 +130,11 @@ export function normalizeProduct(row, index = 0) {
     brand: valueFor(row, 'brand'),
     condition: String(valueFor(row, 'condition') || 'new').toLowerCase(),
     productPageUrl: valueFor(row, 'productPageUrl')
+    ,
+    createdAt: valueFor(row, 'createdAt'),
+    bestSeller: booleanValue(valueFor(row, 'bestSeller')),
+    previousPrice: priceValue(valueFor(row, 'previousPrice')),
+    merchantPriority: Math.max(0, Math.min(10, Number(valueFor(row, 'merchantPriority')) || 0))
   };
 }
 
@@ -216,4 +226,3 @@ export function toMetaXml(products, dealers) {
   const items = rows.map(row => `<item><g:id>${xml(row.id)}</g:id><g:title>${xml(row.title)}</g:title><g:description>${xml(row.description)}</g:description><g:availability>${xml(row.availability)}</g:availability><g:condition>${xml(row.condition)}</g:condition><g:price>${xml(row.price)}</g:price><g:link>${xml(row.link)}</g:link><g:image_link>${xml(row.image_link)}</g:image_link><g:brand>${xml(row.brand)}</g:brand><g:product_type>${xml(row.product_type)}</g:product_type></item>`).join('');
   return `<?xml version="1.0" encoding="UTF-8"?><rss xmlns:g="http://base.google.com/ns/1.0" version="2.0"><channel><title>eStack Bullion Catalog</title><link>https://estack.ca/ig/</link><description>Verified eStack.ca bullion products</description>${items}</channel></rss>\n`;
 }
-
