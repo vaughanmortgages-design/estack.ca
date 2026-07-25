@@ -70,6 +70,16 @@
     "approved": true
   },
   {
+    "name": "Sprott Money",
+    "category": "Precious Metals",
+    "country": "CA",
+    "network": "Sprott Direct",
+    "affiliateUrl": "https://www.sprottmoney.ca/?acc=paul-maladrino-5887a",
+    "logo": "/assets/logos/sprott-money.png",
+    "description": "Canadian precious-metals dealer offering gold, silver and platinum products and related market education.",
+    "approved": true
+  },
+  {
     "name": "AFN",
     "category": "Business Funding",
     "country": "CA & USA",
@@ -80,4 +90,3 @@
     "approved": true
   }
 ]
-
