@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {googleSheetCsvUrl, normalizeProducts, parseCsv, toMetaCsv, toMetaXml, isMetaReady} from '../scripts/lib/catalog-core.mjs';
+import {googleSheetCsvUrl, normalizeProducts, normalizeProductsDetailed, parseCsv, toMetaCsv, toMetaXml, isMetaReady} from '../scripts/lib/catalog-core.mjs';
 
 const dealers = [{id: 'kitco', name: 'Kitco'}];
 const valid = {
@@ -55,6 +55,13 @@ test('normalizes reusable product fields', () => {
 test('rejects duplicate product ids', () => {
   const row = {id: 'duplicate', title: 'Gold Bar'};
   assert.throws(() => normalizeProducts([row, row]), /Duplicate product id/);
+});
+
+test('incremental importer skips and reports duplicate product ids', () => {
+  const row = {id: 'duplicate', title: 'Gold Bar'};
+  const result = normalizeProductsDetailed([row, row]);
+  assert.equal(result.products.length, 1);
+  assert.deepEqual(result.duplicatesSkipped, ['duplicate']);
 });
 
 test('excludes placeholder affiliate links from Meta catalog', () => {
