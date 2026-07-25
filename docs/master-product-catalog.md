@@ -87,7 +87,7 @@ registry without changing this product schema.
 |---|---|---|
 | Money Metals Exchange | `money-metals-exchange` | HTTPS host `www.awin1.com`; query `v=88985`; query `r=2936205` |
 | Kitco | `kitco` | HTTPS host `www.awin1.com`; query `v=84579`; query `r=2936205` |
-| Sprott Money | `sprott-money` | HTTPS host `www.sprottmoney.ca`; query `acc=paul-malandrino-5887a` |
+| Sprott Money | `sprott-money` | HTTPS host `www.sprottmoney.ca`; query `acc=paul-maladrino-5887a` exactly as issued by Sprott; do not normalize the surname |
 
 The merchant registry owns the display name, badge, approved hosts, required
 tracking parameters and supported categories.
@@ -255,4 +255,3 @@ The catalog is ready for production only when:
 5. JSON parses and Meta CSV/XML validate.
 6. Inactive and rejected products are absent from public channel feeds.
 7. No raw Sheet or secret URL appears in public navigation.
-
