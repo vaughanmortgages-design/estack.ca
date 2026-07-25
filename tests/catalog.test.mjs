@@ -74,7 +74,7 @@ test('imports the documented camelCase JSON product shape', () => {
     id: 'json-product',
     title: 'JSON Product',
     dealerId: 'sprott-money',
-    affiliateUrl: 'https://www.sprottmoney.ca/?acc=paul-malandrino-5887a',
+    affiliateUrl: 'https://www.sprottmoney.ca/?acc=paul-maladrino-5887a',
     category: 'gold-bars',
     collection: 'gold',
     productPageUrl: 'https://estack.ca/ig/?product=json-product',
@@ -84,7 +84,7 @@ test('imports the documented camelCase JSON product shape', () => {
     merchantPriority: 8
   }]);
   assert.equal(product.dealerId, 'sprott-money');
-  assert.equal(product.affiliateUrl, 'https://www.sprottmoney.ca/?acc=paul-malandrino-5887a');
+  assert.equal(product.affiliateUrl, 'https://www.sprottmoney.ca/?acc=paul-maladrino-5887a');
   assert.equal(product.productPageUrl, 'https://estack.ca/ig/?product=json-product');
   assert.equal(product.bestSeller, true);
   assert.equal(product.previousPrice, 125);
@@ -98,7 +98,7 @@ test('keeps inactive master-catalog products out of Meta exports', () => {
     title: 'Inactive Product',
     description: 'Not for publication.',
     dealer_id: 'sprott-money',
-    affiliate_url: 'https://www.sprottmoney.ca/?acc=paul-malandrino-5887a',
+    affiliate_url: 'https://www.sprottmoney.ca/?acc=paul-maladrino-5887a',
     image: 'https://images.example.com/inactive.webp',
     category: 'gold-bars',
     price: 100,
@@ -111,7 +111,7 @@ test('keeps inactive master-catalog products out of Meta exports', () => {
     name: 'Sprott Money',
     affiliateValidation: {
       hosts: ['www.sprottmoney.ca'],
-      requiredQuery: {acc: 'paul-malandrino-5887a'}
+      requiredQuery: {acc: 'paul-maladrino-5887a'}
     }
   }];
   assert.equal(product.active, false);
