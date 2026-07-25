@@ -53,8 +53,12 @@
     "imageAlt": "Accessible product image description",
     "affiliateUrl": "APPROVED_AFFILIATE_URL",
     "price": null,
+    "previousPrice": null,
     "currency": "CAD",
     "priceDisplay": "Price pending verification",
-    "featured": false
+    "featured": false,
+    "bestSeller": false,
+    "merchantPriority": 0,
+    "createdAt": null
   }
 }
