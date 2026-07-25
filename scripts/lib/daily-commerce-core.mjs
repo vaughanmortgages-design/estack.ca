@@ -1,6 +1,15 @@
 import {createHash} from 'node:crypto';
 
 const DAY = 86_400_000;
+export const DEFAULT_RANKING_RULES = {
+  featured: 25,
+  newest: 25,
+  newestWindowDays: 14,
+  bestSeller: 20,
+  priceChangeMax: 20,
+  availability: {inStock: 10, preorder: 5},
+  merchantPriorityMax: 10
+};
 
 function text(value, maximum) {
   const normalized = String(value ?? '').replace(/\s+/g, ' ').trim();
@@ -33,23 +42,25 @@ export function detectProductChanges(products, previousState = {}) {
   return {current, added, changed, unchanged, removed};
 }
 
-export function scoreProduct(product, now = new Date()) {
+export function scoreProduct(product, now = new Date(), rules = DEFAULT_RANKING_RULES) {
   const created = product.createdAt ? new Date(product.createdAt) : null;
   const age = created && !Number.isNaN(created.valueOf()) ? Math.max(0, now - created) : Number.POSITIVE_INFINITY;
-  const newArrival = age <= 14 * DAY ? 25 : 0;
-  const featured = product.featured ? 25 : 0;
-  const bestSeller = product.bestSeller ? 20 : 0;
+  const newArrival = age <= (rules.newestWindowDays ?? 14) * DAY ? (rules.newest ?? 25) : 0;
+  const featured = product.featured ? (rules.featured ?? 25) : 0;
+  const bestSeller = product.bestSeller ? (rules.bestSeller ?? 20) : 0;
   const reduction = product.previousPrice && product.price !== null && product.previousPrice > product.price
-    ? Math.min(20, Math.round(((product.previousPrice - product.price) / product.previousPrice) * 100))
+    ? Math.min(rules.priceChangeMax ?? 20, Math.round(((product.previousPrice - product.price) / product.previousPrice) * 100))
     : 0;
-  const availability = product.availability === 'in stock' ? 10 : product.availability === 'preorder' ? 5 : 0;
-  const merchantPriority = Math.max(0, Math.min(10, Number(product.merchantPriority) || 0));
+  const availability = product.availability === 'in stock'
+    ? (rules.availability?.inStock ?? 10)
+    : product.availability === 'preorder' ? (rules.availability?.preorder ?? 5) : 0;
+  const merchantPriority = Math.max(0, Math.min(rules.merchantPriorityMax ?? 10, Number(product.merchantPriority) || 0));
   const breakdown = {newArrival, featured, bestSeller, priceReduction: reduction, availability, merchantPriority};
   return {score: Object.values(breakdown).reduce((sum, value) => sum + value, 0), scoreBreakdown: breakdown};
 }
 
-export function selectDailyFeatured(products, limit = 10, now = new Date()) {
-  return products.map(product => ({...product, ...scoreProduct(product, now)}))
+export function selectDailyFeatured(products, limit = 10, now = new Date(), rules = DEFAULT_RANKING_RULES) {
+  return products.map(product => ({...product, ...scoreProduct(product, now, rules)}))
     .sort((left, right) => right.score - left.score || left.id.localeCompare(right.id))
     .slice(0, limit)
     .map((product, index) => ({...product, featuredRank: index + 1, dailyFeatured: true}));
@@ -147,4 +158,3 @@ export function productSeo(product, dealerName = '') {
     jsonLd
   };
 }
-
