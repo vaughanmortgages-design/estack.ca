@@ -13,39 +13,68 @@ const source = /^https?:\/\//i.test(rawSource) ? rawSource : path.resolve(proces
 const statePath = path.join(repoRoot, 'data/products/import-state.json');
 const logPath = path.join(repoRoot, 'data/analytics/product-import-log.jsonl');
 const analyticsPath = path.join(repoRoot, 'data/analytics/products.json');
+const catalogPath = path.join(repoRoot, 'data/products/catalog.json');
+const configPath = path.join(repoRoot, 'data/config/commerce-engine.json');
 
 await fs.mkdir(path.dirname(logPath), {recursive: true});
 let previousState = {};
+let previousProducts = new Map();
 try {
   previousState = JSON.parse(await fs.readFile(statePath, 'utf8')).products || {};
 } catch {
   previousState = {};
 }
+try {
+  const previousCatalog = JSON.parse(await fs.readFile(catalogPath, 'utf8'));
+  previousProducts = new Map((previousCatalog.products || []).map(product => [product.id, product]));
+} catch {
+  previousProducts = new Map();
+}
 
-execFileSync(process.execPath, [path.join(repoRoot, 'scripts/build-commerce-engine.mjs'), '--source', source], {
-  cwd: repoRoot,
-  stdio: 'inherit',
-  env: process.env
-});
+let catalog;
+try {
+  execFileSync(process.execPath, [path.join(repoRoot, 'scripts/build-commerce-engine.mjs'), '--source', source], {
+    cwd: repoRoot,
+    stdio: 'inherit',
+    env: process.env
+  });
+  catalog = JSON.parse(await fs.readFile(catalogPath, 'utf8'));
+} catch (error) {
+  const failedLog = {
+    importDate: new Date().toISOString(),
+    productsImported: 0,
+    productsUpdated: 0,
+    duplicatesSkipped: 0,
+    errors: [error.message]
+  };
+  await fs.appendFile(logPath, `${JSON.stringify(failedLog)}\n`);
+  throw error;
+}
 
-const catalogPath = path.join(repoRoot, 'data/products/catalog.json');
-const catalog = JSON.parse(await fs.readFile(catalogPath, 'utf8'));
 const dealerData = JSON.parse(await fs.readFile(path.join(repoRoot, 'data/dealers/dealers.json'), 'utf8'));
 const dealerMap = new Map(dealerData.dealers.map(dealer => [dealer.id, dealer]));
+const config = JSON.parse(await fs.readFile(configPath, 'utf8'));
+const ranking = config.ranking || {};
 const now = new Date();
 const changes = detectProductChanges(catalog.products, previousState);
+const changedIds = new Set([...changes.added, ...changes.changed]);
 
 const scored = [];
 for (const product of catalog.products) {
   const dealer = dealerMap.get(product.dealerId);
-  const score = scoreProduct(product, now);
-  const content = await generateProductContent(product, dealer?.name || product.dealerId);
+  const score = scoreProduct(product, now, ranking);
+  const previous = previousProducts.get(product.id);
+  const content = changedIds.has(product.id) || !previous?.content
+    ? await generateProductContent(product, dealer?.name || product.dealerId)
+    : previous.content;
   const enriched = {...product, ...score, content};
-  enriched.seo = productSeo(enriched, dealer?.name || product.dealerId);
+  enriched.seo = changedIds.has(product.id) || !previous?.seo
+    ? productSeo(enriched, dealer?.name || product.dealerId)
+    : previous.seo;
   scored.push(enriched);
 }
 
-const selectedIds = new Set(selectDailyFeatured(scored, 10, now).map(product => product.id));
+const selectedIds = new Set(selectDailyFeatured(scored, config.featuredLimit || 10, now, ranking).map(product => product.id));
 const products = scored.map(product => ({...product, dailyFeatured: selectedIds.has(product.id)}));
 const featured = products.filter(product => product.dailyFeatured)
   .sort((left, right) => right.score - left.score || left.id.localeCompare(right.id))
@@ -53,6 +82,8 @@ const featured = products.filter(product => product.dailyFeatured)
 const generatedAt = now.toISOString();
 
 await fs.writeFile(catalogPath, `${JSON.stringify({...catalog, generatedAt, products}, null, 2)}\n`);
+await fs.writeFile(path.join(repoRoot, 'data/products/products.json'), `${JSON.stringify({...catalog, generatedAt, products}, null, 2)}\n`);
+await fs.writeFile(path.join(repoRoot, 'products.json'), `${JSON.stringify({...catalog, generatedAt, products}, null, 2)}\n`);
 await fs.writeFile(path.join(repoRoot, 'data/products/featured-products.json'), `${JSON.stringify({schemaVersion: 1, generatedAt, products: featured}, null, 2)}\n`);
 await fs.writeFile(path.join(repoRoot, 'data/products/instagram.json'), `${JSON.stringify({schemaVersion: 1, generatedAt, channel: 'social', products}, null, 2)}\n`);
 await fs.writeFile(path.join(repoRoot, 'catalog.csv'), toMetaCsv(products, dealerData.dealers));
@@ -84,6 +115,10 @@ const log = {
   importDate: generatedAt,
   sourceType: catalog.sourceType,
   total: products.length,
+  productsImported: changes.added.length,
+  productsUpdated: changes.changed.length,
+  duplicatesSkipped: catalog.importReport?.duplicatesSkipped?.length || 0,
+  errors: [],
   added: changes.added,
   changed: changes.changed,
   unchanged: changes.unchanged.length,
