@@ -8,7 +8,8 @@ const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..'
 const args = process.argv.slice(2);
 const sourceArg = args.includes('--source') ? args[args.indexOf('--source') + 1] : '';
 const skipSite = args.includes('--skip-site');
-const source = sourceArg || process.env.PRODUCT_SHEET_CSV_URL || path.join(repoRoot, 'data/products/source.json');
+const rawSource = sourceArg || process.env.PRODUCT_SHEET_CSV_URL || path.join(repoRoot, 'data/products/source.json');
+const source = /^https?:\/\//i.test(rawSource) ? rawSource : path.resolve(process.cwd(), rawSource);
 const storefrontCategories = ['gold-bars', 'gold-coins', 'silver-bars', 'silver-coins', 'platinum', 'palladium', 'copper', 'vault-products', 'collectibles', 'deals'];
 
 if (!skipSite) {
@@ -50,4 +51,3 @@ await fs.writeFile(sitemapPath, sitemap);
 
 const metaReadyCount = products.filter(product => !isPlaceholderUrl(product.affiliateUrl)).length;
 console.log(JSON.stringify({source, products: products.length, affiliateLinksPresent: metaReadyCount, generatedAt}, null, 2));
-
