@@ -29,6 +29,7 @@
 }
 
 .hero h1 {
+  font-size: clamp(44px, 5.8vw, 72px);
   line-height: 1.06;
   letter-spacing: -0.052em;
   padding-bottom: 0.08em;
@@ -90,7 +91,7 @@
 
 @media (max-width: 650px) {
   .hero h1 {
-    font-size: clamp(42px, 13vw, 54px);
+    font-size: clamp(38px, 11.5vw, 48px);
     line-height: 1.08;
   }
 
