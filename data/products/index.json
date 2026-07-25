@@ -41,5 +41,20 @@
       "slug": "deals",
       "name": "Deals"
     }
-  ]
+  ],
+  "productShape": {
+    "id": "unique-product-id",
+    "collection": "gold",
+    "category": "gold-bars",
+    "dealerId": "money-metals-exchange",
+    "title": "Verified product title",
+    "description": "Short verified description",
+    "image": "https://verified-image.example/product.webp",
+    "imageAlt": "Accessible product image description",
+    "affiliateUrl": "APPROVED_AFFILIATE_URL",
+    "price": null,
+    "currency": "CAD",
+    "priceDisplay": "Price pending verification",
+    "featured": false
+  }
 }
