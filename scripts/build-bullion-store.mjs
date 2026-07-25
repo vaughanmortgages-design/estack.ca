@@ -46,10 +46,10 @@ const dealers = [
     name: 'Sprott Money',
     badge: 'SM',
     description: 'Canadian precious metals dealer and market education source.',
-    approvedLandingUrl: 'https://www.sprottmoney.ca/?acc=paul-malandrino-5887a',
+    approvedLandingUrl: 'https://www.sprottmoney.ca/?acc=paul-maladrino-5887a',
     affiliateValidation: {
       hosts: ['www.sprottmoney.ca'],
-      requiredQuery: {acc: 'paul-malandrino-5887a'}
+      requiredQuery: {acc: 'paul-maladrino-5887a'}
     },
     categories: ['gold-bars', 'gold-coins', 'silver-bars', 'silver-coins', 'platinum']
   }
