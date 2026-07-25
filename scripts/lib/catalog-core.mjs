@@ -32,7 +32,8 @@ const fieldAliases = {
   createdAt: ['createdAt', 'created_at', 'arrival_date', 'date_added', 'published_at'],
   bestSeller: ['bestSeller', 'best_seller', 'bestseller', 'is_best_seller'],
   previousPrice: ['previousPrice', 'previous_price', 'original_price', 'compare_at_price'],
-  merchantPriority: ['merchantPriority', 'merchant_priority', 'dealer_priority', 'priority']
+  merchantPriority: ['merchantPriority', 'merchant_priority', 'dealer_priority', 'priority'],
+  active: ['active', 'is_active', 'enabled']
 };
 
 const availabilityMap = new Map([
@@ -145,7 +146,8 @@ export function normalizeProduct(row, index = 0) {
     createdAt: valueFor(row, 'createdAt'),
     bestSeller: booleanValue(valueFor(row, 'bestSeller')),
     previousPrice: priceValue(valueFor(row, 'previousPrice')),
-    merchantPriority: Math.max(0, Math.min(10, Number(valueFor(row, 'merchantPriority')) || 0))
+    merchantPriority: Math.max(0, Math.min(10, Number(valueFor(row, 'merchantPriority')) || 0)),
+    active: valueFor(row, 'active') === '' ? true : booleanValue(valueFor(row, 'active'))
   };
 }
 
@@ -228,6 +230,7 @@ export function isApprovedAffiliateUrl(value, dealer = {}) {
 }
 
 export function isMetaReady(product, dealers = []) {
+  if (product.active === false) return false;
   const dealerMap = dealers instanceof Map ? dealers : new Map(dealers.map(dealer => [dealer.id, dealer]));
   const dealer = dealerMap.get(product.dealerId);
   if (!product.id || !product.title || !product.description || !product.image || !product.category) return false;
