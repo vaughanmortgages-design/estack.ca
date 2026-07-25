@@ -26,16 +26,19 @@ export function createProductCard(product,dealer){
   body.className='product-body';
   const title=document.createElement('h3');
   title.textContent=product.title;
+  const description=document.createElement('p');
+  description.className='product-description';
+  description.textContent=product.shortDescription||product.description||'Verified product details will appear with the dealer feed.';
   const meta=document.createElement('div');
   meta.className='product-meta';
   meta.append(createDealerBadge(dealer));
   const price=document.createElement('span');
   price.className='price-placeholder';
-  price.textContent=product.priceDisplay||'Price pending verification';
+  price.textContent=product.priceDisplay||'See dealer for price';
   meta.append(price);
   const cta=document.createElement(product.affiliateUrl?'a':'span');
   cta.className='product-cta';
-  cta.textContent=product.affiliateUrl?(product.cta||'View at dealer'):'Coming Soon';
+  cta.textContent=product.affiliateUrl?'Shop Now':'Coming Soon';
   if(product.affiliateUrl){
     cta.href=product.affiliateUrl;
     cta.target='_blank';
@@ -43,7 +46,7 @@ export function createProductCard(product,dealer){
   }else{
     cta.setAttribute('aria-disabled','true');
   }
-  body.append(title,meta,cta);
+  body.append(title,description,meta,cta);
   article.append(image,body);
   return article;
 }
@@ -158,7 +161,7 @@ async function renderIgStore(){
     }
     if(grid&&products.length){
       grid.innerHTML='';
-      products.forEach(product=>{
+      products.slice(0,20).forEach(product=>{
         const dealer=dealerMap.get(product.dealerId);
         if(dealer)grid.append(createIgProductCard(product,dealer));
       });
@@ -192,7 +195,7 @@ async function renderProducts(){
     const {products=[]}=await productResponse.json();
     const dealerMap=new Map(dealerData.dealers.map(dealer=>[dealer.id,dealer]));
     const schemas=[];
-    products.forEach(product=>{
+    products.slice(0,12).forEach(product=>{
       const dealer=dealerMap.get(product.dealerId);
       if(!dealer)return;
       grid.append(createProductCard(product,dealer));
@@ -244,7 +247,7 @@ function applyProductSeo(product){
 }
 
 async function renderDailyHomepage(){
-  const grid=document.querySelector('#deals .deal-grid');
+  const grid=document.querySelector('[data-showroom-grid="featured"]');
   if(!grid)return;
   try{
     const [featuredResponse,dealerData]=await Promise.all([
@@ -255,12 +258,31 @@ async function renderDailyHomepage(){
     const {products=[]}=await featuredResponse.json();
     if(!products.length)return;
     const dealerMap=new Map(dealerData.dealers.map(dealer=>[dealer.id,dealer]));
+    const curated=products.slice(0,6);
     grid.innerHTML='';
     grid.className='product-grid';
-    products.forEach(product=>{
+    curated.forEach(product=>{
       const dealer=dealerMap.get(product.dealerId);
       if(dealer)grid.append(createProductCard(product,dealer));
     });
+    const newGrid=document.querySelector('[data-showroom-grid="new"]');
+    const newest=[...products].sort((left,right)=>String(right.createdAt||'').localeCompare(String(left.createdAt||''))).slice(0,4);
+    newest.forEach(product=>{const dealer=dealerMap.get(product.dealerId);if(dealer)newGrid?.append(createProductCard(product,dealer))});
+    if(newest.length)document.querySelector('[data-showroom-empty="new"]')?.remove();
+    const valueGrid=document.querySelector('[data-showroom-grid="value"]');
+    const value=products.filter(product=>product.scoreBreakdown?.priceReduction>0||product.merchantPriority>0).slice(0,4);
+    value.forEach(product=>{const dealer=dealerMap.get(product.dealerId);if(dealer)valueGrid?.append(createProductCard(product,dealer))});
+    if(value.length)document.querySelector('[data-showroom-empty="value"]')?.remove();
+    const lead=curated[0];
+    if(lead){
+      const dealer=dealerMap.get(lead.dealerId);
+      const title=document.querySelector('[data-featured-hero-title]');
+      const description=document.querySelector('[data-featured-hero-description]');
+      const cta=document.querySelector('[data-featured-hero-cta]');
+      if(title)title.textContent=lead.title;
+      if(description)description.textContent=`${lead.description} Featured through ${dealer?.name||lead.dealerId}.`;
+      if(cta&&lead.affiliateUrl){cta.href=lead.affiliateUrl;cta.target='_blank';cta.rel='sponsored nofollow noopener noreferrer';cta.textContent='Shop Now'}
+    }
   }catch(error){
     grid.setAttribute('data-featured-error','true');
   }
@@ -309,3 +331,4 @@ document.querySelector('[data-ig-dealer-list]')?.addEventListener('click',event=
 });
 document.querySelector('[data-carousel-prev]')?.addEventListener('click',()=>document.querySelector('[data-featured-carousel]')?.scrollBy({left:-300,behavior:'smooth'}));
 document.querySelector('[data-carousel-next]')?.addEventListener('click',()=>document.querySelector('[data-featured-carousel]')?.scrollBy({left:300,behavior:'smooth'}));
+
