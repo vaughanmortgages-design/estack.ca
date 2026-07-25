@@ -226,33 +226,41 @@ export function createProductCard(product,dealer){
   price.className='price-placeholder';
   price.textContent=product.priceDisplay||'Price pending verification';
   meta.append(price);
-  const cta=document.createElement('a');
+  const cta=document.createElement(product.affiliateUrl?'a':'span');
   cta.className='product-cta';
-  cta.textContent=product.cta||'View at dealer';
-  cta.href=product.url;
-  cta.target='_blank';
-  cta.rel='sponsored nofollow noopener noreferrer';
+  cta.textContent=product.affiliateUrl?(product.cta||'View at dealer'):'Coming Soon';
+  if(product.affiliateUrl){
+    cta.href=product.affiliateUrl;
+    cta.target='_blank';
+    cta.rel='sponsored nofollow noopener noreferrer';
+  }else{
+    cta.setAttribute('aria-disabled','true');
+  }
   body.append(title,meta,cta);
   article.append(image,body);
   return article;
 }
 
 function productSchema(product,dealer){
-  return {
+  const schema={
     '@context':'https://schema.org',
     '@type':'Product',
     name:product.title,
     image:product.image,
-    brand:{'@type':'Brand',name:product.brand||dealer.name},
-    offers:{
+    description:product.description,
+    brand:{'@type':'Brand',name:product.brand||dealer.name}
+  };
+  if(product.affiliateUrl&&product.price!==null){
+    schema.offers={
       '@type':'Offer',
-      url:product.url,
+      url:product.affiliateUrl,
       priceCurrency:product.currency,
       price:product.price,
-      availability:product.availability||'https://schema.org/InStock',
+      availability:product.availability==='in stock'?'https://schema.org/InStock':product.availability==='preorder'?'https://schema.org/PreOrder':'https://schema.org/OutOfStock',
       seller:{'@type':'Organization',name:dealer.name}
-    }
-  };
+    };
+  }
+  return schema;
 }
 
 async function loadDealers(){
@@ -322,12 +330,15 @@ async function renderIgStore(){
   const dealerList=document.querySelector('[data-ig-dealer-list]');
   if(!grid&&!dealerList)return;
   try{
-    const [productsResponse,dealerData]=await Promise.all([
+    const [productsResponse,featuredResponse,dealerData]=await Promise.all([
       fetch('/data/products/catalog.json'),
+      fetch('/data/products/featured-products.json'),
       loadDealers()
     ]);
     if(!productsResponse.ok)throw new Error('Instagram product data unavailable');
     const {products=[]}=await productsResponse.json();
+    const featuredData=featuredResponse.ok?await featuredResponse.json():{products:[]};
+    const featured=featuredData.products||[];
     const dealerMap=new Map(dealerData.dealers.map(dealer=>[dealer.id,dealer]));
     if(dealerList){
       dealerData.dealers.forEach(dealer=>{
@@ -346,7 +357,6 @@ async function renderIgStore(){
       });
     }
     const carousel=document.querySelector('[data-featured-carousel]');
-    const featured=products.filter(product=>product.featured&&product.affiliateUrl);
     if(carousel&&featured.length){
       carousel.innerHTML='';
       featured.forEach(product=>{
@@ -354,6 +364,9 @@ async function renderIgStore(){
         if(dealer)carousel.append(createIgProductCard(product,dealer));
       });
     }
+    const selectedId=new URLSearchParams(window.location.search).get('product');
+    const selected=featured.find(product=>product.id===selectedId);
+    if(selected?.seo)applyProductSeo(selected);
   }catch(error){
     grid?.setAttribute('data-error','true');
   }
@@ -374,7 +387,7 @@ async function renderProducts(){
     const schemas=[];
     products.forEach(product=>{
       const dealer=dealerMap.get(product.dealerId);
-      if(!dealer||!product.url)return;
+      if(!dealer)return;
       grid.append(createProductCard(product,dealer));
       if(product.price&&product.currency&&product.image)schemas.push(productSchema(product,dealer));
     });
@@ -392,6 +405,60 @@ async function renderProducts(){
   }
 }
 
+function setMeta(selector,attribute,value){
+  if(!value)return;
+  let node=document.head.querySelector(selector);
+  if(!node){
+    node=document.createElement('meta');
+    const [name,content]=selector.match(/\\[(.+?)="(.+?)"\\]/)?.slice(1)||[];
+    if(name)node.setAttribute(name,content);
+    document.head.append(node);
+  }
+  node.setAttribute(attribute,value);
+}
+
+function applyProductSeo(product){
+  const seo=product.seo;
+  document.title=seo.openGraph?.title||document.title;
+  const canonical=document.head.querySelector('link[rel="canonical"]');
+  if(canonical&&seo.canonicalUrl)canonical.href=seo.canonicalUrl;
+  setMeta('meta[property="og:title"]','content',seo.openGraph?.title);
+  setMeta('meta[property="og:description"]','content',seo.openGraph?.description);
+  setMeta('meta[property="og:image"]','content',seo.openGraph?.image);
+  setMeta('meta[name="twitter:title"]','content',seo.twitterCard?.title);
+  setMeta('meta[name="twitter:description"]','content',seo.twitterCard?.description);
+  setMeta('meta[name="twitter:image"]','content',seo.twitterCard?.image);
+  if(seo.jsonLd){
+    const node=document.createElement('script');
+    node.type='application/ld+json';
+    node.textContent=JSON.stringify(seo.jsonLd);
+    document.head.append(node);
+  }
+}
+
+async function renderDailyHomepage(){
+  const grid=document.querySelector('#deals .deal-grid');
+  if(!grid)return;
+  try{
+    const [featuredResponse,dealerData]=await Promise.all([
+      fetch('/data/products/featured-products.json'),
+      loadDealers()
+    ]);
+    if(!featuredResponse.ok)return;
+    const {products=[]}=await featuredResponse.json();
+    if(!products.length)return;
+    const dealerMap=new Map(dealerData.dealers.map(dealer=>[dealer.id,dealer]));
+    grid.innerHTML='';
+    grid.className='product-grid';
+    products.forEach(product=>{
+      const dealer=dealerMap.get(product.dealerId);
+      if(dealer)grid.append(createProductCard(product,dealer));
+    });
+  }catch(error){
+    grid.setAttribute('data-featured-error','true');
+  }
+}
+
 const menu=document.querySelector('.store-menu');
 const navigation=document.querySelector('.store-links');
 menu?.addEventListener('click',()=>{
@@ -403,6 +470,7 @@ menu?.addEventListener('click',()=>{
 renderDealers();
 renderProducts();
 renderIgStore();
+renderDailyHomepage();
 
 const searchForm=document.querySelector('[data-product-search]');
 const searchInput=document.querySelector('#ig-product-search');
@@ -434,8 +502,8 @@ document.querySelector('[data-ig-dealer-list]')?.addEventListener('click',event=
 });
 document.querySelector('[data-carousel-prev]')?.addEventListener('click',()=>document.querySelector('[data-featured-carousel]')?.scrollBy({left:-300,behavior:'smooth'}));
 document.querySelector('[data-carousel-next]')?.addEventListener('click',()=>document.querySelector('[data-featured-carousel]')?.scrollBy({left:300,behavior:'smooth'}));
-`;
 
+`;
 const og = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630"><defs><radialGradient id="b"><stop stop-color="#2b2418"/><stop offset="1" stop-color="#050505"/></radialGradient><radialGradient id="g"><stop stop-color="#fff1bd"/><stop offset=".45" stop-color="#c18e32"/><stop offset="1" stop-color="#6f4b14"/></radialGradient></defs><rect width="1200" height="630" fill="url(#b)"/><circle cx="910" cy="300" r="200" fill="url(#g)" stroke="#ead19a" stroke-width="7"/><circle cx="910" cy="300" r="165" fill="none" stroke="#6f4b14" stroke-width="2" stroke-dasharray="7 9"/><text x="910" y="330" text-anchor="middle" font-family="Arial" font-size="110" font-weight="700" fill="#241805">eS</text><text x="90" y="270" font-family="Arial" font-size="80" font-weight="700" fill="#fff">eStack</text><text x="90" y="345" font-family="Arial" font-size="52" font-weight="700" fill="#ead19a">BULLION</text><text x="90" y="410" font-family="Arial" font-size="28" fill="#aaa">Precious metals. Refined.</text></svg>`;
 
 function write(relative, content) {
@@ -462,9 +530,14 @@ const productShape = {
   imageAlt: 'Accessible product image description',
   affiliateUrl: 'APPROVED_AFFILIATE_URL',
   price: null,
+  previousPrice: null,
   currency: 'CAD',
   priceDisplay: 'Price pending verification',
   featured: false
+  ,
+  bestSeller: false,
+  merchantPriority: 0,
+  createdAt: null
 };
 write('data/products/index.json', `${JSON.stringify({schemaVersion: 1, categories: categories.map(([slug, name]) => ({slug, name})), productShape}, null, 2)}\n`);
 write('data/products/instagram.json', `${JSON.stringify({schemaVersion: 1, channel: 'social', productShape, products: []}, null, 2)}\n`);
