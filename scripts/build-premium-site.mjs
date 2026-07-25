@@ -47,8 +47,49 @@ const home=`<main><section class="hero financial-hero"><div class="wrap hero-gri
 <section class="section dark"><div class="wrap"><div class="section-head"><h2>Market snapshot.</h2><p>Near-live prices and market movement supplied by TradingView. Always confirm executable prices with your dealer or financial platform.</p></div><div class="market-shell"><div class="tradingview-widget-container"><div class="tradingview-widget-container__widget"></div><script src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>{"colorTheme":"light","dateRange":"12M","showChart":true,"locale":"en","width":"100%","height":"520","isTransparent":false,"showSymbolLogo":true,"tabs":[{"title":"Bullion","symbols":[{"s":"TVC:GOLD","d":"Gold"},{"s":"TVC:SILVER","d":"Silver"},{"s":"TVC:PLATINUM","d":"Platinum"}]},{"title":"Markets","symbols":[{"s":"SP:SPX","d":"S&P 500"},{"s":"NASDAQ:NDX","d":"Nasdaq"},{"s":"TSX:TSX","d":"TSX"},{"s":"BITSTAMP:BTCUSD","d":"Bitcoin"},{"s":"FX_IDC:USDCAD","d":"USD/CAD"}]}]}</script></div></div></div></section>
 <section class="section"><div class="wrap"><div class="section-head"><h2>Read before you click.</h2><p>Clear educational context helps readers understand trade-offs before moving to a partner.</p></div><div class="grid-3">${internal('Borrowing guide','Build a smarter comparison list','What to compare beyond the headline: eligibility, total cost, timing and repayment structure.','loans.html#guide','Read the guide')}${internal('Bullion guide','Coins, bars and ownership','Understand premiums, liquidity, storage and the difference between spot prices and retail costs.','bullion.html#guide','Read the guide')}${internal('Technology guide','Choose tools that earn their place','A practical framework for comparing ecommerce, analytics, automation and publishing platforms.','tech-ai-tools.html#guide','Read the guide')}</div></div></section></main>`;
 
+const leadScoutWidget=`<div id="lead-scout-form" style="max-width:800px;margin:2rem auto;background:#ffffff;border-radius:12px;border:1px solid rgba(58,58,58,0.15);box-shadow:0 10px 25px -5px rgba(0,0,0,0.1),0 8px 10px -6px rgba(0,0,0,0.1);overflow:hidden;"></div>
+
+<script>
+var formConfig = {
+  "affiliateCode": "ZX3kIzQG",
+  "defaultValues": {
+    "requestedAmount": 1000
+  },
+  "formId": "1",
+  "language": "en",
+  "overrides": {
+    "requestedAmount": {
+      "max": 3000,
+      "min": 100,
+      "step": 100
+    }
+  },
+  "styles": {
+    "fontFamily": "\\"Montserrat\\", sans-serif",
+    "fullWidthFirstStepButton": true,
+    "minHeight": 0,
+    "primary": {
+      "contrastText": "#fff",
+      "dark": "#8BA868",
+      "main": "#8BA868"
+    }
+  },
+  "theme": "light"
+};
+
+window.LeadScout = window.LeadScout || {};
+window.LeadScout.onLoad = function() {
+  window.LeadScout.init(
+    document.getElementById("lead-scout-form"),
+    formConfig
+  );
+};
+</script>
+
+<script src="https://app.leadscout.ca/library/library.js" async></script>`;
+
 const loans=`<main>${pageHero('Loans','Canadian loan options, clearly compared.','Explore approved personal-loan, auto-financing, credit-building, secured-credit, debt-resource and financial-tool destinations without promises or invented rates.',`<a class="btn btn-gold" href="#compare">Compare options</a>`,`<a class="btn btn-ghost" href="#guide">Read the guide</a>`,'loans-hero')}
-<section class="section white" id="compare"><div class="wrap"><div class="section-head"><h2>Start with the right category.</h2><p>Eligibility, rates, fees and approval decisions belong to each provider. Every button below preserves the exact approved tracking URL.</p></div>${disclosure}<div class="grid-2">${affiliate('Featured loan partner','LeadScout','Open the approved tracked Canadian loan-matching destination and verify current provider details directly.',vault.leadScout,'Compare Options')}${affiliate('Featured personal loans','Loan Genie','Review an approved personal-loan matching destination for Canadians.',vault.loanGenie,'Compare Options')}</div></div></section>
+<section class="section white" id="compare"><div class="wrap"><div class="section-head"><h2>Compare Loan Options</h2><p>Use the official LeadScout borrower form to begin comparing available options. Eligibility, rates, fees and approval decisions belong to participating providers.</p></div>${leadScoutWidget}<p class="disclose"><strong>Affiliate disclosure:</strong> eStack.ca may receive compensation when visitors use this LeadScout form, at no additional cost to the visitor. Submission does not guarantee approval, a rate or a lending offer. <a href="affiliate-disclosure.html">Read our disclosure.</a></p></div></section>
 <section class="section"><div class="wrap"><div class="section-head"><h2>Personal loans.</h2><p>Four approved CreditMarketing.ca destinations for researching personal borrowing options.</p></div><div class="grid-4">${affiliate('Personal loans','Loan Genie','Review the provider’s current personal-loan matching information.',vault.loanGenie,'Compare Options')}${affiliate('Personal loans','Loans Canada','Explore the approved Loans Canada personal-loan destination.',vault.loansCanada,'Compare Options')}${affiliate('Personal loans','Rate Genie','Review a tracked personal-loan comparison destination.',vault.rateGenie,'Compare Options')}${affiliate('Personal loans','Zippy Loans','Explore the current Canadian offer and confirm all terms directly.',vault.zippy,'See Details')}</div></div></section>
 <section class="section white"><div class="wrap"><div class="section-head"><h2>Auto and powersports financing.</h2><p>Approved destinations for vehicle, refinance and powersports financing research.</p></div><div class="grid-4">${affiliate('Auto loans','MyAutoApproval','Explore the approved Canadian auto-financing destination.',vault.autoLoan,'Check Eligibility')}${affiliate('Auto refinance','Auto Loan Refi','Compare the approved auto-refinance destination and verify current terms.',vault.autoRefi,'Compare Options')}${affiliate('Powersports','Powersports Loans Canada','Review the provider’s current powersports-financing information.',vault.powersports,'See Details')}${affiliate('Powersports','Powersports Auto Approval','Open the approved powersports application destination.',vault.powersportsApproval,'Check Eligibility')}</div></div></section>
 <section class="section"><div class="wrap"><div class="section-head"><h2>Credit building.</h2><p>Products positioned around credit-building or credit-history tools; results are never guaranteed.</p></div><div class="grid-4">${affiliate('Credit building','Spark Credit','Review the current credit-building loan information and provider terms.',vault.spark,'Learn More')}${affiliate('Credit building','Spring Credit','Explore credit-building and personal-finance products from Spring Credit.',vault.spring,'Learn More')}${affiliate('Credit building','KOHO Credit Building','Review KOHO’s current credit-building product details.',vault.koho,'See Details')}${affiliate('Credit building','Kikoff','Explore the tracked Kikoff destination and verify availability directly.',vault.kikoff,'See Details')}</div></div></section>
