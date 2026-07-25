@@ -24,7 +24,8 @@ if (!skipSite) {
 const dealerData = JSON.parse(await fs.readFile(path.join(repoRoot, 'data/dealers/dealers.json'), 'utf8'));
 const dealerMap = new Map(dealerData.dealers.map(dealer => [dealer.id, dealer]));
 const dealerIds = new Set(dealerMap.keys());
-const {products: importedProducts, duplicatesSkipped} = await importProductsDetailed(source);
+const {products: allImportedProducts, duplicatesSkipped} = await importProductsDetailed(source);
+const importedProducts = allImportedProducts.filter(product => product.active !== false);
 const products = importedProducts.map(product => ({
   ...product,
   affiliateVerified: isApprovedAffiliateUrl(product.affiliateUrl, dealerMap.get(product.dealerId))
