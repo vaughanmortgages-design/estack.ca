@@ -2,7 +2,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {execFileSync} from 'node:child_process';
-import {importProducts, toMetaCsv, toMetaXml, isPlaceholderUrl} from './lib/catalog-core.mjs';
+import {importProductsDetailed, toMetaCsv, toMetaXml, isPlaceholderUrl} from './lib/catalog-core.mjs';
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const args = process.argv.slice(2);
@@ -18,7 +18,7 @@ if (!skipSite) {
 
 const dealerData = JSON.parse(await fs.readFile(path.join(repoRoot, 'data/dealers/dealers.json'), 'utf8'));
 const dealerIds = new Set(dealerData.dealers.map(dealer => dealer.id));
-const products = await importProducts(source);
+const {products, duplicatesSkipped} = await importProductsDetailed(source);
 const unknownDealers = [...new Set(products.filter(product => !dealerIds.has(product.dealerId)).map(product => product.dealerId))];
 if (unknownDealers.length) throw new Error(`Unknown dealer ids: ${unknownDealers.join(', ')}`);
 
@@ -27,9 +27,12 @@ const catalog = {
   schemaVersion: 1,
   generatedAt,
   sourceType: /^https?:\/\//.test(source) ? (source.includes('docs.google.com') ? 'google-sheets' : 'remote') : path.extname(source).slice(1),
+  importReport: {duplicatesSkipped},
   products
 };
 await fs.writeFile(path.join(repoRoot, 'data/products/catalog.json'), `${JSON.stringify(catalog, null, 2)}\n`);
+await fs.writeFile(path.join(repoRoot, 'data/products/products.json'), `${JSON.stringify(catalog, null, 2)}\n`);
+await fs.writeFile(path.join(repoRoot, 'products.json'), `${JSON.stringify(catalog, null, 2)}\n`);
 await fs.writeFile(path.join(repoRoot, 'data/products/instagram.json'), `${JSON.stringify({...catalog, channel: 'social'}, null, 2)}\n`);
 
 for (const category of storefrontCategories) {
@@ -50,4 +53,4 @@ for (const product of products) {
 await fs.writeFile(sitemapPath, sitemap);
 
 const metaReadyCount = products.filter(product => !isPlaceholderUrl(product.affiliateUrl)).length;
-console.log(JSON.stringify({source, products: products.length, affiliateLinksPresent: metaReadyCount, generatedAt}, null, 2));
+console.log(JSON.stringify({source, products: products.length, duplicatesSkipped, affiliateLinksPresent: metaReadyCount, generatedAt}, null, 2));
