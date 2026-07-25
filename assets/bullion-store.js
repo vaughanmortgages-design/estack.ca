@@ -130,7 +130,7 @@ async function renderIgStore(){
   if(!grid&&!dealerList)return;
   try{
     const [productsResponse,dealerData]=await Promise.all([
-      fetch('/data/products/instagram.json'),
+      fetch('/data/products/catalog.json'),
       loadDealers()
     ]);
     if(!productsResponse.ok)throw new Error('Instagram product data unavailable');
