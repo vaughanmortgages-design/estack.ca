@@ -43,6 +43,27 @@ test('scores every requested commerce signal', () => {
   assert.equal(result.score, 102);
 });
 
+test('uses configurable ranking weights', () => {
+  const rules = {
+    featured: 3,
+    newest: 4,
+    newestWindowDays: 7,
+    bestSeller: 5,
+    priceChangeMax: 6,
+    availability: {inStock: 7, preorder: 2},
+    merchantPriorityMax: 4
+  };
+  const result = scoreProduct(base, new Date('2026-07-25T12:00:00Z'), rules);
+  assert.deepEqual(result.scoreBreakdown, {
+    newArrival: 4,
+    featured: 3,
+    bestSeller: 5,
+    priceReduction: 6,
+    availability: 7,
+    merchantPriority: 4
+  });
+});
+
 test('selects a deterministic top ten', () => {
   const products = Array.from({length: 12}, (_, index) => ({...base, id: `p-${index}`, merchantPriority: index % 10}));
   const featured = selectDailyFeatured(products, 10, new Date('2026-07-25T12:00:00Z'));
@@ -63,4 +84,3 @@ test('creates product schema without inventing an offer', () => {
   assert.equal(seo.canonicalUrl, 'https://estack.ca/ig/?product=product-1');
   assert.equal(seo.jsonLd.offers, undefined);
 });
-
