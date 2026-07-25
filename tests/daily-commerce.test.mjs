@@ -124,13 +124,13 @@ test('excludes inactive products from the curated storefront', () => {
     id: 'inactive',
     image: 'https://images.example.com/inactive.webp',
     availability: 'in stock',
-    affiliateUrl: 'https://www.sprottmoney.ca/?acc=paul-malandrino-5887a',
+    affiliateUrl: 'https://www.sprottmoney.ca/?acc=paul-maladrino-5887a',
     active: false
   };
   const dealer = {
     affiliateValidation: {
       hosts: ['www.sprottmoney.ca'],
-      requiredQuery: {acc: 'paul-malandrino-5887a'}
+      requiredQuery: {acc: 'paul-maladrino-5887a'}
     }
   };
   assert.equal(isShowroomEligible(product, dealer), false);
