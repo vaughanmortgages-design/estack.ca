@@ -52,6 +52,11 @@ test('normalizes reusable product fields', () => {
   assert.equal(product.availability, 'in stock');
 });
 
+test('rejects duplicate product ids', () => {
+  const row = {id: 'duplicate', title: 'Gold Bar'};
+  assert.throws(() => normalizeProducts([row, row]), /Duplicate product id/);
+});
+
 test('excludes placeholder affiliate links from Meta catalog', () => {
   assert.equal(isMetaReady({...valid, affiliateUrl: 'APPROVED_AFFILIATE_URL'}, new Set(['kitco'])), false);
   assert.equal(toMetaCsv([{...valid, affiliateUrl: ''}], dealers).split('\n').length, 2);
@@ -65,4 +70,3 @@ test('exports valid CSV and escaped XML for complete products', () => {
   assert.match(xml, /Gold &amp; Silver/);
   assert.match(xml, /xmlns:g="http:\/\/base.google.com\/ns\/1.0"/);
 });
-
