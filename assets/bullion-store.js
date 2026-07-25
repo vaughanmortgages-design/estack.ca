@@ -88,6 +88,7 @@ function createIgProductCard(product,dealer){
   const article=document.createElement('article');
   article.className='ig-product-card';
   article.dataset.collection=product.collection||'all';
+  article.dataset.dealer=dealer.id;
   article.dataset.search=`${product.title} ${product.description||''} ${dealer.name}`.toLowerCase();
   const image=document.createElement('div');
   image.className='ig-square-image';
@@ -214,11 +215,13 @@ const searchForm=document.querySelector('[data-product-search]');
 const searchInput=document.querySelector('#ig-product-search');
 const applyIgFilters=()=>{
   const active=document.querySelector('[data-filter-row] .active')?.dataset.filter||'all';
+  const dealer=document.querySelector('[data-ig-dealer-list] .active')?.dataset.dealer||'all';
   const query=(searchInput?.value||'').trim().toLowerCase();
   document.querySelectorAll('.ig-product-card').forEach(card=>{
     const categoryMatch=active==='all'||card.dataset.collection===active;
+    const dealerMatch=dealer==='all'||card.dataset.dealer===dealer;
     const searchMatch=!query||card.dataset.search.includes(query);
-    card.hidden=!(categoryMatch&&searchMatch);
+    card.hidden=!(categoryMatch&&dealerMatch&&searchMatch);
   });
 };
 searchForm?.addEventListener('submit',event=>{event.preventDefault();applyIgFilters()});
@@ -228,5 +231,13 @@ document.querySelectorAll('[data-filter]').forEach(button=>button.addEventListen
   button.classList.add('active');
   applyIgFilters();
 }));
+document.querySelector('[data-ig-dealer-list]')?.addEventListener('click',event=>{
+  const button=event.target.closest('[data-dealer]');
+  if(!button)return;
+  const wasActive=button.classList.contains('active');
+  document.querySelectorAll('[data-ig-dealer-list] [data-dealer]').forEach(item=>item.classList.remove('active'));
+  if(!wasActive)button.classList.add('active');
+  applyIgFilters();
+});
 document.querySelector('[data-carousel-prev]')?.addEventListener('click',()=>document.querySelector('[data-featured-carousel]')?.scrollBy({left:-300,behavior:'smooth'}));
 document.querySelector('[data-carousel-next]')?.addEventListener('click',()=>document.querySelector('[data-featured-carousel]')?.scrollBy({left:300,behavior:'smooth'}));
