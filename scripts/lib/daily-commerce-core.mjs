@@ -41,7 +41,8 @@ export function productFingerprint(product) {
     'createdAt',
     'brand',
     'condition',
-    'productPageUrl'
+    'productPageUrl',
+    'active'
   ];
   const stable = Object.fromEntries(fields.map(field => [field, product[field] ?? null]));
   return createHash('sha256').update(JSON.stringify(stable)).digest('hex');
@@ -88,7 +89,8 @@ export function selectDailyFeatured(products, limit = 10, now = new Date(), rule
 }
 
 export function isShowroomEligible(product, dealer) {
-  return Boolean(product.image)
+  return product.active !== false
+    && Boolean(product.image)
     && product.availability !== 'out of stock'
     && isApprovedAffiliateUrl(product.affiliateUrl, dealer);
 }
