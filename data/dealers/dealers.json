@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "dealers": [
+    {
+      "id": "money-metals-exchange",
+      "name": "Money Metals Exchange",
+      "badge": "MME",
+      "description": "Precious metals dealer and educational resource.",
+      "categories": [
+        "gold-bars",
+        "gold-coins",
+        "silver-bars",
+        "silver-coins",
+        "platinum",
+        "copper"
+      ]
+    },
+    {
+      "id": "kitco",
+      "name": "Kitco",
+      "badge": "K",
+      "description": "Bullion marketplace and precious metals market information.",
+      "categories": [
+        "gold-bars",
+        "gold-coins",
+        "silver-bars",
+        "silver-coins",
+        "platinum",
+        "palladium"
+      ]
+    },
+    {
+      "id": "sprott-money",
+      "name": "Sprott Money",
+      "badge": "SM",
+      "description": "Canadian precious metals dealer and market education source.",
+      "categories": [
+        "gold-bars",
+        "gold-coins",
+        "silver-bars",
+        "silver-coins",
+        "platinum"
+      ]
+    }
+  ]
+}
