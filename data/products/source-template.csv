@@ -1,1 +1,1 @@
-id,title,description,price,previous_price,currency,image,availability,dealer_id,affiliate_url,category,collection,featured,best_seller,merchant_priority,created_at,brand,condition,product_page_url
+id,sku,dealer_id,brand,category,title,description,long_description,product_url,affiliate_url,image,additional_image_urls,price,previous_price,currency,availability,badge,featured,new_arrival,clearance,best_value,best_seller,merchant_priority,collection,metal_type,weight,purity,country,mint,created_at,last_updated,condition,active
