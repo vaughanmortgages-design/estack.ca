@@ -1,0 +1,195 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://estack.ca/schemas/master-product.schema.json",
+  "title": "eStack Master Product",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "sku",
+    "dealerId",
+    "brand",
+    "category",
+    "title",
+    "description",
+    "longDescription",
+    "productUrl",
+    "affiliateUrl",
+    "image",
+    "additionalImages",
+    "price",
+    "previousPrice",
+    "currency",
+    "availability",
+    "badge",
+    "featured",
+    "newArrival",
+    "clearance",
+    "bestValue",
+    "bestSeller",
+    "merchantPriority",
+    "collection",
+    "metalType",
+    "weight",
+    "purity",
+    "country",
+    "mint",
+    "createdAt",
+    "lastUpdated",
+    "condition",
+    "active"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 160,
+      "pattern": "^[a-z0-9][a-z0-9._-]*$"
+    },
+    "sku": {
+      "type": ["string", "null"],
+      "maxLength": 120
+    },
+    "dealerId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 120,
+      "pattern": "^[a-z0-9][a-z0-9-]*$"
+    },
+    "brand": {
+      "type": ["string", "null"],
+      "maxLength": 160
+    },
+    "category": {
+      "enum": [
+        "gold-bars",
+        "gold-coins",
+        "silver-bars",
+        "silver-coins",
+        "platinum",
+        "palladium",
+        "copper",
+        "vault-products",
+        "collectibles",
+        "deals"
+      ]
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 150
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 500
+    },
+    "longDescription": {
+      "type": ["string", "null"],
+      "maxLength": 5000
+    },
+    "productUrl": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://"
+    },
+    "affiliateUrl": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://"
+    },
+    "image": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://"
+    },
+    "additionalImages": {
+      "type": "array",
+      "maxItems": 20,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "format": "uri",
+        "pattern": "^https://"
+      }
+    },
+    "price": {
+      "type": ["number", "null"],
+      "minimum": 0
+    },
+    "previousPrice": {
+      "type": ["number", "null"],
+      "minimum": 0
+    },
+    "currency": {
+      "type": "string",
+      "pattern": "^[A-Z]{3}$"
+    },
+    "availability": {
+      "enum": ["in stock", "preorder", "out of stock"]
+    },
+    "badge": {
+      "type": ["string", "null"],
+      "maxLength": 40
+    },
+    "featured": {
+      "type": "boolean"
+    },
+    "newArrival": {
+      "type": "boolean"
+    },
+    "clearance": {
+      "type": "boolean"
+    },
+    "bestValue": {
+      "type": "boolean"
+    },
+    "bestSeller": {
+      "type": "boolean"
+    },
+    "merchantPriority": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 10
+    },
+    "collection": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 80
+    },
+    "metalType": {
+      "type": ["string", "null"],
+      "maxLength": 80
+    },
+    "weight": {
+      "type": ["string", "null"],
+      "maxLength": 80
+    },
+    "purity": {
+      "type": ["string", "null"],
+      "maxLength": 80
+    },
+    "country": {
+      "type": ["string", "null"],
+      "pattern": "^[A-Z]{2}$"
+    },
+    "mint": {
+      "type": ["string", "null"],
+      "maxLength": 160
+    },
+    "createdAt": {
+      "type": ["string", "null"],
+      "format": "date"
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "condition": {
+      "enum": ["new"]
+    },
+    "active": {
+      "type": "boolean"
+    }
+  }
+}
