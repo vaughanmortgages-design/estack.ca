@@ -36,6 +36,30 @@ const valid = {
   brand: 'Test Mint'
 };
 
+const validSourceRow = (overrides = {}) => ({
+  id: 'source-product',
+  dealer_id: 'kitco',
+  category: 'gold-bars',
+  title: 'Source Product',
+  description: 'Verified source description.',
+  product_url: 'https://merchant.example/products/source-product',
+  affiliate_url: 'https://www.awin1.com/cread.php?s=3795009&v=84579&q=505826&r=2936205',
+  image: 'https://images.example.com/source-product.webp',
+  currency: 'CAD',
+  availability: 'in stock',
+  featured: 'FALSE',
+  new_arrival: 'FALSE',
+  clearance: 'FALSE',
+  best_value: 'FALSE',
+  best_seller: 'FALSE',
+  merchant_priority: '5',
+  collection: 'gold',
+  last_updated: '2026-07-26T00:00:00Z',
+  condition: 'new',
+  active: 'TRUE',
+  ...overrides
+});
+
 test('converts an editable Google Sheet URL to CSV export', () => {
   assert.equal(
     googleSheetCsvUrl('https://docs.google.com/spreadsheets/d/abc123/edit?gid=42#gid=42'),
@@ -124,10 +148,62 @@ test('rejects duplicate product ids', () => {
 });
 
 test('incremental importer skips and reports duplicate product ids', () => {
-  const row = {id: 'duplicate', title: 'Gold Bar'};
+  const row = validSourceRow({id: 'duplicate'});
   const result = normalizeProductsDetailed([row, row]);
   assert.equal(result.products.length, 1);
   assert.deepEqual(result.duplicatesSkipped, ['duplicate']);
+  assert.equal(result.report.importedRows, 1);
+  assert.equal(result.report.skippedRows, 1);
+  assert.deepEqual(result.report.duplicateRows, [{rowNumber: 3, id: 'duplicate'}]);
+});
+
+test('reports blank, inactive and invalid source rows', () => {
+  const result = normalizeProductsDetailed([
+    {},
+    validSourceRow({id: 'inactive', active: 'FALSE', description: ''}),
+    validSourceRow({id: 'invalid', image: ''}),
+    validSourceRow({id: 'active'})
+  ]);
+  assert.deepEqual(result.products.map(product => product.id), ['active']);
+  assert.equal(result.report.blankRows.length, 1);
+  assert.deepEqual(result.report.inactiveRows, [{rowNumber: 3, id: 'inactive'}]);
+  assert.equal(result.report.invalidRows.length, 1);
+  assert.deepEqual(result.report.invalidRows[0].missingRequiredFields, ['image']);
+  assert.equal(result.report.missingRequiredFields.image, 1);
+  assert.equal(result.report.importedRows, 1);
+  assert.equal(result.report.skippedRows, 3);
+});
+
+test('preserves merchant names and source URLs exactly', () => {
+  const affiliateUrl = 'https://www.awin1.com/cread.php?s=3795009&v=84579&q=505826&r=2936205&clickref=CaseSensitive';
+  const image = 'https://images.example.com/CaseSensitive%20Image.webp?token=A%2FB';
+  const productUrl = 'https://merchant.example/CaseSensitive-Product?variant=A%2FB';
+  const result = normalizeProductsDetailed([validSourceRow({
+    merchant_name: 'Kitco (US & Canada)',
+    affiliate_url: affiliateUrl,
+    image,
+    product_url: productUrl
+  })]);
+  assert.equal(result.products[0].merchantName, 'Kitco (US & Canada)');
+  assert.equal(result.products[0].affiliateUrl, affiliateUrl);
+  assert.equal(result.products[0].image, image);
+  assert.equal(result.products[0].productUrl, productUrl);
+});
+
+test('rejects unsupported merchant, category and invalid required values', () => {
+  const result = normalizeProductsDetailed([validSourceRow({
+    dealer_id: 'unknown-merchant',
+    category: 'not-a-category',
+    availability: 'maybe',
+    active: '',
+    last_updated: 'not-a-date'
+  })], {dealerIds: new Set(['kitco'])});
+  assert.equal(result.products.length, 0);
+  assert.equal(result.report.invalidRows.length, 1);
+  assert.match(result.report.invalidRows[0].errors.join(' '), /Missing required fields: active/);
+  assert.match(result.report.invalidRows[0].errors.join(' '), /Unknown dealer_id/);
+  assert.match(result.report.invalidRows[0].errors.join(' '), /Unsupported category/);
+  assert.match(result.report.invalidRows[0].errors.join(' '), /Unsupported availability/);
 });
 
 test('excludes placeholder affiliate links from Meta catalog', () => {
