@@ -57,11 +57,11 @@ const dealers = [
 
 const ticker = `<div class="ticker" aria-label="Live market ticker"><div class="tradingview-widget-container"><div class="tradingview-widget-container__widget"></div><script src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>{"symbols":[{"proName":"TVC:GOLD","title":"Gold"},{"proName":"TVC:SILVER","title":"Silver"},{"proName":"TVC:PLATINUM","title":"Platinum"},{"proName":"TVC:PALLADIUM","title":"Palladium"},{"proName":"FX_IDC:USDCAD","title":"USD/CAD"}],"showSymbolLogo":true,"colorTheme":"dark","isTransparent":true,"displayMode":"adaptive","locale":"en"}</script></div></div>`;
 
-const header = `${ticker}<header class="store-header"><div class="store-shell store-nav"><a class="store-logo" href="/" aria-label="eStack Bullion home">e<span>Stack</span><small>BULLION</small></a><button class="store-menu" type="button" aria-expanded="false" aria-controls="store-navigation">Menu</button><nav id="store-navigation" class="store-links" aria-label="Primary navigation"><a href="/#featured-picks">Today’s Picks</a><a href="/shop/gold-bars/">Gold</a><a href="/shop/silver-bars/">Silver</a><a href="/shop/platinum/">Platinum</a><a href="/#new-releases">New Releases</a><a href="/#best-value">Best Value</a><a href="/bullion.html">News</a></nav></div></header>`;
+const header = `${ticker}<header class="store-header"><div class="store-shell store-nav"><a class="store-logo" href="/" aria-label="eStack Bullion home">e<span>Stack</span><small>BULLION</small></a><button class="store-menu" type="button" aria-expanded="false" aria-controls="store-navigation">Menu</button><nav id="store-navigation" class="store-links" aria-label="Primary navigation"><a href="/bullion/#featured-picks">Today’s Picks</a><a href="/shop/gold-bars/">Gold</a><a href="/shop/silver-bars/">Silver</a><a href="/shop/platinum/">Platinum</a><a href="/bullion/#new-releases">New Releases</a><a href="/bullion/#best-value">Best Value</a><a href="/bullion.html">News</a></nav></div></header>`;
 
 const social = `<nav class="social-links" aria-label="Follow eStack.ca"><a class="social-link" href="https://www.instagram.com/estack_ca/" target="_blank" rel="noopener noreferrer" aria-label="Follow eStack.ca on Instagram">IG</a><a class="social-link" href="https://www.facebook.com/profile.php?id=61591552108308" target="_blank" rel="noopener noreferrer" aria-label="Follow eStack.ca on Facebook">FB</a><a class="social-link" href="https://ca.pinterest.com/estackca/" target="_blank" rel="noopener noreferrer" aria-label="Follow eStack.ca on Pinterest">PI</a><a class="social-link" href="https://www.linkedin.com/company/132324208/" target="_blank" rel="noopener noreferrer" aria-label="Follow eStack.ca on LinkedIn">LI</a><a class="social-link" href="https://www.youtube.com/@eStackCA" target="_blank" rel="noopener noreferrer" aria-label="Follow eStack.ca on YouTube">YT</a></nav>`;
 
-const footer = `<footer class="store-footer"><div class="store-shell footer-grid"><div><a class="store-logo" href="/">e<span>Stack</span><small>BULLION</small></a><p>Canada’s curated bullion showroom, combining verified dealer offers, market context and practical buying guidance.</p>${social}</div><div><h2>Showroom</h2><a href="/#featured-picks">Today’s Picks</a><a href="/shop/gold-bars/">Gold</a><a href="/shop/silver-bars/">Silver</a><a href="/shop/platinum/">Platinum</a></div><div><h2>Information</h2><a href="/bullion.html">Bullion news & guides</a><a href="/markets.html">Market dashboard</a><a href="/partner-directory.html">Dealer directory</a><a href="/affiliate-disclosure.html">Affiliate disclosure</a></div></div><div class="store-shell fine-print"><p>Prices, availability and dealer terms appear only when supplied by the verified product feed. Precious metals can fluctuate in value. Information is general and is not financial, investment, legal or tax advice.</p></div></footer>`;
+const footer = `<footer class="store-footer"><div class="store-shell footer-grid"><div><a class="store-logo" href="/">e<span>Stack</span><small>BULLION</small></a><p>Canada’s curated bullion showroom, combining verified dealer offers, market context and practical buying guidance.</p>${social}</div><div><h2>Showroom</h2><a href="/bullion/#featured-picks">Today’s Picks</a><a href="/shop/gold-bars/">Gold</a><a href="/shop/silver-bars/">Silver</a><a href="/shop/platinum/">Platinum</a></div><div><h2>Information</h2><a href="/bullion.html">Bullion news & guides</a><a href="/markets.html">Market dashboard</a><a href="/partner-directory.html">Dealer directory</a><a href="/affiliate-disclosure.html">Affiliate disclosure</a></div></div><div class="store-shell fine-print"><p>Prices, availability and dealer terms appear only when supplied by the verified product feed. Precious metals can fluctuate in value. Information is general and is not financial, investment, legal or tax advice.</p></div></footer>`;
 
 const categoryCards = categories.map(([slug, title, description, mark]) =>
   `<a class="category-card" href="/shop/${slug}/"><span class="metal-mark">${mark}</span><span><strong>${title}</strong><small>${description}</small></span><span class="arrow" aria-hidden="true">↗</span></a>`
@@ -80,7 +80,7 @@ const homeSchema = `<script type="application/ld+json">${JSON.stringify({
   '@context': 'https://schema.org',
   '@type': 'WebSite',
   name: 'eStack Bullion',
-  url: 'https://estack.ca/',
+  url: 'https://estack.ca/bullion/',
   description: 'Curated Canadian precious metals showroom and bullion publication.',
   potentialAction: {
     '@type': 'SearchAction',
@@ -100,7 +100,7 @@ const homepage = document({
   headContent: head({
     title: 'eStack Bullion Showroom | Gold, Silver & Platinum Canada',
     description: 'Browse a curated daily selection of gold, silver and platinum from approved bullion dealers, with live market context and practical Canadian guides.',
-    canonical: 'https://estack.ca/'
+    canonical: 'https://estack.ca/bullion/'
   }),
   schema: homeSchema,
   main: `<section class="hero" data-featured-bullion-hero><div class="store-shell hero-grid"><div class="hero-copy"><span class="eyebrow">Canada’s bullion showroom</span><h1>Today’s Featured <em>Bullion.</em></h1><p data-featured-hero-description>A considered daily selection from Money Metals Exchange, Kitco and Sprott Money—never an endless product dump.</p><div class="hero-actions"><a class="button gold" href="#featured-picks" data-featured-hero-cta>View Today’s Picks</a><a class="button ghost" href="/markets.html">View spot prices</a></div><div class="trust-row"><span>Verified affiliate destinations</span><span>Live market context</span><span>Curated daily selection</span></div></div><div class="hero-art" aria-hidden="true"><div class="coin coin-back"></div><div class="coin coin-front"><span>eS</span><small>FINE BULLION</small></div><div class="market-card"><small>CURATED TODAY</small><strong data-featured-hero-title>Gold · Silver · Platinum</strong><span>Only selected products appear</span></div></div></div></section>
@@ -658,7 +658,7 @@ function write(relative, content) {
   fs.writeFileSync(target, content);
 }
 
-write('index.html', homepage);
+write('bullion/index.html', homepage);
 write('shop/index.html', shop);
 write('ig/index.html', ig);
 for (const category of categories) {
