@@ -15,3 +15,5 @@
 /catalog /catalog.csv 200
 /ig /ig/ 301
 /shop /shop/ 301
+
+/bullion /bullion/ 301!
