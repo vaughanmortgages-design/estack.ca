@@ -24,23 +24,28 @@ if (!skipSite) {
 const dealerData = JSON.parse(await fs.readFile(path.join(repoRoot, 'data/dealers/dealers.json'), 'utf8'));
 const dealerMap = new Map(dealerData.dealers.map(dealer => [dealer.id, dealer]));
 const dealerIds = new Set(dealerMap.keys());
-const {products: allImportedProducts, duplicatesSkipped} = await importProductsDetailed(source);
-const importedProducts = allImportedProducts.filter(product => product.active !== false);
+const {products: importedProducts, duplicatesSkipped, report} = await importProductsDetailed(source, {dealerIds});
 const products = importedProducts.map(product => ({
   ...product,
   affiliateVerified: isApprovedAffiliateUrl(product.affiliateUrl, dealerMap.get(product.dealerId))
 }));
-const unknownDealers = [...new Set(products.filter(product => !dealerIds.has(product.dealerId)).map(product => product.dealerId))];
-if (unknownDealers.length) throw new Error(`Unknown dealer ids: ${unknownDealers.join(', ')}`);
 
 const generatedAt = new Date().toISOString();
+const importReport = {
+  ...report,
+  generatedAt,
+  source,
+  duplicatesSkipped,
+  affiliateLinksRejected: products.filter(product => product.affiliateUrl && !isApprovedAffiliateUrl(product.affiliateUrl, dealerMap.get(product.dealerId))).map(product => product.id)
+};
 const catalog = {
   schemaVersion: 1,
   generatedAt,
   sourceType: /^https?:\/\//.test(source) ? (source.includes('docs.google.com') ? 'google-sheets' : 'remote') : path.extname(source).slice(1),
-  importReport: {duplicatesSkipped},
+  importReport,
   products
 };
+await fs.writeFile(path.join(repoRoot, 'data/analytics/product-import-report.json'), `${JSON.stringify(importReport, null, 2)}\n`);
 await fs.writeFile(path.join(repoRoot, 'data/products/catalog.json'), `${JSON.stringify(catalog, null, 2)}\n`);
 await fs.writeFile(path.join(repoRoot, 'data/products/products.json'), `${JSON.stringify(catalog, null, 2)}\n`);
 await fs.writeFile(path.join(repoRoot, 'products.json'), `${JSON.stringify(catalog, null, 2)}\n`);
@@ -72,8 +77,12 @@ const verifiedAffiliateLinks = products.filter(product => product.affiliateVerif
 const rejectedAffiliateLinks = products.filter(product => product.affiliateUrl && !product.affiliateVerified).map(product => product.id);
 console.log(JSON.stringify({
   source,
-  products: products.length,
-  duplicatesSkipped,
+  importedRows: report.importedRows,
+  skippedRows: report.skippedRows,
+  duplicateRows: report.duplicateRows,
+  invalidRows: report.invalidRows,
+  inactiveRows: report.inactiveRows,
+  missingRequiredFields: report.missingRequiredFields,
   verifiedAffiliateLinks,
   rejectedAffiliateLinks,
   generatedAt
