@@ -1,0 +1,14 @@
+{
+  "sourceRows": 0,
+  "importedRows": 0,
+  "skippedRows": 0,
+  "blankRows": [],
+  "inactiveRows": [],
+  "duplicateRows": [],
+  "invalidRows": [],
+  "missingRequiredFields": {},
+  "generatedAt": "2026-07-26T01:04:23.854Z",
+  "source": "/home/runner/work/estack.ca/estack.ca/data/products/source.json",
+  "duplicatesSkipped": [],
+  "affiliateLinksRejected": []
+}
