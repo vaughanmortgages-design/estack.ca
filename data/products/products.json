@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-30T14:36:14.449Z",
+  "generatedAt": "2026-07-31T14:40:05.921Z",
   "sourceType": "json",
   "importReport": {
     "sourceRows": 0,
@@ -11,7 +11,7 @@
     "duplicateRows": [],
     "invalidRows": [],
     "missingRequiredFields": {},
-    "generatedAt": "2026-07-30T14:36:14.436Z",
+    "generatedAt": "2026-07-31T14:40:05.909Z",
     "source": "/home/runner/work/estack.ca/estack.ca/data/products/source.json",
     "duplicatesSkipped": [],
     "affiliateLinksRejected": []
