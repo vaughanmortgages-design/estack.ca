@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Compare Canadian Loan Options | LeadScout via eStack.ca</title>
+<meta name="description" content="Canadian residents can use LeadScout to explore personal loan options from participating providers. No guaranteed approval. Eligibility, rates and terms are set by each provider.">
+<link rel="canonical" href="https://estack.ca/leadscout-canada-loans.html">
+<meta property="og:title" content="Compare Canadian Loan Options | LeadScout via eStack.ca">
+<meta property="og:description" content="Canadian residents can use LeadScout to explore personal loan options from participating providers.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://estack.ca/leadscout-canada-loans.html">
+<meta name="theme-color" content="#06111f">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ===== RESET & BASE ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 16px; scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: #1a2535;
+  background: #f7f8fa;
+  overflow-x: hidden;
+}
+
+img { max-width: 100%; display: block; }
+
+a { color: inherit; }
+
+/* ===== LAYOUT HELPERS ===== */
+.wrap {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ===== COMPACT HEADER ===== */
+.lp-header {
+  background: #06111f;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.lp-logo {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #fff;
+  text-decoration: none;
+  letter-spacing: -0.02em;
+}
+
+.lp-logo span { color: #4ade80; }
+
+.lp-header-tagline {
+  font-size: 0.7rem;
+  color: #7a9ab5;
+  display: none;
+}
+
+/* ===== HERO ===== */
+.hero {
+  background: #06111f;
+  color: #fff;
+  padding: 36px 20px 32px;
+  text-align: center;
+}
+
+.hero-eyebrow {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #4ade80;
+  background: rgba(74, 222, 128, 0.12);
+  border: 1px solid rgba(74, 222, 128, 0.3);
+  border-radius: 100px;
+  padding: 4px 12px;
+  margin-bottom: 18px;
+}
+
+.hero h1 {
+  font-size: 1.65rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 14px;
+  color: #fff;
+}
+
+.hero-sub {
+  font-size: 1rem;
+  color: #a8c4d9;
+  max-width: 480px;
+  margin: 0 auto 28px;
+  line-height: 1.6;
+}
+
+.btn-primary {
+  display: block;
+  width: 100%;
+  background: #2a6b3f;
+  color: #fff;
+  font-size: 1.05rem;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 16px 24px;
+  border-radius: 8px;
+  min-height: 52px;
+  text-align: center;
+  line-height: 1.3;
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+  background: #1e5230;
+  outline: 2px solid #4ade80;
+  outline-offset: 2px;
+}
+
+.hero-disclosure {
+  font-size: 0.72rem;
+  color: #6b8a9e;
+  margin-top: 14px;
+  line-height: 1.5;
+}
+
+.hero-disclosure a { color: #7ba8c0; text-decoration: underline; }
+
+/* ===== SECTION BASE ===== */
+.section {
+  padding: 44px 20px;
+}
+
+.section-white { background: #fff; }
+.section-light { background: #f0f4f8; }
+.section-dark { background: #06111f; color: #fff; }
+
+.section-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #2a6b3f;
+  margin-bottom: 8px;
+}
+
+.section-dark .section-label { color: #4ade80; }
+
+.section h2 {
+  font-size: 1.4rem;
+  font-weight: 800;
+  line-height: 1.25;
+  margin-bottom: 10px;
+}
+
+.section-dark h2 { color: #fff; }
+
+.section-intro {
+  font-size: 0.95rem;
+  color: #4a5e72;
+  margin-bottom: 28px;
+  max-width: 520px;
+}
+
+.section-dark .section-intro { color: #a8c4d9; }
+
+/* ===== BENEFIT CARDS ===== */
+.cards-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.benefit-card {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 22px 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.benefit-icon {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  background: #e8f5ee;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+}
+
+.benefit-card h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: #1a2535;
+}
+
+.benefit-card p {
+  font-size: 0.9rem;
+  color: #4a5e72;
+  line-height: 1.55;
+}
+
+/* ===== HOW IT WORKS ===== */
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.step {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 20px 0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.step:last-child { border-bottom: none; }
+
+.step-num {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  background: #2a6b3f;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1rem;
+}
+
+.step h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: #1a2535;
+}
+
+.step p {
+  font-size: 0.9rem;
+  color: #4a5e72;
+  line-height: 1.55;
+}
+
+/* ===== CTA SECTION ===== */
+.cta-section {
+  text-align: center;
+  padding: 44px 20px;
+}
+
+.cta-section h2 {
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.cta-section p {
+  font-size: 0.95rem;
+  color: #4a5e72;
+  margin-bottom: 24px;
+  max-width: 440px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ===== WHO IT SUITS ===== */
+.suitability-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 0;
+}
+
+.suitability-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 0.95rem;
+  color: #1a2535;
+  line-height: 1.55;
+}
+
+.check-icon {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  background: #e8f5ee;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2a6b3f;
+  font-size: 0.75rem;
+  font-weight: 800;
+  margin-top: 1px;
+}
+
+/* ===== DISCLOSURE BOX ===== */
+.disclosure-box {
+  background: #fff8e6;
+  border: 1px solid #f0d070;
+  border-left: 4px solid #e6a817;
+  border-radius: 8px;
+  padding: 20px;
+  font-size: 0.875rem;
+  color: #5c4a1a;
+  line-height: 1.6;
+  margin-top: 32px;
+}
+
+.disclosure-box strong { color: #5c4a1a; }
+
+/* ===== FOOTER ===== */
+.lp-footer {
+  background: #06111f;
+  color: #7a9ab5;
+  padding: 32px 20px;
+  font-size: 0.8rem;
+  line-height: 1.65;
+}
+
+.footer-logo {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #fff;
+  text-decoration: none;
+  display: inline-block;
+  margin-bottom: 12px;
+}
+
+.footer-logo span { color: #4ade80; }
+
+.footer-disclosure {
+  margin-bottom: 16px;
+  max-width: 640px;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.footer-links a {
+  color: #a8c4d9;
+  text-decoration: none;
+  font-size: 0.8rem;
+}
+
+.footer-links a:hover { text-decoration: underline; }
+
+.footer-legal {
+  margin-top: 16px;
+  font-size: 0.72rem;
+  color: #4a6680;
+}
+
+/* ===== TABLET (640px+) ===== */
+@media (min-width: 640px) {
+  .lp-header-tagline { display: block; }
+
+  .hero { padding: 52px 24px 44px; }
+  .hero h1 { font-size: 2.1rem; }
+
+  .btn-primary {
+    display: inline-block;
+    width: auto;
+    min-width: 260px;
+    padding: 18px 36px;
+    font-size: 1.1rem;
+  }
+
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .benefit-card { flex-direction: column; align-items: flex-start; }
+
+  .cta-section .btn-primary {
+    display: inline-block;
+    width: auto;
+  }
+
+  .suitability-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+}
+
+/* ===== DESKTOP (960px+) ===== */
+@media (min-width: 960px) {
+  .hero { padding: 72px 24px 60px; }
+  .hero h1 { font-size: 2.5rem; }
+
+  .section, .cta-section { padding: 64px 24px; }
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .step {
+    flex-direction: column;
+    border-bottom: none;
+    padding: 0;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 24px;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- 1. COMPACT HEADER -->
+<header class="lp-header">
+  <a class="lp-logo" href="/">e<span>Stack</span>.ca</a>
+  <span class="lp-header-tagline">Independent Canadian financial media</span>
+</header>
+
+<!-- 2. HERO -->
+<section class="hero">
+  <div class="wrap">
+    <span class="hero-eyebrow">For Canadian residents</span>
+    <h1>See what loan options may be available to you — in minutes.</h1>
+    <p class="hero-sub">LeadScout connects Canadian borrowers with participating lenders. No guaranteed approval. Just a starting point for your research.</p>
+    <a
+      class="btn-primary"
+      href="#lead-scout-form"
+      aria-label="Check My Options — jump to the LeadScout borrower form"
+    >Check My Options</a>
+    <p class="hero-disclosure">
+      Affiliate disclosure: eStack.ca may receive compensation when you use this form, at no additional cost to you.
+      Approval, eligibility, rates and terms are determined solely by the provider. Not available to all applicants.
+      <a href="affiliate-disclosure.html">Read our disclosure.</a>
+    </p>
+  </div>
+</section>
+
+<!-- 2b. EMBEDDED BORROWER FORM -->
+<section class="section section-white">
+  <div class="wrap">
+    <div id="lead-scout-form" style="max-width:800px;margin:2rem auto;background: #ffffff;border-radius: 12px;border: 1px solid rgba(58, 58, 58, 0.15);box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);overflow: hidden;"></div>
+    <script>
+    var formConfig = {
+        "affiliateCode": "ZX3kIzQG",
+        "defaultValues": {
+            "requestedAmount": 1000
+        },
+        "formId": "1",
+        "language": "en",
+        "overrides": {
+            "requestedAmount": {
+                "max": 3000,
+                "min": 100,
+                "step": 100
+            }
+        },
+        "styles": {
+            "fontFamily": "\"Montserrat\", sans-serif",
+            "fullWidthFirstStepButton": true,
+            "minHeight": 0,
+            "primary": {
+                "contrastText": "#fff",
+                "dark": "#8BA868",
+                "main": "#8BA868"
+            }
+        },
+        "theme": "light"
+    };
+
+    window.LeadScout = window.LeadScout || {};
+    window.LeadScout.onLoad = function() {
+    	window.LeadScout.init(document.getElementById('lead-scout-form'), formConfig);
+    }
+    </script>
+    <script src="https://app.leadscout.ca/library/library.js" async></script>
+  </div>
+</section>
+
+<!-- 3. THREE BENEFIT CARDS -->
+<section class="section section-white">
+  <div class="wrap">
+    <p class="section-label">Why use LeadScout</p>
+    <h2>Three reasons Canadian borrowers use this tool</h2>
+    <p class="section-intro">These are general features of the service. Actual results depend on your profile and participating providers.</p>
+    <div class="cards-grid">
+      <div class="benefit-card">
+        <div class="benefit-icon" aria-hidden="true">⚡</div>
+        <div>
+          <h3>Fast to start</h3>
+          <p>Complete the borrower form in a few minutes on any device, without booking an appointment or visiting a branch.</p>
+        </div>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon" aria-hidden="true">🇨🇦</div>
+        <div>
+          <h3>Built for Canada</h3>
+          <p>LeadScout connects to participating Canadian lenders. This page is intended for Canadian residents only.</p>
+        </div>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon" aria-hidden="true">🔍</div>
+        <div>
+          <h3>One form, multiple options</h3>
+          <p>Submit one request to see which participating providers may match your profile. No commitment required to explore.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. HOW IT WORKS -->
+<section class="section section-light">
+  <div class="wrap">
+    <p class="section-label">How it works</p>
+    <h2>Three steps to explore your options</h2>
+    <p class="section-intro">LeadScout is a loan-matching service. eStack.ca is an affiliate referral partner, not the lender.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num" aria-hidden="true">1</div>
+        <div>
+          <h3>Complete the form</h3>
+          <p>Fill in the LeadScout borrower form above with your basic details — loan amount, income type and other inputs the provider requests.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num" aria-hidden="true">2</div>
+        <div>
+          <h3>Review participating providers</h3>
+          <p>LeadScout shows which participating lenders may be a match based on the information you entered. Eligibility and approval decisions belong entirely to each provider.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num" aria-hidden="true">3</div>
+        <div>
+          <h3>Proceed directly with the provider</h3>
+          <p>If you choose to apply, you'll deal directly with the lender or broker. Read each provider's terms, disclosures and privacy policy before submitting personal information.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. REPEATED CTA -->
+<section class="cta-section section-white">
+  <div class="wrap">
+    <h2>Ready to explore your options?</h2>
+    <p>No cost to check. Approval and rates are determined by the provider, not eStack.ca.</p>
+    <a
+      class="btn-primary"
+      href="#lead-scout-form"
+      aria-label="Check My Options — jump to the LeadScout borrower form"
+    >Check My Options</a>
+  </div>
+</section>
+
+<!-- 6. WHO THIS MAY SUIT -->
+<section class="section section-light">
+  <div class="wrap">
+    <p class="section-label">Who this page may suit</p>
+    <h2>This resource may be relevant if you are:</h2>
+    <p class="section-intro">This is general information only. Eligibility for any specific product is determined by the provider.</p>
+    <ul class="suitability-list">
+      <li>
+        <span class="check-icon" aria-hidden="true">✓</span>
+        <span>A Canadian resident researching personal loan options</span>
+      </li>
+      <li>
+        <span class="check-icon" aria-hidden="true">✓</span>
+        <span>Looking to compare options from multiple lenders in one place</span>
+      </li>
+      <li>
+        <span class="check-icon" aria-hidden="true">✓</span>
+        <span>Employed, self-employed or have another form of verifiable income</span>
+      </li>
+      <li>
+        <span class="check-icon" aria-hidden="true">✓</span>
+        <span>Comfortable reading and evaluating provider disclosures before applying</span>
+      </li>
+      <li>
+        <span class="check-icon" aria-hidden="true">✓</span>
+        <span>Aware that submitting a full application may affect your credit file</span>
+      </li>
+      <li>
+        <span class="check-icon" aria-hidden="true">✓</span>
+        <span>Seeking to explore options — not seeking a guaranteed outcome</span>
+      </li>
+    </ul>
+
+    <div class="disclosure-box">
+      <strong>Important provider disclosure:</strong> eStack.ca is an independent editorial website and an affiliate referral partner of LeadScout. eStack.ca is not a lender, broker, financial advisor or credit counsellor. eStack.ca does not make lending decisions and does not determine approval, eligibility, interest rates, fees or loan terms. All approval, eligibility, rate and term decisions are made solely by participating lenders and providers. eStack.ca may receive compensation when visitors are referred through this page and complete a qualifying action, at no additional cost to the visitor. This page is intended for Canadian residents only. This is not financial advice. Always read the provider's full terms, disclosures and privacy policy before sharing personal information or applying.
+    </div>
+  </div>
+</section>
+
+<!-- 8. FINAL CTA -->
+<section class="cta-section section-dark">
+  <div class="wrap">
+    <h2 style="color:#fff;">Start exploring Canadian loan options today.</h2>
+    <p style="color:#a8c4d9;">LeadScout is a Canadian loan-matching service. eStack.ca is a referral affiliate. Approval and terms are set by the provider.</p>
+    <a
+      class="btn-primary"
+      href="#lead-scout-form"
+      aria-label="Check My Options — jump to the LeadScout borrower form"
+      style="background:#4ade80;color:#06111f;"
+    >Check My Options</a>
+  </div>
+</section>
+
+<!-- 9. FOOTER -->
+<footer class="lp-footer">
+  <div class="wrap">
+    <a class="footer-logo" href="/">e<span>Stack</span>.ca</a>
+    <p class="footer-disclosure">
+      <strong>Affiliate disclosure:</strong> eStack.ca is an affiliate of LeadScout and may receive compensation when visitors click the "Check My Options" links on this page and complete a qualifying action with a participating provider. This compensation does not influence our editorial content. Placement of this offer does not constitute an endorsement of any specific lender or a guarantee of approval. eStack.ca is not a lender, broker or financial advisor. Eligibility, approval, rates and terms are determined solely by participating providers. This page is intended for Canadian residents only. This is not financial advice.
+    </p>
+    <div class="footer-links">
+      <a href="affiliate-disclosure.html">Affiliate Disclosure</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-of-use.html">Terms of Use</a>
+      <a href="editorial-standards.html">Editorial Standards</a>
+      <a href="about.html">About eStack.ca</a>
+      <a href="/">eStack.ca Home</a>
+    </div>
+    <p class="footer-legal">© 2026 estack.ca · Independent Canadian financial media · Information is general and does not constitute financial, legal or tax advice. Confirm current eligibility, costs and terms directly with each provider.</p>
+  </div>
+</footer>
+
+<script src="https://www.dwin2.com/pub.2936205.min.js"></script>
+</body>
+</html>
