@@ -5,3 +5,10 @@ document.querySelectorAll('a[href="https://leadscout.ca/?ref=ZX3kIzQG"], a[href=
   link.removeAttribute('target');
   link.setAttribute('rel','');
 });
+
+// AFN account and offer are disabled. Remove every AFN destination from rendered pages.
+document.querySelectorAll('a[href*="advancefundsnetwork.com"]').forEach(link=>{
+  const card=link.closest('article,.card');
+  if(card){card.remove();return;}
+  link.remove();
+});
