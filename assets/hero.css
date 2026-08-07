@@ -90,6 +90,11 @@
 }
 
 @media (max-width: 650px) {
+  .financial-hero,
+  .loans-hero {
+    background-image: url("financial-hero-toronto-mobile.webp");
+  }
+
   .hero h1 {
     font-size: clamp(38px, 11.5vw, 48px);
     line-height: 1.08;
