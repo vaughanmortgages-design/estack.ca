@@ -78,15 +78,5 @@
     "logo": "/assets/logos/sprott-money.png",
     "description": "Canadian precious-metals dealer offering gold, silver and platinum products and related market education.",
     "approved": true
-  },
-  {
-    "name": "AFN",
-    "category": "Business Funding",
-    "country": "CA & USA",
-    "network": "AFN Direct",
-    "affiliateUrl": "https://app.advancefundsnetwork.com/affiliate-landing/U0JxSd5yROWgKfF93ibsLDcSCkn2",
-    "logo": "/assets/logos/afn.png",
-    "description": "Advance Funds Network provides fast business funding and working capital solutions for small businesses.",
-    "approved": true
   }
 ]
