@@ -1,0 +1,32 @@
+name: Add TSC Backlink
+on:
+  push:
+    paths:
+      - '.github/workflows/add-tsc-backlink.yml'
+permissions:
+  contents: write
+jobs:
+  add-link:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Add network link to homepage footer
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('index.html')
+          s = p.read_text(encoding='utf-8')
+          url = 'https://thestraightcut.net/'
+          if url not in s:
+              snippet = '<p style="margin-top:1rem;font-size:.9rem;opacity:.85">More from our network: <a href="https://thestraightcut.net/">The Straight Cut — shopping, travel and buying guides</a>.</p>'
+              s = s.replace('</footer>', snippet + '</footer>', 1)
+              p.write_text(s, encoding='utf-8')
+          PY
+      - name: Commit backlink
+        run: |
+          if git diff --quiet -- index.html; then exit 0; fi
+          git config user.name 'vaughanmortgages-design'
+          git config user.email 'vaughanmortgages@gmail.com'
+          git add index.html
+          git commit -m 'Add contextual link to The Straight Cut'
+          git push origin HEAD:main
