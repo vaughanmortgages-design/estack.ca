@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<meta name="theme-color" content="#071019" />
+<title>RALLYGRID — Live racket sport events</title>
+<style>
+:root{--bg:#071019;--panel:#0d1823;--panel2:#112232;--line:#1e3344;--text:#f7fbff;--muted:#8fa7b9;--aqua:#55f2d2;--lime:#c4ff4a;--red:#ff647b;--yellow:#ffd76a;--shadow:0 18px 50px rgba(0,0,0,.35)}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 75% -10%,#17384a 0,transparent 33%),linear-gradient(#071019,#071019);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh}.app{max-width:480px;margin:0 auto;min-height:100vh;padding:0 16px 96px}.top{position:sticky;top:0;z-index:20;background:linear-gradient(180deg,rgba(7,16,25,.98),rgba(7,16,25,.9),transparent);backdrop-filter:blur(16px);padding:16px 0 18px}.brand{display:flex;align-items:center;justify-content:space-between}.logo{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:.08em}.mark{width:34px;height:34px;border:2px solid var(--aqua);border-radius:10px;position:relative;box-shadow:0 0 28px rgba(85,242,210,.18)}.mark:before,.mark:after{content:"";position:absolute;background:var(--aqua);opacity:.9}.mark:before{width:2px;top:4px;bottom:4px;left:50%;transform:translateX(-50%)}.mark:after{height:2px;left:4px;right:4px;top:50%;transform:translateY(-50%)}.pro{font-size:11px;border:1px solid #315169;border-radius:999px;padding:7px 10px;color:var(--muted)}.screen{display:none}.screen.active{display:block}.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.16em;color:var(--aqua);font-weight:800}.hero{padding:8px 0 12px}.hero h1{font-size:31px;line-height:1.03;margin:7px 0 8px;letter-spacing:-.035em}.hero p{color:var(--muted);line-height:1.5;margin:0}.sectionHead{display:flex;justify-content:space-between;align-items:end;margin:22px 0 11px}.sectionHead h2{font-size:17px;margin:0}.sectionHead button{border:0;background:none;color:var(--aqua);font-weight:700;font-size:12px}.card{background:linear-gradient(180deg,rgba(17,34,50,.96),rgba(11,25,36,.96));border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}.live{padding:16px}.liveTop{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}.dot{display:inline-flex;align-items:center;gap:7px;font-size:11px;color:#ffd4db;text-transform:uppercase;letter-spacing:.12em;font-weight:900}.dot i{width:8px;height:8px;background:var(--red);border-radius:50%;box-shadow:0 0 14px var(--red)}.court{font-size:12px;color:var(--muted)}.team{display:grid;grid-template-columns:1fr auto;align-items:center;padding:10px 0;border-top:1px solid rgba(255,255,255,.06)}.team:first-of-type{border-top:0}.team b{font-size:16px}.team small{display:block;color:var(--muted);margin-top:3px}.score{font-size:34px;font-weight:950;letter-spacing:-.06em}.score.w{color:var(--lime)}.meta{display:flex;justify-content:space-between;color:var(--muted);font-size:11px;padding-top:10px;border-top:1px solid rgba(255,255,255,.06)}.nextup{padding:18px;background:linear-gradient(145deg,rgba(85,242,210,.13),rgba(196,255,74,.05),rgba(13,24,35,1));border:1px solid #2f7168}.nextup h3{font-size:24px;margin:7px 0 4px;letter-spacing:-.03em}.pill{display:inline-flex;gap:6px;align-items:center;border-radius:999px;padding:7px 10px;font-size:11px;font-weight:800}.pill.good{background:rgba(196,255,74,.12);color:var(--lime);border:1px solid rgba(196,255,74,.25)}.count{font-size:42px;font-weight:950;color:var(--aqua);letter-spacing:-.06em;margin:14px 0 3px}.sub{color:var(--muted);font-size:13px}.row{display:flex;gap:10px;overflow:auto;padding-bottom:3px}.event{min-width:250px;padding:15px}.event h3{font-size:16px;margin:8px 0 5px}.tag{font-size:10px;text-transform:uppercase;letter-spacing:.13em;color:var(--aqua);font-weight:800}.event p{color:var(--muted);font-size:12px;line-height:1.45}.cta{display:flex;gap:9px;margin-top:12px}.btn{border:0;border-radius:12px;padding:11px 14px;font-weight:850;background:var(--aqua);color:#041311;cursor:pointer}.btn.ghost{background:transparent;border:1px solid var(--line);color:var(--text)}.btn.lime{background:var(--lime);color:#0a1204}.filters{display:flex;gap:8px;overflow:auto;margin:10px 0 16px}.filter{white-space:nowrap;padding:9px 11px;border-radius:999px;background:#0b1721;color:var(--muted);border:1px solid var(--line);font-size:12px}.filter.active{color:#071019;background:var(--aqua);border-color:var(--aqua);font-weight:800}.list{display:grid;gap:11px}.listCard{padding:15px}.listCardTop{display:flex;justify-content:space-between;gap:10px}.listCard h3{margin:0 0 5px;font-size:17px}.listCard p{color:var(--muted);margin:0;font-size:12px;line-height:1.45}.price{font-weight:900;color:var(--lime)}.player{display:flex;align-items:center;gap:12px;padding:14px}.avatar{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(145deg,#1c4b5e,#263547);font-weight:900;border:1px solid #365467}.player strong{display:block}.player span{color:var(--muted);font-size:12px}.player button{margin-left:auto}.board{display:grid;grid-template-columns:1fr 1fr;gap:10px}.courtCard{padding:14px;min-height:126px}.courtCard strong{font-size:20px}.status{font-size:10px;text-transform:uppercase;letter-spacing:.12em;font-weight:900;margin:8px 0}.status.liveS{color:#ff8192}.status.deck{color:var(--yellow)}.status.open{color:var(--aqua)}.status.delay{color:#ffa25a}.courtCard p{font-size:12px;color:var(--muted);margin:0}.adminBlock{padding:16px;margin-bottom:12px}.adminBlock h3{margin:0 0 10px}.switches{display:grid;gap:9px}.switch{display:flex;justify-content:space-between;align-items:center;background:#0a1620;border:1px solid var(--line);border-radius:12px;padding:12px}.switch button{border:0;border-radius:10px;background:var(--aqua);font-weight:900;padding:8px 10px}.plans{display:grid;gap:12px}.plan{padding:18px}.plan h3{margin:5px 0}.plan .big{font-size:36px;font-weight:950;letter-spacing:-.06em}.plan ul{padding-left:18px;color:var(--muted);font-size:13px;line-height:1.7}.sponsor{padding:16px;border-style:dashed;text-align:center}.sponsor strong{display:block;color:var(--lime);margin-bottom:4px}.nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(480px,100%);display:grid;grid-template-columns:repeat(5,1fr);background:rgba(5,13,20,.96);border-top:1px solid var(--line);backdrop-filter:blur(18px);padding:8px 8px calc(8px + env(safe-area-inset-bottom));z-index:30}.nav button{border:0;background:none;color:#6f899c;font-size:10px;padding:8px 2px;font-weight:700}.nav button b{display:block;font-size:18px;margin-bottom:3px}.nav button.active{color:var(--aqua)}.notice{font-size:11px;color:var(--muted);padding:12px 0}.toast{position:fixed;top:18px;left:50%;transform:translate(-50%,-20px);opacity:0;pointer-events:none;transition:.25s;background:#e9fff8;color:#05221b;padding:10px 14px;border-radius:999px;font-weight:850;font-size:12px;z-index:100}.toast.show{opacity:1;transform:translate(-50%,0)}@media(min-width:760px){body{padding:32px}.app{max-width:920px;padding-bottom:40px}.nav{position:sticky;top:auto;bottom:auto;transform:none;left:auto;width:100%;border:1px solid var(--line);border-radius:18px;margin-top:28px}.board{grid-template-columns:repeat(4,1fr)}.plans{grid-template-columns:repeat(3,1fr)}.hero h1{font-size:44px}}
+</style>
+</head>
+<body>
+<div class="toast" id="toast">Saved</div>
+<div class="app">
+  <div class="top"><div class="brand"><div class="logo"><div class="mark"></div>RALLYGRID</div><div class="pro">Organizer Pro</div></div></div>
+
+  <section id="home" class="screen active">
+    <div class="hero"><div class="eyebrow">Tonight in Toronto</div><h1>Your racket sports world, live.</h1><p>Scores, courts, events and the one thing players care about most: exactly when they’re next up.</p></div>
+    <div class="sectionHead"><h2>Live now</h2><button onclick="go('events')">All matches</button></div>
+    <div class="card live">
+      <div class="liveTop"><span class="dot"><i></i> Live · Set 2</span><span class="court">Court 4</span></div>
+      <div class="team"><div><b>Maya Chen / Sofia Patel</b><small>Toronto · 4.5 Doubles</small></div><div class="score w">8</div></div>
+      <div class="team"><div><b>Riley Moore / Alex Kim</b><small>Mississauga · 4.5 Doubles</small></div><div class="score">5</div></div>
+      <div class="meta"><span>First to 11 · win by 2</span><span>7 min ago</span></div>
+    </div>
+
+    <div class="sectionHead"><h2>Next Up</h2><button onclick="go('next')">Open</button></div>
+    <div class="card nextup">
+      <div class="eyebrow">Your readiness window</div><h3>You’re on Court 2 next.</h3><div class="pill good">● ON TIME</div><div class="count">18 MIN</div><div class="sub">Warm up at 7:34 PM · vs. Jordan Lee / Chris Wong</div>
+      <div class="cta"><button class="btn" onclick="go('next')">Open Next Up</button><button class="btn ghost" onclick="toast('Alert set for 10 minutes before')">Set alert</button></div>
+    </div>
+
+    <div class="sectionHead"><h2>Nearby events</h2><button onclick="go('events')">Explore</button></div>
+    <div class="row">
+      <div class="card event"><div class="tag">Pickleball · Sep 5</div><h3>GTA Night Clash</h3><p>Vaughan · 3.5–4.5 · 12 courts</p><div class="cta"><button class="btn lime" onclick="toast('Registration interest saved')">Register</button></div></div>
+      <div class="card event"><div class="tag">Padel · Sep 12</div><h3>Northside Open</h3><p>Toronto · Open division · 8 courts</p><div class="cta"><button class="btn ghost" onclick="toast('Event followed')">Follow</button></div></div>
+    </div>
+
+    <div class="sectionHead"><h2>Featured partner</h2></div>
+    <div class="card sponsor"><strong>SPONSOR PLACEMENT</strong><span>Local clubs and brands can promote directly inside event feeds.</span></div>
+  </section>
+
+  <section id="events" class="screen">
+    <div class="hero"><div class="eyebrow">Discover</div><h1>Events that are actually worth playing.</h1><p>Find tournaments, leagues and open play by sport, level and city.</p></div>
+    <div class="filters"><div class="filter active">All</div><div class="filter">Pickleball</div><div class="filter">Padel</div><div class="filter">Tennis</div><div class="filter">Badminton</div></div>
+    <div class="list">
+      <div class="card listCard"><div class="listCardTop"><div><h3>GTA Night Clash</h3><p>Sep 5 · Vaughan Sports Village<br>3.5 / 4.0 / 4.5 divisions</p></div><div class="price">$39</div></div><div class="cta"><button class="btn" onclick="toast('Registration checkout will connect here')">Register</button><button class="btn ghost" onclick="go('courts')">Court board</button></div></div>
+      <div class="card listCard"><div class="listCardTop"><div><h3>Northside Padel Open</h3><p>Sep 12 · Toronto<br>Men’s, women’s and mixed</p></div><div class="price">$55</div></div><div class="cta"><button class="btn" onclick="toast('Event saved')">Save event</button></div></div>
+      <div class="card listCard"><div class="listCardTop"><div><h3>Sunday Ladder</h3><p>Every Sunday · Mississauga<br>Open ladder play</p></div><div class="price">$12</div></div><div class="cta"><button class="btn" onclick="toast('Spot reserved locally')">Join</button></div></div>
+    </div>
+  </section>
+
+  <section id="next" class="screen">
+    <div class="hero"><div class="eyebrow">Signature feature</div><h1>Next Up</h1><p>No more hovering around a tournament desk wondering when you play.</p></div>
+    <div class="card nextup"><div class="eyebrow">Match #28 · Mixed 4.0</div><h3>Jordan Lee / Chris Wong</h3><div class="count" id="countdown">18:00</div><div class="sub">Court 2 · current match projected to finish in 13 min</div></div>
+    <div class="sectionHead"><h2>Readiness</h2></div>
+    <div class="list">
+      <div class="card listCard"><div class="listCardTop"><div><h3>Warm-up window</h3><p>Start by 7:34 PM</p></div><div class="pill good">Ready</div></div></div>
+      <div class="card listCard"><div class="listCardTop"><div><h3>Court delay</h3><p>Court 2 is running 5 minutes behind</p></div><div class="pill" style="color:var(--yellow);border:1px solid #645527">+5 min</div></div></div>
+      <div class="card listCard"><div class="listCardTop"><div><h3>Announcement</h3><p>Players must check in 10 minutes before court assignment.</p></div></div></div>
+    </div>
+    <div class="sectionHead"><h2>Player upgrade</h2></div>
+    <div class="card plan"><div class="tag">RALLYGRID+</div><h3>Smarter player alerts</h3><div class="big">$4.99<span style="font-size:14px;color:var(--muted)"> / event</span></div><ul><li>SMS-ready alert integrations</li><li>Live court delay changes</li><li>Warm-up countdown</li><li>Saved draws and results</li></ul><button class="btn lime" onclick="toast('Upgrade checkout will connect here')">Unlock for this event</button></div>
+  </section>
+
+  <section id="players" class="screen">
+    <div class="hero"><div class="eyebrow">Players</div><h1>Follow the local talent.</h1><p>Profiles, records, recent matches and upcoming events.</p></div>
+    <div class="list">
+      <div class="card player"><div class="avatar">MC</div><div><strong>Maya Chen</strong><span>Toronto · Pickleball 4.7 · 28–7</span></div><button class="btn ghost" onclick="toast('Maya followed')">Follow</button></div>
+      <div class="card player"><div class="avatar">JL</div><div><strong>Jordan Lee</strong><span>Vaughan · Padel 4.3 · 19–9</span></div><button class="btn ghost" onclick="toast('Jordan followed')">Follow</button></div>
+      <div class="card player"><div class="avatar">SP</div><div><strong>Sofia Patel</strong><span>Mississauga · Tennis 4.5 · 31–12</span></div><button class="btn ghost" onclick="toast('Sofia followed')">Follow</button></div>
+    </div>
+  </section>
+
+  <section id="profile" class="screen">
+    <div class="hero"><div class="eyebrow">Organizer mode</div><h1>Run the event from one screen.</h1><p>Score updates, court assignments and announcements without expensive tournament software.</p></div>
+    <div class="adminBlock card"><h3>Live controls</h3><div class="switches">
+      <div class="switch"><span>Court 2 · Match #27</span><button onclick="toast('Score editor opened')">Score</button></div>
+      <div class="switch"><span>Move Match #28</span><button onclick="toast('Court changed to 2')">Assign</button></div>
+      <div class="switch"><span>Broadcast announcement</span><button onclick="toast('Announcement sent')">Send</button></div>
+    </div></div>
+    <div class="sectionHead"><h2>Monetization</h2></div>
+    <div class="plans">
+      <div class="card plan"><div class="tag">Starter</div><h3>Club</h3><div class="big">$29<span style="font-size:14px;color:var(--muted)">/mo</span></div><ul><li>1 live event at a time</li><li>Court board</li><li>Basic scoring</li><li>Next Up alerts</li></ul><button class="btn" onclick="toast('Founding Club interest saved')">Start Founding Club</button></div>
+      <div class="card plan"><div class="tag">Best value</div><h3>Organizer Pro</h3><div class="big">$59<span style="font-size:14px;color:var(--muted)">/mo</span></div><ul><li>Unlimited events</li><li>Advanced court controls</li><li>Sponsor placements</li><li>Event promotion slots</li></ul><button class="btn lime" onclick="toast('Organizer Pro interest saved')">Choose Pro</button></div>
+      <div class="card plan"><div class="tag">Per event</div><h3>Event Boost</h3><div class="big">$19</div><ul><li>Featured event card</li><li>Priority local discovery</li><li>Sponsor logo slot</li><li>7-day boost</li></ul><button class="btn ghost" onclick="toast('Event Boost interest saved')">Boost an event</button></div>
+    </div>
+    <div class="notice">Prototype pricing shown for product validation. Payment processing is not connected yet.</div>
+  </section>
+
+  <section id="courts" class="screen">
+    <div class="hero"><div class="eyebrow">Court board</div><h1>Every court, one glance.</h1><p>Great for players, spectators and organizers.</p></div>
+    <div class="board">
+      <div class="card courtCard"><strong>Court 1</strong><div class="status liveS">● Now playing</div><p>Chen/Patel vs Moore/Kim<br>8–5</p></div>
+      <div class="card courtCard"><strong>Court 2</strong><div class="status deck">On deck</div><p>Lee/Wong vs Singh/Rossi<br>~18 min</p></div>
+      <div class="card courtCard"><strong>Court 3</strong><div class="status delay">Delayed</div><p>Medical timeout<br>+7 min</p></div>
+      <div class="card courtCard"><strong>Court 4</strong><div class="status open">Open court</div><p>Available for warm-up</p></div>
+    </div>
+    <div class="cta" style="margin-top:16px"><button class="btn ghost" onclick="go('home')">Back home</button></div>
+  </section>
+
+  <div class="nav">
+    <button class="active" data-go="home" onclick="go('home',this)"><b>⌂</b>Home</button>
+    <button data-go="events" onclick="go('events',this)"><b>◫</b>Events</button>
+    <button data-go="next" onclick="go('next',this)"><b>◉</b>Next Up</button>
+    <button data-go="players" onclick="go('players',this)"><b>◎</b>Players</button>
+    <button data-go="profile" onclick="go('profile',this)"><b>⚙</b>Pro</button>
+  </div>
+</div>
+<script>
+function go(id,btn){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id)?.classList.add('active');document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.go===id));window.scrollTo({top:0,behavior:'smooth'})}
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1800)}
+let seconds=18*60;setInterval(()=>{const el=document.getElementById('countdown');if(!el)return;seconds=Math.max(0,seconds-1);const m=String(Math.floor(seconds/60)).padStart(2,'0'),s=String(seconds%60).padStart(2,'0');el.textContent=m+':'+s},1000)
+</script>
+</body>
+</html>
