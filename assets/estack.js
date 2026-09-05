@@ -96,9 +96,10 @@ if(location.pathname.endsWith('/windsor-ai-review-canada.html')){
   }
 }
 
-// AFN account and offer are disabled. Remove every AFN destination from rendered pages.
+// AFN was re-approved through Awin in September 2026. Upgrade any legacy AFN destination to the current tracked Awin link.
+const afnAffiliate='https://www.awin1.com/cread.php?awinmid=128135&awinaffid=2936205';
 document.querySelectorAll('a[href*="advancefundsnetwork.com"]').forEach(link=>{
-  const card=link.closest('article,.card');
-  if(card){card.remove();return;}
-  link.remove();
+  link.setAttribute('href',afnAffiliate);
+  link.setAttribute('target','_blank');
+  link.setAttribute('rel','sponsored nofollow noopener');
 });
