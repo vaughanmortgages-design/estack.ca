@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Loans & Credit Options for Canadians | eStack.ca</title>
-  <meta name="description" content="Start with a simple Canadian loan comparison or choose credit building, vehicle financing, business funding or debt help.">
+  <meta name="description" content="Start with a simple Canadian loan comparison or choose business funding, credit building, vehicle financing or debt help.">
   <link rel="canonical" href="https://estack.ca/loans.html">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Loans & Credit Options for Canadians | eStack.ca">
@@ -21,12 +21,15 @@
     .loan-logo span{color:#d5b56f}
     .loan-shell h1{font-size:clamp(2.55rem,6vw,4.7rem);letter-spacing:-.045em;max-width:780px;margin:10px auto 0}
     .loan-intro{max-width:620px;margin:17px auto 0;color:#625f58;font-size:1.05rem;line-height:1.7}
-    .primary-choice{display:flex;align-items:center;justify-content:space-between;gap:18px;max-width:760px;margin:30px auto 0;padding:22px 25px;border-radius:20px;background:#214a38;color:#fff;text-align:left;box-shadow:0 18px 45px rgba(33,74,56,.22);transition:.18s ease}
-    .primary-choice:hover{transform:translateY(-3px);background:#193b2d}
-    .primary-choice:focus-visible,.choice:focus-visible{outline:4px solid #b9914c;outline-offset:4px}
-    .primary-choice strong{display:block;font-size:1.22rem}
-    .primary-choice small{display:block;margin-top:4px;color:#dce7df;font-size:.83rem}
-    .primary-choice b{font-size:1.7rem;color:#d5b56f}
+    .market-switch{display:inline-flex;align-items:center;gap:8px;margin-top:18px;padding:9px 13px;border:1px solid rgba(16,16,15,.14);border-radius:999px;background:rgba(255,255,255,.72);font-size:.8rem;color:#5e5a52}
+    .market-switch a{font-weight:800;color:#214a38;text-decoration:underline;text-underline-offset:3px}
+    .primary-choice,.business-choice{display:flex;align-items:center;justify-content:space-between;gap:18px;max-width:760px;margin:30px auto 0;padding:22px 25px;border-radius:20px;color:#fff;text-align:left;box-shadow:0 18px 45px rgba(33,74,56,.22);transition:.18s ease}
+    .primary-choice{background:#214a38}.primary-choice:hover{transform:translateY(-3px);background:#193b2d}
+    .business-choice{margin-top:12px;background:#10100f;box-shadow:0 18px 45px rgba(16,16,15,.16)}.business-choice:hover{transform:translateY(-3px);background:#000}
+    .primary-choice:focus-visible,.business-choice:focus-visible,.choice:focus-visible{outline:4px solid #b9914c;outline-offset:4px}
+    .primary-choice strong,.business-choice strong{display:block;font-size:1.22rem}
+    .primary-choice small{display:block;margin-top:4px;color:#dce7df;font-size:.83rem}.business-choice small{display:block;margin-top:4px;color:#d5d0c6;font-size:.83rem}
+    .primary-choice b,.business-choice b{font-size:1.7rem;color:#d5b56f}
     .choice-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px auto 0;max-width:760px;text-align:left}
     .choice{display:grid;grid-template-columns:46px 1fr auto;align-items:center;gap:14px;min-height:100px;padding:18px 19px;background:#fff;border:1px solid rgba(16,16,15,.13);border-radius:17px;box-shadow:0 8px 24px rgba(20,17,12,.05);transition:.18s ease}
     .choice:hover{transform:translateY(-3px);border-color:#b9914c;box-shadow:0 15px 34px rgba(20,17,12,.1)}
@@ -47,7 +50,7 @@
     .simple-step span{display:grid;place-items:center;width:34px;height:34px;margin:0 auto 10px;border-radius:50%;background:#10100f;color:#d5b56f;font-weight:800}
     .simple-step strong{display:block}
     .simple-step p{margin-top:5px;color:#6e6a62;font-size:.8rem}
-    @media(max-width:700px){.loan-shell{padding:42px 0 50px}.loan-logo{width:76px;height:76px}.choice-grid{grid-template-columns:1fr}.primary-choice{padding:19px}.form-section{padding:54px 0}.form-panel{padding:12px}.simple-steps{grid-template-columns:1fr}}
+    @media(max-width:700px){.loan-shell{padding:42px 0 50px}.loan-logo{width:76px;height:76px}.choice-grid{grid-template-columns:1fr}.primary-choice,.business-choice{padding:19px}.form-section{padding:54px 0}.form-panel{padding:12px}.simple-steps{grid-template-columns:1fr}}
   </style>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-1M3ZKZHNWE"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-1M3ZKZHNWE');</script>
@@ -60,18 +63,22 @@
       <div class="loan-shell">
         <div class="loan-logo" aria-hidden="true">e<span>Stack</span></div>
         <div class="eyebrow">Welcome to eStack.ca</div>
-        <h1 id="loan-title">Hello. How can we help you today?</h1>
-        <p class="loan-intro">Choose what you need. Every option is clickable and takes you directly to the appropriate Canadian resource.</p>
+        <h1 id="loan-title">What do you need money for?</h1>
+        <p class="loan-intro">Start with the path that matches your goal. eStack.ca connects you to Canadian comparison tools and partner resources; providers make all eligibility, pricing and approval decisions.</p>
+        <div class="market-switch">In the United States? <a href="https://estack.us/" target="_blank" rel="noopener">Use eStack.US →</a></div>
 
         <a class="primary-choice" href="#loan-form">
           <span><strong>I need a personal loan</strong><small>Start with one simple Canadian comparison form</small></span><b aria-hidden="true">→</b>
+        </a>
+        <a class="business-choice" href="business-funding-now.html">
+          <span><strong>I need business funding</strong><small>Review the Canadian business-funding path and current partner details</small></span><b aria-hidden="true">→</b>
         </a>
 
         <div class="choice-grid">
           <a class="choice" href="https://cmi.rocks/go/6a42ee849e331" target="_blank" rel="sponsored nofollow noopener"><span class="choice-icon">↗</span><span><strong>Build my credit</strong><small>Review a current credit-building option</small></span><b aria-hidden="true">→</b></a>
           <a class="choice" href="https://cmi.rocks/go/6a3eeb348cc43" target="_blank" rel="sponsored nofollow noopener"><span class="choice-icon">A</span><span><strong>Finance a vehicle</strong><small>Explore a Canadian auto-financing option</small></span><b aria-hidden="true">→</b></a>
-          <a class="choice" href="business-funding-now.html"><span class="choice-icon">B</span><span><strong>Fund my business</strong><small>Compare Canadian business-funding resources</small></span><b aria-hidden="true">→</b></a>
           <a class="choice" href="https://cmi.rocks/go/6a46bc8e5792f" target="_blank" rel="sponsored nofollow noopener"><span class="choice-icon">D</span><span><strong>Get debt help</strong><small>Explore a Canadian debt-solutions resource</small></span><b aria-hidden="true">→</b></a>
+          <a class="choice" href="partner-directory.html"><span class="choice-icon">+</span><span><strong>Compare more options</strong><small>Browse the full eStack.ca partner directory</small></span><b aria-hidden="true">→</b></a>
         </div>
 
         <p class="loan-note">Some links are sponsored. Providers determine eligibility, rates, fees and approval. eStack.ca is not a lender. <a href="affiliate-disclosure.html">See how eStack.ca makes money.</a></p>
@@ -94,7 +101,10 @@
       </div>
     </section>
   </main>
-  <footer class="footer"><div class="wrap footer-grid"><div><a class="brand" href="index.html">e<span>Stack</span>.ca</a><p>Independent Canadian comparisons for borrowing, credit, markets and practical business tools.</p></div><div><h3>Explore</h3><a href="loans.html">Loans</a><a href="bullion.html">Bullion</a><a href="deals.html">Top Picks</a><a href="partner-directory.html">Partners</a></div><div><h3>Standards</h3><a href="about.html">About</a><a href="editorial-standards.html">Editorial Standards</a><a href="affiliate-disclosure.html">Affiliate Disclosure</a><a href="privacy-policy.html">Privacy</a></div></div><div class="wrap footer-bottom">© 2026 eStack.ca · Confirm current terms directly with each provider.</div></footer>
+  <footer class="footer"><div class="wrap footer-grid"><div><a class="brand" href="index.html">e<span>Stack</span>.ca</a><p>Independent Canadian comparisons for borrowing, credit, markets and practical business tools.</p></div><div><h3>Explore</h3><a href="loans.html">Loans</a><a href="business-funding-now.html">Business Funding</a><a href="bullion.html">Bullion</a><a href="deals.html">Top Picks</a><a href="partner-directory.html">Partners</a></div><div><h3>Standards</h3><a href="about.html">About</a><a href="editorial-standards.html">Editorial Standards</a><a href="affiliate-disclosure.html">Affiliate Disclosure</a><a href="privacy-policy.html">Privacy</a></div></div><div class="wrap footer-bottom">© 2026 eStack.ca · Confirm current terms directly with each provider.</div></footer>
   <script src="https://www.dwin2.com/pub.2936205.min.js"></script>
+  <script>
+    document.addEventListener('click',function(e){var a=e.target.closest('a[rel*="sponsored"]');if(!a)return;if(typeof gtag==='function'){gtag('event','affiliate_click',{event_category:'affiliate',event_label:a.href,transport_type:'beacon'});}});
+  </script>
 </body>
 </html>
