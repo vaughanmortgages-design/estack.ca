@@ -1,2 +1,6 @@
 # Local Netlify folder
 .netlify
+
+# Board OS: private portfolio context and generated memos (contains license #, contact, business strategy)
+/context/
+/memos/
