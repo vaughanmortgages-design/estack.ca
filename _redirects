@@ -23,3 +23,9 @@
 /catalog /catalog.csv 200
 /ig /ig/ 301
 /shop /shop/ 301
+
+/funding-matcher /funding-finder.html 200
+/business-financing /business-financing.html 200
+/equipment-financing /equipment-financing.html 200
+/personal-loans /personal-loans.html 200
+/debt-consolidation /debt-consolidation.html 200
