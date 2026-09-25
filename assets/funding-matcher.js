@@ -97,7 +97,7 @@ function showResult(){
 async function loadPartners(){try{const r=await fetch("/data/funding-partners.json",{cache:"no-store"});if(r.ok)partners=await r.json();}catch(e){partners=[];}}
 document.addEventListener("DOMContentLoaded",()=>{
  track("matcher_view",{path:location.pathname});buildFlow();render();loadPartners();
- const form=$("#leadForm");
+ const form=$("#leadForm");$("#leadBack").addEventListener("click",back);
  form.addEventListener("submit",async e=>{
    e.preventDefault();populateHidden();const err=$("#formError");err.classList.remove("show");
    const consent=$('[name="consent"]');
