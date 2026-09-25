@@ -1,0 +1,26 @@
+[
+  {
+    "name":"MicroCapital — Business Loans",
+    "active":true,
+    "categories":["business"],
+    "minAmount":0,
+    "maxAmount":null,
+    "provinces":["ALL"],
+    "minBusinessMonths":12,
+    "minMonthlyRevenue":35000,
+    "notes":"For established operating businesses. eStack uses a conservative routing rule and shows this option only when the answers clearly meet the published profile; confirm current eligibility, cost and repayment terms directly with the provider.",
+    "destinationUrl":"https://fstff.com/r/1157"
+  },
+  {
+    "name":"Advanced Funds Network CA",
+    "active":true,
+    "categories":["business"],
+    "minAmount":0,
+    "maxAmount":null,
+    "provinces":["ALL"],
+    "minBusinessMonths":0,
+    "minMonthlyRevenue":0,
+    "notes":"A Canadian business-funding comparison destination. Review the provider's current offer, total repayment cost, payment frequency and terms directly.",
+    "destinationUrl":"https://www.awin1.com/cread.php?awinmid=128135&awinaffid=2936205"
+  }
+]

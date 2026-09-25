@@ -1,43 +1,83 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en-CA">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Business Funding Finder | eStack.ca</title>
-<meta name="description" content="Answer six quick questions to find the most relevant eStack business-funding path for your situation in Canada or the U.S.">
+<title>Funding Matcher Canada | Business, Equipment, Personal & Debt | eStack</title>
+<meta name="description" content="Answer a few quick questions to find a sensible financing starting point for business, equipment, personal, debt-consolidation or vehicle financing in Canada.">
 <link rel="canonical" href="https://estack.ca/funding-finder">
 <meta property="og:type" content="website">
-<meta property="og:title" content="eStack Business Funding Finder">
-<meta property="og:description" content="Six quick questions. One clear next step for business funding.">
+<meta property="og:title" content="eStack Funding Matcher">
+<meta property="og:description" content="Need financing? Find your best starting point in about 60 seconds.">
 <meta property="og:url" content="https://estack.ca/funding-finder">
+<link rel="stylesheet" href="/assets/funding.css">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1M3ZKZHNWE"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-1M3ZKZHNWE');</script>
-<style>
-:root{--ink:#10100f;--paper:#fffdf8;--cream:#f4eee3;--gold:#d4af74;--muted:#69635b;--line:#e7dece;--green:#214a38;--green2:#2f6b50}*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;color:var(--ink);background:var(--paper);line-height:1.55}.wrap{width:min(920px,calc(100% - 34px));margin:auto}.top{background:#0f0f0e;color:#eee6da;padding:11px 0;font-size:13px}.brand{font:700 25px Georgia,serif}.brand span{color:var(--gold)}header{background:linear-gradient(135deg,#141311,#2a261f);color:#fff;padding:28px 0 54px}.headrow{display:flex;justify-content:space-between;align-items:center;gap:18px}.headrow a{color:#e9ddc8;text-decoration:none;font-size:14px}.hero{padding-top:52px}.eyebrow{color:var(--gold);font-size:12px;font-weight:800;letter-spacing:.13em}.hero h1{font:700 clamp(40px,7vw,68px)/1 Georgia,serif;max-width:13ch;margin:14px 0 18px}.hero p{max-width:690px;color:#e2dbd0;font-size:18px}.quiz{padding:52px 0 70px}.progress{height:7px;background:#ece5d7;border-radius:999px;overflow:hidden;margin:0 0 30px}.progress i{display:block;height:100%;width:16.66%;background:linear-gradient(90deg,var(--gold),#8a6a38);transition:width .25s}.card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:30px;box-shadow:0 16px 44px rgba(33,28,18,.08)}.step{display:none}.step.active{display:block}.step small{font-weight:800;color:#8a6a38;letter-spacing:.08em}.step h2{font:700 clamp(28px,5vw,42px)/1.1 Georgia,serif;margin:8px 0 18px}.options{display:grid;gap:12px}.opt{width:100%;text-align:left;border:1px solid var(--line);background:#fffdf9;border-radius:14px;padding:17px 18px;font-size:16px;cursor:pointer}.opt:hover,.opt.selected{border-color:var(--green);background:#f4f9f6}.nav{display:flex;justify-content:space-between;gap:12px;margin-top:24px}.btn{border:0;border-radius:999px;padding:14px 20px;font-weight:800;cursor:pointer;background:var(--green);color:#fff;text-decoration:none;display:inline-block}.btn.alt{background:#eee8dc;color:#312b23}.btn[disabled]{opacity:.45;cursor:not-allowed}.result{display:none}.result.active{display:block}.resultbox{border:2px solid var(--green);background:#f7fbf8;border-radius:18px;padding:24px;margin-top:12px}.resultbox h3{font:700 30px Georgia,serif;margin:0 0 8px}.resultbox p{color:#555046}.resultbox .btn{margin-top:8px}.note{font-size:13px;color:#7d756a;margin-top:22px}.chips{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}.chip{border:1px solid var(--line);border-radius:999px;padding:7px 10px;font-size:12px;background:#fff}.restart{background:transparent;border:0;color:#496a58;text-decoration:underline;cursor:pointer;margin-top:20px}footer{border-top:1px solid var(--line);padding:28px 0;color:#777066;font-size:13px}@media(max-width:620px){.card{padding:22px}.headrow{align-items:flex-start;flex-direction:column}.hero{padding-top:38px}}
-</style>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-1M3ZKZHNWE");</script>
 </head>
 <body>
-<div class="top"><div class="wrap">Independent business-finance comparison resource · Affiliate-supported</div></div>
-<header><div class="wrap"><div class="headrow"><div class="brand">e<span>Stack</span>.ca</div><a href="/business-funding">Business Funding Guide →</a></div><div class="hero"><div class="eyebrow">60-SECOND FUNDING FINDER</div><h1>Find the funding path that fits your business.</h1><p>Answer six quick questions. We will route you to the most relevant eStack destination without inventing approval odds, rates or guarantees.</p></div></div></header>
-<main class="quiz"><div class="wrap"><div class="progress" aria-hidden="true"><i id="bar"></i></div><div class="card">
-<section class="step active" data-step="1"><small>QUESTION 1 OF 6</small><h2>Where is your business based?</h2><div class="options"><button class="opt" data-key="country" data-value="ca">Canada</button><button class="opt" data-key="country" data-value="us">United States</button></div></section>
-<section class="step" data-step="2"><small>QUESTION 2 OF 6</small><h2>How long have you been operating?</h2><div class="options"><button class="opt" data-key="age" data-value="lt12">Less than 12 months</button><button class="opt" data-key="age" data-value="12plus">12 months or more</button></div></section>
-<section class="step" data-step="3"><small>QUESTION 3 OF 6</small><h2>About how much monthly revenue does the business generate?</h2><div class="options"><button class="opt" data-key="revenue" data-value="lt35">Under $35,000</button><button class="opt" data-key="revenue" data-value="35plus">$35,000 or more</button><button class="opt" data-key="revenue" data-value="unsure">Not sure / varies</button></div></section>
-<section class="step" data-step="4"><small>QUESTION 4 OF 6</small><h2>What is the money mainly for?</h2><div class="options"><button class="opt" data-key="purpose" data-value="cashflow">Cash-flow gap</button><button class="opt" data-key="purpose" data-value="inventory">Inventory or materials</button><button class="opt" data-key="purpose" data-value="payroll">Payroll or operating expenses</button><button class="opt" data-key="purpose" data-value="equipment">Equipment</button><button class="opt" data-key="purpose" data-value="other">Other business need</button></div></section>
-<section class="step" data-step="5"><small>QUESTION 5 OF 6</small><h2>Roughly how much are you looking for?</h2><div class="options"><button class="opt" data-key="amount" data-value="lt25">Under $25,000</button><button class="opt" data-key="amount" data-value="25to100">$25,000–$100,000</button><button class="opt" data-key="amount" data-value="100plus">More than $100,000</button><button class="opt" data-key="amount" data-value="unsure">Not sure yet</button></div></section>
-<section class="step" data-step="6"><small>QUESTION 6 OF 6</small><h2>How soon are you comparing options?</h2><div class="options"><button class="opt" data-key="urgency" data-value="now">Now / this week</button><button class="opt" data-key="urgency" data-value="month">Within a month</button><button class="opt" data-key="urgency" data-value="research">Just researching</button></div></section>
-<section class="result" id="result"><small>YOUR ESTACK PATH</small><div class="resultbox" id="resultBox"></div><button class="restart" id="restart">Start again</button><div class="note">Affiliate disclosure: eStack.ca may earn compensation if you use a tracked partner link. Funding is subject to provider eligibility and terms. No approval, rate, savings or outcome is guaranteed. General information only, not financial advice.</div></section>
-<div class="nav" id="nav"><button class="btn alt" id="back" disabled>Back</button><button class="btn" id="next" disabled>Next</button></div>
-</div></div></main>
-<footer><div class="wrap">© 2026 eStack.ca · Compare the total repayment cost, payment frequency, term and fees before deciding.</div></footer>
-<script>
-const answers={};let step=1;const total=6;const steps=[...document.querySelectorAll('.step')];const bar=document.getElementById('bar');const next=document.getElementById('next');const back=document.getElementById('back');const nav=document.getElementById('nav');
-function show(){steps.forEach(s=>s.classList.toggle('active',Number(s.dataset.step)===step));bar.style.width=((step/total)*100)+'%';back.disabled=step===1;next.disabled=!steps[step-1].querySelector('.opt.selected');next.textContent=step===total?'See My Path':'Next';}
-document.querySelectorAll('.opt').forEach(b=>b.addEventListener('click',()=>{const parent=b.closest('.step');parent.querySelectorAll('.opt').forEach(x=>x.classList.remove('selected'));b.classList.add('selected');answers[b.dataset.key]=b.dataset.value;next.disabled=false;}));
-next.addEventListener('click',()=>{if(step<total){step++;show();return;}renderResult();});back.addEventListener('click',()=>{if(step>1){step--;show();}});
-function renderResult(){steps.forEach(s=>s.classList.remove('active'));nav.style.display='none';document.getElementById('result').classList.add('active');bar.style.width='100%';const box=document.getElementById('resultBox');let html='';if(answers.country==='us'){html='<h3>Continue with eStack.us</h3><p>Your business is U.S.-based, so the right next step is the U.S. eStack site. Review the funding resources there rather than using Canadian partner offers.</p><div class="chips"><span class="chip">U.S. business</span><span class="chip">Funding research</span></div><a class="btn" href="https://estack.us/?utm_source=estack_ca&utm_medium=funding_finder&utm_campaign=us_route">Continue to eStack.us →</a>';}else if(answers.age==='12plus'&&answers.revenue==='35plus'){html='<h3>Start with MicroCapital</h3><p>Based on the profile you entered, MicroCapital is the closest match to the published profile currently used by eStack: businesses operating at least 12 months and generating about $35,000+ in monthly revenue. Confirm all current eligibility, cost and repayment terms directly with the provider.</p><div class="chips"><span class="chip">Canada</span><span class="chip">12+ months</span><span class="chip">$35k+ monthly revenue</span></div><a class="btn aff" data-partner="MicroCapital" href="https://fstff.com/r/1157" target="_blank" rel="sponsored nofollow noopener">Check MicroCapital →</a>';}else{html='<h3>Compare Advanced Funds Network CA</h3><p>Your answers do not match the specific MicroCapital profile published on eStack. Advanced Funds Network CA is another approved Canadian business-funding destination to review. The provider—not eStack—determines eligibility and current terms.</p><div class="chips"><span class="chip">Canada</span><span class="chip">Alternative comparison path</span></div><a class="btn aff" data-partner="Advanced Funds Network CA" href="https://www.awin1.com/cread.php?awinmid=128135&awinaffid=2936205" target="_blank" rel="sponsored nofollow noopener">View Advanced Funds Network →</a>';}box.innerHTML=html;if(window.gtag)gtag('event','funding_finder_complete',{country:answers.country||'',age:answers.age||'',revenue:answers.revenue||'',purpose:answers.purpose||'',amount:answers.amount||'',urgency:answers.urgency||''});box.querySelectorAll('a.aff').forEach(a=>a.addEventListener('click',()=>{if(window.gtag)gtag('event','affiliate_click',{partner:a.dataset.partner,page:'funding-finder'});}));}
-document.getElementById('restart').addEventListener('click',()=>{Object.keys(answers).forEach(k=>delete answers[k]);document.querySelectorAll('.opt.selected').forEach(x=>x.classList.remove('selected'));document.getElementById('result').classList.remove('active');nav.style.display='flex';step=1;show();});show();
-</script>
-<script src="https://www.dwin2.com/pub.2936205.min.js"></script>
+<div class="top"><div class="wrap"><span>Independent Canadian financing information · Affiliate-supported</span><span><a href="/affiliate-disclosure.html">How eStack makes money</a></span></div></div>
+<div class="nav"><div class="wrap"><a class="brand" href="/">e<span>Stack</span>.ca</a><div class="navlinks"><a href="/business-financing">Business</a><a href="/equipment-financing">Equipment</a><a href="/personal-loans">Personal</a><a href="/debt-consolidation">Debt Consolidation</a><a class="navcta" href="/funding-finder">Find My Options</a></div></div></div>
+<main>
+<section class="hero matcher-hero"><div class="wrap"><div class="eyebrow">60-second funding matcher</div><h1>Need Financing? Find Your Best Starting Point.</h1><p>Answer a few quick questions and eStack will point you toward financing categories and active partner routes that fit what you're looking for—without pretending you are approved.</p><div class="actions"><a class="btn btn-primary" href="#matcher">Start Matcher</a></div><p class="disclosure" style="color:#bdb6aa;margin-top:18px">No obligation. Financing is subject to provider eligibility, approval and availability.</p></div></section>
+<section class="matcher" id="matcher"><div class="wrap">
+<div class="progress-row"><span id="stepText">Step 1</span><span>Business · Equipment · Personal · Debt · Vehicle</span></div>
+<div class="progress" aria-hidden="true"><i id="bar"></i></div>
+<div class="quiz-card">
+<section id="questionStage"></section>
+
+<section id="leadStage" class="hidden">
+<div class="eyebrow">Almost done</div>
+<h2>We may have options worth exploring.</h2>
+<p class="question-note">Where should we send or discuss the next step? eStack does not ask for your SIN, bank login, exact credit score or date of birth here.</p>
+<form class="lead-form" id="leadForm" name="funding-matcher" method="POST" action="/funding-finder" data-netlify="true" netlify-honeypot="bot-field">
+<input type="hidden" name="form-name" value="funding-matcher">
+<p class="hidden"><label>Don't fill this out: <input name="bot-field"></label></p>
+<input type="hidden" name="category">
+<input type="hidden" name="amount_range">
+<input type="hidden" name="urgency">
+<input type="hidden" name="business_age">
+<input type="hidden" name="monthly_revenue">
+<input type="hidden" name="fund_use">
+<input type="hidden" name="equipment_type">
+<input type="hidden" name="equipment_value">
+<input type="hidden" name="new_or_used">
+<input type="hidden" name="credit_range">
+<input type="hidden" name="purpose">
+<input type="hidden" name="source">
+<input type="hidden" name="medium">
+<input type="hidden" name="campaign">
+<input type="hidden" name="landing_page">
+<input type="hidden" name="referrer">
+<input type="hidden" name="recommended_category">
+<input type="hidden" name="status" value="MATCHED">
+<input type="hidden" name="consent_timestamp">
+<div class="lead-grid">
+<div class="field"><label for="firstName">First name</label><input id="firstName" name="first_name" autocomplete="given-name" required></div>
+<div class="field"><label for="lastName">Last name</label><input id="lastName" name="last_name" autocomplete="family-name" required></div>
+<div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required></div>
+<div class="field"><label for="mobile">Mobile number</label><input id="mobile" name="phone" type="tel" inputmode="tel" autocomplete="tel" required></div>
+<div class="field wide"><label for="province">Province or territory</label><select id="province" name="province" required><option value="">Select one</option><option>Alberta</option><option>British Columbia</option><option>Manitoba</option><option>New Brunswick</option><option>Newfoundland and Labrador</option><option>Nova Scotia</option><option>Ontario</option><option>Prince Edward Island</option><option>Quebec</option><option>Saskatchewan</option><option>Northwest Territories</option><option>Nunavut</option><option>Yukon</option></select></div>
+</div>
+<div class="checkline"><input id="consent" name="consent" type="checkbox" value="yes" required><label for="consent">I agree that eStack.ca may contact me regarding my financing request and connect me with relevant financing providers. I understand financing is subject to provider approval and requirements. See the <a href="/privacy-policy.html" target="_blank" rel="noopener" style="text-decoration:underline">Privacy Policy</a>.</label></div>
+<div id="formError" class="form-error" role="alert"></div>
+<div class="qnav"><button class="btn btn-soft" id="leadBack" type="button">Back</button><button class="btn btn-green" id="submitBtn" type="submit">Show My Options</button></div>
+</form>
+</section>
+
+<section id="resultStage" class="result">
+<div class="eyebrow">Your starting point</div>
+<h2 id="resultTitle">Financing options</h2>
+<div class="result-grid">
+<div class="result-box"><h3>What this means</h3><p id="resultCopy"></p><p class="status">This is a category recommendation, not a lending decision or pre-approval.</p></div>
+<div class="result-box"><h3>Next step</h3><div class="partner-list" id="partnerList"></div><div class="actions"><a class="btn btn-soft" href="mailto:info@estack.ca?subject=eStack%20Funding%20Matcher%20follow-up">Request a Call</a></div></div>
+</div>
+<button class="btn btn-dark" id="restart" type="button" style="margin-top:22px">Start Again</button>
+</section>
+</div>
+<div class="disclosure" style="margin-top:18px">eStack.ca is an information, marketing and referral platform. eStack.ca is not a bank and does not itself approve or issue financing unless specifically stated. Financing availability, rates, terms and approval criteria are determined by individual providers. eStack.ca may receive compensation when users click, apply, are referred to, or obtain products from participating partners.</div>
+</div></section>
+</main>
+<footer class="footer"><div class="wrap"><div class="links"><a href="/business-financing">Business Financing</a><a href="/equipment-financing">Equipment Financing</a><a href="/personal-loans">Personal Loans</a><a href="/debt-consolidation">Debt Consolidation</a><a href="/privacy-policy.html">Privacy</a><a href="/terms-of-use.html">Terms</a></div><div class="disclosure">Products and providers may not be available in every province or to every applicant. General information only, not financial advice.</div></div></footer>
+<script src="/assets/funding-matcher.js" defer></script>
 </body>
 </html>
