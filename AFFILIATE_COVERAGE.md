@@ -7,7 +7,7 @@ Source of truth: live Affiliate Link Vault, reconciled with the repository affil
 - CreditMarketing.ca: **21 of 21 implemented**
 - LeadScout: **Implemented**
 - Sprott Money: **Implemented**
-- Total approved tracked offers represented: **30**
+- Total approved tracked offers represented: **31**
 - Missing approved eStack.ca offers: **0**
 
 | Partner name | Category | Approved affiliate URL | Tracking parameters present | Page or pages | CTA text | Status |
@@ -35,6 +35,7 @@ Source of truth: live Affiliate Link Vault, reconciled with the repository affil
 | Debt Rehab Canada | Debt Solutions | https://cmi.rocks/go/6a46bc8e5792f | Tracked path token: 6a46bc8e5792f | loans.html; partner-directory.html | Learn More | Implemented |
 | LeadScout | Loan Matching | https://leadscout.ca/?ref=ZX3kIzQG | ref=ZX3kIzQG | index.html; loans.html; deals.html; partner-directory.html | Compare Options | Implemented |
 | Advanced Funds Network CA | Business Funding | https://www.awin1.com/cread.php?awinmid=128135&awinaffid=2936205 | awinmid=128135; awinaffid=2936205 | business-funding-now.html; loans.html; partner-directory.html | View Offer | Implemented |
+| World Businesses for Sale | Business Marketplace | https://www.awin1.com/cread.php?awinmid=116725&awinaffid=2936205 | awinmid=116725; awinaffid=2936205 | business-financing.html; partner-directory.html | Explore Listings and Selling Options | Implemented |
 | Sprott Money | Bullion | https://www.sprottmoney.ca/?acc=paul-maladrino-5887a | acc=paul-maladrino-5887a | index.html; bullion.html; deals.html; partner-directory.html | View Bullion Options | Implemented |
 | Kitco | Bullion | https://www.awin1.com/cread.php?s=3795009&v=84579&q=505826&r=2936205 | s=3795009; v=84579; q=505826; r=2936205 | bullion.html; deals.html; partner-directory.html | See Today’s Price | Implemented |
 | Money Metals Exchange | Bullion | https://www.awin1.com/cread.php?s=3928272&v=88985&q=519076&r=2936205 | s=3928272; v=88985; q=519076; r=2936205 | index.html; bullion.html; deals.html; partner-directory.html | View Bullion Options | Implemented |
