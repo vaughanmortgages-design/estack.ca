@@ -59,6 +59,13 @@ header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdro
 .trustbar .wrap{display:grid;grid-template-columns:repeat(3,1fr)}
 .trust{padding:22px 28px;border-right:1px solid var(--line)}.trust:first-child{padding-left:0}.trust:last-child{border-right:0}
 .trust strong{display:block;font-size:.9rem}.trust span{display:block;color:var(--muted);font-size:.8rem;margin-top:3px}
+.routebar{background:#f7fafc;border-bottom:1px solid var(--line)}
+.routebar .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+.routeitem{padding:18px 24px;border-right:1px solid var(--line)}
+.routeitem:first-child{padding-left:0}.routeitem:last-child{border-right:0}
+.routeitem strong{display:block;font-size:.92rem}
+.routeitem span{display:block;color:var(--muted);font-size:.78rem;margin-top:3px}
+.routeitem a{display:inline-block;margin-top:7px;color:var(--blue);font-size:.8rem;font-weight:800}
 section.content{padding:84px 0}
 .section-head{display:flex;align-items:end;justify-content:space-between;gap:36px;margin-bottom:34px}
 .section-head h2{font-family:'Playfair Display',Georgia,serif;font-size:clamp(2rem,4vw,3.5rem);line-height:1.06;letter-spacing:-.03em;margin-top:8px}
@@ -106,7 +113,7 @@ footer{background:#06101a;color:#c8d0d6;padding:48px 0 28px}
 .footer-links{display:grid;gap:8px;font-size:.82rem}.footer-links a:hover{color:#fff}
 .footer-bottom{padding-top:20px;font-size:.72rem;color:#7f8d98;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
 @media(max-width:960px){.hero .wrap{grid-template-columns:1fr;gap:34px}.matcher-card{max-width:620px}.category-grid{grid-template-columns:repeat(2,1fr)}.partner-grid{grid-template-columns:repeat(2,1fr)}.national{grid-template-columns:1fr}.footer-grid{grid-template-columns:1.4fr 1fr 1fr}.footer-grid>div:last-child{grid-column:2/4}}
-@media(max-width:780px){.menu{display:block}.navlinks{display:none;position:absolute;left:20px;right:20px;top:72px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px;box-shadow:var(--shadow);flex-direction:column;align-items:stretch;gap:0}.navlinks.open{display:flex}.navlinks a{padding:12px 10px}.navcta{text-align:center;margin-top:5px}.trustbar .wrap,.step-grid,.resource-grid{grid-template-columns:1fr}.trust{border-right:0;border-bottom:1px solid var(--line);padding:17px 0}.section-head{display:block}.section-head p{margin-top:13px}.final .wrap{display:block}.final .btn{margin-top:22px}}
+@media(max-width:780px){.menu{display:block}.navlinks{display:none;position:absolute;left:20px;right:20px;top:72px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px;box-shadow:var(--shadow);flex-direction:column;align-items:stretch;gap:0}.navlinks.open{display:flex}.navlinks a{padding:12px 10px}.navcta{text-align:center;margin-top:5px}.trustbar .wrap,.routebar .wrap,.step-grid,.resource-grid{grid-template-columns:1fr}.trust,.routeitem{border-right:0;border-bottom:1px solid var(--line);padding:17px 0}.section-head{display:block}.section-head p{margin-top:13px}.final .wrap{display:block}.final .btn{margin-top:22px}}
 @media(max-width:620px){.wrap{width:min(100% - 30px,1180px)}.utility .wrap{min-height:44px}.utility span:last-child{display:none}.nav{min-height:64px}.navlinks{top:64px}.hero .wrap{padding:56px 0}.hero h1{font-size:clamp(2.7rem,14vw,4.2rem)}.category-grid,.partner-grid{grid-template-columns:1fr}.national{padding:28px 22px}.footer-grid{grid-template-columns:1fr 1fr}.footer-grid>div:first-child{grid-column:1/-1}.footer-grid>div:last-child{grid-column:auto}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
 </style>
@@ -125,7 +132,7 @@ footer{background:#06101a;color:#c8d0d6;padding:48px 0 28px}
       <a href="/auto-loans-canada.html">Auto</a>
       <a href="/business-financing">Business</a>
       <a href="/debt-consolidation">Debt Consolidation</a>
-      <a href="/bullion.html">More</a>
+      <a href="/bullion.html">Bullion</a>
       <a class="navcta" href="/funding-finder">Find My Options</a>
     </div>
   </nav>
@@ -140,6 +147,7 @@ footer{background:#06101a;color:#c8d0d6;padding:48px 0 28px}
         <div class="actions">
           <a class="btn btn-primary" href="/funding-finder">Find My Financing Options →</a>
           <a class="btn btn-outline" href="#loan-categories">Explore Loan Categories</a>
+          <a class="btn btn-outline" href="/bullion.html">Bullion & Precious Metals →</a>
         </div>
         <div class="proof"><span class="pill">Canada-first</span><span class="pill">No approval promises</span><span class="pill">Clear affiliate disclosure</span></div>
       </div>
@@ -163,6 +171,14 @@ footer{background:#06101a;color:#c8d0d6;padding:48px 0 28px}
       <div class="trust"><strong>eStack is not a lender</strong><span>Providers make their own eligibility, pricing and approval decisions.</span></div>
       <div class="trust"><strong>Availability varies</strong><span>Products, partners and terms may differ by province and applicant.</span></div>
       <div class="trust"><strong>Commercial links are disclosed</strong><span>eStack may earn compensation from participating partners.</span></div>
+    </div>
+  </div>
+
+  <div class="routebar" aria-label="Featured financing partners and networks">
+    <div class="wrap">
+      <div class="routeitem"><strong>CMI / CreditMarketing.ca Partner Offers</strong><span>Loan, auto, credit and debt routes tracked through your approved CMI links.</span><a href="/partner-directory.html">See CMI partner offers →</a></div>
+      <div class="routeitem"><strong>LeadScout</strong><span>Canadian loan-matching route available through eStack.</span><a href="https://leadscout.ca/?ref=ZX3kIzQG" target="_blank" rel="sponsored nofollow noopener">Compare with LeadScout →</a></div>
+      <div class="routeitem"><strong>Advanced Funds Network CA</strong><span>Business-funding route through your approved Awin partnership.</span><a href="https://www.awin1.com/cread.php?awinmid=128135&awinaffid=2936205" target="_blank" rel="sponsored nofollow noopener">View AFN business funding →</a></div>
     </div>
   </div>
 
@@ -193,12 +209,12 @@ footer{background:#06101a;color:#c8d0d6;padding:48px 0 28px}
 
   <section class="content">
     <div class="wrap">
-      <div class="section-head"><div><div class="eyebrow">Participating routes</div><h2>Popular financing starting points.</h2></div><p>These are affiliate or referral relationships. eStack may receive compensation from qualifying actions.</p></div>
+      <div class="section-head"><div><div class="eyebrow">Featured lending partners & networks</div><h2>CMI, LeadScout and AFN are now visible.</h2></div><p>These are affiliate or referral relationships. eStack may receive compensation from qualifying actions.</p></div>
       <div class="partner-grid">
-        <article class="partner"><span class="tag">Personal loans</span><h3>Loan Genie</h3><p>Explore a Canadian personal-loan matching destination and review current provider terms.</p><a href="https://cmi.rocks/go/6a3eeaf652419" target="_blank" rel="sponsored nofollow noopener">Compare options →</a></article>
-        <article class="partner"><span class="tag">Auto financing</span><h3>MyAutoApproval</h3><p>Review a Canadian auto-financing route and confirm current eligibility directly.</p><a href="https://cmi.rocks/go/6a3eeb14424a6" target="_blank" rel="sponsored nofollow noopener">Check eligibility →</a></article>
-        <article class="partner"><span class="tag">Business funding</span><h3>Advanced Funds Network CA</h3><p>Explore a business-funding destination and compare the total repayment structure.</p><a href="https://www.awin1.com/cread.php?awinmid=128135&awinaffid=2936205" target="_blank" rel="sponsored nofollow noopener">View business funding →</a></article>
-        <article class="partner"><span class="tag">Debt solutions</span><h3>Debt Rehab Canada</h3><p>Explore a Canadian debt-solutions resource and review the provider's current terms.</p><a href="https://cmi.rocks/go/6a46bc8e5792f" target="_blank" rel="sponsored nofollow noopener">Explore debt help →</a></article>
+        <article class="partner"><span class="tag">Partner network</span><h3>CMI / CreditMarketing.ca</h3><p>eStack uses approved CMI-tracked offers across personal loans, auto financing, credit tools and debt solutions.</p><a href="/partner-directory.html">See CMI partner offers →</a></article>
+        <article class="partner"><span class="tag">Loan matching</span><h3>LeadScout</h3><p>Explore a Canadian loan-matching route and review any provider options and terms directly.</p><a href="https://leadscout.ca/?ref=ZX3kIzQG" target="_blank" rel="sponsored nofollow noopener">Compare with LeadScout →</a></article>
+        <article class="partner"><span class="tag">Business funding</span><h3>Advanced Funds Network CA</h3><p>Explore a business-funding route through your approved Awin partnership and compare current repayment terms.</p><a href="https://www.awin1.com/cread.php?awinmid=128135&awinaffid=2936205" target="_blank" rel="sponsored nofollow noopener">View AFN business funding →</a></article>
+        <article class="partner"><span class="tag">Personal loans</span><h3>Loan Genie</h3><p>One of the approved CMI-tracked personal-loan destinations available through eStack.</p><a href="https://cmi.rocks/go/6a3eeaf652419" target="_blank" rel="sponsored nofollow noopener">Compare personal-loan options →</a></article>
       </div>
       <p class="partner-note">No click, application or referral guarantees approval, a specific rate, funding speed, savings or financial outcome.</p>
     </div>
