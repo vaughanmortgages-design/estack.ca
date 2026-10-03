@@ -1,6 +1,6 @@
 (()=>{"use strict";
 const $=(s,c=document)=>c.querySelector(s), $$=(s,c=document)=>[...c.querySelectorAll(s)];
-const state={category:"",amount_range:"",urgency:"",business_age:"",monthly_revenue:"",fund_use:"",equipment_type:"",equipment_value:"",new_or_used:"",credit_range:"",purpose:""};
+const state={category:"",amount_range:"",urgency:"",business_age:"",monthly_revenue:"",fund_use:"",equipment_type:"",equipment_value:"",new_or_used:"",credit_range:"",purpose:"",province:""};
 const labels={business:"Business financing",equipment:"Equipment financing",personal:"Personal financing",debt:"Debt consolidation",vehicle:"Vehicle financing",other:"Other financing"};
 const questions={
 category:{title:"What do you need financing for?",options:[["business","Business"],["equipment","Equipment"],["personal","Personal expenses"],["debt","Debt consolidation"],["vehicle","Vehicle"],["other","Something else"]]},
@@ -68,7 +68,7 @@ function encodeForm(form){return new URLSearchParams(new FormData(form)).toStrin
 function moneyLower(range){return({"under-10k":0,"10-25k":10000,"25-50k":25000,"50-100k":50000,"100-250k":100000,"250k-plus":250000}[range]||0);}
 function revenueLower(range){return({"under-10k":0,"10-25k":10000,"25-50k":25000,"50-100k":50000,"100k-plus":100000}[range]||0);}
 function ageMonths(v){return({"under-6m":0,"6-12m":6,"1-2y":12,"2y-plus":24}[v]||0);}
-function partnerMatches(p){if(!p.active||!Array.isArray(p.categories)||!p.categories.includes(state.category))return false;if(p.minAmount&&moneyLower(state.amount_range)<p.minAmount)return false;if(p.minBusinessMonths&&ageMonths(state.business_age)<p.minBusinessMonths)return false;if(p.minMonthlyRevenue&&revenueLower(state.monthly_revenue)<p.minMonthlyRevenue)return false;return true;}
+function partnerMatches(p){if(!p.active||!Array.isArray(p.categories)||!p.categories.includes(state.category))return false;if(p.minAmount&&moneyLower(state.amount_range)<p.minAmount)return false;if(p.maxAmount&&moneyLower(state.amount_range)>p.maxAmount)return false;if(Array.isArray(p.provinces)&&p.provinces.length&&!p.provinces.includes("ALL")&&(!state.province||!p.provinces.includes(state.province)))return false;if(p.minBusinessMonths&&ageMonths(state.business_age)<p.minBusinessMonths)return false;if(p.minMonthlyRevenue&&revenueLower(state.monthly_revenue)<p.minMonthlyRevenue)return false;return true;}
 function safeUrl(url){try{const u=new URL(url);return u.protocol==="https:"?u.href:"#";}catch(e){return"#";}}
 function showResult(){
  $("#questionStage").classList.add("hidden");$("#leadStage").classList.add("hidden");$("#resultStage").classList.add("active");
@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded",()=>{
  track("matcher_view",{path:location.pathname});buildFlow();render();loadPartners();
  const form=$("#leadForm");$("#leadBack").addEventListener("click",back);
  form.addEventListener("submit",async e=>{
-   e.preventDefault();populateHidden();const err=$("#formError");err.classList.remove("show");
+   e.preventDefault();state.province=$(`[name="province"]`).value;populateHidden();const err=$("#formError");err.classList.remove("show");
    const consent=$('[name="consent"]');
    if(!form.checkValidity()||!consent.checked){form.reportValidity();return;}
    $('[name="consent_timestamp"]').value=new Date().toISOString();
