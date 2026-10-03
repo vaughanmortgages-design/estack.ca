@@ -1,268 +1,347 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en-CA">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>eStack.ca | Find Loan & Financing Options Across Canada</title>
-<meta name="description" content="Explore personal loans, auto financing, business funding, debt consolidation and other financing options in Canada. Use the eStack Funding Matcher to find a practical starting point.">
-<link rel="canonical" href="https://estack.ca/">
-<meta property="og:type" content="website">
-<meta property="og:title" content="eStack.ca | Canada Loan & Financing Centre">
-<meta property="og:description" content="Start with the financing you need. Explore Canadian personal, auto, business and debt-consolidation options from participating providers.">
-<meta property="og:url" content="https://estack.ca/">
-<meta property="og:image" content="https://estack.ca/assets/financial-hero-toronto.webp">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#07131f">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-1M3ZKZHNWE"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-1M3ZKZHNWE');</script>
-<style>
-:root{--ink:#07131f;--ink2:#10293d;--blue:#0f4c81;--blue2:#1f6fa8;--green:#1f6b50;--gold:#d5b56f;--paper:#fbfcfd;--soft:#eef4f8;--line:#dbe4ea;--muted:#617180;--white:#fff;--shadow:0 20px 55px rgba(7,19,31,.12)}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:'DM Sans',system-ui,-apple-system,sans-serif;color:var(--ink);background:var(--paper);line-height:1.55;-webkit-font-smoothing:antialiased}
-a{color:inherit;text-decoration:none}
-.wrap{width:min(1180px,calc(100% - 40px));margin-inline:auto}
-.utility{background:#06101a;color:#d8e0e7;font-size:.74rem}
-.utility .wrap{min-height:38px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-.utility strong{color:#fff}.utility a{text-decoration:underline;text-underline-offset:3px}
-header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:24px}
-.brand{font-family:'Playfair Display',Georgia,serif;font-weight:700;font-size:1.55rem;letter-spacing:-.03em}.brand span{color:var(--blue2)}
-.navlinks{display:flex;align-items:center;gap:24px;font-weight:700;font-size:.9rem;color:#2b3d4c}
-.navlinks a:hover{color:var(--blue2)}
-.navcta{padding:11px 17px;border-radius:999px;background:var(--ink);color:#fff!important}
-.menu{display:none;border:1px solid var(--line);background:#fff;border-radius:10px;padding:9px 12px;font-weight:800}
-.hero{position:relative;isolation:isolate;overflow:hidden;background:linear-gradient(135deg,#06101a 0%,#0c2b44 58%,#123e5d 100%);color:#fff}
-.hero:after{content:"";position:absolute;right:-160px;top:-190px;width:520px;height:520px;border:1px solid rgba(255,255,255,.12);border-radius:50%;z-index:-1}
-.hero .wrap{min-height:640px;display:grid;grid-template-columns:1.1fr .9fr;gap:72px;align-items:center;padding:78px 0}
-.eyebrow{font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;font-weight:800;color:var(--gold)}
-.hero h1{font-family:'Playfair Display',Georgia,serif;font-size:clamp(3rem,6.2vw,5.9rem);line-height:.98;letter-spacing:-.05em;max-width:10.8ch;margin-top:12px}
-.hero p{margin-top:22px;max-width:63ch;color:#d8e3eb;font-size:1.08rem;line-height:1.75}
-.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:14px 20px;border-radius:999px;font-weight:800;transition:.18s ease}
-.btn-primary{background:var(--gold);color:#07131f}.btn-primary:hover{transform:translateY(-2px);background:#e2c780}
-.btn-outline{border:1px solid rgba(255,255,255,.34);color:#fff}.btn-outline:hover{border-color:var(--gold);color:var(--gold)}
-.proof{display:flex;flex-wrap:wrap;gap:9px;margin-top:27px}
-.pill{border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.07);padding:8px 11px;border-radius:999px;font-size:.77rem;color:#e4ebf0}
-.matcher-card{background:#fff;color:var(--ink);border-radius:24px;padding:28px;box-shadow:var(--shadow);align-self:center}
-.matcher-card h2{font-family:'Playfair Display',Georgia,serif;font-size:1.8rem;margin-top:8px}
-.matcher-card p{color:var(--muted);font-size:.92rem;margin-top:9px;line-height:1.55}
-.match-list{display:grid;gap:9px;margin-top:20px}
-.match-list a{display:flex;align-items:center;justify-content:space-between;gap:12px;border:1px solid var(--line);border-radius:14px;padding:14px 15px;font-weight:800;background:#fff}
-.match-list a:hover{border-color:#8bb6d3;background:#f7fbfd}
-.match-list small{display:block;color:var(--muted);font-weight:500;margin-top:2px}
-.matcher-card .btn{width:100%;margin-top:18px;border-radius:12px;background:var(--ink);color:#fff}
-.trustbar{background:#fff;border-bottom:1px solid var(--line)}
-.trustbar .wrap{display:grid;grid-template-columns:repeat(3,1fr)}
-.trust{padding:22px 28px;border-right:1px solid var(--line)}.trust:first-child{padding-left:0}.trust:last-child{border-right:0}
-.trust strong{display:block;font-size:.9rem}.trust span{display:block;color:var(--muted);font-size:.8rem;margin-top:3px}
-.routebar{background:#f7fafc;border-bottom:1px solid var(--line)}
-.routebar .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
-.routeitem{padding:18px 24px;border-right:1px solid var(--line)}
-.routeitem:first-child{padding-left:0}.routeitem:last-child{border-right:0}
-.routeitem strong{display:block;font-size:.92rem}
-.routeitem span{display:block;color:var(--muted);font-size:.78rem;margin-top:3px}
-.routeitem a{display:inline-block;margin-top:7px;color:var(--blue);font-size:.8rem;font-weight:800}
-section.content{padding:84px 0}
-.section-head{display:flex;align-items:end;justify-content:space-between;gap:36px;margin-bottom:34px}
-.section-head h2{font-family:'Playfair Display',Georgia,serif;font-size:clamp(2rem,4vw,3.5rem);line-height:1.06;letter-spacing:-.03em;margin-top:8px}
-.section-head p{max-width:55ch;color:var(--muted)}
-.category-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.cat{background:#fff;border:1px solid var(--line);border-radius:20px;padding:25px;min-height:220px;display:flex;flex-direction:column;transition:.18s ease}
-.cat:hover{transform:translateY(-3px);border-color:#8bb6d3;box-shadow:0 16px 38px rgba(7,19,31,.08)}
-.cat .icon{display:grid;place-items:center;width:44px;height:44px;border-radius:12px;background:var(--soft);font-weight:800;color:var(--blue)}
-.cat h3{font-family:'Playfair Display',Georgia,serif;font-size:1.45rem;margin-top:18px}
-.cat p{font-size:.88rem;color:var(--muted);margin-top:8px}
-.cat b{margin-top:auto;padding-top:22px;color:var(--blue);font-size:.88rem}
-.steps{background:var(--soft)}
-.step-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.step{background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px}
-.num{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--ink);color:var(--gold);font-weight:800}
-.step h3{font-size:1.05rem;margin-top:18px}.step p{font-size:.88rem;color:var(--muted);margin-top:7px}
-.partner-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.partner{background:#fff;border:1px solid var(--line);border-radius:18px;padding:23px;display:flex;flex-direction:column;min-height:230px}
-.partner .tag{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;font-weight:800;color:var(--blue)}
-.partner h3{font-size:1.18rem;margin-top:11px}.partner p{font-size:.84rem;color:var(--muted);margin-top:8px}
-.partner a{margin-top:auto;padding-top:20px;font-weight:800;color:var(--blue)}
-.partner-note{font-size:.76rem;color:var(--muted);margin-top:16px}
-.national{background:linear-gradient(135deg,#07131f,#123e5d);color:#fff;border-radius:28px;padding:44px;display:grid;grid-template-columns:1fr 1fr;gap:44px}
-.national h2{font-family:'Playfair Display',Georgia,serif;font-size:clamp(2rem,4vw,3.2rem);line-height:1.05}
-.national p{color:#d8e3eb;margin-top:14px;max-width:54ch}
-.province-box{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:24px}
-.province-box strong{display:block}.province-box span{display:block;color:#d8e3eb;font-size:.86rem;margin-top:8px}
-.resources{background:#fff;border-top:1px solid var(--line)}
-.resource-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.resource{border:1px solid var(--line);border-radius:20px;padding:28px;background:#fbfcfd}
-.resource h3{font-family:'Playfair Display',Georgia,serif;font-size:1.55rem}
-.resource p{color:var(--muted);margin-top:9px;font-size:.9rem}
-.resource .link{display:inline-block;margin-top:18px;font-weight:800;color:var(--blue)}
-.separation{margin-top:18px;padding:16px 18px;border-radius:14px;background:#f5f7f8;color:#4a5b68;font-size:.82rem}
-.final{background:var(--gold);padding:68px 0}
-.final .wrap{display:flex;align-items:center;justify-content:space-between;gap:36px}
-.final h2{font-family:'Playfair Display',Georgia,serif;font-size:clamp(2rem,4vw,3.4rem);line-height:1.05;max-width:16ch}
-.final p{max-width:52ch;margin-top:10px;color:#493d24}
-.final .btn{background:var(--ink);color:#fff}
-footer{background:#06101a;color:#c8d0d6;padding:48px 0 28px}
-.footer-grid{display:grid;grid-template-columns:1.6fr repeat(3,1fr);gap:38px;padding-bottom:32px;border-bottom:1px solid rgba(255,255,255,.12)}
-.footer-brand{font-family:'Playfair Display',Georgia,serif;font-size:1.45rem;color:#fff}.footer-brand span{color:var(--gold)}
-.footer-copy{font-size:.8rem;color:#8797a4;max-width:34ch;margin-top:9px;line-height:1.65}
-.footer-head{font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:var(--gold);font-weight:800;margin-bottom:12px}
-.footer-links{display:grid;gap:8px;font-size:.82rem}.footer-links a:hover{color:#fff}
-.footer-bottom{padding-top:20px;font-size:.72rem;color:#7f8d98;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
-@media(max-width:960px){.hero .wrap{grid-template-columns:1fr;gap:34px}.matcher-card{max-width:620px}.category-grid{grid-template-columns:repeat(2,1fr)}.partner-grid{grid-template-columns:repeat(2,1fr)}.national{grid-template-columns:1fr}.footer-grid{grid-template-columns:1.4fr 1fr 1fr}.footer-grid>div:last-child{grid-column:2/4}}
-@media(max-width:780px){.menu{display:block}.navlinks{display:none;position:absolute;left:20px;right:20px;top:72px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px;box-shadow:var(--shadow);flex-direction:column;align-items:stretch;gap:0}.navlinks.open{display:flex}.navlinks a{padding:12px 10px}.navcta{text-align:center;margin-top:5px}.trustbar .wrap,.routebar .wrap,.step-grid,.resource-grid{grid-template-columns:1fr}.trust,.routeitem{border-right:0;border-bottom:1px solid var(--line);padding:17px 0}.section-head{display:block}.section-head p{margin-top:13px}.final .wrap{display:block}.final .btn{margin-top:22px}}
-@media(max-width:620px){.wrap{width:min(100% - 30px,1180px)}.utility .wrap{min-height:44px}.utility span:last-child{display:none}.nav{min-height:64px}.navlinks{top:64px}.hero .wrap{padding:56px 0}.hero h1{font-size:clamp(2.7rem,14vw,4.2rem)}.category-grid,.partner-grid{grid-template-columns:1fr}.national{padding:28px 22px}.footer-grid{grid-template-columns:1fr 1fr}.footer-grid>div:first-child{grid-column:1/-1}.footer-grid>div:last-child{grid-column:auto}}
-@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
-</style>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","name":"eStack.ca","url":"https://estack.ca/","description":"Canadian loan and financing comparison, referral and information platform."}
-</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="p:domain_verify" content="c6077e8bf21ae07dbb66baf0f00649dc">
+  <title>eStack.ca — Smarter Money Moves for Canadians</title>
+  <meta name="description" content="Independent Canadian comparisons, tools and guides for financing, credit, savings, business software and precious metals.">
+  <link rel="canonical" href="https://estack.ca/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="eStack.ca — Smarter Money Moves for Canadians">
+  <meta property="og:description" content="Compare financing, credit, savings, business tools and precious metals with Canada-first guides and transparent partner offers.">
+  <meta property="og:url" content="https://estack.ca/">
+  <meta property="og:image" content="https://estack.ca/assets/financial-hero-toronto.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1M3ZKZHNWE"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-1M3ZKZHNWE');</script>
+  <style>
+    :root{
+      --ink:#10100f;
+      --ink-2:#1b1b19;
+      --cream:#f6f1e7;
+      --paper:#fffdf8;
+      --sand:#e8deca;
+      --gold:#b9914c;
+      --gold-2:#d5b56f;
+      --green:#214a38;
+      --muted:#6e6a62;
+      --line:rgba(16,16,15,.12);
+      --line-dark:rgba(255,255,255,.13);
+      --shadow:0 24px 60px rgba(20,17,12,.10);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:'DM Sans',system-ui,-apple-system,sans-serif;
+      color:var(--ink);
+      background:var(--paper);
+      line-height:1.55;
+      -webkit-font-smoothing:antialiased;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    h1,h2,h3{font-family:'Playfair Display',Georgia,serif;line-height:1.08}
+    .wrap{width:min(1180px,calc(100% - 48px));margin-inline:auto}
+    .eyebrow{font-size:.76rem;letter-spacing:.15em;text-transform:uppercase;font-weight:700;color:var(--gold)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;padding:14px 22px;border-radius:999px;font-weight:700;font-size:.94rem;transition:.2s ease}
+    .btn-dark{background:var(--ink);color:#fff}.btn-dark:hover{transform:translateY(-1px);background:#000}
+    .btn-gold{background:var(--gold-2);color:var(--ink)}.btn-gold:hover{background:#e0c27b;transform:translateY(-1px)}
+    .btn-outline{border:1px solid rgba(255,255,255,.28);color:#fff}.btn-outline:hover{border-color:var(--gold-2);color:var(--gold-2)}
+    .arrow{font-size:1.1em}
+
+    .utility{background:#0d0d0c;color:#d9d4ca;border-bottom:1px solid #2b2b27}
+    .utility .wrap{display:flex;justify-content:space-between;gap:24px;align-items:center;min-height:36px;font-size:.73rem}
+    .utility strong{color:var(--gold-2);font-weight:700}
+    .utility a{text-decoration:underline;text-underline-offset:3px}
+
+    header{position:sticky;top:0;z-index:30;background:rgba(255,253,248,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+    nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:28px}
+    .brand{font-family:'Playfair Display',serif;font-weight:700;font-size:1.55rem;letter-spacing:-.03em}
+    .brand span{color:var(--gold)}
+    .nav-links{display:flex;align-items:center;gap:26px;font-size:.9rem;font-weight:600;color:#393733}
+    .nav-links a:hover{color:var(--gold)}
+    .nav-cta{background:var(--ink);color:#fff!important;padding:10px 17px;border-radius:999px}
+    .nav-cta:hover{background:var(--gold)!important;color:var(--ink)!important}
+
+    .hero{position:relative;isolation:isolate;background:var(--ink);color:#fff;overflow:hidden}
+    .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(9,9,8,.96) 0%,rgba(9,9,8,.88) 44%,rgba(9,9,8,.42) 72%,rgba(9,9,8,.62) 100%);z-index:-1}
+    .hero::after{content:"";position:absolute;inset:0;background:url('/assets/financial-hero-toronto.webp') center/cover no-repeat;z-index:-2;filter:saturate(.72) contrast(1.04)}
+    .hero .wrap{min-height:620px;display:grid;grid-template-columns:1.08fr .92fr;gap:70px;align-items:center;padding-block:80px}
+    .hero-copy{max-width:700px}
+    .hero h1{font-size:clamp(3rem,6.4vw,5.8rem);letter-spacing:-.045em;max-width:10.5ch;color:#fff}
+    .hero h1 em{color:var(--gold-2);font-weight:600}
+    .hero-sub{margin-top:22px;max-width:58ch;color:#e6e0d7;font-size:1.08rem;line-height:1.75}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+    .hero-proof{margin-top:34px;display:flex;gap:10px;flex-wrap:wrap}
+    .pill{border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.07);backdrop-filter:blur(6px);padding:8px 12px;border-radius:999px;font-size:.78rem;color:#e6e0d7}
+    .hero-panel{justify-self:end;width:min(100%,370px);background:rgba(255,253,248,.94);color:var(--ink);padding:28px;border:1px solid rgba(255,255,255,.35);box-shadow:var(--shadow)}
+    .hero-panel h2{font-size:1.55rem;margin-top:9px}
+    .quick-links{margin-top:20px;border-top:1px solid var(--line)}
+    .quick-link{display:flex;justify-content:space-between;gap:18px;align-items:center;padding:16px 0;border-bottom:1px solid var(--line);font-weight:700;font-size:.93rem}
+    .quick-link small{display:block;font-weight:500;color:var(--muted);margin-top:2px}
+    .quick-link:hover{color:var(--gold)}
+
+    .trustbar{background:var(--cream);border-bottom:1px solid var(--line)}
+    .trustbar .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+    .trust-item{padding:24px 30px;border-right:1px solid var(--line)}
+    .trust-item:first-child{padding-left:0}.trust-item:last-child{border-right:0}
+    .trust-item strong{display:block;font-size:.9rem;margin-bottom:3px}.trust-item span{font-size:.82rem;color:var(--muted)}
+
+    section{padding:88px 0}
+    .section-head{display:flex;justify-content:space-between;gap:30px;align-items:end;margin-bottom:38px}
+    .section-head h2{font-size:clamp(2rem,4vw,3.5rem);letter-spacing:-.03em;max-width:13ch;margin-top:9px}
+    .section-head p{max-width:53ch;color:var(--muted);font-size:1rem}
+
+    .pathways{background:var(--paper)}
+    .path-grid{display:grid;grid-template-columns:repeat(5,1fr);border:1px solid var(--line)}
+    .path-card{padding:28px 24px;min-height:220px;border-right:1px solid var(--line);display:flex;flex-direction:column;justify-content:space-between;transition:.2s ease;background:#fff}
+    .path-card:last-child{border-right:0}.path-card:hover{background:var(--cream);transform:translateY(-3px);box-shadow:0 16px 35px rgba(20,17,12,.07)}
+    .path-num{font-size:.76rem;color:var(--gold);font-weight:700;letter-spacing:.12em}
+    .path-card h3{font-size:1.28rem;margin-top:24px}.path-card p{font-size:.86rem;color:var(--muted);margin-top:9px}
+    .path-go{margin-top:24px;font-weight:800;font-size:.86rem}
+
+    .partners{background:var(--ink);color:#fff;position:relative;overflow:hidden}
+    .partners::after{content:"";position:absolute;width:520px;height:520px;border:1px solid rgba(213,181,111,.12);border-radius:50%;right:-180px;top:-190px}
+    .partners .section-head h2{color:#fff}.partners .section-head p{color:#bcb6ab}
+    .partner-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;position:relative;z-index:2}
+    .partner-card{background:#171715;border:1px solid var(--line-dark);padding:26px;min-height:260px;display:flex;flex-direction:column;transition:.2s ease}
+    .partner-card:hover{border-color:rgba(213,181,111,.55);transform:translateY(-3px)}
+    .partner-tag{display:inline-flex;align-self:flex-start;border:1px solid rgba(213,181,111,.34);color:var(--gold-2);padding:6px 9px;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700}
+    .partner-card h3{color:#fff;font-size:1.5rem;margin-top:22px}.partner-card p{color:#bcb6ab;font-size:.88rem;margin-top:10px;line-height:1.65}
+    .partner-link{margin-top:auto;padding-top:24px;color:var(--gold-2);font-weight:800;font-size:.88rem}
+    .partner-note{margin-top:18px;color:#8c877f;font-size:.76rem}
+
+    .feature{background:var(--cream)}
+    .feature-grid{display:grid;grid-template-columns:1.05fr .95fr;min-height:520px;background:#fff;box-shadow:var(--shadow)}
+    .feature-photo{background:linear-gradient(180deg,rgba(16,16,15,.05),rgba(16,16,15,.28)),url('/assets/financial-hero-toronto.webp') center/cover no-repeat;min-height:420px}
+    .feature-copy{padding:54px;display:flex;flex-direction:column;justify-content:center}
+    .feature-copy h2{font-size:clamp(2.1rem,4vw,3.7rem);letter-spacing:-.035em;margin-top:10px}
+    .feature-copy p{color:var(--muted);margin:18px 0 28px;max-width:46ch}
+    .text-link{font-weight:800;border-bottom:1px solid var(--ink);padding-bottom:3px;align-self:flex-start}.text-link:hover{color:var(--gold);border-color:var(--gold)}
+
+    .guides{background:#fff}
+    .guide-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:18px}
+    .guide{border:1px solid var(--line);padding:30px;background:var(--paper);display:flex;flex-direction:column;min-height:300px;transition:.2s ease}
+    .guide:hover{border-color:rgba(185,145,76,.55);box-shadow:0 12px 30px rgba(20,17,12,.07);transform:translateY(-2px)}
+    .guide:first-child{background:var(--green);color:#fff;border-color:var(--green)}
+    .guide:first-child .guide-meta,.guide:first-child p{color:#cfdad4}.guide:first-child h3{color:#fff}.guide:first-child .guide-link{color:var(--gold-2)}
+    .guide-meta{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:800}
+    .guide h3{font-size:1.45rem;margin-top:20px}.guide p{color:var(--muted);font-size:.9rem;margin-top:11px;line-height:1.65}
+    .guide-link{margin-top:auto;padding-top:28px;font-weight:800;font-size:.86rem}
+
+    .why{background:var(--paper);border-top:1px solid var(--line)}
+    .why-grid{display:grid;grid-template-columns:.78fr 1.22fr;gap:80px;align-items:start}
+    .why h2{font-size:clamp(2.2rem,4vw,3.8rem);letter-spacing:-.03em;margin-top:10px}
+    .principles{border-top:1px solid var(--line)}
+    .principle{display:grid;grid-template-columns:40px 1fr;gap:18px;padding:22px 0;border-bottom:1px solid var(--line)}
+    .principle b{color:var(--gold)}.principle h3{font-family:'DM Sans',sans-serif;font-size:1rem}.principle p{font-size:.9rem;color:var(--muted);margin-top:4px}
+
+    .final{background:var(--gold-2);padding:74px 0}
+    .final .wrap{display:flex;justify-content:space-between;align-items:center;gap:40px}
+    .final h2{font-size:clamp(2rem,4vw,3.4rem);max-width:15ch}.final p{max-width:48ch;margin-top:10px;color:#4b3b22}
+    .final-actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+
+    footer{background:#0d0d0c;color:#d4cec2;padding:54px 0 28px}
+    .footer-grid{display:grid;grid-template-columns:1.7fr repeat(3,1fr);gap:46px;padding-bottom:38px;border-bottom:1px solid var(--line-dark)}
+    .footer-brand{font-family:'Playfair Display',serif;font-size:1.45rem;color:#fff}.footer-brand span{color:var(--gold-2)}
+    .footer-copy{font-size:.82rem;color:#918c84;max-width:34ch;margin-top:10px;line-height:1.65}
+    .footer-head{font-size:.72rem;color:var(--gold-2);text-transform:uppercase;letter-spacing:.12em;font-weight:800;margin-bottom:13px}
+    .footer-links{display:grid;gap:9px;font-size:.84rem;color:#bbb5aa}.footer-links a:hover{color:#fff}
+    .footer-bottom{padding-top:22px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;color:#817c74;font-size:.73rem}
+
+    @media(max-width:1050px){.path-grid{grid-template-columns:repeat(2,1fr)}.path-card{border-bottom:1px solid var(--line)}.partner-grid{grid-template-columns:repeat(2,1fr)}.guide-grid{grid-template-columns:1fr 1fr}.guide:first-child{grid-column:1/-1}.footer-grid{grid-template-columns:1.4fr 1fr 1fr}.footer-grid>div:last-child{grid-column:2/4}}
+    @media(max-width:860px){.nav-links a:not(.nav-cta){display:none}.hero .wrap{grid-template-columns:1fr;gap:34px;min-height:auto}.hero-panel{justify-self:start;width:min(100%,520px)}.trustbar .wrap{grid-template-columns:1fr}.trust-item{border-right:0;border-bottom:1px solid var(--line);padding:17px 0}.section-head{display:block}.section-head p{margin-top:14px}.feature-grid,.why-grid{grid-template-columns:1fr}.why-grid{gap:40px}.final .wrap{display:block}.final-actions{justify-content:flex-start;margin-top:26px}}
+    @media(max-width:650px){.wrap{width:min(100% - 32px,1180px)}.utility .wrap{min-height:44px}.utility span:last-child{display:none}nav{min-height:64px}.brand{font-size:1.35rem}.nav-cta{padding:9px 13px;font-size:.8rem}.hero .wrap{padding-block:62px}.hero h1{font-size:clamp(2.7rem,14vw,4.3rem)}.hero-sub{font-size:1rem}.hero-panel{padding:22px}.path-grid,.partner-grid,.guide-grid{grid-template-columns:1fr}.guide:first-child{grid-column:auto}.feature-copy{padding:34px 24px}.feature-photo{min-height:320px}.footer-grid{grid-template-columns:1fr 1fr}.footer-grid>div:first-child{grid-column:1/-1}.footer-grid>div:last-child{grid-column:auto}.footer-bottom{display:block}.footer-bottom span{display:block;margin-top:6px}}
+    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebSite",
+    "name":"eStack.ca",
+    "url":"https://estack.ca/",
+    "description":"Independent Canadian finance, technology and business comparison resource."
+  }
+  </script>
 </head>
 <body>
-<div class="utility"><div class="wrap"><span><strong>Canada-first financing information.</strong> Affiliate-supported.</span><span><a href="/affiliate-disclosure.html">How eStack makes money</a></span></div></div>
-<header>
-  <nav class="nav wrap" aria-label="Primary navigation">
-    <a class="brand" href="/">e<span>Stack</span>.ca</a>
-    <button class="menu" type="button" aria-expanded="false" aria-controls="mainnav">Menu</button>
-    <div class="navlinks" id="mainnav">
-      <a href="/personal-loans">Personal Loans</a>
-      <a href="/auto-loans-canada.html">Auto</a>
-      <a href="/business-financing">Business</a>
-      <a href="/debt-consolidation">Debt Consolidation</a>
-      <a href="/bullion.html">Bullion</a>
-      <a class="navcta" href="/funding-finder">Find My Options</a>
-    </div>
-  </nav>
-</header>
-<main>
-  <section class="hero">
+  <div class="utility">
     <div class="wrap">
-      <div>
-        <div class="eyebrow">Canada loan & financing centre</div>
-        <h1>Find Financing Options Across Canada.</h1>
-        <p>Start with what you need: personal borrowing, vehicle financing, business funding, equipment financing or debt consolidation. eStack helps you explore relevant starting points from participating providers without promising approval.</p>
-        <div class="actions">
-          <a class="btn btn-primary" href="/funding-finder">Find My Financing Options →</a>
-          <a class="btn btn-outline" href="#loan-categories">Explore Loan Categories</a>
-          <a class="btn btn-outline" href="/bullion.html">Bullion & Precious Metals →</a>
+      <span><strong>Independent, Canada-first comparisons.</strong> Some links are affiliate links.</span>
+      <span><a href="/affiliate-disclosure.html">How eStack makes money</a></span>
+    </div>
+  </div>
+
+  <header>
+    <div class="wrap">
+      <nav>
+        <a class="brand" href="/" aria-label="eStack home">e<span>Stack</span>.ca</a>
+        <div class="nav-links">
+          <a href="/funding-finder">Financing</a>
+          <a href="/best-hisa-canada.html">Banking</a>
+          <a href="/bullion.html">Bullion</a>
+          <a href="/tech-ai-tools.html">Business Tools</a>
+          <a href="/partner-directory.html">Partners</a>
+          <a class="nav-cta" href="/deals.html">Top Picks</a>
         </div>
-        <div class="proof"><span class="pill">Canada-first</span><span class="pill">No approval promises</span><span class="pill">Clear affiliate disclosure</span></div>
-      </div>
-      <aside class="matcher-card" aria-label="Quick financing choices">
-        <div class="eyebrow">Start here</div>
-        <h2>What are you looking for?</h2>
-        <p>Choose a category or use the Funding Matcher for a more tailored starting point.</p>
-        <div class="match-list">
-          <a href="/personal-loans"><span>Personal loan <small>Major purchases, expenses and other needs</small></span><b>→</b></a>
-          <a href="/auto-loans-canada.html"><span>Vehicle financing <small>Auto loans, refinance and powersports</small></span><b>→</b></a>
-          <a href="/business-financing"><span>Business funding <small>Working capital, growth and operations</small></span><b>→</b></a>
-          <a href="/debt-consolidation"><span>Debt consolidation <small>Explore ways to simplify eligible debt</small></span><b>→</b></a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-copy">
+          <div class="eyebrow">Canadian money + business intelligence</div>
+          <h1>Make smarter <em>money moves.</em></h1>
+          <p class="hero-sub">eStack cuts through noisy finance and software marketing with practical Canadian comparisons, step-by-step guides, calculators and partner offers built for people who are actually making decisions.</p>
+          <div class="hero-actions">
+            <a class="btn btn-gold" href="/financing-now">Check financing options <span class="arrow">→</span></a>
+            <a class="btn btn-outline" href="/deals.html">See top picks</a>
+          </div>
+          <div class="hero-proof">
+            <span class="pill">Canada-first</span>
+            <span class="pill">Independent editorial</span>
+            <span class="pill">Transparent affiliate disclosure</span>
+          </div>
         </div>
-        <a class="btn" href="/funding-finder">Use the 60-Second Matcher</a>
-      </aside>
-    </div>
-  </section>
 
-  <div class="trustbar">
-    <div class="wrap">
-      <div class="trust"><strong>eStack is not a lender</strong><span>Providers make their own eligibility, pricing and approval decisions.</span></div>
-      <div class="trust"><strong>Availability varies</strong><span>Products, partners and terms may differ by province and applicant.</span></div>
-      <div class="trust"><strong>Commercial links are disclosed</strong><span>eStack may earn compensation from participating partners.</span></div>
-    </div>
-  </div>
+        <aside class="hero-panel" aria-label="Popular eStack destinations">
+          <div class="eyebrow">Start here</div>
+          <h2>What do you need today?</h2>
+          <div class="quick-links">
+            <a class="quick-link" href="/funding-finder"><span>Financing <small>Business, equipment, personal, debt and vehicle options</small></span><span>→</span></a>
+            <a class="quick-link" href="/improve-credit-score-canada.html"><span>Better credit <small>Practical Canadian credit-building guides</small></span><span>→</span></a>
+            <a class="quick-link" href="/bullion.html"><span>Gold & silver <small>Precious-metals guides and partner options</small></span><span>→</span></a>
+            <a class="quick-link" href="/tech-ai-tools.html"><span>Business tools <small>Software for ecommerce, marketing and growth</small></span><span>→</span></a>
+          </div>
+        </aside>
+      </div>
+    </section>
 
-  <div class="routebar" aria-label="Featured financing partners and networks">
-    <div class="wrap">
-      <div class="routeitem"><strong>CMI / CreditMarketing.ca Partner Offers</strong><span>Loan, auto, credit and debt routes tracked through your approved CMI links.</span><a href="/partner-directory.html">See CMI partner offers →</a></div>
-      <div class="routeitem"><strong>LeadScout</strong><span>Canadian loan-matching route available through eStack.</span><a href="https://leadscout.ca/?ref=ZX3kIzQG" target="_blank" rel="sponsored nofollow noopener">Compare with LeadScout →</a></div>
-      <div class="routeitem"><strong>Advanced Funds Network CA</strong><span>Business-funding route through your approved Awin partnership.</span><a href="https://www.awin1.com/cread.php?awinmid=128135&awinaffid=2936205" target="_blank" rel="sponsored nofollow noopener">View AFN business funding →</a></div>
-    </div>
-  </div>
-
-  <section class="content" id="loan-categories">
-    <div class="wrap">
-      <div class="section-head"><div><div class="eyebrow">Financing categories</div><h2>Start with the loan you actually need.</h2></div><p>Each route is built around a specific borrowing need so you can get to relevant information and providers faster.</p></div>
-      <div class="category-grid">
-        <a class="cat" href="/personal-loans"><span class="icon">P</span><h3>Personal Loans</h3><p>Explore personal-financing starting points for expenses, purchases and other borrowing needs.</p><b>Explore personal loans →</b></a>
-        <a class="cat" href="/auto-loans-canada.html"><span class="icon">A</span><h3>Auto Financing</h3><p>Review Canadian vehicle-financing, refinance and powersports routes.</p><b>Explore auto financing →</b></a>
-        <a class="cat" href="/business-financing"><span class="icon">B</span><h3>Business Funding</h3><p>Explore working-capital and business-financing options from participating providers.</p><b>Explore business funding →</b></a>
-        <a class="cat" href="/equipment-financing"><span class="icon">E</span><h3>Equipment Financing</h3><p>Financing information for commercial vehicles, machinery, tools and productive assets.</p><b>Explore equipment financing →</b></a>
-        <a class="cat" href="/debt-consolidation"><span class="icon">D</span><h3>Debt Consolidation</h3><p>Compare payment structure, term and total borrowing cost before choosing a route.</p><b>Explore debt options →</b></a>
-        <a class="cat" href="/funding-finder"><span class="icon">+</span><h3>Credit Challenges & Other Needs</h3><p>Use the matcher when your situation does not fit neatly into one category.</p><b>Use the Funding Matcher →</b></a>
+    <div class="trustbar">
+      <div class="wrap">
+        <div class="trust-item"><strong>Canadian context matters</strong><span>Products, rules and examples are selected for Canadian readers.</span></div>
+        <div class="trust-item"><strong>Partner links are disclosed</strong><span>We may earn a commission when you use selected links, at no extra cost to you.</span></div>
+        <div class="trust-item"><strong>No pay-to-praise policy</strong><span>Partner status does not buy a positive editorial conclusion.</span></div>
       </div>
     </div>
-  </section>
 
-  <section class="content steps">
-    <div class="wrap">
-      <div class="section-head"><div><div class="eyebrow">How eStack works</div><h2>One starting point. Clear next steps.</h2></div><p>eStack organizes the search. The provider controls the actual product, underwriting, rate, fees and approval.</p></div>
-      <div class="step-grid">
-        <div class="step"><span class="num">1</span><h3>Tell us what you need</h3><p>Choose the financing category, amount range, timing and a few broad details.</p></div>
-        <div class="step"><span class="num">2</span><h3>See relevant routes</h3><p>The matcher shows participating provider routes that fit the information available to eStack.</p></div>
-        <div class="step"><span class="num">3</span><h3>Review provider terms</h3><p>Compare current costs, requirements and repayment terms directly with the provider before proceeding.</p></div>
+    <section class="pathways">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="eyebrow">Choose your path</div><h2>One site. Five money decisions.</h2></div>
+          <p>Instead of throwing hundreds of articles at you, eStack starts with the decision you need to make and points you to the strongest next step.</p>
+        </div>
+        <div class="path-grid">
+          <a class="path-card" href="/loans"><div><div class="path-num">01</div><h3>Borrow</h3><p>Compare financing routes and understand the trade-offs before you apply.</p></div><div class="path-go">Explore financing →</div></a>
+          <a class="path-card" href="/improve-credit-score-canada.html"><div><div class="path-num">02</div><h3>Build credit</h3><p>Understand what moves a Canadian credit profile and what does not.</p></div><div class="path-go">Improve credit →</div></a>
+          <a class="path-card" href="/best-hisa-canada.html"><div><div class="path-num">03</div><h3>Save</h3><p>Compare banking and savings options without getting lost in promotional noise.</p></div><div class="path-go">Compare savings →</div></a>
+          <a class="path-card" href="/bullion.html"><div><div class="path-num">04</div><h3>Invest</h3><p>Research gold, silver and precious-metals buying options in one place.</p></div><div class="path-go">Explore bullion →</div></a>
+          <a class="path-card" href="/tech-ai-tools.html"><div><div class="path-num">05</div><h3>Grow</h3><p>Find ecommerce, publishing, analytics and operating tools for your business.</p></div><div class="path-go">See business tools →</div></a>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="content">
-    <div class="wrap">
-      <div class="section-head"><div><div class="eyebrow">Featured lending partners & networks</div><h2>CMI, LeadScout and AFN are now visible.</h2></div><p>These are affiliate or referral relationships. eStack may receive compensation from qualifying actions.</p></div>
-      <div class="partner-grid">
-        <article class="partner"><span class="tag">Partner network</span><h3>CMI / CreditMarketing.ca</h3><p>eStack uses approved CMI-tracked offers across personal loans, auto financing, credit tools and debt solutions.</p><a href="/partner-directory.html">See CMI partner offers →</a></article>
-        <article class="partner"><span class="tag">Loan matching</span><h3>LeadScout</h3><p>Explore a Canadian loan-matching route and review any provider options and terms directly.</p><a href="https://leadscout.ca/?ref=ZX3kIzQG" target="_blank" rel="sponsored nofollow noopener">Compare with LeadScout →</a></article>
-        <article class="partner"><span class="tag">Business funding</span><h3>Advanced Funds Network CA</h3><p>Explore a business-funding route through your approved Awin partnership and compare current repayment terms.</p><a href="https://www.awin1.com/cread.php?awinmid=128135&awinaffid=2936205" target="_blank" rel="sponsored nofollow noopener">View AFN business funding →</a></article>
-        <article class="partner"><span class="tag">Personal loans</span><h3>Loan Genie</h3><p>One of the approved CMI-tracked personal-loan destinations available through eStack.</p><a href="https://cmi.rocks/go/6a3eeaf652419" target="_blank" rel="sponsored nofollow noopener">Compare personal-loan options →</a></article>
+    <section class="partners">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="eyebrow">Featured partners</div><h2>Tools worth a closer look.</h2></div>
+          <p>These are commercial partner links. eStack may earn a commission if you use them. Review the product and terms yourself before making a financial decision.</p>
+        </div>
+        <div class="partner-grid">
+          <a class="partner-card" href="https://leadscout.ca/?ref=ZX3kIzQG" target="_blank" rel="sponsored nofollow noopener">
+            <span class="partner-tag">Loan matching</span><h3>LeadScout</h3><p>Explore a Canadian loan-matching option and compare what may be available for your situation.</p><span class="partner-link">Compare options →</span>
+          </a>
+          <a class="partner-card" href="https://www.sprottmoney.ca/?acc=paul-maladrino-5887a" target="_blank" rel="sponsored nofollow noopener">
+            <span class="partner-tag">Bullion</span><h3>Sprott Money</h3><p>Browse precious-metals products from an established Canadian bullion provider.</p><span class="partner-link">View bullion options →</span>
+          </a>
+          <a class="partner-card" href="https://shopify.pxf.io/PzRMVN" target="_blank" rel="sponsored nofollow noopener">
+            <span class="partner-tag">Ecommerce</span><h3>Shopify</h3><p>Build and run an online store using one of Canada's best-known ecommerce platforms.</p><span class="partner-link">View platform →</span>
+          </a>
+          <a class="partner-card" href="https://beehiiv.com/?via=paul-malandrino" target="_blank" rel="sponsored nofollow noopener">
+            <span class="partner-tag">Publishing</span><h3>beehiiv</h3><p>Create, publish and grow an email newsletter with monetization tools built in.</p><span class="partner-link">View platform →</span>
+          </a>
+        </div>
+        <div class="partner-note">Affiliate disclosure: eStack may receive compensation from partner links. Compensation does not guarantee inclusion or a positive review.</div>
       </div>
-      <p class="partner-note">No click, application or referral guarantees approval, a specific rate, funding speed, savings or financial outcome.</p>
-    </div>
-  </section>
+    </section>
 
-  <section class="content">
-    <div class="wrap">
-      <div class="national">
-        <div><div class="eyebrow">Built for Canadian borrowers</div><h2>A national starting point, not a single-bank funnel.</h2><p>eStack is designed for Canadians searching for financing from different provinces and situations. The Funding Matcher asks for your province because provider availability can vary across Canada.</p></div>
-        <div class="province-box"><strong>Canada-wide visitor access</strong><span>Visitors from every province and territory can use eStack's information and matcher. A provider may serve only selected regions, and an eStack match is never an approval or commitment to lend.</span><a class="btn btn-primary" style="margin-top:18px" href="/funding-finder">Start My Match →</a></div>
+    <section class="feature">
+      <div class="wrap">
+        <div class="feature-grid">
+          <div class="feature-photo" role="img" aria-label="Toronto skyline representing Canadian finance"></div>
+          <div class="feature-copy">
+            <div class="eyebrow">Featured guide</div>
+            <h2>Bank said no? That is not the end of the road.</h2>
+            <p>Understand what may have triggered the decline, what alternative lending routes exist, and which fixes are worth making before your next application.</p>
+            <a class="text-link" href="/bank-said-no-what-to-do-next.html">Read the Canadian guide →</a>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="content resources">
-    <div class="wrap">
-      <div class="section-head"><div><div class="eyebrow">Second-tier financial resources</div><h2>Borrowing first. Investing separate.</h2></div><p>eStack keeps investing and bullion outside the loan-matching flow so borrowing decisions are not mixed with investment promotions.</p></div>
-      <div class="resource-grid">
-        <div class="resource"><h3>Precious Metals & Bullion</h3><p>Research physical gold and silver, dealer options, premiums, delivery and storage.</p><a class="link" href="/bullion.html">Explore bullion resources →</a></div>
-        <div class="resource"><h3>Investing</h3><p>Explore selected investing platforms separately from lending. Moomoo Financial Canada is an affiliate partner available through eStack.</p><a class="link" href="https://www.awin1.com/cread.php?awinmid=125808&awinaffid=2936205" target="_blank" rel="sponsored nofollow noopener">View Moomoo Financial Canada →</a></div>
+    <section class="guides">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="eyebrow">Useful now</div><h2>Guides built around real decisions.</h2></div>
+          <p>No endless news feed. Start with the question you are trying to answer, then go deeper only where it matters.</p>
+        </div>
+        <div class="guide-grid">
+          <a class="guide" href="/best-tools-self-employed-canada.html">
+            <div class="guide-meta">Self-employed · business tools</div><h3>Best tools for self-employed Canadians</h3><p>A practical stack for invoicing, marketing, ecommerce, operations and growth.</p><span class="guide-link">Read guide →</span>
+          </a>
+          <a class="guide" href="/buy-gold-bullion-canada.html">
+            <div class="guide-meta">Investing · precious metals</div><h3>How to buy gold bullion in Canada</h3><p>Coins vs. bars, dealers, storage and the basics to understand before buying.</p><span class="guide-link">Read guide →</span>
+          </a>
+          <a class="guide" href="/start-shopify-store-canada.html">
+            <div class="guide-meta">Ecommerce · Canada</div><h3>How to start a Shopify store in Canada</h3><p>Payments, taxes, shipping and launch decisions for Canadian sellers.</p><span class="guide-link">Read guide →</span>
+          </a>
+          <a class="guide" href="/self-employed-mortgage-canada.html">
+            <div class="guide-meta">Mortgages · self-employed</div><h3>Self-employed mortgage guide</h3><p>How lenders assess self-employed income and what documentation may matter.</p><span class="guide-link">Read guide →</span>
+          </a>
+          <a class="guide" href="/ontario-first-time-home-buyer-guide.html">
+            <div class="guide-meta">Home buying · Ontario</div><h3>Ontario first-time home buyer guide</h3><p>Programs, incentives and the steps to understand before making an offer.</p><span class="guide-link">Read guide →</span>
+          </a>
+        </div>
       </div>
-      <div class="separation"><strong>Important:</strong> Borrowing involves debt and repayment obligations. Investing involves risk, including possible loss of money. eStack does not present investing as a solution to borrowing needs.</div>
-    </div>
-  </section>
+    </section>
 
-  <section class="final">
-    <div class="wrap"><div><h2>Ready to explore your financing options?</h2><p>Answer a few questions and start with the financing route that best matches what you are looking for.</p></div><a class="btn" href="/funding-finder">Find My Financing Options →</a></div>
-  </section>
-</main>
+    <section class="why">
+      <div class="wrap why-grid">
+        <div><div class="eyebrow">Why eStack</div><h2>Useful beats flashy.</h2></div>
+        <div class="principles">
+          <div class="principle"><b>01</b><div><h3>Specific Canadian context</h3><p>We focus on the products, rules and decisions Canadian readers actually face.</p></div></div>
+          <div class="principle"><b>02</b><div><h3>Commercial relationships are visible</h3><p>Affiliate relationships are disclosed so you can judge recommendations with the right context.</p></div></div>
+          <div class="principle"><b>03</b><div><h3>Decision-first content</h3><p>Pages are written to help you compare, shortlist or understand a next step — not to manufacture page views.</p></div></div>
+          <div class="principle"><b>04</b><div><h3>Financial claims kept in check</h3><p>We avoid promises about approval, returns, savings or outcomes that depend on your individual circumstances.</p></div></div>
+        </div>
+      </div>
+    </section>
 
-<footer>
-  <div class="wrap">
-    <div class="footer-grid">
-      <div><div class="footer-brand">e<span>Stack</span>.ca</div><div class="footer-copy">Canadian financing information, comparison and referral platform. eStack is not a bank or lender.</div></div>
-      <div><div class="footer-head">Loans</div><div class="footer-links"><a href="/personal-loans">Personal loans</a><a href="/auto-loans-canada.html">Auto financing</a><a href="/business-financing">Business funding</a><a href="/equipment-financing">Equipment financing</a><a href="/debt-consolidation">Debt consolidation</a></div></div>
-      <div><div class="footer-head">Resources</div><div class="footer-links"><a href="/funding-finder">Funding Matcher</a><a href="/improve-credit-score-canada.html">Credit guide</a><a href="/bullion.html">Bullion</a><a href="https://www.awin1.com/cread.php?awinmid=125808&awinaffid=2936205" target="_blank" rel="sponsored nofollow noopener">Investing</a></div></div>
-      <div><div class="footer-head">eStack</div><div class="footer-links"><a href="/about.html">About</a><a href="/affiliate-disclosure.html">Affiliate disclosure</a><a href="/privacy-policy.html">Privacy</a><a href="/terms-of-use.html">Terms</a><a href="mailto:info@estack.ca">Contact</a></div></div>
+    <section class="final">
+      <div class="wrap">
+        <div><h2>Start with the decision that matters most.</h2><p>Compare financing, improve your credit, research bullion or choose the business tools that fit what you are building.</p></div>
+        <div class="final-actions"><a class="btn btn-dark" href="/deals.html">See eStack top picks →</a><a class="btn" style="border:1px solid rgba(16,16,15,.35)" href="/partner-directory.html">Browse all partners</a></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-grid">
+        <div><div class="footer-brand">e<span>Stack</span>.ca</div><div class="footer-copy">Independent Canadian finance, technology and business comparisons for people making real decisions.</div></div>
+        <div><div class="footer-head">Money</div><div class="footer-links"><a href="/loans">Financing</a><a href="/best-hisa-canada.html">Savings</a><a href="/improve-credit-score-canada.html">Credit</a><a href="/mortgage-calculator.html">Mortgage calculator</a></div></div>
+        <div><div class="footer-head">Build</div><div class="footer-links"><a href="/tech-ai-tools.html">Business tools</a><a href="/bullion.html">Bullion</a><a href="/deals.html">Top picks</a><a href="/partner-directory.html">Partner directory</a></div></div>
+        <div><div class="footer-head">eStack</div><div class="footer-links"><a href="/about.html">About</a><a href="/editorial-policy">Editorial policy</a><a href="/affiliate-disclosure.html">Affiliate disclosure</a><a href="/contact">Contact</a></div></div>
+      </div>
+      <div class="footer-bottom"><span>© 2026 eStack.ca. All rights reserved.</span><span>General information only. Not financial, investment, legal or tax advice.</span></div>
     </div>
-    <div class="footer-bottom"><span>© 2026 eStack.ca. All rights reserved.</span><span>General information only. Provider availability, eligibility, rates, fees and terms vary.</span></div>
-  </div>
-</footer>
+  </footer>
 <script src="https://www.dwin2.com/pub.2936205.min.js"></script>
-<script>
-(function(){
-  var b=document.querySelector('.menu'),n=document.getElementById('mainnav');
-  if(b&&n){b.addEventListener('click',function(){var open=n.classList.toggle('open');b.setAttribute('aria-expanded',String(open));});}
-  document.addEventListener('click',function(e){var a=e.target.closest('a[rel*="sponsored"]');if(!a)return;if(typeof gtag==='function'){gtag('event','affiliate_click',{event_category:'affiliate',event_label:a.href,transport_type:'beacon'});}});
-})();
-</script>
 </body>
 </html>
