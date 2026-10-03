@@ -7,7 +7,7 @@ Source of truth: live Affiliate Link Vault, reconciled with the repository affil
 - CreditMarketing.ca: **21 of 21 implemented**
 - LeadScout: **Implemented**
 - Sprott Money: **Implemented**
-- Total approved tracked offers represented: **31**
+- Total approved tracked offers represented: **32**
 - Missing approved eStack.ca offers: **0**
 
 | Partner name | Category | Approved affiliate URL | Tracking parameters present | Page or pages | CTA text | Status |
@@ -37,6 +37,7 @@ Source of truth: live Affiliate Link Vault, reconciled with the repository affil
 | Advanced Funds Network CA | Business Funding | https://www.awin1.com/cread.php?awinmid=128135&awinaffid=2936205 | awinmid=128135; awinaffid=2936205 | business-funding-now.html; loans.html; partner-directory.html | View Offer | Implemented |
 | World Businesses for Sale | Business Marketplace | https://www.awin1.com/cread.php?awinmid=116725&awinaffid=2936205 | awinmid=116725; awinaffid=2936205 | business-financing.html; partner-directory.html | Explore Listings and Selling Options | Implemented |
 | Sprott Money | Bullion | https://www.sprottmoney.ca/?acc=paul-maladrino-5887a | acc=paul-maladrino-5887a | index.html; bullion.html; deals.html; partner-directory.html | View Bullion Options | Implemented |
+| Moomoo Financial Canada | Investing | https://www.awin1.com/cread.php?awinmid=125808&awinaffid=2936205 | awinmid=125808; awinaffid=2936205 | index.html | View Moomoo Financial Canada | Implemented |
 | Kitco | Bullion | https://www.awin1.com/cread.php?s=3795009&v=84579&q=505826&r=2936205 | s=3795009; v=84579; q=505826; r=2936205 | bullion.html; deals.html; partner-directory.html | See Today’s Price | Implemented |
 | Money Metals Exchange | Bullion | https://www.awin1.com/cread.php?s=3928272&v=88985&q=519076&r=2936205 | s=3928272; v=88985; q=519076; r=2936205 | index.html; bullion.html; deals.html; partner-directory.html | View Bullion Options | Implemented |
 | Shopify | Ecommerce | https://shopify.pxf.io/PzRMVN | Tracked path token: PzRMVN | index.html; tech-ai-tools.html; deals.html; partner-directory.html | View Platform | Implemented |
