@@ -22,5 +22,49 @@
     "minMonthlyRevenue":0,
     "notes":"A Canadian business-funding comparison destination. Review the provider's current offer, total repayment cost, payment frequency and terms directly.",
     "destinationUrl":"https://www.awin1.com/cread.php?awinmid=128135&awinaffid=2936205"
+  },
+  {
+    "name":"Loan Genie",
+    "active":true,
+    "categories":["personal"],
+    "minAmount":0,
+    "maxAmount":null,
+    "minBusinessMonths":0,
+    "minMonthlyRevenue":0,
+    "notes":"A Canadian personal-loan matching destination. Availability, rates, fees and approval are determined by participating providers.",
+    "destinationUrl":"https://cmi.rocks/go/6a3eeaf652419"
+  },
+  {
+    "name":"Loans Canada",
+    "active":true,
+    "categories":["personal"],
+    "minAmount":0,
+    "maxAmount":null,
+    "minBusinessMonths":0,
+    "minMonthlyRevenue":0,
+    "notes":"A Canadian personal-loan comparison destination. Review current provider terms and eligibility before applying.",
+    "destinationUrl":"https://cmi.rocks/go/6a46b893b1746"
+  },
+  {
+    "name":"MyAutoApproval",
+    "active":true,
+    "categories":["vehicle"],
+    "minAmount":0,
+    "maxAmount":null,
+    "minBusinessMonths":0,
+    "minMonthlyRevenue":0,
+    "notes":"A Canadian auto-financing destination. Vehicle, borrower and provincial eligibility may vary; confirm current terms directly with the provider.",
+    "destinationUrl":"https://cmi.rocks/go/6a3eeb14424a6"
+  },
+  {
+    "name":"Debt Rehab Canada",
+    "active":true,
+    "categories":["debt"],
+    "minAmount":0,
+    "maxAmount":null,
+    "minBusinessMonths":0,
+    "minMonthlyRevenue":0,
+    "notes":"A Canadian debt-solutions resource. This is not a guaranteed consolidation loan; review the provider's service, costs and eligibility directly.",
+    "destinationUrl":"https://cmi.rocks/go/6a46bc8e5792f"
   }
 ]
