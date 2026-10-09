@@ -294,9 +294,21 @@
             <a class="panel-link" href="#business"><span><strong>Business financing</strong><small>Capital, software and growth resources</small></span><span>→</span></a>
             <a class="panel-link" href="#credit-banking"><span><strong>Credit & banking</strong><small>Credit-building, cards and savings</small></span><span>→</span></a>
             <a class="panel-link" href="#investing"><span><strong>Investing & bullion</strong><small>Investing access, gold and silver partners</small></span><span>→</span></a>
+            <a class="panel-link" href="#us-loans"><span><strong>U.S. personal loan options</strong><small>Rebound Finance · U.S. residents only</small></span><span>→</span></a>
           </div>
           <div class="panel-foot">eStack.ca is not a bank or lender. Review provider terms before applying or investing.</div>
         </aside>
+      </div>
+    </section>
+
+
+    <section id="us-loans" aria-labelledby="us-loans-heading" style="background:var(--mist);padding:32px 0;border-bottom:1px solid var(--line)">
+      <div class="wrap">
+        <div class="eyebrow">For U.S. residents</div>
+        <h2 id="us-loans-heading" style="font-size:clamp(1.65rem,4vw,2.3rem);margin:8px 0">Explore personal loan options</h2>
+        <p style="max-width:760px;margin-bottom:18px">Rebound Finance connects applicants with lending partners. Review eligibility, APR, fees and repayment terms before accepting an offer.</p>
+        <a class="btn btn-primary" href="https://cmi.rocks/go/6a443c202adb2" target="_blank" rel="sponsored nofollow noopener noreferrer" data-offer="rebound-finance">Explore U.S. loan options <span class="arrow" aria-hidden="true">→</span></a>
+        <p style="max-width:760px;margin-top:16px;font-size:.85rem;color:var(--muted)">U.S. residents only. Not available in all states. Rebound Finance is not a lender. Approval is not guaranteed. We may earn a commission through this link.</p>
       </div>
     </section>
 
@@ -547,5 +559,22 @@
     })();
   </script>
   <script src="https://www.dwin2.com/pub.2936205.min.js"></script>
+
+  <script>
+    document.querySelectorAll('[data-offer="rebound-finance"]').forEach(function(link) {
+      link.addEventListener('click', function() {
+        if (typeof window.gtag === 'function') {
+          window.gtag('event', 'rebound_click', {
+            offer_name: 'Rebound Finance',
+            link_url: link.href,
+            link_domain: 'cmi.rocks',
+            outbound: true,
+            transport_type: 'beacon'
+          });
+        }
+      });
+    });
+  </script>
+
 </body>
 </html>
