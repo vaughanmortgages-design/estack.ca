@@ -83,7 +83,7 @@ function showResult(){
      const strong=document.createElement("strong");strong.textContent=p.name;
      const desc=document.createElement("p");desc.textContent=p.notes||"Review the provider's current eligibility and terms directly.";
      const a=document.createElement("a");a.className="btn btn-green";a.href=safeUrl(p.destinationUrl);a.target="_blank";a.rel="sponsored nofollow noopener";a.textContent="Review provider →";
-     a.addEventListener("click",()=>track("partner_click",{partner:p.name,category:state.category}));
+     a.addEventListener("click",()=>{track("partner_click",{partner:p.name,category:state.category});track("affiliate_click",{retailer:p.name,category:state.category});});
      div.append(strong,desc,a);list.appendChild(div);
    });
  }else{
@@ -93,6 +93,7 @@ function showResult(){
    div.append(strong,p);list.appendChild(div);
  }
  track("lead_submit",{category:state.category,amount_range:state.amount_range,urgency:state.urgency});
+ track("generate_lead",{lead_type:"funding_matcher",category:state.category});
 }
 async function loadPartners(){try{const r=await fetch("/data/funding-partners.json",{cache:"no-store"});if(r.ok)partners=await r.json();}catch(e){partners=[];}}
 document.addEventListener("DOMContentLoaded",()=>{
@@ -103,12 +104,14 @@ document.addEventListener("DOMContentLoaded",()=>{
    const consent=$('[name="consent"]');
    if(!form.checkValidity()||!consent.checked){form.reportValidity();return;}
    $('[name="consent_timestamp"]').value=new Date().toISOString();
+   track("lead_form_submit_attempt",{category:state.category});
    $("#submitBtn").disabled=true;$("#submitBtn").textContent="Saving…";
    try{
      const res=await fetch("/funding-finder",{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded"},body:encodeForm(form)});
      if(!res.ok)throw new Error("submit");
      showResult();
    }catch(e){
+     track("lead_form_submit_error",{category:state.category});
      err.textContent="We couldn't save your request. Please try again or email info@estack.ca.";
      err.classList.add("show");
    }finally{
