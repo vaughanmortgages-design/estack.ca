@@ -1,3 +1,4 @@
+(function(){if(document.querySelector('script[data-estack-outbound]'))return;var s=document.createElement('script');s.src='/assets/estack-outbound.js';s.dataset.estackOutbound='';document.head.appendChild(s);})();
 document.querySelector('[data-menu]')?.addEventListener('click',e=>{const n=document.querySelector('[data-nav]');const open=n.classList.toggle('open');e.currentTarget.setAttribute('aria-expanded',String(open))});
 
 document.querySelectorAll('a[href="https://leadscout.ca/?ref=ZX3kIzQG"], a[href="https://leadscout.ca/?ref=ZX3klzQG"]').forEach(link=>{
