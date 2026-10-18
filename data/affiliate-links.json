@@ -78,5 +78,25 @@
     "logo": "/assets/logos/advanced-funds-network.png",
     "description": "Business financing partner route for Canadian companies.",
     "approved": true
+  },
+  {
+    "name": "SmartCredit",
+    "category": "Credit Monitoring",
+    "country": "CA & USA",
+    "network": "CJ Affiliate",
+    "affiliateUrl": "https://www.tkqlhce.com/click-101836336-16981737",
+    "logo": "/assets/logos/smartcredit.png",
+    "description": "Credit score monitoring and tools to help you understand and improve your credit.",
+    "approved": true
+  },
+  {
+    "name": "Alison",
+    "category": "Education",
+    "country": "CA & USA",
+    "network": "AWIN",
+    "affiliateUrl": "https://www.awin1.com/awclick.php?gid=596657&mid=120101&awinaffid=2936205&linkid=4687075&clickref=",
+    "logo": "/assets/logos/alison.png",
+    "description": "Free online courses and diploma programs for career and business skills.",
+    "approved": true
   }
 ]
