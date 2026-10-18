@@ -7,7 +7,6 @@ document.querySelectorAll('a[href="https://leadscout.ca/?ref=ZX3kIzQG"], a[href=
   link.setAttribute('rel','');
 });
 
-const tiktokAffiliate='https://getstartedtiktok.partnerlinks.io/19gddff1jq85';
 const beehiivAffiliate='https://www.beehiiv.com/?via=paul-malandrino';
 const windsorAffiliate='https://windsor.ai/?fpr=paul17';
 
@@ -18,16 +17,13 @@ function createPartnerCard({tag,title,copy,href,cta,guide,guideText}){
   return card;
 }
 
-// Feature TikTok for Business, beehiiv and Windsor.ai near Shopify on Tech & AI Tools.
+// Feature beehiiv and Windsor.ai near Shopify on Tech & AI Tools.
 if(location.pathname.endsWith('/tech-ai-tools.html') || location.pathname === '/tech-ai-tools.html'){
   const shopifyLink=document.querySelector('a[href="https://shopify.pxf.io/PzRMVN"]');
   const shopifyCard=shopifyLink?.closest('article.card');
 
-  if(shopifyCard && !document.querySelector(`a[href="${tiktokAffiliate}"]`)){
-    shopifyCard.insertAdjacentElement('afterend',createPartnerCard({tag:'Business growth',title:'TikTok for Business',copy:'Reach new customers with TikTok advertising, lead generation and ecommerce campaigns.',href:tiktokAffiliate,cta:'Start Advertising',guide:'tiktok-business-canada.html',guideText:'Read the 2026 guide'}));
-  }
 
-  const tiktokCard=document.querySelector(`a[href="${tiktokAffiliate}"]`)?.closest('article.card');
+  const tiktokCard=null;
   if((tiktokCard||shopifyCard) && !document.querySelector(`a[href="${beehiivAffiliate}"]`)?.closest('article.card')){
     (tiktokCard||shopifyCard).insertAdjacentElement('afterend',createPartnerCard({tag:'Newsletter growth',title:'beehiiv',copy:'Build an owned email audience with newsletter publishing, audience growth and monetization tools.',href:beehiivAffiliate,cta:'Start a Newsletter',guide:'best-newsletter-platforms-canadian-business.html',guideText:'Read the guide'}));
   }
@@ -46,11 +42,8 @@ if(location.pathname==='/' || location.pathname.endsWith('/index.html')){
   const shopifyLink=document.querySelector('a[href="https://shopify.pxf.io/PzRMVN"]');
   const shopifyCard=shopifyLink?.closest('article.card');
 
-  if(shopifyCard && !document.querySelector(`a[href="${tiktokAffiliate}"]`)){
-    shopifyCard.insertAdjacentElement('afterend',createPartnerCard({tag:'Business advertising',title:'TikTok for Business',copy:'Launch campaigns to reach customers, generate leads and support ecommerce growth.',href:tiktokAffiliate,cta:'Get Started',guide:'tiktok-business-canada.html',guideText:'Read the guide'}));
-  }
 
-  const tiktokCard=document.querySelector(`a[href="${tiktokAffiliate}"]`)?.closest('article.card');
+  const tiktokCard=null;
   if((tiktokCard||shopifyCard) && !document.querySelector(`a[href="${beehiivAffiliate}"]`)?.closest('article.card')){
     (tiktokCard||shopifyCard).insertAdjacentElement('afterend',createPartnerCard({tag:'Audience ownership',title:'beehiiv',copy:'Launch a newsletter, grow an email list and build a direct audience you control.',href:beehiivAffiliate,cta:'Start a Newsletter',guide:'best-newsletter-platforms-canadian-business.html',guideText:'Read the guide'}));
   }
@@ -68,7 +61,7 @@ if(location.pathname==='/' || location.pathname.endsWith('/index.html')){
     const callout=document.createElement('section');
     callout.className='section';
     callout.id='start-grow-business';
-    callout.innerHTML='<div class="wrap"><div class="section-head"><span class="eyebrow">Start & Grow Your Business</span><h2>Build. Reach. Own. Measure.</h2><p>Launch with Shopify, reach customers with TikTok, own the relationship with beehiiv and measure performance with Windsor.ai.</p></div><div class="grid-3"><article class="card"><span class="tag">Build</span><h3>Shopify</h3><p>Create and manage your ecommerce store.</p><a class="card-link" target="_blank" rel="sponsored nofollow noopener" href="https://shopify.pxf.io/PzRMVN">View Shopify →</a></article><article class="card"><span class="tag">Grow</span><h3>TikTok for Business</h3><p>Run advertising campaigns for awareness, leads and sales.</p><a class="card-link" target="_blank" rel="sponsored nofollow noopener" href="'+tiktokAffiliate+'">Start Advertising →</a></article><article class="card"><span class="tag">Own</span><h3>beehiiv</h3><p>Build a newsletter and an owned email audience.</p><a class="card-link" target="_blank" rel="sponsored nofollow noopener" href="'+beehiivAffiliate+'">Start a Newsletter →</a></article></div><div class="grid-3" style="margin-top:1.5rem"><article class="card"><span class="tag">Measure</span><h3>Windsor.ai</h3><p>Connect marketing data and build clearer cross-channel reporting.</p><a class="card-link" target="_blank" rel="sponsored nofollow noopener" href="'+windsorAffiliate+'">Try Windsor.ai →</a><br><a class="text-link" href="windsor-ai-review-canada.html">Read the review →</a></article></div></div>';
+    callout.innerHTML='<div class="wrap"><div class="section-head"><span class="eyebrow">Start & Grow Your Business</span><h2>Build. Own. Measure.</h2><p>Launch with Shopify, own the relationship with beehiiv and measure performance with Windsor.ai.</p></div><div class="grid-3"><article class="card"><span class="tag">Build</span><h3>Shopify</h3><p>Create and manage your ecommerce store.</p><a class="card-link" target="_blank" rel="sponsored nofollow noopener" href="https://shopify.pxf.io/PzRMVN">View Shopify →</a></article><article class="card"><span class="tag">Own</span><h3>beehiiv</h3><p>Build a newsletter and an owned email audience.</p><a class="card-link" target="_blank" rel="sponsored nofollow noopener" href="'+beehiivAffiliate+'">Start a Newsletter →</a></article></div><div class="grid-3" style="margin-top:1.5rem"><article class="card"><span class="tag">Measure</span><h3>Windsor.ai</h3><p>Connect marketing data and build clearer cross-channel reporting.</p><a class="card-link" target="_blank" rel="sponsored nofollow noopener" href="'+windsorAffiliate+'">Try Windsor.ai →</a><br><a class="text-link" href="windsor-ai-review-canada.html">Read the review →</a></article></div></div>';
     featuredSection.insertAdjacentElement('afterend',callout);
   }
 }

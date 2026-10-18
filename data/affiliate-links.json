@@ -30,16 +30,6 @@
     "approved": true
   },
   {
-    "name": "TikTok for Business",
-    "category": "Advertising & Social Media",
-    "country": "USA",
-    "network": "TikTok Partner",
-    "affiliateUrl": "https://getstartedtiktok.partnerlinks.io/19gddff1jq85",
-    "logo": "/assets/logos/tiktok-business.png",
-    "description": "Advertising platform for businesses to reach millions of engaged users on TikTok.",
-    "approved": true
-  },
-  {
     "name": "LeadScout",
     "category": "Lead Generation",
     "country": "CA",
@@ -77,6 +67,16 @@
     "affiliateUrl": "https://www.sprottmoney.ca/?acc=paul-maladrino-5887a",
     "logo": "/assets/logos/sprott-money.png",
     "description": "Canadian precious-metals dealer offering gold, silver and platinum products and related market education.",
+    "approved": true
+  },
+  {
+    "name": "Advanced Funds Network",
+    "category": "Business Funding",
+    "country": "CA",
+    "network": "AWIN",
+    "affiliateUrl": "https://www.awin1.com/cread.php?awinmid=128135&awinaffid=2936205",
+    "logo": "/assets/logos/advanced-funds-network.png",
+    "description": "Business financing partner route for Canadian companies.",
     "approved": true
   }
 ]
