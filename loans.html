@@ -14,47 +14,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/premium-pages.css">
-  <style>
-    .loan-page{background:linear-gradient(145deg,#fffdf8 0%,#f7f1e5 58%,#ecdfc8 100%);min-height:calc(100vh - 108px)}
-    .loan-shell{width:min(940px,calc(100% - 36px));margin:0 auto;padding:56px 0 64px;text-align:center}
-    .loan-logo{display:grid;place-items:center;width:88px;height:88px;margin:0 auto 20px;border-radius:50%;background:#10100f;color:#fff;font:700 1.12rem 'Playfair Display',serif;box-shadow:0 18px 42px rgba(20,17,12,.18)}
-    .loan-logo span{color:#d5b56f}
-    .loan-shell h1{font-size:clamp(2.55rem,6vw,4.7rem);letter-spacing:-.045em;max-width:780px;margin:10px auto 0}
-    .loan-intro{max-width:620px;margin:17px auto 0;color:#625f58;font-size:1.05rem;line-height:1.7}
-    .market-switch{display:inline-flex;align-items:center;gap:8px;margin-top:18px;padding:9px 13px;border:1px solid rgba(16,16,15,.14);border-radius:999px;background:rgba(255,255,255,.72);font-size:.8rem;color:#5e5a52}
-    .market-switch a{font-weight:800;color:#214a38;text-decoration:underline;text-underline-offset:3px}
-    .primary-choice,.business-choice{display:flex;align-items:center;justify-content:space-between;gap:18px;max-width:760px;margin:30px auto 0;padding:22px 25px;border-radius:20px;color:#fff;text-align:left;box-shadow:0 18px 45px rgba(33,74,56,.22);transition:.18s ease}
-    .primary-choice{background:#214a38}.primary-choice:hover{transform:translateY(-3px);background:#193b2d}
-    .business-choice{margin-top:12px;background:#10100f;box-shadow:0 18px 45px rgba(16,16,15,.16)}.business-choice:hover{transform:translateY(-3px);background:#000}
-    .primary-choice:focus-visible,.business-choice:focus-visible,.choice:focus-visible{outline:4px solid #b9914c;outline-offset:4px}
-    .primary-choice strong,.business-choice strong{display:block;font-size:1.22rem}
-    .primary-choice small{display:block;margin-top:4px;color:#dce7df;font-size:.83rem}.business-choice small{display:block;margin-top:4px;color:#d5d0c6;font-size:.83rem}
-    .primary-choice b,.business-choice b{font-size:1.7rem;color:#d5b56f}
-    .choice-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px auto 0;max-width:760px;text-align:left}
-    .choice{display:grid;grid-template-columns:46px 1fr auto;align-items:center;gap:14px;min-height:100px;padding:18px 19px;background:#fff;border:1px solid rgba(16,16,15,.13);border-radius:17px;box-shadow:0 8px 24px rgba(20,17,12,.05);transition:.18s ease}
-    .choice:hover{transform:translateY(-3px);border-color:#b9914c;box-shadow:0 15px 34px rgba(20,17,12,.1)}
-    .choice-icon{display:grid;place-items:center;width:46px;height:46px;border-radius:50%;background:#f6f1e7;color:#214a38;font-weight:800;font-size:1.05rem}
-    .choice strong{display:block;font-size:1rem}
-    .choice small{display:block;margin-top:4px;color:#6e6a62;font-size:.76rem;line-height:1.35}
-    .choice b{color:#b9914c;font-size:1.2rem}
-    .loan-note{max-width:700px;margin:18px auto 0;color:#6e6a62;font-size:.75rem;line-height:1.55}
-    .loan-note a{text-decoration:underline;text-underline-offset:3px}
-    .form-section{background:#fff;padding:70px 0}
-    .form-wrap{width:min(880px,calc(100% - 36px));margin:0 auto}
-    .form-heading{text-align:center;margin-bottom:28px}
-    .form-heading h2{font-size:clamp(2rem,4vw,3.25rem);letter-spacing:-.035em}
-    .form-heading p{max-width:620px;margin:12px auto 0;color:#6e6a62}
-    .form-panel{border-top:5px solid #b9914c;background:#fff;box-shadow:0 24px 60px rgba(20,17,12,.12);padding:22px}
-    .simple-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:38px;background:rgba(16,16,15,.12);border:1px solid rgba(16,16,15,.12)}
-    .simple-step{background:#fffdf8;padding:23px;text-align:center}
-    .simple-step span{display:grid;place-items:center;width:34px;height:34px;margin:0 auto 10px;border-radius:50%;background:#10100f;color:#d5b56f;font-weight:800}
-    .simple-step strong{display:block}
-    .simple-step p{margin-top:5px;color:#6e6a62;font-size:.8rem}
-    @media(max-width:700px){.loan-shell{padding:42px 0 50px}.loan-logo{width:76px;height:76px}.choice-grid{grid-template-columns:1fr}.primary-choice,.business-choice{padding:19px}.form-section{padding:54px 0}.form-panel{padding:12px}.simple-steps{grid-template-columns:1fr}}
-  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>.loan-page{background:linear-gradient(145deg,#f4f6f8 0%,#f4f6f8 58%,#a5812c 100%);min-height:calc(100vh - 108px)}.loan-shell{width:min(940px,calc(100% - 36px));margin:0 auto;padding:56px 0 64px;text-align:center}.loan-logo{display:grid;place-items:center;width:88px;height:88px;margin:0 auto 20px;border-radius:50%;background:#0a2240;color:#ffffff;font:700 1.12rem Inter,system-ui,-apple-system,"Segoe UI",sans-serif;box-shadow:0 18px 42px rgba(6,24,48,.18)}.loan-logo span{color:#c9a24b}.loan-shell h1{font-size:clamp(2.55rem,6vw,4.7rem);letter-spacing:-.045em;max-width:780px;margin:10px auto 0}.loan-intro{max-width:620px;margin:17px auto 0;color:#33475e;font-size:1.05rem;line-height:1.7}.market-switch{display:inline-flex;align-items:center;gap:8px;margin-top:18px;padding:9px 13px;border:1px solid rgba(24,42,63,.14);border-radius:6px;background:rgba(255,255,255,.72);font-size:.8rem;color:#33475e}.market-switch a{font-weight:800;color:#0a2240;text-decoration:underline;text-underline-offset:3px}.primary-choice,.business-choice{display:flex;align-items:center;justify-content:space-between;gap:18px;max-width:760px;margin:30px auto 0;padding:22px 25px;border-radius:8px;color:#ffffff;text-align:left;box-shadow:0 18px 45px rgba(6,24,48,.22);transition:.18s ease}.primary-choice{background:#0a2240}.primary-choice:hover{transform:translateY(-3px);background:#0a2240}.business-choice{margin-top:12px;background:#0a2240;box-shadow:0 18px 45px rgba(6,24,48,.16)}.business-choice:hover{transform:translateY(-3px);background:#0a2240}.primary-choice:focus-visible,.business-choice:focus-visible,.choice:focus-visible{outline:4px solid #a5812c;outline-offset:4px}.primary-choice strong,.business-choice strong{display:block;font-size:1.22rem}.primary-choice small{display:block;margin-top:4px;color:#f4f6f8;font-size:.83rem}.business-choice small{display:block;margin-top:4px;color:#c7d3e0;font-size:.83rem}.primary-choice b,.business-choice b{font-size:1.7rem;color:#c9a24b}.choice-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px auto 0;max-width:760px;text-align:left}.choice{display:grid;grid-template-columns:46px 1fr auto;align-items:center;gap:14px;min-height:100px;padding:18px 19px;background:#ffffff;border:1px solid rgba(24,42,63,.13);border-radius:8px;box-shadow:0 8px 24px rgba(6,24,48,.05);transition:.18s ease}.choice:hover{transform:translateY(-3px);border-color:#a5812c;box-shadow:0 15px 34px rgba(6,24,48,.1)}.choice-icon{display:grid;place-items:center;width:46px;height:46px;border-radius:50%;background:#f4f6f8;color:#0a2240;font-weight:800;font-size:1.05rem}.choice strong{display:block;font-size:1rem}.choice small{display:block;margin-top:4px;color:#5a6b7d;font-size:.76rem;line-height:1.35}.choice b{color:#a5812c;font-size:1.2rem}.loan-note{max-width:700px;margin:18px auto 0;color:#5a6b7d;font-size:.75rem;line-height:1.55}.loan-note a{text-decoration:underline;text-underline-offset:3px}.form-section{background:#ffffff;padding:70px 0}.form-wrap{width:min(880px,calc(100% - 36px));margin:0 auto}.form-heading{text-align:center;margin-bottom:28px}.form-heading h2{font-size:clamp(2rem,4vw,3.25rem);letter-spacing:-.035em}.form-heading p{max-width:620px;margin:12px auto 0;color:#5a6b7d}.form-panel{border-top:5px solid #a5812c;background:#ffffff;box-shadow:0 24px 60px rgba(6,24,48,.12);padding:22px}.simple-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:38px;background:rgba(10,34,64,.12);border:1px solid rgba(24,42,63,.12)}.simple-step{background:#f4f6f8;padding:23px;text-align:center}.simple-step span{display:grid;place-items:center;width:34px;height:34px;margin:0 auto 10px;border-radius:50%;background:#0a2240;color:#c9a24b;font-weight:800}.simple-step strong{display:block}.simple-step p{margin-top:5px;color:#5a6b7d;font-size:.8rem}@media(max-width:700px){.loan-shell{padding:42px 0 50px}.loan-logo{width:76px;height:76px}.choice-grid{grid-template-columns:1fr}.primary-choice,.business-choice{padding:19px}.form-section{padding:54px 0}.form-panel{padding:12px}.simple-steps{grid-template-columns:1fr}}</style>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-1M3ZKZHNWE"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-1M3ZKZHNWE');</script>
-</head>
+<style>/* bank-rollout */
+header{background:#ffffff;color:#182a3f;border-bottom:1px solid #d8dfe6}header a:not(.btn):not(.button):not(.gold){color:#0a2240}header span{color:#a5812c}header .logo,header a.logo{color:#0a2240}
+footer{color:#93a7bd}footer a{color:#c7d3e0}
+</style></head>
 <body>
   <div class="utility"><div class="wrap"><span><strong>eStack.ca</strong> · Independent Canadian comparisons</span><span>Clear disclosures · Direct provider terms · No approval promises</span></div></div>
   <header><nav class="premium-nav wrap"><a class="brand" href="index.html">e<span>Stack</span>.ca</a><div class="nav-links"><a href="loans.html">Loans</a><a href="bullion.html">Bullion</a><a href="tech-ai-tools.html">Business Tools</a><a href="markets.html">Markets</a><a href="deals.html" class="nav-cta">Top Picks</a></div></nav></header>
@@ -89,7 +56,7 @@
       <div class="form-wrap">
         <div class="form-heading"><div class="eyebrow">Personal loan comparison</div><h2 id="form-title">Start with one simple form.</h2><p>Choose the amount you need and answer a few questions to explore available options through Loans Canada. Submission does not guarantee approval or a specific rate.</p></div>
         <div class="form-panel">
-          <style>#loansCanadaCompareIframe{width:1px;min-width:100%;min-height:500px;border-radius:10px;}</style>
+          <style>#loansCanadaCompareIframe{width:1px;min-width:100%;min-height:500px;border-radius:10px}</style>
           <iframe id="loansCanadaCompareIframe" src="https://comparetool.loanscanada.ca/personal-loan?affiliate_id=2341&amp;lang=en&amp;theme=3" frameborder="0" scrolling="no" title="Loans Canada personal loan comparison"></iframe>
           <script src="https://comparetool.loanscanada.ca/js/iframe/lc.js"></script>
         </div>
